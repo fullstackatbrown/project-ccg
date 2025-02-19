@@ -8,7 +8,7 @@ const client = contentful.createClient({
   accessToken: 'wIZOtSpgvJ2TyST9SaXwi455DJD44NCZwnu0f15Kr3c'
 });
 
-// for a single entry:
+// for a single entry: (test)
 
 // export async function getEntry(entryId) {
 //   try {
