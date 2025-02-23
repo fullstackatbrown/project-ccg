@@ -1,38 +1,55 @@
 ---
 import logo from "../assets/logo.svg";
 
-const links = [
+const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "About", href: "/About" }, 
+    { name: "Portfolio", href: "/Portfolio" },
+    { name: "Contact", href: "/Contact" },
 ];
 
-/* potentially add social icons like in the harvard page?
-    const socialLinks = [
-        { icon: "Instagram", "href: "}
-    ]
-*/
+const socialLinks = [
+    { icon: "fab fa-linkedin", href: "https://www.linkedin.com/company/ccg-collegiate-consulting-group/" },
+    { icon: "fab fa-instagram", href: "https://www.instagram.com/ccgbrown/" },
+    { icon: "fab fa-facebook", href: "https://www.facebook.com/ccgbrown/" }
+];
 ---
 
-<nav class="h-[100px] px-6 border-b border-black flex items-center bg-white">
+<!-- Font Awesome CDN for social media icons -->
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<nav class="h-[100px] px-6 border-b border-gray-300 flex items-center bg-white">
     <div class="max-w-7xl w-full mx-auto flex justify-between items-center">
-        <!-- Logo -->
-        <a href="/" class="flex items-center">
-            <img src={logo.src} alt="Logo" class="h-12 w-auto">
-        </a>
+        <div class="flex items-center gap-12">
+            <!-- Logo -->
+            <a href="/" class="flex items-center">
+                <img src={logo.src} alt="Logo" class="h-10 w-auto">
+            </a>
 
-        <!-- Nav Links -->
-        <ul class="hidden md:flex gap-6">
-            {links.map((link) => (
-                <li>
-                    <a href={link.href} class="text-gray-800 hover:text-blue-600 transition">
-                        {link.name}
-                    </a>
-                </li>
+            <!-- Nav Links -->
+            <ul class="hidden md:flex gap-6">
+                {navLinks.map((link) => (
+                    <li>
+                        <a href={link.href} class="text-gray-800 hover:text-[#c32727] transition">
+                            {link.name}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex space-x-6">
+            {socialLinks.map((link) => (
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-xl text-gray-900 hover:text-[#c32727]">
+                    <i class={link.icon}></i>
+                </a>
             ))}
-        </ul>
+        </div>
 
-        <!-- Mobile Menu (implement)m-->
+        <!-- Mobile Menu -->
         <button class="md:hidden text-gray-800 text-4xl">
             ☰
         </button>
