@@ -3,8 +3,9 @@ import logo from "../assets/logo.svg";
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/About" }, 
-    { name: "Portfolio", href: "/Portfolio" },
+    { name: "About Us", href: "/About" },
+    { name: "Clients", href: "/Clients" },
+    { name: "Members", href: "/Members" },
     { name: "Contact", href: "/Contact" },
 ];
 
@@ -13,45 +14,86 @@ const socialLinks = [
     { icon: "fab fa-instagram", href: "https://www.instagram.com/ccgbrown/" },
     { icon: "fab fa-facebook", href: "https://www.facebook.com/ccgbrown/" }
 ];
+
 ---
 
-<!-- Font Awesome CDN for social media icons -->
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
 <nav class="h-[100px] px-6 border-b border-gray-300 flex items-center bg-white">
     <div class="max-w-7xl w-full mx-auto flex justify-between items-center">
-        <div class="flex items-center gap-12">
-            <!-- Logo -->
-            <a href="/" class="flex items-center">
-                <img src={logo.src} alt="Logo" class="h-10 w-auto">
-            </a>
+        <!-- Logo -->
+        <a href="/" class="flex items-center">
+            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+        </a>
 
-            <!-- Nav Links -->
-            <ul class="hidden md:flex gap-6">
+        <div class="flex justify-between w-full ml-10">
+            <!-- Nav Links (Desktop) -->
+            <ul class="hidden md:flex gap-8">
                 {navLinks.map((link) => (
                     <li>
-                        <a href={link.href} class="text-gray-800 hover:text-[#c32727] transition">
+                        <a href={link.href} class="text-gray-900 font-almarai hover:text-[#c32727] transition">
                             {link.name}
                         </a>
                     </li>
                 ))}
             </ul>
+
+            <!-- Social Links (Desktop) -->
+            <div class="hidden md:flex space-x-8">
+                {socialLinks.map((link) => (
+                    <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-xl text-gray-900 hover:text-[#c32727] transition"
+                    >
+                        <i class={link.icon}></i>
+                    </a>
+                ))}
+            </div>
         </div>
 
-        <!-- Social Links -->
-        <div class="flex space-x-6">
+        <!-- Mobile Hamburger Menu -->
+        <button class="md:hidden text-gray-800 text-4xl" id="hamburger-btn">
+            ☰
+        </button>
+    </div>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden w-full bg-white absolute top-25 border-2">
+        <ul class="flex flex-col items-center space-y-4">
+            {navLinks.map((link) => (
+                <li>
+                    <a href={link.href} class="text-gray-900 font-almarai hover:text-[#c32727] transition">
+                        {link.name}
+                    </a>
+                </li>
+            ))}
+        </ul>
+
+        <!-- Social Links (Mobile) -->
+        <div class="flex justify-center space-x-8 mt-8">
             {socialLinks.map((link) => (
-                <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-xl text-gray-900 hover:text-[#c32727]">
+                <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xl text-gray-900 hover:text-[#c32727] transition"
+                >
                     <i class={link.icon}></i>
                 </a>
             ))}
         </div>
-
-        <!-- Mobile Menu -->
-        <button class="md:hidden text-gray-800 text-4xl">
-            ☰
-        </button>
     </div>
 </nav>
+
+<!-- JavaScript to toggle mobile menu kinda janky and position is a bit weird-->
+<script>
+    document.getElementById('hamburger-btn').addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');  // Toggle the visibility of the mobile menu
+    });
+</script>
