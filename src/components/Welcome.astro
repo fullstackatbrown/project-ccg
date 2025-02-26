@@ -1,0 +1,31 @@
+---
+
+import { contentfulClient } from "../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import type { EntryFieldTypes } from "contentful";
+import type {Member} from "../lib/contentful";
+
+const entries = await contentfulClient.getEntries<Member>({
+  content_type: "member",
+});
+const posts = entries.items.map((item) => {
+  const { memberName } = item.fields;
+  return {
+    memberName,
+  };
+});
+
+
+console.log("Title:" + posts[0].memberName);
+---
+<html lang="en">
+  <head>
+    <title>My Blog</title>
+  </head>
+  <body>
+    <h1>My Blog</h1>
+      {posts.map((post) => (
+            <h2>{post.memberName}</h2>
+      ))}
+  </body>
+</html>
