@@ -19,7 +19,7 @@ import logo from "../assets/logo.svg";
     <div class="container flex">
       <div id="service_box" class="services-text">
         <h2 class="h2-services">Join Collegiate Consulting Group</h2>
-        <p>Student consultants at Brown’s Collegiate Consulting Group gain access to real-world consulting experience, professional development opportunities, and a tight-knit campus community.</p>
+        <p id="content"></p>
         <br><p>Application Information</p>
         <p>Fall Recruitment: Applications for Fall 2024 are currently closed</p>
         <p>Spring Recruitment: Information regarding recruitment for Spring 2024 coming soon!</p>
@@ -112,7 +112,7 @@ import logo from "../assets/logo.svg";
   <Footer></Footer>
 </Layout>
 
-<script>
+<script>  
     document.addEventListener("DOMContentLoaded", function() {
         let slideIndex = 0;
         let slideInterval;
@@ -141,4 +141,7 @@ import logo from "../assets/logo.svg";
         document.querySelector(".prev").addEventListener("click", () => incrementSlides(-1));
         showSlides();
     });
+
+</script>
+<script type="module" src="contentfulClient.js">
 </script>
