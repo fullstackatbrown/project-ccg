@@ -1,13 +1,17 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    './src/**/*.{astro,html,js,jsx,ts,tsx}', // Added .astro here as well
+    "./src/**/*.{astro,js,ts,jsx,tsx}",
+    "./components/**/*.{astro,js,ts,jsx,tsx}",
+    "./layouts/**/*.{astro,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        almarai: ['Almarai', 'serif'],
-      },
-    },
+    screens: {
+      'sm': { 'max': '639px' },  
+      'md': { 'max': '767px' },  
+      'lg': { 'max': '1023px' }, 
+      'xl': { 'max': '1279px' }, 
+    }
   },
   plugins: [],
-}
+};
