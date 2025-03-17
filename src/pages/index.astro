@@ -2,14 +2,31 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Navbar></Navbar>
-	<div>
-		<img src="" alt="">
+	<div class="flex flex-col min-h-screen">
+		<Navbar />
+
+		<!-- Hero Section -->
+		<div class="flex-grow relative w-full overflow-hidden">
+			<!-- Background Image with Reduced Opacity -->
+			<div class="absolute inset-0 bg-black">
+				<img 
+					src="/src/assets/images/hero.jpg" 
+					alt="Hero Image" 
+					class="w-full h-full object-cover object-center opacity-65"
+				>
+			</div>
+
+			<!-- Logo Centered -->
+			<div class="absolute inset-0 flex items-center justify-center">
+				<img 
+					src="/src/assets/logo_white.png" 
+					alt="CCG Logo" 
+					class="w-3/4 md:w-2/3 lg:w-1/2 max-w-xl z-10"
+				>
+			</div>
+		</div>
 	</div>
 </Layout>
