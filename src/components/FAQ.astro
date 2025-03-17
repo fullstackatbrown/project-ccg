@@ -1,0 +1,36 @@
+
+---
+const faqs = [
+  { question: "What is the application process?", answer: "The process consists of a written application with a resume submission and short written responses. Selected applicants will move forward to an interview, which includes behavioral questions and a case study task." },
+
+  { question: "Do I have to attend an Info Session to apply?", answer: "No, attendance is not required to apply, but it is highly recommended you attend to learn more about our club, the work we do, and our culture." },
+
+  { question: "How do I prepare for interviews?", answer: "For the behavioral portion, prepare answers about your experiences, skills, and interest in consulting. Be ready to discuss your strengths, teamwork, and problem-solving approach. For the case study portion, think about how you would break down a broad problem and be able to communicate your rationale effectively." },
+
+  { question: "Do I need prior consulting experience?", answer: "Not at all! Our club hopes to provide dedicated students with valuable consulting experiences, regardless of background." },
+
+  { question: "What benefits do I receive as a member of CCG?", answer: "Members gain hands-on consulting experience, professional development, networking opportunities, and mentorship while working on impactful projects and being surrounded by a tight-knit community." }
+
+];
+---
+
+<section class="max-w-2xl mx-auto p-4">
+  <h2 class="text-2xl font-bold text-center mb-6">Frequently Asked Questions</h2>
+  
+  <div class="space-y-4">
+    {faqs.map((faq, index) => (
+      <div class="border rounded-lg shadow-md">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-900 bg-gray-100 hover:bg-gray-200 transition"
+          aria-expanded="false"
+          onclick={`document.getElementById('faq-${index}').classList.toggle('hidden')`}
+        >
+          {faq.question}
+          <span class="text-xl">+</span>
+        </button>
+        <div id={`faq-${index}`} class="hidden p-4 text-gray-700 bg-white">
+          {faq.answer}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

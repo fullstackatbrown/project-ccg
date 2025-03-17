@@ -4,9 +4,70 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import logo from "../assets/logo.svg";
+import FAQ from "../components/FAQ.astro";
 ---
 
 <Layout>
-    <Navbar></Navbar>
-    <h1>Recruitment</h1>
-</Layout>
+  <Navbar></Navbar>
+
+  <section class="page-title">
+    <div class="title-container">
+      <h1>RECRUITMENT</h1>
+    </div>
+  </section>
+
+<h2 class="text-2xl font-bold text-center mb-6">Application Information</h2>
+
+<p class="text-center" style="color: black;">Spring 2025 Recuitment has concluded. Check back for details of our next recruitment cycle next fall and thank you for your interest in CCG!</p>
+
+
+<h2 class="text-2xl font-bold text-center mb-6">Why CCG?</h2>
+
+<section class="why-ccg">
+  <div class="box" id="industry-experience">
+    <h3>Industry Experience</h3>
+    <p>Content</p>
+  </div>
+  <div class="box" id="community">
+    <h3>Community</h3>
+    <p>Content</p>
+  </div>
+  <div class="box" id="career-guidance">
+    <h3>Career Guidance</h3>
+    <p>Content</p>
+  </div>
+  <div class="box" id="diverse-perspectives">
+    <h3>Diverse Perspectives</h3>
+    <p>Content</p>
+  </div>
+</section>
+
+<style scoped>
+  .why-ccg {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .box {
+    background-color: rgba(193, 75, 75, 0.56); /* Make all boxes red */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    color: #fff; /* White text for contrast */
+    font-size: 1.5em;
+  }
+
+  p {
+    color: #fff; /* White text for contrast */
+  }
+</style>
+
+<FAQ />
+
+<p class="text-center" style="color: black;">Want to stay informed? Join CCG's listserv to receive updates on our events and recruitment opportunities throughout the semester</p>
