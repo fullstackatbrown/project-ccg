@@ -32,8 +32,9 @@ const {
         required
         class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
         name="name"
+        id="name"
       />
-      <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+      <div class="error-message text-red-400 text-sm mt-1" style="display: none;">
         Please provide your full name.
       </div>
     </div>
@@ -48,10 +49,10 @@ const {
         required
         class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
       />
-      <div class="empty-feedback text-red-400 text-sm mt-1">
+      <div class="error-message email-empty text-red-400 text-sm mt-1" style="display: none;">
         Please provide your email address.
       </div>
-      <div class="invalid-feedback text-red-400 text-sm mt-1">
+      <div class="error-message email-invalid text-red-400 text-sm mt-1" style="display: none;">
         Please provide a valid email address.
       </div>
     </div>
@@ -59,17 +60,19 @@ const {
     <div class="mb-3">
       <textarea
         name="message"
+        id="message"
         required
         placeholder="Your Message"
         class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none h-36 focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
       ></textarea>
-      <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
+      <div class="error-message text-red-400 text-sm mt-1" style="display: none;">
         Please enter your message.
       </div>
     </div>
     
     <button 
       type="submit" 
+      id="submit-button"
       class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-3 px-4 rounded-md transition-colors"
     >
       {submitButtonText}
@@ -78,88 +81,155 @@ const {
   </form>
 </div>
 
-<style>
-  .invalid-feedback,
-  .empty-feedback {
-    display: none;
-  }
-
-  .was-validated :placeholder-shown:invalid ~ .empty-feedback {
-    display: block;
-  }
-
-  .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
-    display: block;
-  }
-
-  .is-invalid,
-  .was-validated :invalid {
-    border-color: #dc3545;
-  }
-</style>
-
 <script>
-  // Using client:load directive to ensure the script runs after hydration
-  document.addEventListener("astro:page-load", () => {
-    const setupForm = () => {
-      const form = document.getElementById("contact-form") as HTMLFormElement;
-      const result = document.getElementById("form-result");
+  // Script will run after the document is loaded
+  document.addEventListener("DOMContentLoaded", setupForm);
+  document.addEventListener("astro:page-load", setupForm);
+  document.addEventListener("astro:after-swap", setupForm);
+
+  function setupForm() {
+    const form = document.getElementById("contact-form");
+    
+    if (!form) return;
+    
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email_address");
+    const messageInput = document.getElementById("message");
+    const result = document.getElementById("form-result");
+    
+    if (!nameInput || !emailInput || !messageInput || !result) return;
+    
+    // Clear existing event listeners
+    const newForm = form.cloneNode(true);
+    form.parentNode.replaceChild(newForm, form);
+    
+    // Get the new elements after cloning
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email_address");
+    const messageField = document.getElementById("message");
+    const submitButton = document.getElementById("submit-button");
+    const formResult = document.getElementById("form-result");
+    
+    // Add input event listeners
+    nameField.addEventListener("input", function() {
+      validateField(nameField);
+    });
+    
+    emailField.addEventListener("input", function() {
+      validateField(emailField, true);
+    });
+    
+    messageField.addEventListener("input", function() {
+      validateField(messageField);
+    });
+    
+    // Handle form submission
+    newForm.addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent form from submitting by default
       
-      if (!form || !result) return;
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        form.classList.add("was-validated");
-        if (!form.checkValidity()) {
-          const invalidElement = form.querySelectorAll(":invalid")[0] as HTMLElement;
-          if (invalidElement) {
-            invalidElement.focus();
-          }
-          return;
-        }
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
-
-        result.innerHTML = "Sending...";
-
-        fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: json,
-        })
-          .then(async (response) => {
-            let json = await response.json();
-            if (response.status == 200) {
-              result.classList.add("text-green-500");
-              result.innerHTML = json.message;
-            } else {
-              console.log(response);
-              result.classList.add("text-red-500");
-              result.innerHTML = json.message;
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-            result.innerHTML = "Something went wrong!";
-          })
-          .then(function () {
-            form.reset();
-            form.classList.remove("was-validated");
-            setTimeout(() => {
-              result.style.display = "none";
-            }, 5000);
-          });
-      });
-    };
-
-    // Setup the form when the page loads
-    setupForm();
-
-    // Also setup if this is part of a view transition
-    document.addEventListener("astro:after-swap", setupForm);
-  });
+      // Validate all fields
+      const nameValid = validateField(nameField);
+      const emailValid = validateField(emailField, true);
+      const messageValid = validateField(messageField);
+      
+      // If any validation fails, stop submission
+      if (!nameValid || !emailValid || !messageValid) {
+        // Focus on the first invalid field
+        if (!nameValid) nameField.focus();
+        else if (!emailValid) emailField.focus();
+        else if (!messageValid) messageField.focus();
+        return false;
+      }
+      
+      // All validations passed, proceed with submission
+      submitForm(newForm, formResult);
+    });
+  }
+  
+  function validateField(field, isEmail = false) {
+    // Get the error message container
+    const errorContainer = field.nextElementSibling;
+    const emailEmptyError = document.querySelector(".email-empty");
+    const emailInvalidError = document.querySelector(".email-invalid");
+    
+    // Clear previous validation state
+    field.classList.remove("border-red-500");
+    if (errorContainer) errorContainer.style.display = "none";
+    
+    // Handle email validation
+    if (isEmail) {
+      if (field.value.trim() === "") {
+        field.classList.add("border-red-500");
+        if (emailEmptyError) emailEmptyError.style.display = "block";
+        if (emailInvalidError) emailInvalidError.style.display = "none";
+        return false;
+      } else if (!isValidEmail(field.value)) {
+        field.classList.add("border-red-500");
+        if (emailEmptyError) emailEmptyError.style.display = "none";
+        if (emailInvalidError) emailInvalidError.style.display = "block";
+        return false;
+      }
+      return true;
+    }
+    
+    // Handle other fields
+    if (field.value.trim() === "") {
+      field.classList.add("border-red-500");
+      if (errorContainer) errorContainer.style.display = "block";
+      return false;
+    }
+    
+    return true;
+  }
+  
+  function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  function submitForm(form, result) {
+    // Show loading state
+    result.innerHTML = "Sending...";
+    result.style.display = "block";
+    result.className = "mt-3 text-center";
+    
+    // Prepare form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    const json = JSON.stringify(data);
+    
+    // Submit form
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    })
+    .then(async (response) => {
+      const json = await response.json();
+      
+      if (response.status === 200) {
+        result.classList.add("text-green-500");
+        result.innerHTML = json.message || "Message sent successfully!";
+        form.reset();
+      } else {
+        console.error(response);
+        result.classList.add("text-red-500");
+        result.innerHTML = json.message || "Something went wrong!";
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      result.classList.add("text-red-500");
+      result.innerHTML = "Something went wrong!";
+    })
+    .finally(() => {
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        result.style.display = "none";
+      }, 5000);
+    });
+  }
 </script>
