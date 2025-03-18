@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactUS.astro';
+import '../styles/global.css';
+import ContactUS from '../components/ContactUS.astro';
+---
+
+<Layout>
+	<div class="flex flex-col min-h-screen">
+		<Navbar />
+
+		<!-- Header Section with Background -->
+		<section class="relative w-full py-32 flex items-center justify-center bg-gray-900">
+			<!-- Darker Background Instead of Image -->
+			<div class="absolute inset-0 bg-black opacity-70"></div>
+
+			<!-- Header Text -->
+			<div class="relative z-10 text-center text-white">
+				<h1 class="text-5xl md:text-7xl font-bold mb-4">CONTACT US</h1>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<section class="w-full bg-white text-black py-16">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center mb-12">
+					<h2 class="text-4xl md:text-5xl text-[#c32727] font-medium mb-6">QUESTIONS? FEEDBACK?</h2>
+					<p class="text-xl md:text-2xl font-light">We'd love to hear from you.</p>
+				</div>
+				
+				<div class="max-w-xl mx-auto">
+					<ContactUS 
+						accessKey="909c81fa-ed4d-4947-aad5-be8894020dc9" 
+						submitButtonText="Send Message" 
+					/>
+				</div>
+			</div>
+		</section>
+		
+
+		<Footer />
+	</div>
+</Layout>
