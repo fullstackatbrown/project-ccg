@@ -38,7 +38,7 @@ const otherMembers = members.filter(member =>
       <h2 class="section-title">Leadership</h2>
       <div class="members-grid" id="leadership">
         {leadershipMembers.map((member, index) => (
-          <article class="member-card" data-member-index={index}>
+          <article class="member-card" data-member-index={index} data-member-type="leadership">
             <div class="image-container">
               {member.profileImage && (
                 <img 
@@ -59,7 +59,7 @@ const otherMembers = members.filter(member =>
       <h1 class="section-title">Consultants</h1>
       <div class="members-grid" id="members">
         {otherMembers.map((member, index) => (
-          <article class="member-card" data-member-index={leadershipMembers.length + index}>
+          <article class="member-card" data-member-index={index} data-member-type="other">
             <div class="image-container">
               {member.profileImage && (
                 <img 
@@ -89,7 +89,6 @@ const otherMembers = members.filter(member =>
 
   <Footer />
 </Layout>
-
 <style>
   .members-section {
     padding: 2rem 0;
@@ -147,10 +146,16 @@ const otherMembers = members.filter(member =>
   .member-info h2 {
     margin: 0;
     font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .member-info p {
     margin: 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .modal {
@@ -172,6 +177,8 @@ const otherMembers = members.filter(member =>
     width: 70%;
     max-width: 700px;
     border-radius: 8px;
+    max-height: 70vh;
+    overflow-y: auto;
   }
 
   .close {
@@ -206,16 +213,16 @@ const otherMembers = members.filter(member =>
   }
 </style>
 
-<script define:vars={{ members }}>
-  const membersList = members;
+<script define:vars={{ leadershipMembers, otherMembers }}>
   const modal = document.getElementById('modal');
   const modalContent = document.getElementById('modal-member-content');
   const closeBtn = document.querySelector('.close');
 
   document.querySelectorAll('.member-card').forEach(card => {
     card.addEventListener('click', () => {
-      const index = card.dataset.memberIndex;
-      const member = membersList[index];
+      const index = parseInt(card.dataset.memberIndex);
+      const memberType = card.dataset.memberType;
+      const member = memberType === 'leadership' ? leadershipMembers[index] : otherMembers[index];
       
       modalContent.innerHTML = `
         <h2>${member.memberName}</h2>
