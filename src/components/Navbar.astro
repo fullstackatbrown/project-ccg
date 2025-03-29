@@ -28,7 +28,10 @@ const currentPath = Astro.url.pathname;
             <ul class="flex items-center gap-8 h-[100px]">
                 {navLinks.map((link) => (
                     <li>
-                        <a href={link.href} class="text-gray-900 font-almarai hover:text-[#c32727] transition">
+                        <a 
+                            href={link.href} 
+                            class="text-gray-900 font-almarai hover:text-[#c32727] transition nav-link"
+                        >
                             {link.name}
                         </a>
                     </li>
@@ -61,6 +64,29 @@ const currentPath = Astro.url.pathname;
         Contact Us
     </a>
 )}
+
+<style>
+  /* Navbar link underline animation */
+    .nav-link {
+        position: relative;
+        text-decoration: none;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #c32727;
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+        width: 100%;
+    }
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
