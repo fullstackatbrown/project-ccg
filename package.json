@@ -15,7 +15,7 @@
     "astro": "^5.5.3",
     "contentful": "^11.5.6",
     "preact": "^10.26.4",
-    "tailwindcss": "^4.0.14"
+    "tailwindcss": "^4.0.17"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.14",

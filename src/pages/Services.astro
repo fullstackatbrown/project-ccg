@@ -8,40 +8,54 @@ import logo from "../assets/logo.svg";
 
 <Layout>
   <Navbar></Navbar>
-
-  <section class="page-title">
-    <div class="title-container">
-      <h1>SERVICES</h1>
+ 
+  <!-- Hero Section -->
+  <section id="services-head" class="relative w-full min-h-screen flex items-center justify-center">
+    <!-- Background Image -->
+    <img id="contentful-image" alt="Contentful Image"
+      class="absolute inset-0 w-full h-full object-cover object-center">
+    
+    <!-- Services Title --> 
+    <div class="absolute bottom-8 left-8 text-white">
+      <h1 class="text-5xl md:text-7xl font-bold mb-4">Services</h1>
     </div>
   </section>
 
-  <section class="services">
-    <div class="container flex">
-      <div id="service_box" class="services-text">
-        <h2 class="h2-services">Join Collegiate Consulting Group</h2>
-        <p id="content"></p>
-        <br><p>Application Information</p>
-        <p>Fall Recruitment: Applications for Fall 2024 are currently closed</p>
-        <p>Spring Recruitment: Information regarding recruitment for Spring 2024 coming soon!</p>
-        <br><p>Please feel free to contact us with any questions at collegiateconsultinggroup@brown.edu </p>
+  <section class="projects">
+    <div class="relative z-10 text-center mb-16">
+      <h1 class="text-5xl md:text-7xl font-bold mb-4" style="color:blue;">All Projects</h1>
+    </div>
+
+    <div class="project-item flex items-center gap-16 mb-16 justify-center">
+      <div class="w-1/2 flex justify-end">
+        <img src={logo.src} alt="Project Image" class="h-32">
       </div>
-      <div class="services-grid">
-        <div class="service-box">
-          <h3>Industry Experience</h3>
-          <p>Working alongside real clients, CCG consultants are responsible for conducting research, meeting with clients, and delivering actionable recommendations.</p>
-        </div>
-        <div class="service-box">
-          <h3>Community</h3>
-          <p>CCG's selective community is tight-knit and supportive. The diverse body of members gain access to both social and recruiting events.</p>
-        </div>
-        <div class="service-box">
-          <h3>Career Guidance</h3>
-          <p>With alumni working at top firms in consulting, finance, and tech, CCG consultants have access to a powerful network eager to help. CCG also organizes workshops, recruiting events, and interview prep sessions for members.</p>
-        </div>
-        <div class="service-box">
-          <h3>Diverse Perspectives</h3>
-          <p>Take advantage of CCG’s immersion in the Brown University ecosystem. Students from a variety of concentrations provide insightful and creative solutions for CCG’s clients.</p>
-        </div>
+      <div class="w-1/2">
+        <h3 class="text-2xl font-bold">Perkies</h3>
+        <p class="text-gray-700">"CCG provided valuable strategic insights and concrete recommendations that I was able to implement immediately. Their suggestion to link socials to Amazon and target breast cancer-focused influencers was particularly impactful. The team was professional, independent, and proactive, making collaboration seamless. Their final takeaways—emphasizing product comfort, leveraging local connections, and refining messaging—will directly shape our strategy. I was very impressed and would absolutely work with CCG again!"
+— Founder & CEO</p>
+      </div>
+    </div>
+
+    <div class="project-item flex items-center gap-16 mb-16 justify-center">
+      <div class="w-1/2 flex justify-end">
+        <img src={logo.src} alt="Project Image" class="h-32">
+      </div>
+      <div class="w-1/2">
+        <h3 class="text-2xl font-bold">Feed the Cheeks</h3>
+        <p class="text-gray-700">"CCG provided outstanding insights and data-driven recommendations that we’ve already started implementing with great results. Their ability to gather and analyze local feedback was especially valuable. The team was professional, thorough, and a pleasure to work with. I’d absolutely collaborate with CCG again!"
+— Director, Business Development</p>
+      </div>
+    </div>
+
+    <div class="project-item flex items-center gap-16 mb-16 justify-center">
+      <div class="w-1/2 flex justify-end">
+        <img src={logo.src} alt="Project Image" class="h-32">
+      </div>
+      <div class="w-1/2">
+        <h3 class="text-2xl font-bold">Impossible Foods</h3>
+        <p class="text-gray-700">"The CCG team delivered insightful analysis and adapted seamlessly to feedback, providing actionable recommendations. Their survey findings on packaging perceptions and the idea to gamify our impact calculator were especially valuable. The final presentation was polished, well-structured, and sparked meaningful discussion. Their ability to highlight challenges while offering solutions made for a strong engagement. We’d gladly work with them again. Great job!"
+— Director, Strategy & Demand</p>
       </div>
     </div>
   </section>
@@ -52,22 +66,22 @@ import logo from "../assets/logo.svg";
       <p>Previous clients and work we have done.</p>
       <div class="portfolio-grid grid grid-cols-3 gap-4">
         <div class="portfolio-item">
-            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+          <img src={logo.src} alt="Logo" class="h-10 w-auto">
         </div>
         <div class="portfolio-item">
-            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+          <img src={logo.src} alt="Logo" class="h-10 w-auto">
         </div>
         <div class="portfolio-item">
-            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+          <img src={logo.src} alt="Logo" class="h-10 w-auto">
         </div>
         <div class="portfolio-item">
-            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+          <img src={logo.src} alt="Logo" class="h-10 w-auto">
         </div>
         <div class="portfolio-item">
-            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+          <img src={logo.src} alt="Logo" class="h-10 w-auto">
         </div>
         <div class="portfolio-item">
-            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+          <img src={logo.src} alt="Logo" class="h-10 w-auto">
         </div>
       </div>
     </div>
@@ -109,39 +123,39 @@ import logo from "../assets/logo.svg";
       </div>
     </div>
   </section>
+
   <Footer></Footer>
 </Layout>
 
-<script>  
-    document.addEventListener("DOMContentLoaded", function() {
-        let slideIndex = 0;
-        let slideInterval;
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let slideIndex = 0;
+    let slideInterval;
 
-        function showSlides() {
-            let slides = document.getElementsByClassName("quote");
-            if (slides.length === 0) return;
+    function showSlides() {
+      let slides = document.getElementsByClassName("quote");
+      if (slides.length === 0) return;
 
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            if (slideIndex >= slides.length) slideIndex = 0;
-            if (slideIndex < 0) slideIndex = slides.length - 1;
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      if (slideIndex >= slides.length) slideIndex = 0;
+      if (slideIndex < 0) slideIndex = slides.length - 1;
 
-            slides[slideIndex].style.display = "block";
-            slideInterval = setTimeout(showSlides, 7000);
-        }
+      slides[slideIndex].style.display = "block";
+      slideInterval = setTimeout(showSlides, 7000);
+    }
 
-        function incrementSlides(n) {
-            slideIndex += n;
-            clearTimeout(slideInterval);
-            showSlides();
-        }
+    function incrementSlides(n) {
+      slideIndex += n;
+      clearTimeout(slideInterval);
+      showSlides();
+    }
 
-        document.querySelector(".next").addEventListener("click", () => incrementSlides(1));
-        document.querySelector(".prev").addEventListener("click", () => incrementSlides(-1));
-        showSlides();
-    });
-
+    document.querySelector(".next").addEventListener("click", () => incrementSlides(1));
+    document.querySelector(".prev").addEventListener("click", () => incrementSlides(-1));
+    showSlides();
+  });
 </script>
 <script type="module" src="contentfulClient.js">
 </script>
