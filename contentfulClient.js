@@ -20,6 +20,7 @@ async function displayEntries() {
     } catch (error) {
       console.error('Error fetching entries:', error);
     }
-  }
+}
   
-  displayEntries();
+displayEntries();
+
