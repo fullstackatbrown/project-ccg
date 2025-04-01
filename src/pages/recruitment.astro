@@ -7,67 +7,90 @@ import logo from "../assets/logo.svg";
 import FAQ from "../components/FAQ.astro";
 ---
 
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<head>
+  <!-- Import the Arimo Hebrew Subset font -->
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<head>
+  <!-- Import Arimo Hebrew Subset Italic font -->
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,400&display=swap" rel="stylesheet">
+</head>
+
 <Layout>
-  <Navbar></Navbar>
+	<div class="flex flex-col min-h-screen">
+    <Navbar />
 
-  <section class="page-title">
-    <div class="title-container">
-      <h1>RECRUITMENT</h1>
+		<!-- Hero Section -->
+		<section class="relative w-full min-h-screen flex items-center justify-center">
+			<!-- Background Image -->
+			<img 
+				src="/src/assets/images/quietgreen.jpg" 
+				alt="Quiet green image" 
+				class="absolute inset-0 w-full h-full object-cover object-center"
+			>
+
+      <!-- Dark Overlay (for contrast) -->
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+
+    <!-- Overlay Text -->
+    <div class="absolute bottom-4 left-4 text-white text-9xl font-bold fade-in" style="font-family: 'Almarai', sans-serif;">
+        Join CCG
     </div>
-  </section>
+</Layout>
 
-<h2 class="text-2xl font-bold text-center mb-6">Application Information</h2>
-
-<p class="text-center" style="color: black;">Spring 2025 Recuitment has concluded. Check back for details of our next recruitment cycle next fall and thank you for your interest in CCG!</p>
-
-
-<h2 class="text-2xl font-bold text-center mb-6">Why CCG?</h2>
-
-<section class="why-ccg">
-  <div class="box" id="industry-experience">
-    <h3>Industry Experience</h3>
-    <p>Content</p>
+<div class="flex items-center justify-center py-8">
+    <div class="text-center text-black text-[24px] "style="font-family: 'Arimo', sans-serif;">
+      Spring 2025 Recuitment has concluded. Check back for details of our next recruitment cycle next fall and thank you for your interest in CCG!
+    </div>
   </div>
-  <div class="box" id="community">
-    <h3>Community</h3>
-    <p>Content</p>
+
+<div class="relative py-8">
+  <div class="absolute left-1/2 transform -translate-x-1/2 h-[56px] w-[1085px] text-center text-black text-[24px]" style="font-family: 'Arimo', sans-serif;">
+    Student consultants at Brown's Collegiate Consulting Group gain access to real-world consulting experience, professional development opportunities, and a tight-knit campus community.
   </div>
-  <div class="box" id="career-guidance">
-    <h3>Career Guidance</h3>
-    <p>Content</p>
+</div>
+
+<div class="relative py-8">
+  <div class="absolute left-1/2 transform -translate-x-1/2 h-[74px] w-[904px] text-center text-[64px] mt-16" style="font-family: 'Arimo', sans-serif; font-style: italic; font-weight: 700; color: #0B144A;">
+    Why CCG?
   </div>
-  <div class="box" id="diverse-perspectives">
-    <h3>Diverse Perspectives</h3>
-    <p>Content</p>
+</div>
+
+
+    <div class="flex justify-left mt-32">
+    <img src="/src/assets/images/r1.jpg" alt="Recruitment image 1" class="max-w-[640.19px] rounded-xl">
   </div>
-</section>
 
-<style scoped>
-  .why-ccg {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px;
-  }
+    <style>
+  /* Fade-in animation classes */
+	.fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	}
 
-  .box {
-    background-color: rgba(193, 75, 75, 0.56); /* Make all boxes red */
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+	.fade-in.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
 
-  h3 {
-    color: #fff; /* White text for contrast */
-    font-size: 1.5em;
-  }
+	.fade-in-delay-1 {
+		transition-delay: 0.2s;
+	}
 
-  p {
-    color: #fff; /* White text for contrast */
-  }
+	.fade-in-delay-2 {
+		transition-delay: 0.4s;
+	}
+
+	.fade-in-delay-3 {
+		transition-delay: 0.6s;
+	}
 </style>
 
-<FAQ />
+		</section>
 
-<p class="text-center" style="color: black;">Want to stay informed? Join CCG's listserv to receive updates on our events and recruitment opportunities throughout the semester</p>
