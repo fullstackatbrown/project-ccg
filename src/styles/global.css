@@ -1,1 +1,170 @@
 @import "tailwindcss";
+
+.title-container {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+.h2-services {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 5rem;
+}
+
+.portfolio-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;      
+    color: #333;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 5rem;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Define a 2-column grid */
+    gap: 25px; /* Define the gap between grid items */
+    padding: 2rem;
+    width: 50%;
+}
+
+#service_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: black;
+    color: white;
+    padding: 2rem;
+    width: 50%;
+}
+   
+.quotes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+    padding: 5rem;
+}
+
+.quotes-container {
+    text-align: center;
+    flex-wrap: wrap;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #333;
+    padding: 5rem;
+    position: relative;
+    background-color: gray;
+    width: 100%;
+    height: 400px; /* Fixed height */
+}
+
+.quote {
+    width: 80%;
+    margin: 0 auto; /* Center the quote */
+}
+
+#quotes-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    margin-top: -2rem;
+    text-align: center;
+}
+
+.carousel .prev, .carousel .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+}
+
+.carousel .prev {
+    left: 0;
+}
+
+.carousel .next {
+    right: 0;
+}
+
+/* animation css  */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-delay-1 {
+    transition-delay: 0.2s;
+}
+
+.fade-in-delay-2 {
+    transition-delay: 0.4s;
+}
+
+.fade-in-delay-3 {
+    transition-delay: 0.6s;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #c32727;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}

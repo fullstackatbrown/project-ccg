@@ -3,10 +3,10 @@ import logo from "../assets/logo.svg";
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/About" },
-    { name: "Clients", href: "/Clients" },
     { name: "Members", href: "/Members" },
-    { name: "Contact", href: "/Contact" },
+    { name: "Services", href: "/Services"},
+    { name: "Recruitment", href: "/recruitment" },
+    { name: "Contact Us", href: "/ContactUs" }
 ];
 
 const socialLinks = [
@@ -15,34 +15,30 @@ const socialLinks = [
     { icon: "fab fa-facebook", href: "https://www.facebook.com/ccgbrown/" }
 ];
 
+const currentPath = Astro.url.pathname;
 ---
 
-<head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-</head>
-
-<nav class="h-[100px] px-6 border-b border-gray-300 flex items-center bg-white">
-    <div class="max-w-7xl w-full mx-auto flex justify-between items-center">
-        <!-- Logo -->
+<nav class="h-auto md:h-[100px] px-4 md:px-6 border-b border-gray-300 bg-white sticky top-0 z-50">
+    <div class="max-w-7xl w-full mx-auto flex justify-between items-center py-4 md:py-0">
         <a href="/" class="flex items-center">
-            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+            <img src={logo.src} alt="Logo" class="h-8 md:h-10 w-auto">
         </a>
 
-        <div class="flex justify-between w-full ml-10">
-            <!-- Nav Links (Desktop) -->
-            <ul class="hidden md:flex gap-8">
+        <div class="hidden md:flex items-center justify-end w-full">
+            <ul class="flex items-center gap-8 h-[100px]">
                 {navLinks.map((link) => (
                     <li>
-                        <a href={link.href} class="text-gray-900 font-almarai hover:text-[#c32727] transition">
+                        <a 
+                            href={link.href} 
+                            class="text-gray-900 font-almarai hover:text-[#c32727] transition nav-link"
+                        >
                             {link.name}
                         </a>
                     </li>
                 ))}
             </ul>
 
-            <!-- Social Links (Desktop) -->
-            <div class="hidden md:flex space-x-8">
+            <div class="flex items-center space-x-8 ml-10">
                 {socialLinks.map((link) => (
                     <a
                         href={link.href}
@@ -56,44 +52,69 @@ const socialLinks = [
             </div>
         </div>
 
-        <!-- Mobile Hamburger Menu -->
-        <button class="md:hidden text-gray-800 text-4xl" id="hamburger-btn">
-            ☰
+        <button class="md:hidden text-gray-800 text-3xl flex items-center" id="hamburger-btn">
+            <i class="fas fa-bars" id="menu-icon"></i>
         </button>
-    </div>
-
-    <!-- Mobile Menu (Hidden by default) -->
-    <div id="mobile-menu" class="hidden md:hidden w-full bg-white absolute top-25 border-2">
-        <ul class="flex flex-col items-center space-y-4">
-            {navLinks.map((link) => (
-                <li>
-                    <a href={link.href} class="text-gray-900 font-almarai hover:text-[#c32727] transition">
-                        {link.name}
-                    </a>
-                </li>
-            ))}
-        </ul>
-
-        <!-- Social Links (Mobile) -->
-        <div class="flex justify-center space-x-8 mt-8">
-            {socialLinks.map((link) => (
-                <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xl text-gray-900 hover:text-[#c32727] transition"
-                >
-                    <i class={link.icon}></i>
-                </a>
-            ))}
-        </div>
     </div>
 </nav>
 
-<!-- JavaScript to toggle mobile menu kinda janky and position is a bit weird-->
+<!-- Contact Bubble (Only renders if not on the ContactUs page) -->
+{currentPath !== "/ContactUs" && (
+    <a href="/ContactUs" class="fixed bottom-4 right-4 bg-white text-black font-semibold px-4 py-2 rounded-full shadow-lg border border-gray-300 hover:bg-gray-100 transition z-[1000]">
+        Contact Us
+    </a>
+)}
+
+<style>
+  /* Navbar link underline animation */
+    .nav-link {
+        position: relative;
+        text-decoration: none;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #c32727;
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+        width: 100%;
+    }
+</style>
+
 <script>
-    document.getElementById('hamburger-btn').addEventListener('click', () => {
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenu.classList.toggle('hidden');  // Toggle the visibility of the mobile menu
+        const menuIcon = document.getElementById('menu-icon');
+        
+        hamburgerBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex', 'flex-col');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', 'translate-y-[-10px]');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                }, 10);
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                mobileMenu.classList.add('opacity-0', 'translate-y-[-10px]');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('flex', 'flex-col');
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
     });
 </script>

@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import logo from "../assets/logo.svg";
+---
+
+<Layout>
+  <Navbar></Navbar>
+
+  <section class="page-title">
+    <div class="title-container">
+      <h1>SERVICES</h1>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="container flex">
+      <div id="service_box" class="services-text">
+        <h2 class="h2-services">Join Collegiate Consulting Group</h2>
+        <p id="content"></p>
+        <br><p>Application Information</p>
+        <p>Fall Recruitment: Applications for Fall 2024 are currently closed</p>
+        <p>Spring Recruitment: Information regarding recruitment for Spring 2024 coming soon!</p>
+        <br><p>Please feel free to contact us with any questions at collegiateconsultinggroup@brown.edu </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-box">
+          <h3>Industry Experience</h3>
+          <p>Working alongside real clients, CCG consultants are responsible for conducting research, meeting with clients, and delivering actionable recommendations.</p>
+        </div>
+        <div class="service-box">
+          <h3>Community</h3>
+          <p>CCG's selective community is tight-knit and supportive. The diverse body of members gain access to both social and recruiting events.</p>
+        </div>
+        <div class="service-box">
+          <h3>Career Guidance</h3>
+          <p>With alumni working at top firms in consulting, finance, and tech, CCG consultants have access to a powerful network eager to help. CCG also organizes workshops, recruiting events, and interview prep sessions for members.</p>
+        </div>
+        <div class="service-box">
+          <h3>Diverse Perspectives</h3>
+          <p>Take advantage of CCG’s immersion in the Brown University ecosystem. Students from a variety of concentrations provide insightful and creative solutions for CCG’s clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio">
+    <div class="container">
+      <h2 class="h2-services">Past Clients</h2>
+      <p>Previous clients and work we have done.</p>
+      <div class="portfolio-grid grid grid-cols-3 gap-4">
+        <div class="portfolio-item">
+            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+        </div>
+        <div class="portfolio-item">
+            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+        </div>
+        <div class="portfolio-item">
+            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+        </div>
+        <div class="portfolio-item">
+            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+        </div>
+        <div class="portfolio-item">
+            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+        </div>
+        <div class="portfolio-item">
+            <img src={logo.src} alt="Logo" class="h-10 w-auto">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quotes">
+    <div class="quotes-container">
+      <h2 class="h2-services" id="quotes-title">CLIENT NAME</h2>
+      <div class="carousel relative flex items-center">
+        <button class="prev absolute left-0">&#10094;</button>
+        <div class="quote">
+          <p>"A lot of text A lot of text A lot of text A lot of text
+          A lot of textA lot of textA lot of textA lot of textA lot of text
+          A lot of textA lot of textA lot of textA lot of text
+          A lot of textA lot of textA lot of textA lot of text
+          A lot of textA lot of textA lot of textA lot of textA lot of text
+          A lot of textA lot of textA lot of textA lot of text"</p>
+          <p>- Client One</p>
+        </div>
+        <div class="quote">
+          <p>"fillerfillerfillerfillerfillerfillerfillerfillerfiller
+          fillerfillerfillerfillerfillerfillerfiller
+          fillerfillerfillerfillerfillerfillerfiller
+          fillerfillerfillerfillerfillerfillerfiller"</p>
+          <p>- Client Two</p>
+        </div>
+        <div class="quote">
+          <p>"fillerfillerfillerfillerfillerfillerfillerfillerfiller
+          fillerfillerfillerfillerfillerfillerfillerfiller
+          fillerfillerfillerfillerfillerfillerfillerfiller
+          fillerfillerfillerfillerfillerfillerfillerfiller"</p>
+          <p>- Client Three</p>
+        </div>
+        <div class="quote">
+          <p>"Testimonial from Client Four."</p>
+          <p>- Client Four</p>
+        </div>
+        <button class="next absolute right-0">&#10095;</button>
+      </div>
+    </div>
+  </section>
+  <Footer></Footer>
+</Layout>
+
+<script>  
+    document.addEventListener("DOMContentLoaded", function() {
+        let slideIndex = 0;
+        let slideInterval;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("quote");
+            if (slides.length === 0) return;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+
+            slides[slideIndex].style.display = "block";
+            slideInterval = setTimeout(showSlides, 7000);
+        }
+
+        function incrementSlides(n) {
+            slideIndex += n;
+            clearTimeout(slideInterval);
+            showSlides();
+        }
+
+        document.querySelector(".next").addEventListener("click", () => incrementSlides(1));
+        document.querySelector(".prev").addEventListener("click", () => incrementSlides(-1));
+        showSlides();
+    });
+
+</script>
+<script type="module" src="contentfulClient.js">
+</script>
