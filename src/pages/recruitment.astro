@@ -3,30 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import logo from "../assets/logo.svg";
-import FAQ from "../components/FAQ.astro";
 ---
-
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
-</head>
-
-<head>
-  <!-- Import the Arimo Hebrew Subset font -->
-  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
-</head>
-
-<head>
-  <!-- Import Arimo Hebrew Subset Italic font -->
-  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,400&display=swap" rel="stylesheet">
-</head>
 
 <Layout>
 	<div class="flex flex-col min-h-screen">
     <Navbar />
 
-		<!-- Hero Section -->
-		<section class="relative w-full min-h-screen flex items-center justify-center">
+		<!-- Hero Section with Reduced Height -->
+		<section class="relative w-full min-h-[60vh] flex items-center justify-center">
 			<!-- Background Image -->
 			<img 
 				src="/src/assets/images/quietgreen.jpg" 
@@ -35,62 +19,395 @@ import FAQ from "../components/FAQ.astro";
 			>
 
       <!-- Dark Overlay (for contrast) -->
-    <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="absolute inset-0 bg-black opacity-40"></div>
 
-    <!-- Overlay Text -->
-    <div class="absolute bottom-4 left-4 text-white text-9xl font-bold fade-in" style="font-family: 'Almarai', sans-serif;">
-        Join CCG
+      <!-- Overlay Text -->
+      <div class="absolute bottom-4 left-4 text-white text-7xl md:text-9xl font-bold fade-in" style="font-family: 'Almarai', sans-serif;">
+          Join CCG
+      </div>
+    </section>
+
+    <!-- Recruitment Status Banner -->
+    <div class="flex items-center justify-center py-8 bg-white">
+      <div class="text-center text-black text-[24px] fade-in" style="font-family: 'Arimo', sans-serif;">
+        Spring 2025 Recruitment has concluded. Check back for details of our next recruitment cycle next fall and thank you for your interest in CCG!
+      </div>
     </div>
+
+    <!-- Mission Statement -->
+    <div class="py-12 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center text-black text-[24px] fade-in" style="font-family: 'Arimo', sans-serif;">
+          Student consultants at Brown's Collegiate Consulting Group gain access to real-world consulting experience, professional development opportunities, and a tight-knit campus community.
+        </div>
+      </div>
+    </div>
+
+    <!-- Why CCG Section Header -->
+    <div class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center fade-in">
+          <h2 class="text-[64px]" style="font-family: 'Arimo', sans-serif; font-style: italic; font-weight: 700; color: #0B144A;">
+            Why CCG?
+          </h2>
+          <div class="flex items-center justify-center my-6">
+            <div class="w-12 h-1 bg-red-700"></div>
+            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            <div class="w-12 h-1 bg-red-700 ml-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alternating Sections -->
+    <section class="w-full bg-white text-black">
+      <div class="w-full">
+        <!-- Section 1: Real Experience (Text Right, Image Left) -->
+        <div class="flex flex-col md:flex-row items-stretch">
+          <div class="w-full md:w-1/2 min-h-[400px] bg-white">
+            <img src="/src/assets/images/r1.jpg" alt="Real Experience" class="w-full h-full object-cover">
+          </div>
+          <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-24 flex flex-col justify-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold">Real Experience</h2>
+            <div class="flex items-center my-6">
+              <div class="w-12 h-1 bg-red-700"></div>
+              <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            </div>
+            <p class="text-lg text-gray-800">
+              Work with real clients on challenging projects that impact their businesses. From market analysis to strategic recommendations, you'll gain hands-on experience solving complex problems while developing professional consulting skills.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Section 2: Skills Development (Text Left, Image Right) -->
+        <div class="flex flex-col md:flex-row-reverse items-stretch">
+          <div class="w-full md:w-1/2 min-h-[400px]">
+            <img src="/src/assets/images/r1.jpg" alt="Skills Development" class="w-full h-full object-cover">
+          </div>
+          <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-white fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold">Skills Development</h2>
+            <div class="flex items-center my-6">
+              <div class="w-12 h-1 bg-red-700"></div>
+              <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            </div>
+            <p class="text-lg text-gray-800">
+              Develop essential consulting skills through our comprehensive training program. Learn problem-solving frameworks, financial analysis, presentation techniques, and client management directly from industry professionals and experienced peers.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Section 3: Career Opportunities (Text Right, Image Left) -->
+        <div class="flex flex-col md:flex-row items-stretch">
+          <div class="w-full md:w-1/2 min-h-[400px] bg-white">
+            <img src="/src/assets/images/r1.jpg" alt="Career Opportunities" class="w-full h-full object-cover">
+          </div>
+          <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-24 flex flex-col justify-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold">Career Opportunities</h2>
+            <div class="flex items-center my-6">
+              <div class="w-12 h-1 bg-red-700"></div>
+              <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            </div>
+            <p class="text-lg text-gray-800">
+              CCG alumni secure positions at top consulting firms, investment banks, tech companies, and startups. Our network opens doors to internships and full-time roles, with personalized resume reviews, interview preparation, and connections to industry professionals.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Section 4: Community (Text Left, Image Right) -->
+        <div class="flex flex-col md:flex-row-reverse items-stretch">
+          <div class="w-full md:w-1/2 min-h-[400px]">
+            <img src="/src/assets/images/r1.jpg" alt="Community" class="w-full h-full object-cover">
+          </div>
+          <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-white fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold">Community</h2>
+            <div class="flex items-center my-6">
+              <div class="w-12 h-1 bg-red-700"></div>
+              <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            </div>
+            <p class="text-lg text-gray-800">
+              Join a diverse, tight-knit community of driven students passionate about business and consulting. Build lifelong friendships through social events, team activities, and collaborative projects while creating a strong professional network.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Information Section (Blank for future implementation) -->
+    <section class="w-full py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: 'Arimo', sans-serif; color: #0B144A;">
+            Application Information
+          </h2>
+          <div class="flex items-center justify-center mb-8">
+            <div class="w-12 h-1 bg-red-700"></div>
+            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            <div class="w-12 h-1 bg-red-700 ml-1"></div>
+          </div>
+          <p class="text-xl text-gray-700">
+            <!-- Content to be added later -->
+            This section will contain detailed information about the application process.
+          </p>
+        </div>
+        
+        <!-- Placeholder for content -->
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in h-64 flex items-center justify-center">
+          <p class="text-gray-500 italic">Application information will be implemented here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="w-full py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: 'Arimo', sans-serif; color: #0B144A;">
+            Our Recruitment Process
+          </h2>
+          <div class="flex items-center justify-center mb-8">
+            <div class="w-12 h-1 bg-red-700"></div>
+            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            <div class="w-12 h-1 bg-red-700 ml-1"></div>
+          </div>
+          <p class="text-xl text-gray-700">
+            Join CCG through our comprehensive recruitment process designed to identify passionate and talented consultants.
+          </p>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center fade-in">
+            <div class="h-16 w-16 bg-red-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+            <h3 class="text-2xl font-bold mb-3">Application</h3>
+            <p class="text-gray-700">Submit your resume and answer a few short questions about your interest in consulting and CCG.</p>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center fade-in fade-in-delay-1">
+            <div class="h-16 w-16 bg-red-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+            <h3 class="text-2xl font-bold mb-3">Case Interview</h3>
+            <p class="text-gray-700">Demonstrate your problem-solving abilities through a business case analysis with our team.</p>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center fade-in fade-in-delay-2">
+            <div class="h-16 w-16 bg-red-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+            <h3 class="text-2xl font-bold mb-3">Final Interview</h3>
+            <p class="text-gray-700">Meet with our leadership team to discuss your background, interests, and fit with CCG's culture.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join Email List Section (Blank for future implementation) -->
+    <section class="w-full py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: 'Arimo', sans-serif; color: #0B144A;">
+            Join Our Email List
+          </h2>
+          <div class="flex items-center justify-center mb-8">
+            <div class="w-12 h-1 bg-red-700"></div>
+            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            <div class="w-12 h-1 bg-red-700 ml-1"></div>
+          </div>
+          <p class="text-xl text-gray-700">
+            Stay updated on CCG events, recruitment cycles, and opportunities.
+          </p>
+        </div>
+        
+        <!-- Placeholder for content -->
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in h-48 flex items-center justify-center">
+          <p class="text-gray-500 italic">Email list signup form will be implemented here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="w-full py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: 'Arimo', sans-serif; color: #0B144A;">
+            Frequently Asked Questions
+          </h2>
+          <div class="flex items-center justify-center mb-8">
+            <div class="w-12 h-1 bg-red-700"></div>
+            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            <div class="w-12 h-1 bg-red-700 ml-1"></div>
+          </div>
+        </div>
+        
+        <!-- FAQ Accordion -->
+        <div class="max-w-3xl mx-auto">
+          <!-- FAQ Item 1 -->
+          <div class="mb-4 fade-in">
+            <div class="accordion-header bg-white px-6 py-4 rounded-lg shadow-md cursor-pointer flex justify-between items-center">
+              <h3 class="text-xl font-semibold">Do I need prior consulting experience to join CCG?</h3>
+              <svg class="accordion-arrow w-6 h-6 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="accordion-content bg-white px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 rounded-b-lg">
+              <div class="py-4">
+                <p class="text-gray-700">No prior consulting experience is required! We look for students with strong analytical thinking, problem-solving abilities, and a passion for business. Our comprehensive training program will help you develop all the necessary skills to excel as a consultant.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 2 -->
+          <div class="mb-4 fade-in fade-in-delay-1">
+            <div class="accordion-header bg-white px-6 py-4 rounded-lg shadow-md cursor-pointer flex justify-between items-center">
+              <h3 class="text-xl font-semibold">How much time commitment is expected?</h3>
+              <svg class="accordion-arrow w-6 h-6 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="accordion-content bg-white px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 rounded-b-lg">
+              <div class="py-4">
+                <p class="text-gray-700">CCG members typically commit 5-10 hours per week, which includes client project work, weekly team meetings, and occasional training sessions. The time commitment may vary depending on project deadlines and your specific role on the team.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 3 -->
+          <div class="mb-4 fade-in fade-in-delay-2">
+            <div class="accordion-header bg-white px-6 py-4 rounded-lg shadow-md cursor-pointer flex justify-between items-center">
+              <h3 class="text-xl font-semibold">What majors or concentrations do you look for?</h3>
+              <svg class="accordion-arrow w-6 h-6 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="accordion-content bg-white px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 rounded-b-lg">
+              <div class="py-4">
+                <p class="text-gray-700">We welcome students from all academic backgrounds! Our members represent diverse majors including Economics, Computer Science, Applied Mathematics, International Relations, Biology, and many others. We value diverse perspectives and believe they lead to more innovative solutions for our clients.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 4 -->
+          <div class="mb-4 fade-in fade-in-delay-3">
+            <div class="accordion-header bg-white px-6 py-4 rounded-lg shadow-md cursor-pointer flex justify-between items-center">
+              <h3 class="text-xl font-semibold">What kinds of clients do CCG members work with?</h3>
+              <svg class="accordion-arrow w-6 h-6 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="accordion-content bg-white px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 rounded-b-lg">
+              <div class="py-4">
+                <p class="text-gray-700">Our clients range from local startups and nonprofits to established companies and organizations. Projects span various industries including technology, healthcare, education, finance, and social impact. This diversity provides members with exposure to different business models and challenges.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 5 -->
+          <div class="mb-4 fade-in fade-in-delay-3">
+            <div class="accordion-header bg-white px-6 py-4 rounded-lg shadow-md cursor-pointer flex justify-between items-center">
+              <h3 class="text-xl font-semibold">How can I prepare for the recruitment process?</h3>
+              <svg class="accordion-arrow w-6 h-6 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="accordion-content bg-white px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 rounded-b-lg">
+              <div class="py-4">
+                <p class="text-gray-700">To prepare for our recruitment process, we recommend familiarizing yourself with basic business concepts and practicing case interviews. We host case preparation workshops at the beginning of each recruitment cycle. Additionally, researching our past projects and understanding our mission will help you articulate why you're interested in joining CCG.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
 </Layout>
 
-<div class="flex items-center justify-center py-8">
-    <div class="text-center text-black text-[24px] "style="font-family: 'Arimo', sans-serif;">
-      Spring 2025 Recuitment has concluded. Check back for details of our next recruitment cycle next fall and thank you for your interest in CCG!
-    </div>
-  </div>
-
-<div class="relative py-8">
-  <div class="absolute left-1/2 transform -translate-x-1/2 h-[56px] w-[1085px] text-center text-black text-[24px]" style="font-family: 'Arimo', sans-serif;">
-    Student consultants at Brown's Collegiate Consulting Group gain access to real-world consulting experience, professional development opportunities, and a tight-knit campus community.
-  </div>
-</div>
-
-<div class="relative py-8">
-  <div class="absolute left-1/2 transform -translate-x-1/2 h-[74px] w-[904px] text-center text-[64px] mt-16" style="font-family: 'Arimo', sans-serif; font-style: italic; font-weight: 700; color: #0B144A;">
-    Why CCG?
-  </div>
-</div>
-
-
-    <div class="flex justify-left mt-32">
-    <img src="/src/assets/images/r1.jpg" alt="Recruitment image 1" class="max-w-[640.19px] rounded-xl">
-  </div>
-
-    <style>
+<style>
   /* Fade-in animation classes */
-	.fade-in {
-		opacity: 0;
-		transform: translateY(20px);
-		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-	}
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
 
-	.fade-in.visible {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-	.fade-in-delay-1 {
-		transition-delay: 0.2s;
-	}
+  .fade-in-delay-1 {
+    transition-delay: 0.2s;
+  }
 
-	.fade-in-delay-2 {
-		transition-delay: 0.4s;
-	}
+  .fade-in-delay-2 {
+    transition-delay: 0.4s;
+  }
 
-	.fade-in-delay-3 {
-		transition-delay: 0.6s;
-	}
+  .fade-in-delay-3 {
+    transition-delay: 0.6s;
+  }
+
+  /* Accordion styles */
+  .accordion-content {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .accordion-header.active {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .accordion-header.active .accordion-arrow {
+    transform: rotate(180deg);
+  }
 </style>
 
-		</section>
+<script>
+  // Intersection Observer for fade-in animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
 
+    // Set up intersection observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+
+    // Accordion functionality
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const isActive = header.classList.contains('active');
+        
+        // Close all accordions
+        accordionHeaders.forEach(h => {
+          h.classList.remove('active');
+          h.nextElementSibling.style.maxHeight = '0px';
+          h.nextElementSibling.style.paddingTop = '0px';
+          h.nextElementSibling.style.paddingBottom = '0px';
+        });
+        
+        // Open clicked accordion if it wasn't already active
+        if (!isActive) {
+          header.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.paddingTop = '16px';
+          content.style.paddingBottom = '16px';
+        }
+      });
+    });
+  });
+</script>
