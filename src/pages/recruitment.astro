@@ -3,6 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { contentfulClient } from "../lib/contentful";
+
+const entries = await contentfulClient.getEntries({
+  content_type: "recruitment"
+});
+
+const recruitment = entries.items.map(entry => ({
+  description: entry.fields.description,
+  application: entry.fields.fallApplication,
+  email: entry.fields.ccgEmail,
+  annualReport: entry.fields.annualReport,
+  timeline: entry.fields.timeline?.fields.file.url,
+  images: entry.fields.additionalImages,
+}));
 ---
 
 <Layout>
@@ -132,7 +146,7 @@ import '../styles/global.css';
       </div>
     </section>
 
-    <!-- Application Information Section (Blank for future implementation) -->
+    <!-- Application Information Section -->
     <section class="w-full py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
@@ -145,15 +159,18 @@ import '../styles/global.css';
             <div class="w-12 h-1 bg-red-700 ml-1"></div>
           </div>
           <p class="text-xl text-gray-700">
-            <!-- Content to be added later -->
-            This section will contain detailed information about the application process.
+            {recruitment[0].application}
           </p>
+		  <div class="text-center text-xl text-gray-700 mt-3">
+			Please feel free to contact us with any questions at 
+			<a href={`mailto:${recruitment[0].email}`} class="text-blue-600 underline">
+			{recruitment[0].email}
+			</a>
+		</div>
         </div>
-        
-        <!-- Placeholder for content -->
-        <div class="bg-white p-8 rounded-lg shadow-lg text-center fade-in h-64 flex items-center justify-center">
-          <p class="text-gray-500 italic">Application information will be implemented here.</p>
-        </div>
+		<div class="flex justify-center mt-10">
+			<img src={recruitment[0].timeline} alt="Application Timeline" class="max-w-3xl rounded-lg shadow-md">
+		</div>
       </div>
     </section>
 
