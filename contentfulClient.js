@@ -5,24 +5,23 @@ const client = createClient({
   accessToken: 'wIZOtSpgvJ2TyST9SaXwi455DJD44NCZwnu0f15Kr3c'
 });
 
-async function displayEntries() {
+export async function fetchClients() {
   try {
-    const entries = await client.getEntries({ content_type: 'recruitment' });
-
-    const contentDiv = document.getElementById('content');
-    entries.items.forEach(entry => {
-      const article = document.createElement('article');
-      article.innerHTML = `<h2>${entry.fields.description}</h2><br>
-                          <p>${entry.fields.ccgEmail}</p>
-                           <p>${entry.fields.annualReport}</p><br>`;
-      contentDiv.appendChild(article);
-    });
+    const response = await client.getEntries({ content_type: 'clients' });
+    
+    // Transform the fetched data into an array of client objects
+    return response.items.map((item) => ({
+      id: item.sys.id,
+      companyName: item.fields.companyName,
+      industry: item.fields.industry,
+      description: item.fields.description,
+      logo: item.fields.logo ? `https:${item.fields.logo.fields.file.url}` : null
+    }));
   } catch (error) {
-    console.error('Error fetching entries:', error);
+    console.error('Error fetching clients:', error);
+    return [];
   }
 }
-
-//displayEntries();
 
 async function fetchImageById(entryId) {
   try {

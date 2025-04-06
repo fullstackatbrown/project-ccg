@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import logo from "../assets/logo.svg";
+import { fetchClients } from '../../contentfulClient.js';
+
+const projects = await fetchClients();
 ---
 
 <Layout>
@@ -21,141 +23,113 @@ import logo from "../assets/logo.svg";
     </div>
   </section>
 
-  <section class="projects">
-    <div class="relative z-10 text-center mb-16">
-      <h1 class="text-5xl md:text-7xl font-bold mb-4" style="color:blue;">All Projects</h1>
+  <section class="projects flex">
+    <!-- Left 2/3: Project Description -->
+    <div id="project-description" class="w-2/3 p-8">
+      <h3 class="text-4xl md:text-5xl font-bold text-blue-900 pb-12">{projects[0]?.companyName || "Loading..."}</h3>
+      <p class="text-gray-700 text-2xl">{projects[0]?.description || "Loading project description..."}</p>
     </div>
 
-    <div class="project-item flex items-center gap-16 mb-16 justify-center">
-      <div class="w-1/2 flex justify-end">
-        <img src={logo.src} alt="Project Image" class="h-32">
-      </div>
-      <div class="w-1/2">
-        <h3 class="text-2xl font-bold">Perkies</h3>
-        <p class="text-gray-700">"CCG provided valuable strategic insights and concrete recommendations that I was able to implement immediately. Their suggestion to link socials to Amazon and target breast cancer-focused influencers was particularly impactful. The team was professional, independent, and proactive, making collaboration seamless. Their final takeaways—emphasizing product comfort, leveraging local connections, and refining messaging—will directly shape our strategy. I was very impressed and would absolutely work with CCG again!"
-— Founder & CEO</p>
-      </div>
-    </div>
-
-    <div class="project-item flex items-center gap-16 mb-16 justify-center">
-      <div class="w-1/2 flex justify-end">
-        <img src={logo.src} alt="Project Image" class="h-32">
-      </div>
-      <div class="w-1/2">
-        <h3 class="text-2xl font-bold">Feed the Cheeks</h3>
-        <p class="text-gray-700">"CCG provided outstanding insights and data-driven recommendations that we’ve already started implementing with great results. Their ability to gather and analyze local feedback was especially valuable. The team was professional, thorough, and a pleasure to work with. I’d absolutely collaborate with CCG again!"
-— Director, Business Development</p>
-      </div>
-    </div>
-
-    <div class="project-item flex items-center gap-16 mb-16 justify-center">
-      <div class="w-1/2 flex justify-end">
-        <img src={logo.src} alt="Project Image" class="h-32">
-      </div>
-      <div class="w-1/2">
-        <h3 class="text-2xl font-bold">Impossible Foods</h3>
-        <p class="text-gray-700">"The CCG team delivered insightful analysis and adapted seamlessly to feedback, providing actionable recommendations. Their survey findings on packaging perceptions and the idea to gamify our impact calculator were especially valuable. The final presentation was polished, well-structured, and sparked meaningful discussion. Their ability to highlight challenges while offering solutions made for a strong engagement. We’d gladly work with them again. Great job!"
-— Director, Strategy & Demand</p>
-      </div>
+    <!-- Right 1/3: Clickable Boxes -->
+    <div id="project-boxes" class="w-1/3 p-8">
+      <h1 class="text-4xl md:text-5xl font-bold italic text-blue-500 pb-12">PROJECTS</h1>
+      {projects.map((project, index) => (
+        <div 
+          class="project-box flex items-center gap-4 p-4 mb-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 transition"
+          data-index={index}
+        >
+          <img src={project.logo} alt={project.companyName} class="w-20 h-20 object-cover">
+          <h4 class="text-2xl font-bold">{project.companyName}</h4>
+        </div>
+      ))}
     </div>
   </section>
 
-  <section class="portfolio">
-    <div class="container">
-      <h2 class="h2-services">Past Clients</h2>
-      <p>Previous clients and work we have done.</p>
-      <div class="portfolio-grid grid grid-cols-3 gap-4">
-        <div class="portfolio-item">
-          <img src={logo.src} alt="Logo" class="h-10 w-auto">
-        </div>
-        <div class="portfolio-item">
-          <img src={logo.src} alt="Logo" class="h-10 w-auto">
-        </div>
-        <div class="portfolio-item">
-          <img src={logo.src} alt="Logo" class="h-10 w-auto">
-        </div>
-        <div class="portfolio-item">
-          <img src={logo.src} alt="Logo" class="h-10 w-auto">
-        </div>
-        <div class="portfolio-item">
-          <img src={logo.src} alt="Logo" class="h-10 w-auto">
-        </div>
-        <div class="portfolio-item">
-          <img src={logo.src} alt="Logo" class="h-10 w-auto">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="quotes">
-    <div class="quotes-container">
-      <h2 class="h2-services" id="quotes-title">CLIENT NAME</h2>
-      <div class="carousel relative flex items-center">
-        <button class="prev absolute left-0">&#10094;</button>
-        <div class="quote">
-          <p>"A lot of text A lot of text A lot of text A lot of text
-          A lot of textA lot of textA lot of textA lot of textA lot of text
-          A lot of textA lot of textA lot of textA lot of text
-          A lot of textA lot of textA lot of textA lot of text
-          A lot of textA lot of textA lot of textA lot of textA lot of text
-          A lot of textA lot of textA lot of textA lot of text"</p>
-          <p>- Client One</p>
-        </div>
-        <div class="quote">
-          <p>"fillerfillerfillerfillerfillerfillerfillerfillerfiller
-          fillerfillerfillerfillerfillerfillerfiller
-          fillerfillerfillerfillerfillerfillerfiller
-          fillerfillerfillerfillerfillerfillerfiller"</p>
-          <p>- Client Two</p>
-        </div>
-        <div class="quote">
-          <p>"fillerfillerfillerfillerfillerfillerfillerfillerfiller
-          fillerfillerfillerfillerfillerfillerfillerfiller
-          fillerfillerfillerfillerfillerfillerfillerfiller
-          fillerfillerfillerfillerfillerfillerfillerfiller"</p>
-          <p>- Client Three</p>
-        </div>
-        <div class="quote">
-          <p>"Testimonial from Client Four."</p>
-          <p>- Client Four</p>
-        </div>
-        <button class="next absolute right-0">&#10095;</button>
-      </div>
-    </div>
-  </section>
+	<!-- Annual Report Section -->
+	<section class="w-full py-20 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+				<h2 class="text-4xl md:text-5xl font-bold mb-6">Annual Report</h2>
+				<div class="flex items-center justify-center mb-8">
+					<div class="w-12 h-1 bg-red-700"></div>
+					<div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+					<div class="w-12 h-1 bg-red-700 ml-1"></div>
+				</div>
+				<p class="text-xl text-gray-700">
+					Discover our achievements, impact, and future directions in our latest annual report.
+				</p>
+			</div>
+			
+			<div class="flex flex-col md:flex-row bg-white rounded-lg shadow-xl overflow-hidden fade-in fade-in-delay-1">
+				<div class="w-full md:w-1/2">
+					<img src="/src/assets/images/annualreport.png" alt="Annual Report" class="w-full max-w-sm h-auto object-cover mx-auto">
+				</div>
+				<div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+					<h3 class="text-2xl md:text-3xl font-bold mb-4">2024 Annual Report</h3>
+					<p class="text-lg text-gray-800 mb-6">
+						Our latest annual report showcases our major accomplishments, financial health, and strategic plans for the future. Learn about our impact metrics, community initiatives, and sustainable practices.
+					</p>
+					<ul class="space-y-3 mb-8">
+						<li class="flex items-start">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-700 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+							</svg>
+							<span>Financial highlights and growth metrics</span>
+						</li>
+						<li class="flex items-start">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-700 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+							</svg>
+							<span>Client success stories and testimonials</span>
+						</li>
+						<li class="flex items-start">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-700 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+							</svg>
+							<span>Strategic initiatives and future outlook</span>
+						</li>
+					</ul>
+					<div>
+						<a href="https://drive.google.com/file/d/1Aw0RdZ979MUWXhvcyrbGLgLnC4-39ftT/view" target="_blank" class="inline-flex items-center px-8 py-3 bg-red-700 text-white font-medium rounded-full hover:bg-red-800 transition-colors shadow-md">
+							Read the Report
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
   <Footer></Footer>
 </Layout>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    let slideIndex = 0;
-    let slideInterval;
+<script type="module">
+  import { fetchClients } from '../../contentfulClient.js';
 
-    function showSlides() {
-      let slides = document.getElementsByClassName("quote");
-      if (slides.length === 0) return;
 
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+  document.addEventListener("DOMContentLoaded", async function() {
+    const projects = await fetchClients();
+
+    // Function to update the project description
+    function updateProject(index) {
+      const projectDescription = document.getElementById("project-description");
+      if (projects[index]) {
+        projectDescription.innerHTML = `
+          <h3 class="text-4xl md:text-5xl font-bold text-blue-900 pb-12">${projects[index].companyName}</h3>
+          <p class="text-gray-700 text-2xl">${projects[index].description}</p>
+        `;
       }
-      if (slideIndex >= slides.length) slideIndex = 0;
-      if (slideIndex < 0) slideIndex = slides.length - 1;
-
-      slides[slideIndex].style.display = "block";
-      slideInterval = setTimeout(showSlides, 7000);
     }
 
-    function incrementSlides(n) {
-      slideIndex += n;
-      clearTimeout(slideInterval);
-      showSlides();
-    }
-
-    document.querySelector(".next").addEventListener("click", () => incrementSlides(1));
-    document.querySelector(".prev").addEventListener("click", () => incrementSlides(-1));
-    showSlides();
+    // Add event listeners to the clickable boxes
+    const projectBoxes = document.querySelectorAll(".project-box");
+    projectBoxes.forEach((box) => {
+      box.addEventListener("click", () => {
+        const index = box.getAttribute("data-index");
+        updateProject(index);
+      });
+    });
   });
-</script>
-<script type="module" src="contentfulClient.js">
 </script>
