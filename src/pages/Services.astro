@@ -12,36 +12,144 @@ const projects = await fetchClients();
   <Navbar></Navbar>
  
   <!-- Hero Section -->
-  <section id="services-head" class="relative w-full min-h-screen flex items-center justify-center">
+  <section id="services-head" class="relative w-full h-[60vh] flex items-center justify-center overflow-hidden rounded-b-4xl fade-in">
     <!-- Background Image -->
     <img id="contentful-image" alt="Contentful Image"
-      class="absolute inset-0 w-full h-full object-cover object-center">
-    
+				class="relative min-w-full h-full object-cover object-center md:object-[50%_20%] scale-100 md:scale-110 lg:scale-100 transition-all duration-500 fade-in-delay-1"
+    >    
+
+  	<!-- Dark Overlay (same size as section) -->
+			<div class="absolute w-full h-full bg-black opacity-40 fade-in-delay-2"></div>
+
     <!-- Services Title --> 
-    <div class="absolute bottom-8 left-8 text-white">
+		<div class="absolute bottom-4 left-4 text-white text-9xl font-bold fade-in-delay-3" style="font-family: 'Almarai', sans-serif;">
       <h1 class="text-5xl md:text-7xl font-bold mb-4">Services</h1>
     </div>
   </section>
 
-  <section class="projects flex">
+  <!-- Our Values Section -->
+  <section class="w-full py-16 bg-gray-100 fade-in">
+    <div class="container mx-auto fade-in-delay-1">
+      <h1 class="text-5xl md:text-7xl font-bold mb-8 flex justify-center item-center">Our Values</h1>
+        <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-3">
+        <div class="w-12 h-1 bg-red-700"></div>
+        <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+        <div class="w-12 h-1 bg-red-700 ml-1"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center fade-in-delay-2">
+        <div class="fade-in-delay-3">
+          <h3 class="text-xl font-bold mb-2">Excellence & Dedication</h3>
+          <p class="text-gray-700">CCG attracts Brown’s top student talent, selecting about 8% of applicants through a rigorous recruitment process. Our members undergo structured training and hands-on experience, ensuring we uphold the highest standards in every engagement. Many of our alumni go on to top consulting firms, Fortune 500 companies, and leading graduate programs.
+</p>
+        </div>
+        <div class="fade-in-delay-3">
+          <h3 class="text-xl font-bold mb-2">Tangible Impact</h3>
+          <p class="text-gray-700">Each project team dedicates over 400 hours across a 10-week engagement, conducting in-depth research and strategic analysis to drive meaningful results. Our clients consistently report valuable insights and actionable recommendations, with many returning for future partnerships.
+</p>
+        </div>
+        <div class="fade-in-delay-3">
+          <h3 class="text-xl font-bold mb-2">Tailored Solutions</h3>
+          <p class="text-gray-700">We don’t believe in one-size-fits-all strategies. Our teams work closely with each client to define project objectives and adapt dynamically as new opportunities emerge. By leveraging structured problem-solving and creative thinking, we deliver solutions that align with each company’s unique goals and challenges.
+</p>
+        </div>
+        <div class="fade-in-delay-3">
+          <h3 class="text-xl font-bold mb-2">Unparalleled Resources</h3>
+          <p class="text-gray-700">CCG provides access to a network of highly motivated students, industry research, and faculty insights. Our teams use advanced analytical tools, proprietary data sources, and structured methodologies to uncover key business insights and drive strategic decision-making.
+</p>
+        </div>
+        <div class="fade-in-delay-3">
+          <h3 class="text-xl font-bold mb-2">Collaborative & Diverse Teams</h3>
+          <p class="text-gray-700">CCG teams bring together students from diverse academic and personal backgrounds, equipping each engagement with a well-rounded perspective. A typical team consists of 4-6 Consultants led by 1-2 Project Leads, ensuring a balance of strategic oversight and hands-on execution. Our members receive specialized training and continuous mentorship, refining their problem-solving, communication, and analytical skills throughout the engagement.
+</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section class="w-full py-16 bg-white fade-in">
+    <div class="container mx-auto text-center">
+      <h1 class="text-5xl md:text-7xl font-bold mb-8 fade-in-delay-1">Contact Us</h1>
+      <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-2">
+        <div class="w-12 h-1 bg-red-700"></div>
+        <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+        <div class="w-12 h-1 bg-red-700 ml-1"></div>
+      </div>
+      <p class="text-xl text-gray-700 fade-in-delay-3">
+        Thank you for your interest in working with CCG! We are excited about the possibility of collaborating with your organization. If our services interest you please contact us to set up an initial call to discuss a potential engagement. 
+We would begin our engagement in Fall 2025.
+If you have any questions, please contact our team at collegiateconsultinggroup@brown.edu.
+      </p>
+    </div>
+  </section>
+
+  <section class="projects flex fade-in">
     <!-- Left 2/3: Project Description -->
-    <div id="project-description" class="w-2/3 p-8">
-      <h3 class="text-4xl md:text-5xl font-bold text-blue-900 pb-12">{projects[0]?.companyName || "Loading..."}</h3>
-      <p class="text-gray-700 text-2xl">{projects[0]?.description || "Loading project description..."}</p>
+    <div id="project-description" class="w-2/3 p-8 flex flex-col items-center text-center relative bg-blue-50 rounded-3xl fade-in-delay-1" style="margin-top: 50px;">
+      <div class="flex items-center justify-center w-full fade-in-delay-2">
+        <img src={projects[0]?.logo} id="project-logo" class="w-32 h-32 object-cover rounded-lg mr-8" alt="Project Logo" />
+        <h3 class="text-4xl md:text-5xl font-bold text-blue-900">{projects[0]?.companyName || "Loading..."}</h3>
+      </div>
+      <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-3">
+        <div class="w-12 h-1 bg-red-700"></div>
+        <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+        <div class="w-12 h-1 bg-red-700 ml-1"></div>
+      </div>
+      <p class="text-gray-700 text-2xl w-3/4 text-left fade-in-delay-3">{projects[0]?.description || "Loading project description..."}</p>
     </div>
 
     <!-- Right 1/3: Clickable Boxes -->
-    <div id="project-boxes" class="w-1/3 p-8">
-      <h1 class="text-4xl md:text-5xl font-bold italic text-blue-500 pb-12">PROJECTS</h1>
+    <div id="project-boxes" class="w-1/3 p-8 fade-in-delay-2" style="margin-top: 50px;">
+      <h1 class="text-4xl md:text-5xl font-bold italic text-blue-500 flex pb-8 fade-in-delay-3">PROJECTS</h1>
       {projects.map((project, index) => (
         <div 
-          class="project-box flex items-center gap-4 p-4 mb-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 transition"
+          class="project-box flex items-center gap-4 p-4 mb-4 border border-gray-300 cursor-pointer transition overflow-hidden bg-blue-50 text-blue-900 fade-in-delay-3"
           data-index={index}
-        >
-          <img src={project.logo} alt={project.companyName} class="w-20 h-20 object-cover">
+          style="margin-right: -50px; border-radius: 40px;"> 
+          <img src={project.logo} alt={project.companyName} class="w-20 h-20 object-cover rounded-3xl">
           <h4 class="text-2xl font-bold">{project.companyName}</h4>
         </div>
       ))}
+    </div>
+  </section>
+
+
+  <!-- Our Process Section -->
+  <section class="w-full py-16 bg-white fade-in">
+    <div class="container mx-auto text-center fade-in-delay-1">
+      <h1 class="text-5xl md:text-7xl font-bold mb-8 fade-in">Our Process</h1>
+      <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-2">
+        <div class="w-12 h-1 bg-red-700"></div>
+        <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+        <div class="w-12 h-1 bg-red-700 ml-1"></div>
+      </div>
+      <div class="flex flex-col gap-4 fade-in-delay-3">
+        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+          <h3 class="text-2xl font-bold mb-4">Step 1: Team Formation</h3>
+          <p class="text-gray-700">CCG Project Teams consist of 1-2 Project Leads and 4-6 Consultants who work collaboratively to meet your unique needs and deliver measurable impact.</p>
+        </div>
+        <div class="flex justify-center items-center fade-in">
+          <i class="fas fa-arrow-down text-red-700 text-xl"></i>
+        </div>
+        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+          <h3 class="text-2xl font-bold mb-4">Step 2: Initial Consultation</h3>
+          <p class="text-gray-700">Before the semester begins, CCG leadership meets with your team to understand your company’s goals, challenges, and priorities. Together, we define the project scope and develop an engagement charter that outlines key objectives and deliverables.</p>
+        </div>
+        <div class="flex justify-center items-center fade-in">
+          <i class="fas fa-arrow-down text-red-700 text-xl"></i>
+        </div>
+        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+          <h3 class="text-2xl font-bold mb-4">Step 3: Research & Strategy Development</h3>
+          <p class="text-gray-700">Over the course of 10 weeks, our team conducts in-depth research, market analysis, and strategy development to address your business needs. A Mid-Semester Deliverable allows for feedback and adjustments to ensure alignment with your expectations.</p>
+        </div>
+        <div class="flex justify-center items-center fade-in">
+          <i class="fas fa-arrow-down text-red-700 text-xl"></i>
+        </div>
+        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+          <h3 class="text-2xl font-bold mb-4">Step 4: Final Deliverables & Recommendations</h3>
+          <p class="text-gray-700">At the end of the engagement, we deliver a comprehensive set of insights and recommendations tailored to your organization’s goals. Our team presents findings in a final report and presentation, equipping you with actionable strategies for success.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -108,17 +216,29 @@ const projects = await fetchClients();
 <script type="module">
   import { fetchClients } from '../../contentfulClient.js';
 
-
   document.addEventListener("DOMContentLoaded", async function() {
     const projects = await fetchClients();
+    let activeBox = null; // Track the currently active box
 
     // Function to update the project description
     function updateProject(index) {
       const projectDescription = document.getElementById("project-description");
+      const projectLogo = document.getElementById("project-logo");
+
       if (projects[index]) {
+        projectLogo.src = projects[index].logo || "";
+        projectLogo.alt = projects[index].companyName || "Project Logo";
         projectDescription.innerHTML = `
-          <h3 class="text-4xl md:text-5xl font-bold text-blue-900 pb-12">${projects[index].companyName}</h3>
-          <p class="text-gray-700 text-2xl">${projects[index].description}</p>
+          <div class="flex items-center justify-center w-full fade-in-delay-2">
+            <img id="project-logo" class="w-32 h-32 object-cover rounded-lg mr-8" alt="${projects[index].companyName}" src="${projects[index].logo || ''}" />
+            <h3 class="text-4xl md:text-5xl font-bold text-blue-900">${projects[index].companyName}</h3>
+          </div>
+          <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-3">
+            <div class="w-12 h-1 bg-red-700"></div>
+            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            <div class="w-12 h-1 bg-red-700 ml-1"></div>
+          </div>
+          <p class="text-gray-700 text-2xl w-3/4 text-left fade-in-delay-3">${projects[index].description}</p>
         `;
       }
     }
@@ -128,6 +248,19 @@ const projects = await fetchClients();
     projectBoxes.forEach((box) => {
       box.addEventListener("click", () => {
         const index = box.getAttribute("data-index");
+
+        // Revert the previously active box to normal
+        if (activeBox) {
+          activeBox.classList.remove("bg-red-700", "text-white", "hover:bg-red-300");
+          activeBox.classList.add("bg-blue-50", "text-blue-900", "hover:bg-gray-100");
+        }
+
+        // Set the clicked box as active
+        box.classList.remove("bg-blue-50", "text-blue-900", "hover:bg-gray-100");
+        box.classList.add("bg-red-700", "text-white", "hover:bg-red-300");
+        activeBox = box;
+
+        // Update the project description
         updateProject(index);
       });
     });

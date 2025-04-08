@@ -1,8 +1,10 @@
 import { createClient } from 'contentful';
 
+const space_id = import.meta.env.PUBLIC_CONTENTFUL_SPACE_ID;
+const accessToken = import.meta.env.PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 const client = createClient({
-  space: '4evwxmhrlmjd',
-  accessToken: 'wIZOtSpgvJ2TyST9SaXwi455DJD44NCZwnu0f15Kr3c'
+  space: space_id,
+  accessToken: accessToken,
 });
 
 export async function fetchClients() {
