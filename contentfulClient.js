@@ -1,6 +1,5 @@
 import { createClient } from 'contentful';
 
-
 const client = createClient({
   space: import.meta.env.PUBLIC_CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.DEV
