@@ -40,21 +40,25 @@ const otherMembers = members.filter(member =>
     <Navbar />
 
 		<!-- Hero Section -->
-		<section class="relative w-full h-[60vh] flex items-center justify-center overflow-hidden rounded-b-4xl">
+		<section class="relative w-full h-[75vh] flex items-center justify-center rounded-b-4xl overflow-hidden">
 			<!-- Background Image -->
+
 			<img 
 				src={headerImage[0]}
 				alt="Team Image" 
-				class="relative min-w-full h-full object-cover object-center md:object-[50%_20%] scale-100 md:scale-110 lg:scale-100 transition-all duration-500"
+				class="absolute inset-0 w-full h-full object-cover object-[center_-80px]"
 			>
 
 			<!-- Dark Overlay (same size as section) -->
-			<div class="absolute w-full h-full bg-black opacity-40"></div>
+			<div class="absolute bg-black opacity-35"></div>
 
-			<!-- Overlay Text -->
-			<div class="absolute bottom-4 left-4 text-white text-8xl font-bold fade-in" style="font-family: 'Almarai', sans-serif;">
-				Our Team
-			</div>
+    <!-- Overlay Text -->
+    <div class="absolute bottom-6 left-6 text-white font-bold fade-in sm:py-[20px] md:py-[10px] lg:py-[0px]"
+         style="font-family: 'Almarai', sans-serif;">
+      <h1 class="sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight">
+        Our Team
+      </h1>
+    </div>
 		</section>
 </Layout>
   
@@ -181,6 +185,7 @@ const otherMembers = members.filter(member =>
   }
 
   .modal {
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -222,16 +227,68 @@ const otherMembers = members.filter(member =>
     margin: 1rem 0;
   }
 
-  a {
-    display: inline-block;
-    margin-top: 1rem;
-    color: #0077b5;
-    text-decoration: none;
-  }
+.modal-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  align-items: start;
+  min-height: 60vh;
+}
 
-  a:hover {
-    text-decoration: underline;
+
+.modal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.modal-text {
+  font-family: 'Almarai', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.modal-text h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-text p {
+  margin-bottom: 0.75rem;
+}
+
+.linkedin-link {
+  display: inline-block;
+  background-color: #0077b5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.linkedin-link:hover {
+  background-color: #005b8a;
+}
+a {
+  display: inline-block;
+  margin-top: 1rem;
+  color:#005b8a;
+}
+
+a:hover {
+  text-decoration: underline;
+  background-color: #005b8a;
+color: #005b8a;
+}
+@media (max-width: 768px) {
+  .modal-grid {
+    grid-template-columns: 1fr;
   }
+}
+
 </style>
 
 <script define:vars={{ leadershipMembers, otherMembers }}>
@@ -246,15 +303,20 @@ const otherMembers = members.filter(member =>
       const member = memberType === 'leadership' ? leadershipMembers[index] : otherMembers[index];
       
       modalContent.innerHTML = `
-        <h2>${member.memberName}</h2>
-        <p>Position: ${member.position}</p>
-        <p>Class Year: ${member.classYear}</p>
-        <p>Bibliography: ${member.bibliography}</p>
-        ${member.profileImage ? `<img src="${member.profileImage}" alt="${member.memberName}" />` : ''}
-        <p>Contact: ${member.contactInformation}</p>
-        ${member.linkedIn ? `<a href="${member.linkedIn}" target="_blank">LinkedIn Profile</a>` : ''}
+        <div class="modal-grid">
+          <div class="modal-image">
+            ${member.profileImage ? `<img src="${member.profileImage}" alt="${member.memberName}" />` : ''}
+          </div>
+          <div class="modal-text">
+            <h2>${member.memberName}</h2>
+            <p><strong>${member.position}</strong>, ${member.classYear}</p>
+            <p>${member.bibliography}</p>
+            <p><strong>Email:</strong> ${member.contactInformation}</p>
+            ${member.linkedIn ? `<a href="${member.linkedIn}" target="_blank" class="linkedin-link">LinkedIn</a>` : ''}
+          </div>
+        </div>
       `;
-      
+
       modal.style.display = 'block';
       document.body.style.overflow = 'hidden';
     });
