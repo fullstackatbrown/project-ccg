@@ -27,9 +27,9 @@ const projects = await fetchClients();
   </section>
 
   <!-- Our Values Section -->
-  <section class="w-full py-16 bg-gray-100 fade-in">
+  <section class="w-full py-16 bg-[#0B144A14] fade-in">
     <div class="container mx-auto fade-in-delay-1">
-      <h1 class="text-5xl md:text-7xl font-bold mb-8 flex justify-center item-center">Our Values</h1>
+      <h1 class="text-5xl md:text-7xl font-bold mb-8 flex justify-center item-center text-[#0B144A]" style="font-family: 'arimo', sans-serif;">Our Values</h1>
         <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-3">
         <div class="w-12 h-1 bg-red-700"></div>
         <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
@@ -63,7 +63,7 @@ const projects = await fetchClients();
   <!-- Contact Us Section -->
   <section class="w-full py-16 bg-white fade-in">
     <div class="container mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-bold mb-8 fade-in-delay-1">Contact Us</h1>
+      <h1 class="text-5xl md:text-7xl font-bold mb-8 fade-in-delay-1 text-[#0B144A]" style="font-family: 'arimo', sans-serif;">Contact Us</h1>
       <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-2">
         <div class="w-12 h-1 bg-red-700"></div>
         <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
@@ -79,10 +79,10 @@ If you have any questions, please contact our team at collegiateconsultinggroup@
 
   <section class="projects flex fade-in">
     <!-- Left 2/3: Project Description -->
-    <div id="project-description" class="w-2/3 p-8 flex flex-col items-center text-center relative bg-blue-50 rounded-3xl fade-in-delay-1" style="margin-top: 50px;">
+    <div id="project-description" class="w-2/3 p-8 flex flex-col items-center text-center relative bg-[#0B144A14] rounded-3xl fade-in-delay-1" style="margin-top: 50px;">
       <div class="flex items-center justify-center w-full fade-in-delay-2">
         <img src={projects[0]?.logo} id="project-logo" class="w-32 h-32 object-cover rounded-lg mr-8" alt="Project Logo" />
-        <h3 class="text-4xl md:text-5xl font-bold text-blue-900">{projects[0]?.companyName || "Loading..."}</h3>
+        <h3 class="text-4xl md:text-5xl font-bold text-[#0B144A]">{projects[0]?.companyName || "Loading..."}</h3>
       </div>
       <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-3">
         <div class="w-12 h-1 bg-red-700"></div>
@@ -94,14 +94,14 @@ If you have any questions, please contact our team at collegiateconsultinggroup@
 
     <!-- Right 1/3: Clickable Boxes -->
     <div id="project-boxes" class="w-1/3 p-8 fade-in-delay-2" style="margin-top: 50px;">
-      <h1 class="text-4xl md:text-5xl font-bold italic text-blue-500 flex pb-8 fade-in-delay-3">PROJECTS</h1>
+      <h1 class="text-8xl md:text-6xl font-bold italic text-[#0B144A] flex pb-8 fade-in-delay-3" style="font-family: 'arimo', sans-serif;">PROJECTS</h1>
       {projects.map((project, index) => (
         <div 
-          class="project-box flex items-center gap-4 p-4 mb-4 border border-gray-300 cursor-pointer transition overflow-hidden bg-blue-50 text-blue-900 fade-in-delay-3"
+          class="project-box flex items-center gap-4 p-4 mb-4 border border-gray-300 cursor-pointer transition overflow-hidden bg-[#0B144A14] text-[#0B144A] fade-in-delay-3"
           data-index={index}
           style="margin-right: -50px; border-radius: 40px;"> 
           <img src={project.logo} alt={project.companyName} class="w-20 h-20 object-cover rounded-3xl">
-          <h4 class="text-2xl font-bold">{project.companyName}</h4>
+          <h4 class="text-2xl font-bold" style="font-family: 'arimo', sans-serif;">{project.companyName}</h4>
         </div>
       ))}
     </div>
@@ -117,35 +117,35 @@ If you have any questions, please contact our team at collegiateconsultinggroup@
   <!-- Our Process Section -->
   <section class="w-full py-16 bg-white fade-in">
     <div class="container mx-auto text-center fade-in-delay-1">
-      <h1 class="text-5xl md:text-7xl font-bold mb-8 fade-in">Our Process</h1>
+      <h1 class="text-5xl md:text-7xl font-bold mb-8 fade-in text-[#0B144A]" style="font-family: 'arimo', sans-serif;">Our Process</h1>
       <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-2">
         <div class="w-12 h-1 bg-red-700"></div>
         <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
         <div class="w-12 h-1 bg-red-700 ml-1"></div>
       </div>
       <div class="flex flex-col gap-4 fade-in-delay-3">
-        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+        <div class="p-4 bg-[#0B144A14] rounded-lg shadow-md text-left fade-in">
           <h3 class="text-2xl font-bold mb-4">Step 1: Team Formation</h3>
           <p class="text-gray-700">CCG Project Teams consist of 1-2 Project Leads and 4-6 Consultants who work collaboratively to meet your unique needs and deliver measurable impact.</p>
         </div>
         <div class="flex justify-center items-center fade-in">
           <i class="fas fa-arrow-down text-red-700 text-xl"></i>
         </div>
-        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+        <div class="p-4 bg-[#0B144A14] rounded-lg shadow-md text-left fade-in">
           <h3 class="text-2xl font-bold mb-4">Step 2: Initial Consultation</h3>
           <p class="text-gray-700">Before the semester begins, CCG leadership meets with your team to understand your company’s goals, challenges, and priorities. Together, we define the project scope and develop an engagement charter that outlines key objectives and deliverables.</p>
         </div>
         <div class="flex justify-center items-center fade-in">
           <i class="fas fa-arrow-down text-red-700 text-xl"></i>
         </div>
-        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+        <div class="p-4 bg-[#0B144A14] rounded-lg shadow-md text-left fade-in">
           <h3 class="text-2xl font-bold mb-4">Step 3: Research & Strategy Development</h3>
           <p class="text-gray-700">Over the course of 10 weeks, our team conducts in-depth research, market analysis, and strategy development to address your business needs. A Mid-Semester Deliverable allows for feedback and adjustments to ensure alignment with your expectations.</p>
         </div>
         <div class="flex justify-center items-center fade-in">
           <i class="fas fa-arrow-down text-red-700 text-xl"></i>
         </div>
-        <div class="p-4 bg-blue-50 rounded-lg shadow-md text-left fade-in">
+        <div class="p-4 bg-[#0B144A14] rounded-lg shadow-md text-left fade-in">
           <h3 class="text-2xl font-bold mb-4">Step 4: Final Deliverables & Recommendations</h3>
           <p class="text-gray-700">At the end of the engagement, we deliver a comprehensive set of insights and recommendations tailored to your organization’s goals. Our team presents findings in a final report and presentation, equipping you with actionable strategies for success.</p>
         </div>
@@ -231,7 +231,7 @@ If you have any questions, please contact our team at collegiateconsultinggroup@
         projectDescription.innerHTML = `
           <div class="flex items-center justify-center w-full fade-in-delay-2">
             <img id="project-logo" class="w-32 h-32 object-cover rounded-lg mr-8" alt="${projects[index].companyName}" src="${projects[index].logo || ''}" />
-            <h3 class="text-4xl md:text-5xl font-bold text-blue-900">${projects[index].companyName}</h3>
+            <h3 class="text-4xl md:text-5xl font-bold text-[#0B144A]">${projects[index].companyName}</h3>
           </div>
           <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-3">
             <div class="w-12 h-1 bg-red-700"></div>
@@ -252,11 +252,11 @@ If you have any questions, please contact our team at collegiateconsultinggroup@
         // Revert the previously active box to normal
         if (activeBox) {
           activeBox.classList.remove("bg-red-700", "text-white", "hover:bg-red-300");
-          activeBox.classList.add("bg-blue-50", "text-blue-900", "hover:bg-gray-100");
+          activeBox.classList.add("bg-[#0B144A14]", "text-[#0B144A]", "hover:bg-gray-100");
         }
 
         // Set the clicked box as active
-        box.classList.remove("bg-blue-50", "text-blue-900", "hover:bg-gray-100");
+        box.classList.remove("bg-[#0B144A14]", "text-[#0B144A]", "hover:bg-gray-100");
         box.classList.add("bg-red-700", "text-white", "hover:bg-red-300");
         activeBox = box;
 
