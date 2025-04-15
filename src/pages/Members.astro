@@ -36,301 +36,606 @@ const otherMembers = members.filter(member =>
 ---
 
 <Layout>
-	<div class="flex flex-col ">
+  <div class="flex flex-col min-h-screen">
     <Navbar />
 
-		<!-- Hero Section -->
-		<section class="relative w-full h-[65vh] flex items-center justify-center rounded-b-4xl overflow-hidden fade-in">
-			<!-- Background Image -->
+    <!-- Hero Section -->
+    <section class="relative w-full h-[75vh] flex items-center justify-center overflow-hidden fade-in">
+      <!-- Background Image -->
+      <img 
+        src={headerImage[0]}
+        alt="group photo" 
+        class="relative min-w-full h-full object-cover object-center md:object-[50%_20%] scale-110 transition-all duration-700 fade-in-delay-1"
+      >
 
-			<img 
-				src={headerImage[0]}
-				alt="Team Image" 
-				class="relative min-w-full h-full object-cover object-center md:object-[50%_20%] scale-100 md:scale-110 lg:scale-100 transition-all duration-500 fade-in-delay-1"
-			>
-
-			<!-- Dark Overlay (same size as section) -->
-			<div class="absolute w-full h-full bg-black opacity-40 fade-in-delay-2"></div>
+      <!-- Dark Overlay (for contrast) -->
+      <div class="absolute w-full h-full bg-black opacity-50"></div>
 
       <!-- Overlay Text -->
-      <div class="absolute bottom-6 left-6 text-white font-bold fade-in sm:py-[20px] md:py-[10px] lg:py-[0px]"
-          style="font-family: 'Almarai', sans-serif;">
-        <h1 class="sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight">
-          Our Team
+      <div class="absolute inset-0 flex flex-col items-start justify-end p-8 md:p-16 lg:p-24 fade-in">
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4" style="font-family: 'Almarai', sans-serif;">
+          Meet Our Team
         </h1>
+        <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl">
+          Shape your future in consulting with Brown's premier student consulting organization
+        </p>
       </div>
-		</section>
-</Layout>
-  
-  <section class="members-section">
-      <h2 class="font-bond text-5xl text-center">Leadership</h2>
-      <div class="members-grid" id="leadership">
-        {leadershipMembers.map((member, index) => (
-          <article class="member-card" data-member-index={index} data-member-type="leadership">
-            <div class="image-container">
-              {member.profileImage && (
-                <img 
-                  src={member.profileImage} 
-                  alt={`${member.memberName}'s profile photo`}
-                  class="member-image"
-                />
-              )}
-            </div>
-            <div class="member-info">
-              <h2>{member.memberName}</h2>
-              <p>{member.position}</p>
-              <p>Class Year: {member.classYear}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-      <h2 class="font-bond text-5xl text-center">Consultants</h2>
-      <div class="members-grid" id="members">
-        {otherMembers.map((member, index) => (
-          <article class="member-card" data-member-index={index} data-member-type="other">
-            <div class="image-container">
-              {member.profileImage && (
-                <img 
-                  src={member.profileImage} 
-                  alt={`${member.memberName}'s profile photo`}
-                  class="member-image"
-                />
-              )}
-            </div>
-            <div class="member-info">
-              <h2>{member.memberName}</h2>
-              <p>{member.position}</p>
-              <p>Class Year: {member.classYear}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-  </section>
+    </section>
 
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div id="modal-member-content"></div>
+    <!-- Leadership Section -->
+    <section class="w-full py-16 bg-[#0B144A14] fade-in">
+      <div class="container mx-auto fade-in-delay-1">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 flex justify-center text-[#0B144A]" style="font-family: 'Almarai', sans-serif;">Leadership</h1>
+        <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-2">
+          <div class="w-12 h-1 bg-[#C32727]"></div>
+          <div class="w-3 h-3 rounded-full bg-[#C32727] ml-1"></div>
+          <div class="w-12 h-1 bg-[#C32727] ml-1"></div>
+        </div>
+        
+        <div class="members-grid" id="leadership">
+          {leadershipMembers.map((member, index) => (
+            <article class="member-card fade-in-delay-3" data-member-index={index} data-member-type="leadership">
+              <div class="image-container">
+                {member.profileImage ? (
+                  <img 
+                    src={member.profileImage} 
+                    alt={`${member.memberName}'s profile photo`}
+                    class="member-image"
+                  />
+                ) : (
+                  <div class="placeholder-image"></div>
+                )}
+                <div class="overlay">
+                  <span class="view-profile">View Profile</span>
+                </div>
+              </div>
+              <div class="member-info">
+                <h3 class="member-name">{member.memberName}</h3>
+                <p class="member-position">{member.position}</p>
+                <p class="member-class">Class of {member.classYear}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultants Section -->
+    <section class="w-full py-16 bg-white fade-in">
+      <div class="container mx-auto fade-in-delay-1">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 flex justify-center text-[#0B144A]" style="font-family: 'Almarai', sans-serif;">Consultants</h1>
+        <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-2">
+          <div class="w-12 h-1 bg-[#C32727]"></div>
+          <div class="w-3 h-3 rounded-full bg-[#C32727] ml-1"></div>
+          <div class="w-12 h-1 bg-[#C32727] ml-1"></div>
+        </div>
+        
+        <div class="members-grid" id="members">
+          {otherMembers.map((member, index) => (
+            <article class="member-card fade-in-delay-3" data-member-index={index} data-member-type="other">
+              <div class="image-container">
+                {member.profileImage ? (
+                  <img 
+                    src={member.profileImage} 
+                    alt={`${member.memberName}'s profile photo`}
+                    class="member-image"
+                  />
+                ) : (
+                  <div class="placeholder-image"></div>
+                )}
+                <div class="overlay">
+                  <span class="view-profile">View Profile</span>
+                </div>
+              </div>
+              <div class="member-info">
+                <h3 class="member-name">{member.memberName}</h3>
+                <p class="member-position">{member.position}</p>
+                <p class="member-class">Class of {member.classYear}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modal-member-content"></div>
+      </div>
     </div>
-  </div>
 
-  <Footer />
+    <Footer />
+  </div>
 </Layout>
+
 <style>
-  .members-section {
-    padding: 2rem 0;
-    justify-content: center;
+  /* Animation classes */
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
   }
+  
+  .fade-in-delay-1 {
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+    animation-delay: 0.2s;
+  }
+  
+  .fade-in-delay-2 {
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+    animation-delay: 0.4s;
+  }
+  
+  .fade-in-delay-3 {
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Members grid layout - IMPROVED */
   .members-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 2rem;
-    justify-content: center; /* Centers grid items */
-    max-width: 1300px; /* Prevents grid from stretching too wide */
-    margin: 0 auto; /* Centers the grid within its container */
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
+  /* Member card styling - IMPROVED */
   .member-card {
     display: flex;
     flex-direction: column;
-    height: 550px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 1, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s;
+    height: 450px;
+    border-radius: 40px;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: white;
   }
 
   .member-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 8px rgba(0, 0, 1, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .member-card:hover .overlay {
+    opacity: 1;
   }
 
   .image-container {
-    height: 80%;
-    overflow: hidden;
+    height: 75%;
     position: relative;
+    overflow: hidden;
+    background-color: #f5f5f5;
   }
 
-  .member-image {
+  .member-image, .placeholder-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    margin: 0;
+    transition: transform 0.6s ease;
+  }
+
+  .placeholder-image {
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .member-card:hover .member-image {
+    transform: scale(1.05);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(11, 20, 74, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .view-profile {
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid white;
+    border-radius: 30px;
+    transition: all 0.2s ease;
+  }
+
+  .view-profile:hover {
+    background-color: #C32727;
+    border-color: #C32727;
+    color: white;
   }
 
   .member-info {
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    height: 15%;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    flex-grow: 1;
+    background-color: white;
   }
 
-  .member-info h2 {
+  .member-name {
+    font-family: 'Almarai', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: #0B144A;
+  }
+
+  .member-position {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #C32727;
+    margin: 0 0 0.25rem 0;
+    text-transform: capitalize;
+  }
+
+  .member-class {
+    font-size: 0.875rem;
+    color: #666;
     margin: 0;
-    font-size: 1.2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
-  .member-info p {
-    margin: 0.1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
+  /* ENHANCED Modal styling */
   .modal {
-    display: none; 
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
     z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    overflow-y: auto;
   }
 
   .modal-content {
     position: relative;
     background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    width: 70%;
-    max-width: 700px;
-    border-radius: 8px;
-    max-height: 70vh;
+    width: 100%;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: 40px;
     overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: modalFadeIn 0.3s ease;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .close {
     position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 28px;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
     font-weight: bold;
+    color: #0B144A;
     cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
   }
 
   .close:hover {
-    color: #666;
+    color: #C32727;
+    transform: rotate(90deg);
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin: 1rem 0;
-  }
-
-.modal-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 2rem;
-  align-items: start;
-  min-height: 60vh;
-}
-
-
-.modal-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.modal-text {
-  font-family: 'Almarai', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.modal-text h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.modal-text p {
-  margin-bottom: 0.75rem;
-}
-
-.linkedin-link {
-  display: inline-block;
-  background-color: #0077b5;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-top: 0.5rem;
-}
-
-.linkedin-link:hover {
-  background-color: #005b8a;
-}
-a {
-  display: inline-block;
-  margin-top: 1rem;
-  color:#005b8a;
-}
-
-a:hover {
-  text-decoration: underline;
-  background-color: #005b8a;
-color: #005b8a;
-}
-@media (max-width: 768px) {
   .modal-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    padding: 1rem;
   }
-}
 
+  .modal-image {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 360px;
+    width: 100%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background-color: #f5f5f5;
+  }
+
+  .modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+
+  .modal-image .placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-text {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-text h2 {
+    font-family: 'Almarai', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    color: #0B144A;
+    letter-spacing: -0.02em;
+  }
+
+  .modal-text .position-year {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #C32727;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .modal-text .bio {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 1.75rem;
+    white-space: pre-wrap;
+    font-weight: 400;
+  }
+
+  .modal-text .contact-info {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+  }
+
+  .modal-text .contact-info strong {
+    color: #0B144A;
+    font-weight: 700;
+  }
+
+  .linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #C32727;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(195, 39, 39, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .linkedin-link:hover {
+    background-color: #a31f1f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(195, 39, 39, 0.3);
+  }
+
+  /* Responsive styles - IMPROVED */
+  @media (max-width: 1024px) {
+    .members-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .modal-image {
+      height: 320px;
+    }
+    
+    .modal-text h2 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .modal-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .modal-image {
+      height: 300px;
+    }
+    
+    .modal-text {
+      padding: 1rem 0.5rem;
+    }
+    
+    .member-card {
+      height: 400px;
+    }
+    
+    .modal-content {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .members-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+    
+    .member-card {
+      height: 420px;
+    }
+    
+    .modal-content {
+      padding: 1.5rem;
+      border-radius: 25px;
+      margin: 1rem;
+    }
+    
+    .modal-grid {
+      padding: 0.5rem;
+      gap: 1.5rem;
+    }
+    
+    .modal-image {
+      height: 250px;
+      border-radius: 20px;
+    }
+    
+    .modal-image img {
+      border-radius: 20px;
+    }
+    
+    .modal-text h2 {
+      font-size: 1.75rem;
+    }
+    
+    .modal-text .bio {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    .close {
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+    }
+  }
 </style>
 
 <script define:vars={{ leadershipMembers, otherMembers }}>
-  const modal = document.getElementById('modal');
-  const modalContent = document.getElementById('modal-member-content');
-  const closeBtn = document.querySelector('.close');
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-member-content');
+    const closeBtn = document.querySelector('.close');
 
-  document.querySelectorAll('.member-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const index = parseInt(card.dataset.memberIndex);
-      const memberType = card.dataset.memberType;
-      const member = memberType === 'leadership' ? leadershipMembers[index] : otherMembers[index];
-      
+    // Function to open modal with improved content creation
+    function openModal(member) {
+      // Create modal content with red/navy theme
       modalContent.innerHTML = `
         <div class="modal-grid">
           <div class="modal-image">
-            ${member.profileImage ? `<img src="${member.profileImage}" alt="${member.memberName}" />` : ''}
+            ${member.profileImage ? `<img src="${member.profileImage}" alt="${member.memberName}" />` : '<div class="placeholder-image"></div>'}
           </div>
           <div class="modal-text">
             <h2>${member.memberName}</h2>
-            <p><strong>${member.position}</strong>, ${member.classYear}</p>
-            <p>${member.bibliography}</p>
-            <p><strong>Email:</strong> ${member.contactInformation}</p>
-            ${member.linkedIn ? `<a href="${member.linkedIn}" target="_blank" class="linkedin-link">LinkedIn</a>` : ''}
+            <p class="position-year"><strong>${member.position}</strong>, Class of ${member.classYear}</p>
+            
+            <!-- Red divider -->
+            <div class="flex items-center mb-6 mt-4">
+              <div class="w-12 h-1 bg-[#C32727]"></div>
+              <div class="w-3 h-3 rounded-full bg-[#C32727] ml-1"></div>
+              <div class="w-12 h-1 bg-[#C32727] ml-1"></div>
+            </div>
+            
+            <div class="bio">${member.bibliography || 'No biography available.'}</div>
+            <div class="contact-info">
+              <p><strong>Email:</strong> ${member.contactInformation || 'Not provided'}</p>
+            </div>
+            ${member.linkedIn ? `
+              <a href="${member.linkedIn}" target="_blank" class="linkedin-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Connect on LinkedIn
+              </a>` : ''}
           </div>
         </div>
       `;
 
-      modal.style.display = 'block';
+      // Display modal and prevent body scrolling
+      modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-    });
-  });
+      
+      // Focus trap for accessibility
+      setTimeout(() => {
+        closeBtn.focus();
+      }, 100);
+    }
 
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  });
-
-  window.addEventListener('click', (event) => {
-    if (event.target === modal) {
+    // Function to close modal
+    function closeModal() {
       modal.style.display = 'none';
       document.body.style.overflow = 'auto';
     }
+
+    // Event listeners for opening the modal
+    document.querySelectorAll('.member-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const index = parseInt(card.dataset.memberIndex);
+        const memberType = card.dataset.memberType;
+        const member = memberType === 'leadership' ? leadershipMembers[index] : otherMembers[index];
+        openModal(member);
+      });
+      
+      // Keyboard accessibility
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          card.click();
+        }
+      });
+    });
+
+    // Event listener for closing the modal
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside the content
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close modal when pressing escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
   });
 </script>
