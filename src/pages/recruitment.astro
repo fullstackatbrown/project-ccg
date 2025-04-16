@@ -73,81 +73,62 @@ const statsData = [
 
 
     <!--Stats section -->
-    <section class="w-full py-16 bg-white">
+	<div class="py-8 bg-white">
       <div class="container mx-auto px-4">
-        <!-- Simple, clean header -->
-        <h2 class="text-4xl md:text-5xl font-bold mb-3 text-center text-[#0B144A]" style="font-family: 'arimo', sans-serif;">Our Stats</h2>
-        <div class="w-16 h-1 bg-red-700 mx-auto mb-16"></div>
-        
-        <!-- Clean stats display -->
-        <div class="max-w-4xl mx-auto">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <!-- Left side - Process flow -->
-            <div class="bg-gray-50 rounded-lg p-8">
-              <div class="space-y-6">
-                <div class="flex items-center">
-                  <span class="text-red-700 font-bold text-5xl">185</span>
-                  <span class="font-medium text-xl ml-4 text-gray-800">APPLICANTS</span>
-                </div>
-                
-                <div class="w-full h-px bg-gray-300"></div>
-                
-                <div class="flex items-center">
-                  <span class="text-red-700 font-bold text-5xl">50</span>
-                  <span class="font-medium text-xl ml-4 text-gray-800">INTERVIEWED</span>
-                </div>
-                
-                <div class="w-full h-px bg-gray-300"></div>
-                
-                <div class="flex items-center">
-                  <span class="text-red-700 font-bold text-5xl">14</span>
-                  <span class="font-medium text-xl ml-4 text-gray-800">ADMITTED</span>
-                </div>
-                
-                <div class="w-full h-px bg-gray-300"></div>
-                
-                <div class="flex items-center">
-                  <span class="text-red-700 font-bold text-5xl">7.6%</span>
-                  <span class="font-medium text-xl ml-4 text-gray-800">ACCEPTANCE RATE</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Right side - Images -->
-            <div class="flex flex-col gap-6 justify-center items-center w-full">
-              {recruitment[0].images?.slice(5, 7).map((image, index) => (
-                <div class="rounded-lg overflow-hidden shadow-sm w-full">
-                  <img 
-                    src={`https:${image.fields.file.url}`} 
-                    alt="Statistic" 
-                    class={`object-contain w-full ${index === 0 ? 'h-auto min-h-64' : 'h-auto min-h-56'}`}
-                  />
-                </div>
-              ))}
-            </div>
+        <div class="text-center fade-in">
+          <h2 class="text-[64px]" style="font-family: 'Arimo', sans-serif; font-style: italic; font-weight: 700; color: #0B144A;">
+            Our Stats
+          </h2>
+          <div class="flex items-center justify-center my-3">
+            <div class="w-12 h-1 bg-red-700"></div>
+            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
+            <div class="w-12 h-1 bg-red-700 ml-1"></div>
           </div>
         </div>
       </div>
-    </section>
-    
-    <!-- Fixed bottom stats cards section -->
-    <section class="container mx-auto px-4 pb-16">
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        {recruitment[0].images?.slice(0, 5).map((image, index) => (
-          <div class="bg-gray-50 p-6 rounded-lg text-center flex flex-col items-center justify-between h-full">
-            <img 
-              src={`https:${image.fields.file.url}`} 
-              alt={statsData[index]?.label || "Statistic"} 
-              class="w-24 h-24 object-contain mb-4"
-            />
-            <div>
-              <p class="text-lg font-bold text-[#c32727]">{statsData[index]?.label}</p>
-              <p class="text-2xl font-bold text-[#0B144A] mt-1">{statsData[index]?.percentage}</p>
-            </div>
-          </div>
+    </div>
+
+<div class="container mx-auto px-4 sm:px-12 pb-5">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-center">
+    <div class="text-center fade-in">
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center bg-white p-6 rounded-lg shadow-lg text-center fade-in max-width:vh">
+        {recruitment[0].images?.slice(5, 7).map((image, index) => (
+          <img 
+            key={index + 5}
+            src={`https:${image.fields.file.url}`} 
+            alt="Statistic" 
+            class={`object-cover rounded ${index === 0 ? 'max-w-70 h-auto pr-2 pt-2' : 'max-w-50 h-auto'}`}
+          />
         ))}
       </div>
-    </section>
+    </div>
+
+    <div class="text-center fade-in flex justify-center items-center bg-white p-6 rounded-lg shadow-lg text-center fade-in">
+      <div class="text-left text-base sm:text-lg leading-relaxed">
+        <p><span class="text-red-700 font-bold text-4xl sm:text-4xl">185</span> <span class="font-semibold text-2xl ml-2">APPLICANTS →</span></p>
+        <p><span class="text-red-700 font-bold text-4xl sm:text-4xl">50</span> <span class="font-semibold text-2xl ml-2">INTERVIEWED →</span></p>
+        <p><span class="text-red-700 font-bold text-4xl sm:text-4xl">14</span> <span class="font-semibold text-2xl ml-2">ADMITTED INTO CCG</span></p>
+        <hr class="border-t-2 border-dotted border-red-700 my-3" />
+        <p><span class="text-red-700 font-bold text-xl sm:text-4xl">7.6%</span> <span class="font-semibold text-2xl ml-2">ACCEPTANCE RATE</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+	<div class="px-4 pb-12">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+			{recruitment[0].images?.slice(0, 5).map((image, index) => (
+				<div class={`bg-white p-6 rounded-lg shadow-lg text-center fade-in ${index > 0 ? `fade-in-delay-${index}` : ''}`}>
+					<img 
+						src={`https:${image.fields.file.url}`} 
+						alt={statsData[index]?.label || "Statistic"} 
+						class="w-40 h-40 mx-auto mb-4 object-contain aspect-square"
+					/>
+				</div>
+			))}
+		</div>
+	</div>
 
     <!-- Why CCG Section (Updated to match services page styling) -->
     <section class="w-full py-16 bg-[#0B144A] text-white">
