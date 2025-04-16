@@ -14,7 +14,7 @@ const {
 } = Astro.props;
 ---
 
-<div class="contact-form-wrapper">
+<div class="contact-form-wrapper bg-white shadow-xl rounded-lg p-8 border border-slate-100">
   <form
     action="https://api.web3forms.com/submit"
     method="POST"
@@ -25,47 +25,49 @@ const {
     <input type="hidden" name="access_key" value={accessKey} />
     <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
     
-    <div class="mb-5">
+    <div class="mb-6">
+      <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
       <input
         type="text"
-        placeholder="Full Name"
+        placeholder="John Doe"
         required
-        class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
+        class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-[#D32F2F] ring-[#D32F2F]/20 transition-all duration-300"
         name="name"
         id="name"
       />
-      <div class="error-message text-red-400 text-sm mt-1" style="display: none;">
+      <div class="error-message text-[#D32F2F] text-sm mt-1" style="display: none;">
         Please provide your full name.
       </div>
     </div>
     
-    <div class="mb-5">
-      <label for="email_address" class="sr-only">Email Address</label>
+    <div class="mb-6">
+      <label for="email_address" class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
       <input
         id="email_address"
         type="email"
-        placeholder="Email Address"
+        placeholder="you@example.com"
         name="email"
         required
-        class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
+        class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-[#D32F2F] ring-[#D32F2F]/20 transition-all duration-300"
       />
-      <div class="error-message email-empty text-red-400 text-sm mt-1" style="display: none;">
+      <div class="error-message email-empty text-[#D32F2F] text-sm mt-1" style="display: none;">
         Please provide your email address.
       </div>
-      <div class="error-message email-invalid text-red-400 text-sm mt-1" style="display: none;">
+      <div class="error-message email-invalid text-[#D32F2F] text-sm mt-1" style="display: none;">
         Please provide a valid email address.
       </div>
     </div>
     
-    <div class="mb-3">
+    <div class="mb-6">
+      <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Your Message</label>
       <textarea
         name="message"
         id="message"
         required
-        placeholder="Your Message"
-        class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none h-36 focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
+        placeholder="Tell us about your question or feedback..."
+        class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none h-40 focus:ring-4 border-slate-300 focus:border-[#D32F2F] ring-[#D32F2F]/20 transition-all duration-300"
       ></textarea>
-      <div class="error-message text-red-400 text-sm mt-1" style="display: none;">
+      <div class="error-message text-[#D32F2F] text-sm mt-1" style="display: none;">
         Please enter your message.
       </div>
     </div>
@@ -73,11 +75,15 @@ const {
     <button 
       type="submit" 
       id="submit-button"
-      class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-3 px-4 rounded-md transition-colors"
+      class="w-full bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white font-medium py-3 px-6 rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
     >
-      {submitButtonText}
+      <span>{submitButtonText}</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
     </button>
-    <div id="form-result" class="mt-3 text-center"></div>
+    
+    <div id="form-result" class="mt-4 text-center font-medium rounded-md py-2 hidden"></div>
   </form>
 </div>
 
@@ -121,6 +127,18 @@ const {
     
     messageField.addEventListener("input", function() {
       validateField(messageField);
+    });
+    
+    // Add focus and blur effects for better UX
+    const formInputs = [nameField, emailField, messageField];
+    formInputs.forEach(input => {
+      input.addEventListener("focus", function() {
+        this.parentElement.classList.add("focused");
+      });
+      
+      input.addEventListener("blur", function() {
+        this.parentElement.classList.remove("focused");
+      });
     });
     
     // Handle form submission
@@ -189,9 +207,17 @@ const {
   
   function submitForm(form, result) {
     // Show loading state
-    result.innerHTML = "Sending...";
-    result.style.display = "block";
-    result.className = "mt-3 text-center";
+    result.innerHTML = `
+      <div class="flex items-center justify-center">
+        <svg class="animate-spin h-5 w-5 mr-3 text-[#D32F2F]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Sending...
+      </div>
+    `;
+    result.classList.remove("hidden", "bg-green-100", "bg-red-100", "text-green-700", "text-red-700");
+    result.classList.add("flex", "bg-slate-100", "text-slate-700");
     
     // Prepare form data
     const formData = new FormData(form);
@@ -211,25 +237,69 @@ const {
       const json = await response.json();
       
       if (response.status === 200) {
-        result.classList.add("text-green-500");
-        result.innerHTML = json.message || "Message sent successfully!";
+        result.classList.remove("bg-slate-100", "text-slate-700");
+        result.classList.add("bg-green-100", "text-green-700");
+        result.innerHTML = `
+          <div class="flex items-center">
+            <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            ${json.message || "Message sent successfully!"}
+          </div>
+        `;
         form.reset();
       } else {
         console.error(response);
-        result.classList.add("text-red-500");
-        result.innerHTML = json.message || "Something went wrong!";
+        result.classList.remove("bg-slate-100", "text-slate-700");
+        result.classList.add("bg-red-100", "text-red-700");
+        result.innerHTML = `
+          <div class="flex items-center">
+            <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            ${json.message || "Something went wrong!"}
+          </div>
+        `;
       }
     })
     .catch((error) => {
       console.error(error);
-      result.classList.add("text-red-500");
-      result.innerHTML = "Something went wrong!";
+      result.classList.remove("bg-slate-100", "text-slate-700");
+      result.classList.add("bg-red-100", "text-red-700");
+      result.innerHTML = `
+        <div class="flex items-center">
+          <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          Something went wrong!
+        </div>
+      `;
     })
     .finally(() => {
       // Hide message after 5 seconds
       setTimeout(() => {
-        result.style.display = "none";
+        result.classList.add("hidden");
       }, 5000);
     });
   }
 </script>
+
+<style>
+  .contact-form-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .focused label {
+    color: #D32F2F;
+    font-weight: 500;
+  }
+  
+  #form-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+  }
+</style>

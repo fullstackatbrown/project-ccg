@@ -1,0 +1,124 @@
+---
+// AnnualReportSection.astro
+---
+
+<!-- Enhanced Annual Report Section -->
+<section class="w-full py-20 bg-white relative overflow-hidden">
+<!-- Subtle Background Pattern -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 text-center text-[#1A237E]" style="font-family: 'arimo', sans-serif;">Annual Report</h1>
+        <div class="flex items-center justify-center mb-6">
+            <div class="w-10 h-1 bg-[#D32F2F]"></div>
+            <div class="w-2 h-2 rounded-full bg-[#D32F2F] ml-1"></div>
+            <div class="w-10 h-1 bg-[#D32F2F] ml-1"></div>
+        </div>
+        <p class="text-lg text-[#4A5568] max-w-2xl mx-auto">Stay informed about our impact, achievements, and future plans through our comprehensive annual reports.</p>
+        </div>
+        
+        <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-xl overflow-hidden fade-in fade-in-delay-1 report-card-hover max-w-5xl mx-auto">
+        <div class="w-full md:w-2/5 relative overflow-hidden h-64 md:h-auto">
+            <img src="/src/assets/report.jpg" alt="Annual Report" class="w-full h-full object-cover transition-all duration-500 transform hover:scale-105">
+            <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#1A237E]/30 to-transparent"></div>
+        </div>
+        <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+            <div class="inline-block px-3 py-1 bg-[#EEF2FF] text-[#3949AB] text-sm font-medium rounded-full mb-4">Latest Release</div>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4 text-[#1A237E]">2024 Annual Report</h3>
+            <p class="text-[#4A5568] mb-6 text-lg leading-relaxed">
+            Explore our client success stories, organizational growth, and the measurable impact we've made in our most recent annual report. Learn about our methodology, outcomes, and the innovative solutions we've developed.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+            <a href="https://drive.google.com/file/d/1Aw0RdZ979MUWXhvcyrbGLgLnC4-39ftT/view" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#1A237E] to-[#283593] text-white font-medium rounded-lg hover:shadow-md hover:from-[#283593] hover:to-[#1A237E] transition-all duration-300 transform hover:-translate-y-1">
+                Read Full Report
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-[#1A237E] text-[#1A237E] font-medium rounded-lg hover:bg-[#EEF2FF] transition-colors duration-300">
+                Download PDF
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+            </a>
+            </div>
+            <div class="mt-6 flex items-center text-sm text-[#718096]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Last updated: March 2024
+            </div>
+        </div>
+        </div>
+        
+        <!-- Previous Reports List (Optional) -->
+        <div class="max-w-5xl mx-auto mt-8 flex justify-center fade-in fade-in-delay-2">
+        <button class="text-[#1A237E] hover:text-[#D32F2F] transition-colors duration-300 flex items-center text-sm font-medium">
+            View previous reports
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Enhanced Fade-in animation classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-delay-1 {
+    transition-delay: 0.3s;
+}
+
+.fade-in-delay-2 {
+    transition-delay: 0.6s;
+}
+
+/* Report card hover effect */
+.report-card-hover {
+    transition: all 0.5s ease;
+}
+
+.report-card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Background patterns */
+.bg-grid-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231A237E' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/svg%3E");
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Stop observing once visible
+        }
+    });
+    }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
+    });
+
+    fadeElements.forEach(element => {
+    observer.observe(element);
+    });
+});
+</script>

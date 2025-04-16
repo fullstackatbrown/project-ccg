@@ -1,0 +1,77 @@
+---
+// HeroSection.astro
+---
+
+<!-- Hero Section with Parallax Effect -->
+<section class="hero-section relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image with Parallax -->
+    <div id="parallax-bg" class="absolute w-full h-full transform scale-110">
+        <img 
+            src="/src/assets/images/hero.jpg" 
+            alt="Hero Image" 
+            class="w-full h-full object-cover object-center transition-all duration-1000"
+        >
+    </div>
+    
+    <!-- Gradient Overlay -->
+    <div class="absolute w-full h-full bg-gradient-to-t from-[#0c1445] via-[#0c1445cc] to-[#0c144566]"></div>
+    
+    <!-- Hero Content - Just Logo -->
+    <div class="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center">
+        <!-- Animated Logo Entry -->
+        <div class="slide-up-animation">
+            <img 
+                src="/src/assets/logo_white.png" 
+                alt="CCG Logo" 
+                class="w-[80%] md:w-[65%] lg:w-[60%] max-w-5xl mx-auto"
+            >
+        </div>
+    </div>
+    
+    <!-- Scrolling Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+    </div>
+</section>
+
+<style>
+    .slide-up-animation {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideUp 0.8s ease forwards;
+    }
+    
+    @keyframes slideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @media (min-width: 768px) {
+        #parallax-bg {
+            transition: transform 0.5s ease;
+        }
+    }
+</style>
+
+<script>
+    // Simple parallax effect on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const parallaxBg = document.getElementById('parallax-bg');
+        
+        if (parallaxBg && window.innerWidth >= 768) {
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                const speed = 0.3;
+                
+                // Limit parallax to hero section
+                if (scrollPosition <= window.innerHeight) {
+                    parallaxBg.style.transform = `translateY(${scrollPosition * speed}px) scale(1.1)`;
+                }
+            });
+        }
+    });
+</script>

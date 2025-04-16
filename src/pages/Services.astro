@@ -1,7 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import Navbar from '../components/common/Navbar.astro';
+import Footer from '../components/common/Footer.astro';
+import ServicesSection from '../components/services/ServicesSection.astro';
+import ProcessSection from '../components/services/ProcessSection.astro';
+import ValuesSection from '../components/services/ValuesSection.astro';
+import AnnualReportSection from '../components/common/AnnualReportSection.astro';
+import ProjectsSection from '../components/services/ProjectsSection.astro';
 import '../styles/global.css';
 import { fetchClients } from '../../contentfulClient.js';
 
@@ -12,328 +17,83 @@ const projects = await fetchClients();
   <div class="flex flex-col min-h-screen">
     <Navbar></Navbar>
   
-    <!-- Hero Section -->
-    <section class="relative w-full h-[75vh] flex items-center justify-center overflow-hidden fade-in">
-			<!-- Background Image -->
-			<img 
-				id="contentful-image"
-				alt="group photo" 
-				class="relative min-w-full h-full object-cover object-center md:object-[50%_20%] scale-110 transition-all duration-700 fade-in-delay-1"
-			>
-
-      <!-- Dark Overlay (for contrast) -->
-      <div class="absolute w-full h-full bg-black opacity-50"></div>
-
-      <!-- Overlay Text -->
-      <div class="absolute inset-0 flex flex-col items-start justify-end p-8 md:p-16 lg:p-24 fade-in">
-        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4" style="font-family: 'Almarai', sans-serif;">
-            Our Services
-        </h1>
-        <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl">
-          Shape your future in consulting with Brown's premier student consulting organization
-        </p>
+    <!-- Hero Section with Parallax -->
+    <section class="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
+      <!-- Background Image with Parallax -->
+      <div id="parallax-bg" class="absolute w-full h-full transform scale-110">
+        <img 
+          src="/src/assets/images/quietgreen.jpg" 
+          alt="group photo" 
+          class="w-full h-full object-cover object-center md:object-[50%_20%] transition-all duration-1000"
+        >
       </div>
-    </section>
 
-    <!-- Our Values Section -->
-    <section class="w-full py-16 bg-white">
-      <div class="container mx-auto px-4 fade-in-delay-1">
-        <h1 class="text-5xl md:text-7xl font-bold mb-8 text-center text-[#0B144A]" style="font-family: 'arimo', sans-serif;">Our Values</h1>
-        <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-2">
-          <div class="w-12 h-1 bg-red-700"></div>
-          <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
-          <div class="w-12 h-1 bg-red-700 ml-1"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 fade-in-delay-3">
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold mb-3 text-[#c32727]">Excellence & Dedication</h3>
-            <p class="text-gray-700">CCG attracts Brown's top student talent, selecting about 8% of applicants through a rigorous recruitment process. Our members undergo structured training and hands-on experience, ensuring we uphold the highest standards in every engagement.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold mb-3 text-[#c32727]">Tangible Impact</h3>
-            <p class="text-gray-700">Each project team dedicates over 400 hours across a 10-week engagement, conducting in-depth research and strategic analysis to drive meaningful results. Our clients consistently report valuable insights and actionable recommendations.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold mb-3 text-[#c32727]">Tailored Solutions</h3>
-            <p class="text-gray-700">We don't believe in one-size-fits-all strategies. Our teams work closely with each client to define project objectives and adapt dynamically as new opportunities emerge, delivering solutions aligned with each company's unique goals.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold mb-3 text-[#c32727]">Unparalleled Resources</h3>
-            <p class="text-gray-700">CCG provides access to a network of highly motivated students, industry research, and faculty insights. Our teams use advanced analytical tools and structured methodologies to uncover key business insights.</p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-bold mb-3 text-[#c32727]">Collaborative & Diverse Teams</h3>
-            <p class="text-gray-700">CCG teams bring together students from diverse academic backgrounds, equipping each engagement with a well-rounded perspective. A typical team consists of 4-6 Consultants led by 1-2 Project Leads, ensuring balanced execution.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      <!-- Dark Gradient Overlay -->
+      <div class="absolute w-full h-full bg-gradient-to-t from-[#0c1445] via-[#0c1445cc] to-[#0c144566]"></div>
 
-    <!-- Our Services Section -->
-    <section class="w-full py-16 bg-[#0B144A] text-white">
-      <div class="container mx-auto px-4 text-center fade-in">
-        <h1 class="text-5xl md:text-7xl font-bold mb-8" style="font-family: 'arimo', sans-serif;">Our Services</h1>
-        <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
-          <div class="w-12 h-1 bg-red-700"></div>
-          <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
-          <div class="w-12 h-1 bg-red-700 ml-1"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 fade-in-delay-2">
-          <div class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-            <img src="/src/assets/images/services1.png" alt="Revenue Strategy" class="h-16 mb-4">
-            <h3 class="text-2xl font-bold mb-2 text-red-500">Revenue Strategy</h3>
-            <p class="text-white/90">Developing strategies to boost sales and profitability</p>
-          </div>
-          <div class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-            <img src="/src/assets/images/services2.png" alt="Consumer Preferences" class="h-16 mb-4">
-            <h3 class="text-2xl font-bold mb-2 text-red-500">Consumer Preferences</h3>
-            <p class="text-white/90">Understanding customer behavior to inform products and marketing</p>
-          </div>
-          <div class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-            <img src="/src/assets/images/services3.png" alt="Operations Recommendations" class="h-16 mb-4">
-            <h3 class="text-2xl font-bold mb-2 text-red-500">Operations Recommendations</h3>
-            <p class="text-white/90">Enhancing efficiency and reducing costs in operations</p>
-          </div>
-          <div class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-            <img src="/src/assets/images/services4.png" alt="Market Entry" class="h-16 mb-4">
-            <h3 class="text-2xl font-bold mb-2 text-red-500">Market Entry</h3>
-            <p class="text-white/90">Identifying opportunities and risks for new market entry</p>
-          </div>
-          <div class="flex flex-col items-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-            <img src="/src/assets/images/services5.png" alt="Competitive Benchmarking" class="h-16 mb-4">
-            <h3 class="text-2xl font-bold mb-2 text-red-500">Competitive Benchmarking</h3>
-            <p class="text-white/90">Analyzing competitors to strengthen market position</p>
-          </div>
-        </div>
-      </div>
-    </section>  
-
-    <!-- Client Projects Section -->
-    <section class="w-full py-16 bg-white fade-in">
-      <div class="container mx-auto px-4">
-        <h1 class="text-5xl md:text-7xl font-bold mb-8 text-center text-[#0B144A]" style="font-family: 'arimo', sans-serif;">Client Projects</h1>
-        <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
-          <div class="w-12 h-1 bg-red-700"></div>
-          <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
-          <div class="w-12 h-1 bg-red-700 ml-1"></div>
-        </div>
-        
-        <div class="flex flex-col lg:flex-row gap-8">
-          <!-- Left: Project Description -->
-          <div id="project-description" class="w-full lg:w-2/3 bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center fade-in-delay-2">
-            <div class="flex items-center justify-center w-full mb-6">
-              <img src={projects[0]?.logo} id="project-logo" class="w-24 h-24 object-cover rounded-lg mr-6" alt="Project Logo" />
-              <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A]">{projects[0]?.companyName || "Loading..."}</h3>
-            </div>
-            <div class="flex items-center justify-center mb-6">
-              <div class="w-8 h-1 bg-red-700"></div>
-              <div class="w-2 h-2 rounded-full bg-red-700 ml-1"></div>
-              <div class="w-8 h-1 bg-red-700 ml-1"></div>
-            </div>
-            <p class="text-gray-700 text-lg text-left">{projects[0]?.description || "Loading project description..."}</p>
-          </div>
-
-          <!-- Right: Clickable Boxes -->
-          <div id="project-boxes" class="w-full lg:w-1/3 fade-in-delay-3">
-            <h2 class="text-3xl md:text-4xl font-bold text-[#0B144A] mb-6" style="font-family: 'arimo', sans-serif;">Select a Project</h2>
-            <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
-              {projects.map((project, index) => (
-                <div 
-                  class="project-box flex items-center gap-4 p-4 border border-gray-200 rounded-lg cursor-pointer transition hover:shadow-md hover:border-red-500"
-                  data-index={index}>
-                  <img src={project.logo} alt={project.companyName} class="w-16 h-16 object-cover rounded-lg">
-                  <h4 class="text-xl font-bold text-[#0B144A]">{project.companyName}</h4>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Process Section -->
-    <section class="w-full py-16 bg-[#0B144A14]">
-      <div class="container mx-auto px-4 text-center fade-in">
-        <h1 class="text-5xl md:text-7xl font-bold mb-8 text-[#0B144A]" style="font-family: 'arimo', sans-serif;">Our Process</h1>
-        <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
-          <div class="w-12 h-1 bg-red-700"></div>
-          <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
-          <div class="w-12 h-1 bg-red-700 ml-1"></div>
-        </div>
-        <div class="max-w-4xl mx-auto fade-in-delay-2">
-          <div class="relative">
-            <!-- Connection Line -->
-            <div class="absolute left-8 top-0 w-1 h-full bg-red-700 hidden md:block"></div>
-            
-            <!-- Steps -->
-            <div class="space-y-12">
-              <!-- Step 1 -->
-              <div class="flex flex-col md:flex-row items-start text-left relative">
-                <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">1</div>
-                <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
-                  <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">Team Formation</h3>
-                  <p class="text-gray-700">CCG Project Teams consist of 1-2 Project Leads and 4-6 Consultants who work collaboratively to meet your unique needs and deliver measurable impact.</p>
-                </div>
-              </div>
-              
-              <!-- Step 2 -->
-              <div class="flex flex-col md:flex-row items-start text-left relative">
-                <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">2</div>
-                <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
-                  <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">Initial Consultation</h3>
-                  <p class="text-gray-700">Before the semester begins, CCG leadership meets with your team to understand your company's goals, challenges, and priorities. Together, we define the project scope and develop an engagement charter that outlines key objectives and deliverables.</p>
-                </div>
-              </div>
-              
-              <!-- Step 3 -->
-              <div class="flex flex-col md:flex-row items-start text-left relative">
-                <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">3</div>
-                <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
-                  <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">Research & Strategy Development</h3>
-                  <p class="text-gray-700">Over the course of 10 weeks, our team conducts in-depth research, market analysis, and strategy development to address your business needs. A Mid-Semester Deliverable allows for feedback and adjustments to ensure alignment with your expectations.</p>
-                </div>
-              </div>
-              
-              <!-- Step 4 -->
-              <div class="flex flex-col md:flex-row items-start text-left relative">
-                <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">4</div>
-                <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
-                  <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">Final Deliverables & Recommendations</h3>
-                  <p class="text-gray-700">At the end of the engagement, we deliver a comprehensive set of insights and recommendations tailored to your organization's goals. Our team presents findings in a final report and presentation, equipping you with actionable strategies for success.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Annual Report Section -->
-    <section class="w-full py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#0B144A]">Annual Report</h2>
-          <div class="flex items-center justify-center mb-8">
-            <div class="w-12 h-1 bg-red-700"></div>
-            <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
-            <div class="w-12 h-1 bg-red-700 ml-1"></div>
-          </div>
-          <p class="text-xl text-gray-700">
-            Discover our achievements, impact, and future directions in our latest annual report.
+      <!-- Overlay Text with Animated Entry -->
+      <div class="absolute inset-0 flex flex-col items-start justify-end p-8 md:p-16 lg:p-24 text-content-animation">
+        <div class="slide-up-animation">
+          <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6" style="font-family: 'Almarai', sans-serif;">
+              Our Services
+          </h1>
+          <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl leading-relaxed">
+            Shape your future in consulting with Brown's premier student consulting organization
           </p>
-        </div>
-        
-        <div class="flex flex-col md:flex-row bg-white rounded-lg shadow-xl overflow-hidden fade-in fade-in-delay-1">
-          <div class="w-full md:w-1/2">
-            <img src="/src/assets/report.jpg" alt="Annual Report" class="w-full max-w-sm h-auto object-cover mx-auto">
-          </div>
-          <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-            <h3 class="text-2xl md:text-3xl font-bold mb-4 text-[#0B144A]">2024 Annual Report</h3>
-            <p class="text-lg text-gray-800 mb-6">
-              Our latest annual report showcases our major accomplishments, financial health, and strategic plans for the future. Learn about our impact metrics, community initiatives, and sustainable practices.
-            </p>
-            <ul class="space-y-3 mb-8">
-              <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-700 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Financial highlights and growth metrics</span>
-              </li>
-              <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-700 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Client success stories and testimonials</span>
-              </li>
-              <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-700 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Strategic initiatives and future outlook</span>
-              </li>
-            </ul>
-            <div>
-              <a href="https://drive.google.com/file/d/1Aw0RdZ979MUWXhvcyrbGLgLnC4-39ftT/view" target="_blank" class="inline-flex items-center px-8 py-3 bg-red-700 text-white font-medium rounded-full hover:bg-red-800 transition-colors shadow-md">
-                Read the Report
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </a>
-            </div>
-          </div>
+          <a href="#learn-more" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
 
-
-    
-    <!-- Contact Us Section -->
-    <!--
-    <section class="w-full py-16 bg-[#0B144A] text-white">
-      <div class="container mx-auto px-4 text-center fade-in">
-        <h1 class="text-5xl md:text-7xl font-bold mb-8" style="font-family: 'arimo', sans-serif;">Contact Us</h1>
-        <div class="flex items-center justify-center mb-8 mt-4 fade-in-delay-1">
-          <div class="w-12 h-1 bg-red-700"></div>
-          <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
-          <div class="w-12 h-1 bg-red-700 ml-1"></div>
-        </div>
-        <div class="max-w-2xl mx-auto bg-white/10 p-8 rounded-lg backdrop-blur-sm fade-in-delay-2">
-          <p class="text-xl mb-4">Thank you for your interest in working with CCG! We are excited about the possibility of collaborating with your organization.</p>
-          <p class="text-xl mb-4">If our services interest you, please contact us to set up an initial call to discuss a potential engagement.</p> 
-          <p class="text-xl mb-4">We would begin our engagement in the next semester.</p>
-          <p class="text-xl font-bold">
-            <a href="mailto:collegiateconsultinggroup@brown.edu" class="text-red-400 hover:text-red-300 underline">collegiateconsultinggroup@brown.edu</a>
-          </p>
-        </div>
-      </div>
-    </section>
-    -->
+    <ValuesSection />
+    <ServicesSection />
+    <ProjectsSection />
+    <ProcessSection />
+    <AnnualReportSection />
 
     <Footer></Footer>
   </div>
 </Layout>
 
 <style>
-  /* Fade-in animation classes */
-  .fade-in {
+  /* Hero section parallax effect */
+  .slide-up-animation {
+    animation: slideUp 1.2s forwards;
+    animation-delay: 0.5s;
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .fade-in-delay-1 {
-    transition-delay: 0.2s;
-  }
-
-  .fade-in-delay-2 {
-    transition-delay: 0.4s;
-  }
-
-  .fade-in-delay-3 {
-    transition-delay: 0.6s;
+    transform: translateY(50px);
   }
   
-  /* Project box styles */
-  .project-box {
-    transition: all 0.3s ease;
-  }
-  
-  .project-box.active {
-    background-color: #C32727;
-    color: white;
-    border-color: #C32727;
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 
-<script type="module">
-  import { fetchClients } from '../../contentfulClient.js';
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Parallax effect for hero section
+    const parallaxBg = document.getElementById('parallax-bg');
+    
+    window.addEventListener('scroll', function() {
+      if (parallaxBg) {
+        const scrollPosition = window.scrollY;
+        const translateY = scrollPosition * 0.4;
+        parallaxBg.style.transform = `translateY(${translateY}px) scale(1.1)`;
+      }
+    });
 
-  document.addEventListener("DOMContentLoaded", async function() {
     // Intersection Observer for fade-in animations
     const fadeElements = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
@@ -344,72 +104,12 @@ const projects = await fetchClients();
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
     });
 
     fadeElements.forEach(element => {
       observer.observe(element);
     });
-    
-    // Projects functionality
-    const projects = await fetchClients();
-    let activeBox = null; // Track the currently active box
-
-    // Function to update the project description
-    function updateProject(index) {
-      const projectDescription = document.getElementById("project-description");
-      const projectLogo = document.getElementById("project-logo");
-
-      if (projects[index]) {
-        projectLogo.src = projects[index].logo || "";
-        projectLogo.alt = projects[index].companyName || "Project Logo";
-        
-        // Update content with fade effect
-        projectDescription.style.opacity = "0";
-        setTimeout(() => {
-          projectDescription.innerHTML = `
-            <div class="flex items-center justify-center w-full mb-6">
-              <img id="project-logo" class="w-24 h-24 object-cover rounded-lg mr-6" alt="${projects[index].companyName}" src="${projects[index].logo || ''}" />
-              <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A]">${projects[index].companyName}</h3>
-            </div>
-            <div class="flex items-center justify-center mb-6">
-              <div class="w-8 h-1 bg-red-700"></div>
-              <div class="w-2 h-2 rounded-full bg-red-700 ml-1"></div>
-              <div class="w-8 h-1 bg-red-700 ml-1"></div>
-            </div>
-            <p class="text-gray-700 text-lg text-left">${projects[index].description}</p>
-          `;
-          projectDescription.style.opacity = "1";
-        }, 300);
-      }
-    }
-
-    // Add event listeners to the clickable boxes
-    const projectBoxes = document.querySelectorAll(".project-box");
-    projectBoxes.forEach((box) => {
-      box.addEventListener("click", () => {
-        const index = box.getAttribute("data-index");
-
-        // Revert the previously active box to normal
-        if (activeBox) {
-          activeBox.classList.remove("active", "bg-red-700", "text-white", "border-red-700");
-        }
-
-        // Set the clicked box as active
-        box.classList.add("active", "bg-red-700", "text-white", "border-red-700");
-        activeBox = box;
-
-        // Update the project description
-        updateProject(index);
-      });
-    });
-    
-    // Set the first project as active by default
-    if (projectBoxes.length > 0) {
-      projectBoxes[0].classList.add("active", "bg-red-700", "text-white", "border-red-700");
-      activeBox = projectBoxes[0];
-      updateProject(0);
-    }
   });
 </script>

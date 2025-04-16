@@ -70,3 +70,63 @@
 body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
+/* Additional global CSS styles - Add to global.css */
+
+/* Fade in animation for sections */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Modal closing animation */
+.modal.closing .modal-content {
+animation: modalFadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalFadeOut {
+from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+to {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+}
+}
+
+/* Active card state */
+.member-card.active-card {
+transform: scale(0.98);
+box-shadow: 0 25px 50px rgba(11, 20, 74, 0.25);
+}
+
+/* Smooth scroll behavior */
+html {
+scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for modal */
+.modal-content::-webkit-scrollbar {
+width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+background: #f1f1f1;
+border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+background: #c3c3c3;
+border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+background: #a31f1f;
+}

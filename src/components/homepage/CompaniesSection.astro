@@ -1,0 +1,105 @@
+<section class="w-full bg-white text-black py-24 overflow-hidden group transition-all duration-500">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16 animate-element">
+        <h2 class="text-5xl md:text-6xl font-bold mb-8 text-[#1A237E] text-center" style="font-family: 'arimo', sans-serif;">
+            Where We End Up
+        </h2>
+        <div class="flex items-center justify-center mb-8">
+            <div class="w-12 h-1 bg-gradient-to-r from-[#D32F2F] to-[#B71C1C]"></div>
+            <div class="w-3 h-3 rounded-full bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] ml-1"></div>
+            <div class="w-12 h-1 bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] ml-1"></div>
+        </div>
+        <p class="text-lg md:text-xl font-light leading-relaxed text-gray-800">
+            Our alumni have gone on to build successful careers at leading firms across industries
+        </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 transition-transform duration-500 group-hover:scale-[1.02] group-hover:brightness-105">
+        <!-- Company Logos -->
+        <div class="company-logo slide-in-right delay-1">
+            <img src="/src/assets/companies/mckinsey.avif" alt="McKinsey" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-2">
+            <img src="/src/assets/companies/amazon.avif" alt="Amazon" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-3">
+            <img src="/src/assets/companies/blackrock.avif" alt="BlackRock" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-4">
+            <img src="/src/assets/companies/eyparthenon.avif" alt="EY Parthenon" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-1">
+            <img src="/src/assets/companies/evercore.jpeg" alt="Evercore" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-2">
+            <img src="/src/assets/companies/bain.avif" alt="Bain & Company" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-3">
+            <img src="/src/assets/companies/BCG.avif" alt="Boston Consulting Group" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-4">
+            <img src="/src/assets/companies/goldmansachs.avif" alt="Goldman Sachs" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-1">
+            <img src="/src/assets/companies/google.avif" alt="Google" class="max-h-24 max-w-[75%] object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-2">
+            <img src="/src/assets/companies/whitehouse.png" alt="White House" class="max-h-24 max-w-full object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-3">
+            <img src="/src/assets/companies/janestreet.avif" alt="Jane Street" class="max-h-24 max-w-[75%] object-contain transition-all duration-500">
+        </div>
+
+        <div class="company-logo slide-in-right delay-4">
+            <img src="/src/assets/companies/adl.jpeg" alt="ADL" class="max-h-24 max-w-[75%] object-contain transition-all duration-500">
+        </div>
+        </div>
+    </div>
+
+    <style>
+        .company-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10rem;
+        border-radius: 0.75rem;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        }
+
+        .slide-in-right {
+        animation: slideInRight 0.8s ease forwards;
+        opacity: 0;
+        }
+
+        @keyframes slideInRight {
+        from {
+            transform: translateX(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</section>

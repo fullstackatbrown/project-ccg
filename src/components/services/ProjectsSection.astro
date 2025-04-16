@@ -1,0 +1,273 @@
+---
+import { fetchClients } from '../../../contentfulClient.js';
+
+const projects = await fetchClients();
+// Make projects available to client-side JavaScript
+const projectsJSON = JSON.stringify(projects);
+---
+
+<!-- Client Projects Section with enhanced fluid design -->
+<section class="w-full py-24 bg-gradient-to-b from-[#F5F7FA] to-white fade-in">
+  <div class="container mx-auto px-4">
+    <h1 class="text-5xl md:text-7xl font-bold mb-8 text-center text-[#1A237E]" style="font-family: 'arimo', sans-serif;">Client Projects</h1>
+    <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
+      <div class="w-12 h-1 bg-[#D32F2F]"></div>
+      <div class="w-3 h-3 rounded-full bg-[#D32F2F] ml-1"></div>
+      <div class="w-12 h-1 bg-[#D32F2F] ml-1"></div>
+    </div>
+    
+    <div class="flex flex-col lg:flex-row gap-12">
+      <!-- Left: Project Description with enhanced curved design -->
+      <div id="project-description" class="w-full lg:w-2/3 bg-gradient-to-br from-white to-[#F5F7FA] p-10 rounded-3xl shadow-lg flex flex-col items-center text-center fade-in-delay-2 relative overflow-hidden transform transition-all duration-500">
+        <!-- Decorative accent -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#D32F2F] to-[#1A237E]"></div>
+        
+        <div class="flex flex-col md:flex-row items-center justify-center w-full mb-8">
+          <div class="p-4 rounded-full bg-white shadow-lg mb-6 md:mb-0 md:mr-8 transform transition-all duration-500 hover:rotate-3">
+            <img src={projects[0]?.logo} id="project-logo" class="w-20 h-20 object-cover rounded-full" alt="Project Logo" />
+          </div>
+          <h3 class="text-3xl md:text-4xl font-bold text-[#1A237E]">{projects[0]?.companyName || "Loading..."}</h3>
+        </div>
+        
+        <p class="text-[#4A5568] text-lg leading-relaxed">{projects[0]?.description || "Loading project description..."}</p>
+        
+        <!-- Enhanced decoration elements -->
+        <div class="mt-8 w-full flex justify-center">
+          <div class="h-px w-1/2 bg-gradient-to-r from-transparent via-[#D32F2F] to-transparent"></div>
+        </div>
+        
+        <!-- Floating decorative elements -->
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-[#1A237E] opacity-5 blur-lg"></div>
+        <div class="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-[#D32F2F] opacity-5 blur-lg"></div>
+      </div>
+
+      <!-- Right: Project List with enhanced flowing design -->
+      <div id="project-tiles" class="w-full lg:w-1/3 fade-in-delay-3">
+        <h2 class="text-3xl font-bold text-[#1A237E] mb-6" style="font-family: 'arimo', sans-serif;">Explore Our Work</h2>
+        <div class="space-y-4 max-h-[500px] overflow-y-auto pr-4 client-scrollbar">
+          {projects.map((project, index) => (
+            <div 
+              class="project-tile group cursor-pointer transition-all duration-300 hover:translate-x-2"
+              data-index={index}>
+              <div class="flex items-center gap-4 p-5 rounded-2xl bg-white shadow-sm group-hover:shadow-md border-l-4 border-transparent group-hover:border-[#D32F2F]">
+                <div class="shrink-0">
+                  <img src={project.logo} alt={project.companyName} class="w-14 h-14 object-cover rounded-full border-2 border-white shadow-sm group-hover:shadow-md transition-all">
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-xl font-semibold text-[#1A237E] group-hover:text-[#D32F2F] transition-colors">{project.companyName}</h4>
+                  <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <span class="mr-2">View Project</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="project-indicator w-1 h-10 bg-gray-100 rounded-full group-hover:bg-[#D32F2F] transition-colors"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pass the projects data to client-side JavaScript -->
+<script define:vars={{ projectsJSON }}>
+  // Make projects available to window
+  window.projects = JSON.parse(projectsJSON);
+</script>
+
+<script type="module">
+  import { fetchClients } from '../../../contentfulClient.js';
+  
+  document.addEventListener("DOMContentLoaded", async function() {
+    // Check if we already have projects from SSR, if not fetch them
+    if (!window.projects) {
+      try {
+        window.projects = await fetchClients();
+      } catch (error) {
+        console.error("Error fetching clients:", error);
+      }
+    }
+    
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Projects functionality
+    let activeProject = null; // Track the currently active project
+
+    // Function to update the project description with enhanced animation
+    function updateProject(index) {
+      const projectDescription = document.getElementById("project-description");
+      const projects = window.projects || [];
+
+      if (projects[index]) {
+        // Add enhanced fade out and transform animation
+        projectDescription.style.opacity = "0";
+        projectDescription.style.transform = "translateY(10px) scale(0.98)";
+        
+        setTimeout(() => {
+          // Update content with new project data
+          projectDescription.innerHTML = `
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#D32F2F] to-[#1A237E]"></div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center w-full mb-8">
+              <div class="p-4 rounded-full bg-white shadow-lg mb-6 md:mb-0 md:mr-8 transform transition-all duration-500 hover:rotate-3">
+                <img id="project-logo" class="w-20 h-20 object-cover rounded-full" alt="${projects[index].companyName}" src="${projects[index].logo || ''}" />
+              </div>
+              <h3 class="text-3xl md:text-4xl font-bold text-[#1A237E]">${projects[index].companyName}</h3>
+            </div>
+            
+            <p class="text-[#4A5568] text-lg leading-relaxed">${projects[index].description}</p>
+            
+            <div class="mt-8 w-full flex justify-center">
+              <div class="h-px w-1/2 bg-gradient-to-r from-transparent via-[#D32F2F] to-transparent"></div>
+            </div>
+            
+            <!-- Floating decorative elements -->
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-[#1A237E] opacity-5 blur-lg"></div>
+            <div class="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-[#D32F2F] opacity-5 blur-lg"></div>
+          `;
+          
+          // Add enhanced fade in and transform animation
+          setTimeout(() => {
+            projectDescription.style.opacity = "1";
+            projectDescription.style.transform = "translateY(0) scale(1)";
+          }, 50);
+        }, 300);
+      }
+    }
+
+    // Add event listeners to the project tiles
+    const projectTiles = document.querySelectorAll(".project-tile");
+    projectTiles.forEach((tile) => {
+      tile.addEventListener("click", () => {
+        const index = tile.getAttribute("data-index");
+
+        // Revert the previously active project to normal
+        if (activeProject) {
+          activeProject.classList.remove("active");
+          const prevIndicator = activeProject.querySelector(".project-indicator");
+          if (prevIndicator) {
+            prevIndicator.classList.remove("bg-[#D32F2F]");
+            prevIndicator.classList.add("bg-gray-100");
+          }
+        }
+
+        // Set the clicked project as active
+        tile.classList.add("active");
+        const indicator = tile.querySelector(".project-indicator");
+        if (indicator) {
+          indicator.classList.remove("bg-gray-100");
+          indicator.classList.add("bg-[#D32F2F]");
+        }
+        activeProject = tile;
+
+        // Update the project description with animation
+        updateProject(index);
+      });
+    });
+    
+    // Set the first project as active by default
+    if (projectTiles.length > 0) {
+      projectTiles[0].classList.add("active");
+      const firstIndicator = projectTiles[0].querySelector(".project-indicator");
+      if (firstIndicator) {
+        firstIndicator.classList.remove("bg-gray-100");
+        firstIndicator.classList.add("bg-[#D32F2F]");
+      }
+      activeProject = projectTiles[0];
+      // Initial project is already set from SSR, but we can still add animation
+      document.getElementById("project-description").style.opacity = "1";
+    }
+  });
+</script>
+
+<style>
+  /* Fade in animations */
+  .fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in-delay-1 {
+    transition-delay: 0.2s;
+  }
+  
+  .fade-in-delay-1.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in-delay-2 {
+    transition-delay: 0.4s;
+  }
+  
+  .fade-in-delay-2.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in-delay-3 {
+    transition-delay: 0.6s;
+  }
+  
+  .fade-in-delay-3.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Enhanced project description transitions */
+  #project-description {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, opacity 0.4s ease, transform 0.5s ease;
+    opacity: 0;
+  }
+  
+  /* Enhanced project tile active state */
+  .project-tile.active {
+    transform: translateX(8px);
+  }
+  
+  .project-tile.active h4 {
+    color: #D32F2F;
+  }
+  
+  /* Custom scrollbar */
+  .client-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .client-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .client-scrollbar::-webkit-scrollbar-thumb {
+    background: #CBD5E0;
+    border-radius: 20px;
+  }
+  
+  .client-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+  }
+</style>

@@ -1,0 +1,173 @@
+---
+// ProcessSection.astro
+---
+
+<!-- Our Process Section with Timeline Animation -->
+<section class="w-full py-24 bg-gradient-to-b from-white to-[#F5F7FA] relative">
+<!-- Background Pattern -->
+    <div class="absolute inset-0 bg-pattern opacity-5"></div>
+
+    <div class="container mx-auto px-4 relative z-10 fade-in">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 text-[#1A237E] text-center" style="font-family: 'arimo', sans-serif;">Our Process</h1>
+        <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
+        <div class="w-12 h-1 bg-[#D32F2F]"></div>
+        <div class="w-3 h-3 rounded-full bg-[#D32F2F] ml-1"></div>
+        <div class="w-12 h-1 bg-[#D32F2F] ml-1"></div>
+        </div>
+        <div class="max-w-4xl mx-auto fade-in-delay-2">
+        <div class="relative">
+            <!-- Animated Connection Line -->
+            <div class="absolute left-8 top-0 w-1 h-full bg-gradient-to-b from-[#1A237E] to-[#D32F2F] hidden md:block timeline-progress"></div>
+            
+            <!-- Steps with Hover Effects -->
+            <div class="space-y-16">
+            <!-- Step 1 -->
+            <div class="flex flex-col md:flex-row items-start text-left relative process-step">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#1A237E] to-[#283593] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0 shadow-lg step-number">1</div>
+                <div class="md:ml-10 bg-white p-8 rounded-xl shadow-lg flex-grow transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <h3 class="text-2xl font-bold mb-4 text-[#1A237E]">Team Formation</h3>
+                <p class="text-[#4A5568] leading-relaxed">CCG Project Teams consist of 1-2 Project Leads and 4-6 Consultants who work collaboratively to meet your unique needs and deliver measurable impact.</p>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="flex flex-col md:flex-row items-start text-left relative process-step">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#1A237E] to-[#283593] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0 shadow-lg step-number">2</div>
+                <div class="md:ml-10 bg-white p-8 rounded-xl shadow-lg flex-grow transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <h3 class="text-2xl font-bold mb-4 text-[#1A237E]">Initial Consultation</h3>
+                <p class="text-[#4A5568] leading-relaxed">Before the semester begins, CCG leadership meets with your team to understand your company's goals, challenges, and priorities. Together, we define the project scope and develop an engagement charter that outlines key objectives and deliverables.</p>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="flex flex-col md:flex-row items-start text-left relative process-step">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#1A237E] to-[#283593] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0 shadow-lg step-number">3</div>
+                <div class="md:ml-10 bg-white p-8 rounded-xl shadow-lg flex-grow transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <h3 class="text-2xl font-bold mb-4 text-[#1A237E]">Research & Strategy Development</h3>
+                <p class="text-[#4A5568] leading-relaxed">Over the course of 10 weeks, our team conducts in-depth research, market analysis, and strategy development to address your business needs. A Mid-Semester Deliverable allows for feedback and adjustments to ensure alignment with your expectations.</p>
+                </div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="flex flex-col md:flex-row items-start text-left relative process-step">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#1A237E] to-[#283593] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0 shadow-lg step-number">4</div>
+                <div class="md:ml-10 bg-white p-8 rounded-xl shadow-lg flex-grow transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <h3 class="text-2xl font-bold mb-4 text-[#1A237E]">Final Deliverables & Recommendations</h3>
+                <p class="text-[#4A5568] leading-relaxed">At the end of the engagement, we deliver a comprehensive set of insights and recommendations tailored to your organization's goals. Our team presents findings in a final report and presentation, equipping you with actionable strategies for success.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Timeline animation */
+.timeline-progress {
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0));
+    animation: timeline-progress 5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes timeline-progress {
+    0% { height: 0%; }
+    100% { height: 100%; }
+}
+
+/* Step number pulse effect */
+.step-number {
+    position: relative;
+}
+
+.step-number::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #1A237E, #D32F2F);
+    z-index: -1;
+    opacity: 0;
+    animation: pulse 2s infinite;
+}
+
+.process-step:hover .step-number::after {
+    animation: pulse 1.5s infinite;
+    opacity: 0.3;
+}
+
+@keyframes pulse {
+    0% {
+    transform: scale(1);
+    opacity: 0.5;
+    }
+    50% {
+    transform: scale(1.1);
+    opacity: 0.2;
+    }
+    100% {
+    transform: scale(1);
+    opacity: 0.5;
+    }
+}
+
+/* Background patterns */
+.bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231A237E' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Process steps animation
+    const processSteps = document.querySelectorAll('.process-step');
+    const processObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+        // Add a staggered delay based on the index
+        setTimeout(() => {
+            entry.target.classList.add('visible');
+        }, index * 200);
+        processObserver.unobserve(entry.target);
+        }
+    });
+    }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -150px 0px'
+    });
+
+    processSteps.forEach(step => {
+    step.style.opacity = "0";
+    step.style.transform = "translateX(-20px)";
+    step.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+    processObserver.observe(step);
+    });
+
+    // Add visible class to process steps when they're in view
+    document.addEventListener('scroll', function() {
+    processSteps.forEach((step, index) => {
+        const rect = step.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+        setTimeout(() => {
+            step.style.opacity = "1";
+            step.style.transform = "translateX(0)";
+        }, index * 200);
+        }
+    });
+    });
+});
+</script>
