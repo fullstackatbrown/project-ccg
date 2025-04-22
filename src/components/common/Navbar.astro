@@ -2,11 +2,11 @@
 import logo from '../../assets/logo.svg'
 
 const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Members", href: "/members" },
-    { name: "Services", href: "/services"},
-    { name: "Recruitment", href: "/recruitment" },
-    { name: "Contact Us", href: "/contact" }
+    { name: "Home", href: "/project-ccg/" },
+    { name: "Members", href: "/project-ccg/members" },
+    { name: "Services", href: "/project-ccg/services"},
+    { name: "Recruitment", href: "/project-ccg/recruitment" },
+    { name: "Contact Us", href: "/project-ccg/contact" }
 ];
 
 const socialLinks = [
@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname;
 
 <nav class="h-auto md:h-[100px] bg-white sticky top-0 z-50 shadow-sm">
     <div class="w-full mx-auto flex justify-between items-center py-4 md:py-0 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <a href="/" class="flex items-center">
+        <a href="/project-ccg/" class="flex items-center">
             <img src={logo.src} alt="Logo" class="h-8 md:h-10 w-auto pr-4">
         </a>
 
@@ -88,8 +88,8 @@ const currentPath = Astro.url.pathname;
 </nav>
 
 <!-- Contact Bubble (Only renders if not on the ContactUs page) -->
-{currentPath !== "/contact" && (
-    <a href="/contact" class="fixed bottom-4 right-4 bg-[#C32727] text-white opacity:0.5 font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-gray-100 transition z-[1000]">
+{currentPath !== "/project-ccg/contact" && (
+    <a href="/project-ccg/contact" class="fixed bottom-4 right-4 bg-[#C32727] text-white opacity:0.5 font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-gray-100 transition z-[1000]">
         Contact Us
     </a>
 )}

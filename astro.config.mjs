@@ -7,4 +7,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  site: 'https://fullstackatbrown.github.io/project-ccg',
+  base: '/project-ccg/',
 });
