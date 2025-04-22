@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/common/Navbar.astro';
 import Footer from '../components/common/Footer.astro';
 import '../styles/global.css';
-import { contentfulClient } from "../lib/contentful";
+import { contentfulClient } from "../lib/contentful.ts";
 import type { Asset } from 'contentful';
 
 interface RecruitmentFields {
@@ -75,7 +75,7 @@ const statsData = [
   </section>
 
     <!-- Recruitment Status Banner -->
-    <div class="flex items-center justify-center py-8 bg-white">
+    <div class="flex items-center justify-center py-20 bg-white mx-auto px-8">
       <p class="text-xl text-gray-700">
         {recruitment[0].application}
       </p>
@@ -194,7 +194,7 @@ const statsData = [
               <div class="w-8 h-1 bg-red-700 ml-1"></div>
             </div>
             <p class="text-gray-700 text-xl mb-6">{recruitment[0].application}</p>
-            <div class="text-center text-xl text-gray-700 mt-3">
+            <div class="text-center text-xl text-gray-700 mt-3 px-4">
               Please feel free to contact us with any questions at 
               <a href={`mailto:${recruitment[0].email}`} class="text-blue-600 underline">
                 {recruitment[0].email}
