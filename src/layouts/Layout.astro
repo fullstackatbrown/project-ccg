@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+const base = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -7,7 +8,7 @@ import "../styles/global.css";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/src/assets/favicon.ico" /> <!-- Add the new favicon -->
+		<link rel="icon" type="image/svg+xml" href={`${base}src/assets/favicon.ico`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>College Consulting Group</title>
 	</head>
