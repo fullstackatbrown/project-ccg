@@ -72,6 +72,10 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+        env:
+          PUBLIC_CONTENTFUL_SPACE_ID: ${{ secrets.PUBLIC_CONTENTFUL_SPACE_ID }}
+          PUBLIC_CONTENTFUL_DELIVERY_TOKEN: ${{ secrets.PUBLIC_CONTENTFUL_DELIVERY_TOKEN }}
+          PUBLIC_CONTENTFUL_PREVIEW_TOKEN: ${{ secrets.PUBLIC_CONTENTFUL_PREVIEW_TOKEN }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
