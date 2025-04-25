@@ -9,6 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  output: 'server',
+  output: "server",
   adapter: vercel(),
+  site: "https://fullstackatbrown.github.io/project-ccg",
 });
