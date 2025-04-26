@@ -17,12 +17,19 @@ const headerImage = entries2.items
   .filter(entry => entry.fields.title === "Team")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
+function optimizeImage(url : any) {
+  if (!url) return '';
+  return url.includes('?')
+    ? `${url}&w=475&h=475&fit=thumb&fm=webp&q=80`
+    : `${url}?w=475&h=475&fit=thumb&fm=webp&q=80`;
+}
+
 const members = entries.items.map(entry => ({
   memberName: entry.fields.memberName,
   position: entry.fields.position,
   classYear: entry.fields.classYear,
   bibliography: entry.fields.bibliography,
-  profileImage: entry.fields.profileImage?.fields?.file?.url || '',
+  profileImage: optimizeImage(entry.fields.profileImage?.fields?.file?.url) || '',
   contactInformation: entry.fields.contactInformation,
   linkedIn: entry.fields.linkedIn
 }));
