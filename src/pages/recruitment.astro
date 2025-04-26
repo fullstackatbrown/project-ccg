@@ -45,9 +45,9 @@ const statsData = [
     <!-- Hero Section – Recruitment Themed -->
   <section class="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
     <!-- Background Image with Subtle Zoom Effect -->
-    <div class="absolute w-full h-full transform scale-110 transition-transform duration-1000 ease-out">
+    <div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
       <img 
-				src={`${base}/assets/images/quietgreen.jpg`}
+				src={`${base}/assets/images/maingreen4.jpg`}
         alt="Recruitment background" 
         class="w-full h-full object-cover object-center md:object-[50%_30%]"
       >
@@ -76,7 +76,7 @@ const statsData = [
   </section>
 
     <!-- Recruitment Status Banner -->
-    <div class="flex items-center justify-center py-20 bg-white mx-auto px-8">
+    <div id="learn-more" class="flex items-center justify-center py-20 bg-white mx-auto px-8">
       <p class="text-xl text-gray-700">
         {recruitment[0].application}
       </p>
@@ -229,7 +229,7 @@ const statsData = [
         <div class="max-w-4xl mx-auto fade-in-delay-2">
           <div class="relative">
             <!-- Connection Line -->
-            <div class="absolute left-8 top-0 w-1 h-full bg-red-700 hidden md:block"></div>
+            <div class="absolute left-8 top-0 w-1 h-[85%] bg-red-700 hidden md:block"></div>
             
             <!-- Steps -->
             <div class="space-y-12">
@@ -521,17 +521,6 @@ const statsData = [
 </style>
 
 <script>
-  const parallaxBg = document.getElementById('parallax-bg');
-
-  window.addEventListener('scroll', function() {
-    if (parallaxBg) {
-      const scrollPosition = window.scrollY;
-      const translateY = scrollPosition * 0.4;
-      parallaxBg.style.transform = `translateY(${translateY}px) scale(1.1)`;
-    }
-  });
-
-  // Intersection Observer for fade-in animations
   document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
 
