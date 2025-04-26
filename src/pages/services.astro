@@ -61,26 +61,6 @@ const base = import.meta.env.BASE_URL;
   </div>
 </Layout>
 
-<style>
-  /* Hero section parallax effect */
-  .slide-up-animation {
-    animation: slideUp 1.2s forwards;
-    animation-delay: 0.5s;
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  
-  @keyframes slideUp {
-    0% {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

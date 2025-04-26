@@ -66,3 +66,35 @@ const base = import.meta.env.BASE_URL;
 		<Footer />
 	</div>
 </Layout>
+<script>
+	  document.addEventListener("DOMContentLoaded", function() {
+    // Parallax effect for hero section
+    const parallaxBg = document.getElementById('parallax-bg');
+    
+    window.addEventListener('scroll', function() {
+      if (parallaxBg) {
+        const scrollPosition = window.scrollY;
+        const translateY = scrollPosition * 0.4;
+        parallaxBg.style.transform = `translateY(${translateY}px) scale(1.1)`;
+      }
+    });
+
+    // Intersection Observer for fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>

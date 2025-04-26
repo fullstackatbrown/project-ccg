@@ -521,6 +521,16 @@ const statsData = [
 </style>
 
 <script>
+  const parallaxBg = document.getElementById('parallax-bg');
+
+  window.addEventListener('scroll', function() {
+    if (parallaxBg) {
+      const scrollPosition = window.scrollY;
+      const translateY = scrollPosition * 0.4;
+      parallaxBg.style.transform = `translateY(${translateY}px) scale(1.1)`;
+    }
+  });
+
   // Intersection Observer for fade-in animations
   document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
