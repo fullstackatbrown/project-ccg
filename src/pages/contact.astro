@@ -5,6 +5,7 @@ import Footer from '../components/common/Footer.astro';
 import ContactForm from '../components/ContactUS.astro';
 import '../styles/global.css';
 import ContactUS from '../components/ContactUS.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout>
@@ -16,7 +17,7 @@ import ContactUS from '../components/ContactUS.astro';
 			<!-- Background Image with Parallax -->
 			<div id="parallax-bg" class="absolute w-full h-full transform scale-110">
 			<img
-				src="/src/assets/images/quietgreen.jpg"
+				src={`${base}/assets/images/quietgreen.jpg`}
 				alt="Contact background"
 				class="w-full h-full object-cover object-center md:object-[50%_20%] transition-all duration-1000"
 			>
