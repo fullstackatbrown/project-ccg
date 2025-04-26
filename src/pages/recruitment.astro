@@ -197,22 +197,23 @@ const statsData = [
         
         <div class="flex flex-col lg:flex-row gap-8">
           <!-- Left: Application Info -->
-          <div class="w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center fade-in-delay-2">
-            <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A] mb-6">Current Application Status</h3>
-            <div class="flex items-center justify-center mb-6">
-              <div class="w-8 h-1 bg-red-700"></div>
-              <div class="w-2 h-2 rounded-full bg-red-700 ml-1"></div>
-              <div class="w-8 h-1 bg-red-700 ml-1"></div>
-            </div>
-            <p class="text-gray-700 text-xl mb-6">{recruitment[0].application}</p>
-            <div class="text-center text-xl text-gray-700 mt-3 px-4">
-              Please feel free to contact us with any questions at 
-              <a href={`mailto:${recruitment[0].email}`} class="text-blue-600 underline">
-                {recruitment[0].email}
-              </a>
+          <div class="group w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center fade-in-delay-2 hover:shadow-xl transition-all duration-300 ease-out">
+            <div class="transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
+              <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A] mb-6">Current Application Status</h3>
+              <div class="flex items-center justify-center mb-6">
+                <div class="w-8 h-1 bg-red-700"></div>
+                <div class="w-2 h-2 rounded-full bg-red-700 ml-1"></div>
+                <div class="w-8 h-1 bg-red-700 ml-1"></div>
+              </div>
+              <p class="text-gray-700 text-xl mb-6">{recruitment[0].application}</p>
+              <div class="text-center text-xl text-gray-700 mt-3 px-4">
+                Please feel free to contact us with any questions at 
+                <a href={`mailto:${recruitment[0].email}`} class="text-blue-600 underline">
+                  {recruitment[0].email}
+                </a>
+              </div>
             </div>
           </div>
-
           <!-- Right: Timeline -->
           <div class="w-full lg:w-1/2 fade-in-delay-3">
             <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A] mb-6 text-center">Application Timeline</h3>
