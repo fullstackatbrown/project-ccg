@@ -522,49 +522,32 @@ const statsData = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const fadeElements = document.querySelectorAll('.fade-in');
+    const parallaxElements = document.querySelectorAll('.parallax-bg');
 
-    // Set up intersection observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Stop observing once visible
-        }
+    let lastScrollY = 0;
+    let ticking = false;
+
+    function updateParallax() {
+      parallaxElements.forEach(element => {
+        const yPos = -(lastScrollY * 0.20);
+        element.style.transform = `translateY(${yPos}px)`;
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
+      ticking = false;
+    }
 
-    fadeElements.forEach(element => {
-      observer.observe(element);
-    });
+    function onScroll() {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
 
-    // Accordion functionality
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
-    accordionHeaders.forEach(header => {
-      header.addEventListener('click', () => {
-        const content = header.nextElementSibling;
-        const isActive = header.classList.contains('active');
-        
-        // Close all accordions
-        accordionHeaders.forEach(h => {
-          h.classList.remove('active');
-          h.nextElementSibling.style.maxHeight = '0px';
-          h.nextElementSibling.style.paddingTop = '0px';
-          h.nextElementSibling.style.paddingBottom = '0px';
-        });
-        
-        // Open clicked accordion if it wasn't already active
-        if (!isActive) {
-          header.classList.add('active');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.paddingTop = '16px';
-          content.style.paddingBottom = '16px';
-        }
-      });
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.addEventListener('scroll', onScroll);
+        updateParallax();
+      }, 700);
     });
   });
 </script>
