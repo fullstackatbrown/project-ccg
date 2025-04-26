@@ -16,7 +16,7 @@ const socialLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
-const base = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
 ---
 
 <nav class="h-auto md:h-[100px] bg-white sticky top-0 z-50 shadow-sm">
