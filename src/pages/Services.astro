@@ -11,6 +11,7 @@ import '../styles/global.css';
 import { fetchClients } from '../../contentfulStatic.js';
 
 const projects = await fetchClients();
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout>
@@ -22,7 +23,7 @@ const projects = await fetchClients();
       <!-- Background Image with Parallax -->
       <div id="parallax-bg" class="absolute w-full h-full transform scale-110">
         <img 
-          src="/src/assets/images/quietgreen.jpg" 
+          src={`${base}/assets/images/quietgreen.jpg`}
           alt="group photo" 
           class="w-full h-full object-cover object-center md:object-[50%_20%] transition-all duration-1000"
         >
