@@ -15,7 +15,7 @@ const base = import.meta.env.BASE_URL;
 		<!-- Hero Section with Parallax -->
 		<section class="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
 			<!-- Background Image with Parallax -->
-			<div id="parallax-bg" class="absolute w-full h-full transform scale-110">
+			<div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
 			<img
 				src={`${base}/assets/images/quietgreen.jpg`}
 				alt="Contact background"
@@ -67,34 +67,33 @@ const base = import.meta.env.BASE_URL;
 	</div>
 </Layout>
 <script>
-	  document.addEventListener("DOMContentLoaded", function() {
-    // Parallax effect for hero section
-    const parallaxBg = document.getElementById('parallax-bg');
-    
-    window.addEventListener('scroll', function() {
-      if (parallaxBg) {
-        const scrollPosition = window.scrollY;
-        const translateY = scrollPosition * 0.4;
-        parallaxBg.style.transform = `translateY(${translateY}px) scale(1.1)`;
-      }
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    const parallaxElements = document.querySelectorAll('.parallax-bg');
 
-    // Intersection Observer for fade-in animations
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Stop observing once visible
-        }
+    let lastScrollY = 0;
+    let ticking = false;
+
+    function updateParallax() {
+      parallaxElements.forEach(element => {
+        const yPos = -(lastScrollY * 0.2);
+        element.style.transform = `translateY(${yPos}px)`;
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    });
+      ticking = false;
+    }
 
-    fadeElements.forEach(element => {
-      observer.observe(element);
+    function onScroll() {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.addEventListener('scroll', onScroll);
+        updateParallax();
+      }, 700);
     });
   });
-</script>
+</script></script>
