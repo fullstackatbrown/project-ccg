@@ -1,132 +1,151 @@
 @import "tailwindcss";
 
 .title-container {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 3rem;
-    margin-top: 5rem;
-    text-align: center;
-    border-bottom: 2px solid #333;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 3rem;
+  margin-top: 5rem;
+  text-align: center;
+  border-bottom: 2px solid #333;
 }
 
 #services-head {
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 
 .h2-services {
-    font-size: 2rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: center;
 }
- 
+
 /* animation css  */
 .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .fade-in-delay-1 {
-    transition-delay: 0.2s;
+  transition-delay: 0.2s;
 }
 
 .fade-in-delay-2 {
-    transition-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 
 .fade-in-delay-3 {
-    transition-delay: 0.6s;
+  transition-delay: 0.6s;
 }
 
 .nav-link {
-    position: relative;
-    text-decoration: none;
+  position: relative;
+  text-decoration: none;
 }
 
 .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: #c32727;
-    transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #c32727;
+  transition: width 0.3s ease;
 }
 
 .nav-link:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 body {
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Additional global CSS styles - Add to global.css */
 
 /* Fade in animation for sections */
 .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
-opacity: 1;
-transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Modal closing animation */
 .modal.closing .modal-content {
-animation: modalFadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: modalFadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes modalFadeOut {
-from {
+  from {
     opacity: 1;
     transform: translateY(0) scale(1);
-}
-to {
+  }
+  to {
     opacity: 0;
     transform: translateY(30px) scale(0.95);
-}
+  }
 }
 
 /* Active card state */
 .member-card.active-card {
-transform: scale(0.98);
-box-shadow: 0 25px 50px rgba(11, 20, 74, 0.25);
+  transform: scale(0.98);
+  box-shadow: 0 25px 50px rgba(11, 20, 74, 0.25);
 }
 
 /* Smooth scroll behavior */
 html {
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar for modal */
 .modal-content::-webkit-scrollbar {
-width: 8px;
+  width: 8px;
 }
 
 .modal-content::-webkit-scrollbar-track {
-background: #f1f1f1;
-border-radius: 10px;
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-background: #c3c3c3;
-border-radius: 10px;
+  background: #c3c3c3;
+  border-radius: 10px;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
-background: #a31f1f;
+  background: #a31f1f;
+}
+
+/* Slide-up animation */
+.slide-up-animation {
+  animation: slideUp 1.2s forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
