@@ -13,4 +13,5 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  outDir: "./dist/project-ccg",
 });
