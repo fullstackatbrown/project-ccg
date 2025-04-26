@@ -21,7 +21,11 @@ const base = import.meta.env.BASE_URL;
     <div class="w-full mx-auto flex justify-between items-center py-4 md:py-0 px-4 sm:px-6 lg:px-8 xl:px-12">
         <!-- keep an eye out on this href not loading -->
         <a href="/" class="flex items-center">
-            <img src={`${base}/assets/logo.svg`} alt="Logo" class="h-8 md:h-10 w-auto pr-4">
+            <img 
+                src={`${base}/assets/logo.svg`} 
+                alt="Logo" 
+                class="h-8 md:h-10 w-auto max-w-none shrink-0 pr-4"
+            />
         </a>
 
         <div class="hidden md:flex items-center justify-end w-full">
