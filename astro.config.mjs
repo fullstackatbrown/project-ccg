@@ -12,6 +12,5 @@ export default defineConfig({
   output: "static",
   build: {
     format: "directory",
-    assets: "assets",
   },
 });
