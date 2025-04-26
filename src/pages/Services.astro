@@ -8,7 +8,7 @@ import ValuesSection from '../components/services/ValuesSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
 import ProjectsSection from '../components/services/ProjectsSection.astro';
 import '../styles/global.css';
-import { fetchClients } from '../../contentfulClient.js';
+import { fetchClients } from '../../contentfulStatic.js';
 
 const projects = await fetchClients();
 ---
