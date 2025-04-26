@@ -10,4 +10,7 @@ export default defineConfig({
   site: "https://fullstackatbrown.github.io/project-ccg",
   base: "/project-ccg",
   output: "static",
+  build: {
+    format: "directory",
+  },
 });
