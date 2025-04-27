@@ -2,7 +2,7 @@ name: Trigger rebuild from Contentful
 
 on:
   repository_dispatch:
-    types: [contentful_update]
+    types: []
 
 jobs:
   rebuild:
