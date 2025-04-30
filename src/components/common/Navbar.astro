@@ -1,7 +1,7 @@
 ---
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Members", href: "members" },
+    { name: "Members", href: "/members" },
     { name: "Services", href: "/services"},
     { name: "Recruitment", href: "/recruitment" },
     { name: "Contact Us", href: "/contact" }
@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 
 <nav class="h-auto md:h-[100px] bg-white sticky top-0 z-50 shadow-sm">
     <div class="w-full mx-auto flex justify-between items-center py-4 md:py-0 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <a href={`/`} class="flex items-center">
+        <a href={`/project-ccg`} class="flex items-center">
             <img 
                 src={`/assets/logo.svg`} 
                 alt="Logo" 
@@ -32,7 +32,7 @@ const base = import.meta.env.BASE_URL;
                 {navLinks.map((link) => (
                     <li>
                         <a 
-                            href={`/${link.href}`}>{link.name}
+                            href={`${base}/${link.href.replace(/^\//, '')}`} 
                             class={`text-gray-900 font-almarai hover:text-[#c32727] transition nav-link${currentPath === `${base}/${link.href.replace(/^\//, '')}` ? 'active-link' : ''}`}
                         >
                             {link.name}
