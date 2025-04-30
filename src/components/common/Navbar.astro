@@ -1,7 +1,7 @@
 ---
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Members", href: "/members" },
+    { name: "Members", href: "members" },
     { name: "Services", href: "/services"},
     { name: "Recruitment", href: "/recruitment" },
     { name: "Contact Us", href: "/contact" }
@@ -32,7 +32,7 @@ const base = import.meta.env.BASE_URL;
                 {navLinks.map((link) => (
                     <li>
                         <a 
-                            href={`${base}/${link.href.replace(/^\//, '')}`} 
+                            href={`/${link.href}`}>{link.name}
                             class={`text-gray-900 font-almarai hover:text-[#c32727] transition nav-link${currentPath === `${base}/${link.href.replace(/^\//, '')}` ? 'active-link' : ''}`}
                         >
                             {link.name}
