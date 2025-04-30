@@ -7,7 +7,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: "https://www.brownccg.com",
+  site: "https://www.brownccg.com/",
   base: "",
   output: "static",
   build: {
