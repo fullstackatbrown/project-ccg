@@ -8,7 +8,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: "https://www.brownccg.com",
-  base: "/project-ccg",
+  base: "",
   output: "static",
   build: {
     format: "directory",
