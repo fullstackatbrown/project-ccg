@@ -32,8 +32,8 @@ const base = import.meta.env.BASE_URL;
                 {navLinks.map((link) => (
                     <li>
                         <a 
-                            href={`${link.href.replace(/^\//, '')}`} 
-                            class={`text-gray-900 font-almarai hover:text-[#c32727] transition nav-link${currentPath === `brownccg.com/${link.href.replace(/^\//, '')}` ? 'active-link' : ''}`}
+                            href={`${base}/${link.href.replace(/^\//, '')}`} 
+                            class={`text-gray-900 font-almarai hover:text-[#c32727] transition nav-link${currentPath === `${base}/${link.href.replace(/^\//, '')}` ? 'active-link' : ''}`}
                         >
                             {link.name}
                         </a>
@@ -66,8 +66,8 @@ const base = import.meta.env.BASE_URL;
             {navLinks.map((link) => (
                 <li>
                     <a 
-                        href={`brownccg.com/${link.href.replace(/^\//, '')}`} 
-                        class={`block text-gray-900 font-almarai hover:text-[#c32727] transition py-2 ${currentPath === `brownccg.com/${link.href.replace(/^\//, '')}` ? 'text-[#c32727] font-semibold' : ''}`}
+                        href={`${base}/${link.href.replace(/^\//, '')}`} 
+                        class={`block text-gray-900 font-almarai hover:text-[#c32727] transition py-2 ${currentPath === `${base}/${link.href.replace(/^\//, '')}` ? 'text-[#c32727] font-semibold' : ''}`}
                     >
                         {link.name}
                     </a>
