@@ -1,10 +1,10 @@
 ---
 const navLinks = [
-    { name: "Home", href: "brownccg.com" },
-    { name: "Members", href: "brownccg.com/members" },
-    { name: "Services", href: "brownccg.com/services"},
-    { name: "Recruitment", href: "brownccg.com/recruitment" },
-    { name: "Contact Us", href: "brownccg.com/contact" }
+    { name: "Home", href: "" },
+    { name: "Members", href: "members" },
+    { name: "Services", href: "services"},
+    { name: "Recruitment", href: "recruitment" },
+    { name: "Contact Us", href: "contact" }
 ];
 
 const socialLinks = [
@@ -92,7 +92,7 @@ const base = import.meta.env.BASE_URL;
 
 <!-- Contact Bubble (Only renders if not on the ContactUs page) -->
 {currentPath !== "/brownccg.com/contact" && (
-    <a href={`/`}  class="fixed bottom-4 right-4 bg-[#C32727] text-white opacity:0.5 font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-gray-100 transition z-[1000]">
+    <a href={`contact`}  class="fixed bottom-4 right-4 bg-[#C32727] text-white opacity:0.5 font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-gray-100 transition z-[1000]">
         Contact Us
     </a>
 )}
