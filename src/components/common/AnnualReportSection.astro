@@ -41,7 +41,11 @@ const report = entries.items.map(entry => ({
             Explore our client success stories, organizational growth, and the measurable impact we've made in our most recent annual report. Learn about our methodology, outcomes, and the innovative solutions we've developed.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-            <a href={report[0].link} target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#0B144A] to-[#283593] text-white font-medium rounded-lg hover:shadow-md hover:from-[#283593] hover:to-[#1A237E] transition-all duration-300 transform hover:-translate-y-1">
+            <a 
+                href={`https://${report[0].link.replace(/^https?:\/\//, '')}`}
+                target="_blank"
+                class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#0B144A] to-[#283593] text-white font-medium rounded-lg hover:shadow-md hover:from-[#283593] hover:to-[#1A237E] transition-all duration-300 transform hover:-translate-y-1"
+            >
                 Read and Download Full Report
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
