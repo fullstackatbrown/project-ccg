@@ -1,6 +1,6 @@
-## Collegiate Consulting Group Website
+# Collegiate Consulting Group Website
 
-### Basic Setup
+## Basic Setup
 
 To set up your environment for local development, clone into this repo and open it. Then, do the following:
 
@@ -13,7 +13,7 @@ PUBLIC_CONTENTFUL_PREVIEW_TOKEN=ADD_KEY_HERE
 ```
 3. `npm run dev` to start the local development server.
 
-### Project Directory Organization
+## Project Directory Organization
 
 ```
 .
@@ -52,13 +52,13 @@ PUBLIC_CONTENTFUL_PREVIEW_TOKEN=ADD_KEY_HERE
         └── contentful.ts     --> contentfulClient init code
 ```
 
-### About Astro
+## About Astro
 
 Astro is a modern web framework for building fast sites - it ships no JS by default and renders pages statically or with SSR.
 
 Find [Astro documentation here](https://docs.astro.build). For the folder structure of an Astro project, refer [here](https://docs.astro.build/en/basics/project-structure/).
 
-#### Commands
+### Commands
 
 All commands are run from the root of the project:
 
