@@ -1,38 +1,66 @@
-# Astro Starter Kit: Basics
+# Collegiate Consulting Group Website
 
-```sh
-npm create astro@latest -- --template basics
+## Basic Setup
+
+To set up your environment for local development, clone into this repo and open it. Then, do the following:
+
+1. `npm i` to install dependencies.
+2. Create a `.env` file in the root of the project directory, with the following format:
+```
+PUBLIC_CONTENTFUL_SPACE_ID=ADD_KEY_HERE
+PUBLIC_CONTENTFUL_DELIVERY_TOKEN=ADD_KEY_HERE
+PUBLIC_CONTENTFUL_PREVIEW_TOKEN=ADD_KEY_HERE
+```
+3. `npm run dev` to start the local development server.
+
+## Project Directory Organization
+
+```
+.
+├── .github/workflows/      ----> YAML files for triggering site rebuilds
+├── .env              ----------> create this to hold API keys
+├── public/           ----------> holds non-code, unprocessed assets
+│   └── assets/
+│       ├── companies/        --> contains images of company logos
+│       ├── images/           --> contain misc. icons, banners, and images
+│       └── other misc photos also:
+│           ├── logo.png
+│           ├── report.jpg
+│           └── and a few more
+└── src/              ----------> project source code
+    ├── layouts/            ----> shared UI structure by one or more pages
+    │   └── Layout.astro      --> entry point for website, wraps ALL other components
+    ├── pages/              ----> important: page routes created in this dir
+    │   ├── index.astro       --> HOME PAGE
+    │   ├── members.astro     --> MEMBERS PAGE
+    │   ├── recruitment.astro --> RECRUITMENT PAGE
+    │   ├── services.astro    --> SERVICES PAGE
+    │   └── contact.astro     --> CONTACT PAGE 
+    ├── styling/
+    │   └── global.css      ----> globals, we generally use inline Tailwind instead
+    ├── components/
+    │   ├── common/           --> sections used across multiple pages (e.g. AnnualReport)
+    │   ├── homepage/         --> component sections for the homepage
+    │   ├── members/          --> component sections for the members page 
+    │   ├── recruitment/      --> component sections for the recruitment page
+    │   ├── services/         --> component sections for the services page
+    │   └── various misc Astro components also:
+    │       ├── FAQ.astro
+    │       ├── Welcome.astro
+    │       └── and a few more
+    └── lib/
+        └── contentful.ts     --> contentfulClient init code
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## About Astro
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Astro is a modern web framework for building fast sites - it ships no JS by default and renders pages statically or with SSR.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Find [Astro documentation here](https://docs.astro.build). For the folder structure of an Astro project, refer [here](https://docs.astro.build/en/basics/project-structure/).
 
-## 🚀 Project Structure
+### Commands
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -42,7 +70,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
