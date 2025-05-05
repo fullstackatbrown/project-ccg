@@ -15,9 +15,7 @@ const {statBoxes, clubDescription } = Astro.props;
                 </div>
             </div>
             <div class="md:w-2/3 slide-in-right delay-2">
-                <p class="text-xl md:text-2xl font-light leading-relaxed text-gray-800">
-                    Collegiate Consulting Group empowers students with <span class="font-medium text-[#D32F2F]">real-world consulting experience</span> through hands-on projects, workshops, and forums. Our external consulting projects expose students to each phase of the consulting process—from problem definition to final implementation—offering practical training and industry insights.
-                </p>
+                <p class="text-xl md:text-2xl font-light leading-relaxed text-gray-800" set:html={clubDescription}></p>
             </div>
         </div>
     </div>
