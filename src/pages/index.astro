@@ -8,16 +8,55 @@ import AlternateSection from '../components/homepage/AlternateSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
 import CompaniesSection from '../components/homepage/CompaniesSection.astro';
 import '../styles/global.css';
+import { contentfulClient } from "../lib/contentful";
+
+
+const entries2 = await contentfulClient.getEntries({
+  content_type: "images"
+});
+
+const heroImage = entries2.items
+  .filter(entry => entry.fields.title === "Home - Main Image")[0]
+  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+
+const ourTeamImage = entries2.items
+  .filter(entry => entry.fields.title === "Home - Our Team")[0]
+  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+
+const ourServicesImage = entries2.items
+  .filter(entry => entry.fields.title === "Home - Our Services")[0]
+  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+
+const companyImages = entries2.items
+  .filter(entry => entry.fields.title === "Home - Where We End Up")[0]
+  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+
+
+const homepageEntry = await contentfulClient.getEntries({
+  content_type: "homepage"
+});
+
+const homepage = homepageEntry.items[0]?.fields || {};
+const clubDescription = homepage.clubDescription || '';
+const statBoxesRaw = homepage.whoWeAreStats || '';
+
+const statBoxes = statBoxesRaw
+  .split('\n')
+  .map(line => {
+    const [value, label] = line.split(' - ').map(part => part.trim());
+    return { value, label };
+  })
+  .filter(box => box.value && box.label);
 ---
 
 <Layout>
   <div class="flex flex-col min-h-screen">
     <Navbar />
-    <HeroSection />
-    <WhoWeAreSection />
-    <AlternateSection />
+    <HeroSection heroImage={heroImage} />
+    <WhoWeAreSection clubDescription={clubDescription} statBoxes={statBoxes} />
+    <AlternateSection ourTeamImage={ourTeamImage} ourServicesImage={ourServicesImage} />
     <AnnualReportSection />
-    <CompaniesSection />
+    <CompaniesSection companyImages={companyImages} />
     <Footer />
   </div>
 </Layout>

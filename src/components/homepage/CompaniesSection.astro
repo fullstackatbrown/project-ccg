@@ -1,4 +1,5 @@
 ---
+const { companyImages } = Astro.props;
 ---
 <section class="w-full bg-white text-black py-24 overflow-hidden group transition-all duration-500">
     <div class="container mx-auto px-6">
@@ -18,53 +19,15 @@
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 transition-transform duration-500 group-hover:scale-[1.02] group-hover:brightness-105">
         <!-- Company Logos -->
-        <div class="company-logo slide-in-right delay-1">
-            <img src={`assets/companies/mckinsey.avif`} alt="McKinsey" class="max-h-24 max-w-full object-contain transition-all duration-500" />
-        </div>
-
-        <div class="company-logo slide-in-right delay-2">
-            <img src={`assets/companies/amazon.avif`} alt="Amazon" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-3">
-            <img src={`assets/companies/blackrock.avif`} alt="BlackRock" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-4">
-            <img src={`assets/companies/eyparthenon.avif`} alt="EY Parthenon" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-1">
-            <img src={`assets/companies/evercore.jpeg`} alt="Evercore" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-2">
-            <img src={`assets/companies/bain.avif`} alt="Bain & Company" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-3">
-            <img src={`assets/companies/BCG.avif`} alt="Boston Consulting Group" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-4">
-            <img src={`assets/companies/goldmansachs.avif`} alt="Goldman Sachs" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-1">
-            <img src={`assets/companies/google.avif`} alt="Google" class="max-h-24 max-w-[75%] object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-2">
-            <img src={`assets/companies/whitehouse.png`} alt="White House" class="max-h-24 max-w-full object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-3">
-            <img src={`assets/companies/janestreet.avif`} alt="Jane Street" class="max-h-24 max-w-[75%] object-contain transition-all duration-500">
-        </div>
-
-        <div class="company-logo slide-in-right delay-4">
-            <img src={`assets/companies/adl.jpeg`} alt="ADL" class="max-h-24 max-w-[75%] object-contain transition-all duration-500">
-        </div>
+        {companyImages.map((url, index) => (
+            <div class={`company-logo slide-in-right delay-${(index % 4) + 1}`}>
+              <img 
+                src={url} 
+                alt="Company Logo" 
+                class="max-h-24 max-w-full object-contain transition-all duration-500"
+              />
+            </div>
+          ))}
         </div>
     </div>
 

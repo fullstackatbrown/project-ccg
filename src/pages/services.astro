@@ -9,8 +9,18 @@ import AnnualReportSection from '../components/common/AnnualReportSection.astro'
 import ProjectsSection from '../components/services/ProjectsSection.astro';
 import '../styles/global.css';
 import { fetchClients } from '../../contentfulStatic.js';
+import { contentfulClient } from "../lib/contentful.ts";
 
 const projects = await fetchClients();
+
+const entries = await contentfulClient.getEntries({
+  content_type: "images"
+});
+
+const headerImage = entries.items
+  .filter(entry => entry.fields.title === "Services - Our Services")[0]
+  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+
 ---
 
 <Layout>
@@ -22,7 +32,7 @@ const projects = await fetchClients();
       <!-- Background Image with Parallax -->
       <div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
         <img 
-          src={`/assets/images/maingreen3.jpg`}
+          src={headerImage[0]}
           alt="group photo" 
           class="w-full h-full object-cover object-center md:object-[50%_20%] transition-all duration-1000"
         >

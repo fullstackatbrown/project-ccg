@@ -1,3 +1,7 @@
+---
+const {statBoxes, clubDescription } = Astro.props;
+---
+
 <section id="who-we-are" class="w-full bg-gradient-to-b from-white to-[#F5F7FA] text-black py-24 overflow-hidden">
     <!-- Who Are We Section -->
     <div class="container mx-auto px-6 mb-24">
@@ -12,11 +16,7 @@
             </div>
             <div class="md:w-2/3 slide-in-right delay-2">
                 <p class="text-xl md:text-2xl font-light leading-relaxed text-gray-800">
-                    Collegiate Consulting Group empowers students with 
-                    <span class="font-medium text-[#D32F2F]">real-world consulting experience</span>
-                    through hands-on projects, workshops, and forums. Our external consulting projects
-                    expose students to each phase of the consulting process—from problem definition to
-                    final implementation—offering practical training and industry insights.
+                    Collegiate Consulting Group empowers students with <span class="font-medium text-[#D32F2F]">real-world consulting experience</span> through hands-on projects, workshops, and forums. Our external consulting projects expose students to each phase of the consulting process—from problem definition to final implementation—offering practical training and industry insights.
                 </p>
             </div>
         </div>
@@ -25,41 +25,15 @@
     <!-- Stats Section with enhanced visual appeal -->
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            <!-- Stat Box 1 -->
-            <div class="relative bg-white p-8 rounded-lg shadow-xl text-center animate-element delay-1 group hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            {statBoxes.map((box, index) => (
+              <div class={`relative bg-white p-8 rounded-lg shadow-xl text-center animate-element delay-${(index % 4) + 1} group hover:shadow-2xl transition-all duration-300 overflow-hidden`}>
                 <div class="absolute inset-0 bg-gradient-to-br from-[#D32F2F]/5 to-[#B71C1C]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="h-24 flex items-center justify-center relative">
-                    <h3 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">41</h3>
+                  <h3 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">{box.value}</h3>
                 </div>
-                <p class="text-xl font-medium text-gray-700 mt-4 relative">Passionate Members</p>
-            </div>
-            
-            <!-- Stat Box 2 -->
-            <div class="relative bg-white p-8 rounded-lg shadow-xl text-center animate-element delay-2 group hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-[#D32F2F]/5 to-[#B71C1C]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="h-24 flex items-center justify-center relative">
-                    <h3 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">15+</h3>
-                </div>
-                <p class="text-xl font-medium text-gray-700 mt-4 relative">Years of Experience</p>
-            </div>
-            
-            <!-- Stat Box 3 -->
-            <div class="relative bg-white p-8 rounded-lg shadow-xl text-center animate-element delay-3 group hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-[#D32F2F]/5 to-[#B71C1C]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="h-24 flex items-center justify-center relative">
-                    <h3 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">10+</h3>
-                </div>
-                <p class="text-xl font-medium text-gray-700 mt-4 relative">Annual Clients</p>
-            </div>
-            
-            <!-- Stat Box 4 -->
-            <div class="relative bg-white p-8 rounded-lg shadow-xl text-center animate-element delay-4 group hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-[#D32F2F]/5 to-[#B71C1C]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="h-24 flex items-center justify-center relative">
-                    <h3 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">10+</h3>
-                </div>
-                <p class="text-xl font-medium text-gray-700 mt-4 relative">Success Stories</p>
-            </div>
-        </div>
+                <p class="text-xl font-medium text-gray-700 mt-4 relative">{box.label}</p>
+              </div>
+            ))}
+          </div>          
     </div>
 </section>

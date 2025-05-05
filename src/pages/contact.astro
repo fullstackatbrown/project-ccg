@@ -5,6 +5,16 @@ import Footer from '../components/common/Footer.astro';
 import ContactForm from '../components/ContactUS.astro';
 import '../styles/global.css';
 import ContactUS from '../components/ContactUS.astro';
+import { contentfulClient } from "../lib/contentful";
+
+const entries = await contentfulClient.getEntries({
+  content_type: "images"
+});
+
+const headerImage = entries.items
+  .filter(entry => entry.fields.title === "Contact Us - Contact Us")[0]
+  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+
 ---
 
 <Layout>
@@ -16,7 +26,7 @@ import ContactUS from '../components/ContactUS.astro';
 			<!-- Background Image with Parallax -->
 			<div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
 			<img
-				src={`/assets/images/quietgreen.jpg`}
+				src={headerImage[0]}
 				alt="Contact background"
 				class="w-full h-full object-cover object-center md:object-[50%_20%] transition-all duration-1000"
 			>

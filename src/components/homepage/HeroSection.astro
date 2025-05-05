@@ -1,4 +1,5 @@
 ---
+const { heroImage } = Astro.props;
 ---
 
 <!-- Hero Section with Parallax Effect -->
@@ -6,7 +7,7 @@
     <!-- Background Image with Parallax -->
     <div id="parallax-bg" class="absolute w-full h-full transform scale-110">
         <img 
-            src={`assets/images/hero.JPG`}
+            src={heroImage[0]}
             alt="Hero Image" 
             class="w-full h-full object-cover object-center transition-all duration-1000"
         >

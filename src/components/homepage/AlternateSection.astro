@@ -1,4 +1,6 @@
 ---
+const { ourTeamImage } = Astro.props;
+const { ourServicesImage } = Astro.props;
 ---
 <section class="w-full bg-gray-50 text-black overflow-hidden">
     <div class="w-full">
@@ -24,7 +26,7 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2 min-h-[500px] overflow-hidden scale-in relative group">
-                <img src={`assets/images/group4.jpg`}  alt="Services" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <img src={ourServicesImage[0]}  alt="Services" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-br from-[#0c1445]/5 to-[#0c1445]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
         </div>
@@ -51,7 +53,7 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2 min-h-[500px] bg-white overflow-hidden scale-in relative group">
-                <img src={`assets/images/group2.JPG`}  alt="Our Team" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <img src={ourTeamImage[0]}  alt="Our Team" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-br from-[#0c1445]/5 to-[#0c1445]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
         </div>

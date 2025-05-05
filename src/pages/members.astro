@@ -9,12 +9,13 @@ import { contentfulClient } from "../lib/contentful";
 const entries = await contentfulClient.getEntries({
   content_type: "member"
 });
+
 const entries2 = await contentfulClient.getEntries({
   content_type: "images"
 });
 
 const headerImage = entries2.items
-  .filter(entry => entry.fields.title === "Team")[0]
+  .filter(entry => entry.fields.title === "Members - Meet Our Team")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
 function optimizeImage(url : any) {

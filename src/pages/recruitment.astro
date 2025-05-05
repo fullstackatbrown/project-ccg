@@ -19,6 +19,15 @@ const entries = await contentfulClient.getEntries({
   content_type: "recruitment"
 });
 
+const entries2 = await contentfulClient.getEntries({
+  content_type: "images"
+});
+
+const headerImage = entries2.items
+  .filter(entry => entry.fields.title === "Recruitment - Join CCG")[0]
+  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+
+
 const recruitment = entries.items.map(entry => ({
   description: entry.fields.description,
   application: entry.fields.fallApplication,
@@ -46,7 +55,7 @@ const statsData = [
     <!-- Background Image with Subtle Zoom Effect -->
     <div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
       <img 
-				src={`/assets/images/maingreen4.jpg`}
+				src={headerImage[0]}
         alt="Recruitment background" 
         class="w-full h-full object-cover object-center md:object-[50%_30%]"
       >
