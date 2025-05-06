@@ -65,7 +65,7 @@ const currentPath = Astro.url.pathname;
             {navLinks.map((link) => (
                 <li>
                     <a 
-                        href={`${link.href}`} 
+                        href={`/${link.href}`} 
                         class={`block text-gray-900 font-almarai hover:text-[#c32727] transition py-2 ${currentPath === `${link.href}` ? 'text-[#c32727] font-semibold' : ''}`}
                     >
                         {link.name}
