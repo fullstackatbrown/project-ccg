@@ -21,6 +21,27 @@ const headerImage = entries.items
   .filter(entry => entry.fields.title === "Services - Our Services")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
+  const valuesEntries = await contentfulClient.getEntries({
+  content_type: "ourValues" // Your actual Content Type ID
+});
+
+const values = valuesEntries.items.map(entry => ({
+  title: entry.fields.title,
+  description: entry.fields.description,
+  iconSvg: entry.fields.iconSvg
+}));
+
+const serviceEntries = await contentfulClient.getEntries({
+  content_type: "ourServices"
+});
+
+const services = serviceEntries.items.map((entry) => ({
+  title: entry.fields.title,
+  description: entry.fields.description,
+  imageUrl: entry.fields.iconImage?.fields?.file?.url,
+}));
+
+
 ---
 
 <Layout>
@@ -60,8 +81,8 @@ const headerImage = entries.items
       </div>
     </section>
 
-    <ValuesSection />
-    <ServicesSection />
+    <ValuesSection values={values} />
+    <ServicesSection services={services} />
     <ProjectsSection />
     <ProcessSection />
     <AnnualReportSection />

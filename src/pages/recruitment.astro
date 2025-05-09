@@ -35,6 +35,7 @@ const recruitment = entries.items.map(entry => ({
   annualReport: entry.fields.annualReport,
   timeline: entry.fields.timeline?.fields.file.url,
   images: entry.fields.additionalImages || [],
+  process: entry.fields.recruitmentProcess || ''
 }));
 
 const statsData = [
@@ -44,6 +45,14 @@ const statsData = [
   { label: "LGBTQ+ in CCG", percentage: "20%" },
   { label: "Transfer Students", percentage: "17%" },
 ];
+
+const processSteps = recruitment[0].process
+  .split('\n')
+  .map(line => {
+    const [title, description] = line.split(' - ').map(p => p.trim());
+    return { title, description };
+  })
+  .filter(step => step.title && step.description);
 ---
 
 <Layout>
@@ -249,41 +258,22 @@ const statsData = [
         <div class="max-w-4xl mx-auto fade-in-delay-2">
           <div class="relative">
             <!-- Connection Line -->
-            <div class="absolute left-8 top-0 w-1 h-[82%] bg-red-700 hidden md:block"></div>
-            
+            <div class="absolute left-8 top-0 w-1 h-[82%] bg-red-700 hidden md:block"></div> 
             <!-- Steps -->
             <div class="space-y-12">
-              <!-- Step 1 -->
-              <div class="group flex flex-col md:flex-row items-start text-left relative transition-all duration-300 ease-out">
-                <div class="flex flex-col md:flex-row md:w-full transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                  <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">1</div>
-                  <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
-                    <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">Information Session</h3>
-                    <p class="text-gray-700">Attend one of our info sessions to more learn about the club, the application process, and how you can contribute.</p>
+              {processSteps.map((step, index) => (
+                <div class="group flex flex-col md:flex-row items-start text-left relative transition-all duration-300 ease-out">
+                  <div class="flex flex-col md:flex-row md:w-full transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
+                    <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">{index + 1}</div>
+                    <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
+                      <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">{step.title}</h3>
+                      <p class="text-gray-700">{step.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <!-- Step 2 -->
-              <div class="group flex flex-col md:flex-row items-start text-left relative transition-all duration-300 ease-out">
-                <div class="flex flex-col md:flex-row md:w-full transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                  <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">2</div>
-                  <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
-                    <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">Written Application</h3>
-                    <p class="text-gray-700">Submit your resume and answer a few short questions about your interest in consulting and CCG.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Step 3 -->
-              <div class="group flex flex-col md:flex-row items-start text-left relative transition-all duration-300 ease-out">
-                <div class="flex flex-col md:flex-row md:w-full transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                  <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-4 md:mb-0">3</div>
-                  <div class="md:ml-8 bg-white p-6 rounded-lg shadow-md flex-grow">
-                    <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">Case Interview</h3>
-                    <p class="text-gray-700">Demonstrate your problem-solving abilities through a business case analysis with our team, and then discuss interests and fit with CCG's culture.</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
+            
           </div>
         </div>
       </div>
