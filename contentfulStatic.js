@@ -18,8 +18,12 @@ export async function fetchClients() {
       companyName: item.fields.companyName,
       industry: item.fields.industry,
       description: item.fields.description,
+      summary: item.fields.summary,
       logo: item.fields.logo
         ? `https:${item.fields.logo.fields.file.url}`
+        : null,
+      slideUrl: item.fields.engagementSlide
+        ? `https:${item.fields.engagementSlide.fields.file.url}`
         : null,
     }));
   } catch (error) {

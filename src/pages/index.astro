@@ -39,6 +39,8 @@ const homepageEntry = await contentfulClient.getEntries({
 const homepage = homepageEntry.items[0]?.fields || {};
 const clubDescription = homepage.clubDescription || '';
 const statBoxesRaw = homepage.whoWeAreStats || '';
+const servicesDescription = homepage.ourServicesDescription || '';
+const teamDescription = homepage.ourTeamDescription || '';
 
 const statBoxes = statBoxesRaw
   .split('\n')
@@ -54,7 +56,7 @@ const statBoxes = statBoxesRaw
     <Navbar />
     <HeroSection heroImage={heroImage} />
     <WhoWeAreSection clubDescription={clubDescription} statBoxes={statBoxes} />
-    <AlternateSection ourTeamImage={ourTeamImage} ourServicesImage={ourServicesImage} />
+    <AlternateSection ourTeamImage={ourTeamImage} ourServicesImage={ourServicesImage} servicesDescription={servicesDescription} teamDescription={teamDescription}  />
     <AnnualReportSection />
     <CompaniesSection companyImages={companyImages} />
     <Footer />

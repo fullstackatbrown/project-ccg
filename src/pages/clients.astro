@@ -2,14 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/common/Navbar.astro';
 import Footer from '../components/common/Footer.astro';
-import ServicesSection from '../components/services/ServicesSection.astro';
-import ProcessSection from '../components/services/ProcessSection.astro';
-import ValuesSection from '../components/services/ValuesSection.astro';
+import ServicesSection from '../components/clients/ServicesSection.astro';
+import ProcessSection from '../components/clients/ProcessSection.astro';
+import ValuesSection from '../components/clients/ValuesSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
-import ProjectsSection from '../components/services/ProjectsSection.astro';
+import ProjectsSection from '../components/clients/ProjectsSection.astro';
 import '../styles/global.css';
 import { fetchClients } from '../../contentfulStatic.js';
 import { contentfulClient } from "../lib/contentful.ts";
+import ClientsSection from '../components/clients/ClientsSection.astro';
 
 const projects = await fetchClients();
 
@@ -18,7 +19,7 @@ const entries = await contentfulClient.getEntries({
 });
 
 const headerImage = entries.items
-  .filter(entry => entry.fields.title === "Services - Our Services")[0]
+  .filter(entry => entry.fields.title === "Clients - Our Clients")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
   const valuesEntries = await contentfulClient.getEntries({
@@ -66,7 +67,7 @@ const services = serviceEntries.items.map((entry) => ({
       <div class="absolute inset-0 flex flex-col items-start justify-end p-8 md:p-16 lg:p-24 text-content-animation">
         <div class="slide-up-animation">
           <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6" style="font-family: 'Almarai', sans-serif;">
-              Our Services
+              Our Clients
           </h1>
           <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl leading-relaxed">
             Shape your future in consulting with Brown's premier student consulting organization
@@ -81,6 +82,7 @@ const services = serviceEntries.items.map((entry) => ({
       </div>
     </section>
 
+    <ClientsSection />
     <ValuesSection values={values} />
     <ServicesSection services={services} />
     <ProjectsSection />

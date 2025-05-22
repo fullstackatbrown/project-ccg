@@ -18,7 +18,7 @@ const headerImage = entries2.items
   .filter(entry => entry.fields.title === "Members - Meet Our Team")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
-function optimizeImage(url : any) {
+function optimizeImage(url) {
   if (!url) return '';
   return url.includes('?')
     ? `${url}&w=475&h=475&fit=thumb&fm=webp&q=80`
@@ -35,13 +35,33 @@ const members = entries.items.map(entry => ({
   linkedIn: entry.fields.linkedIn
 }));
 
-const leadershipPositions = ['co-president (projects)', 'sourcing committee lead', 'project leader','co-president (internal development)','project manager'];
-const leadershipMembers = members.filter(member => 
-  typeof member.position === 'string' && leadershipPositions.includes(member.position.toLowerCase())
-);
-const otherMembers = members.filter(member => 
-  typeof member.position === 'string' && !leadershipPositions.includes(member.position?.toLowerCase())
-);
+// Leadership hierarchy
+const leadershipOrder = [
+  'co-president (projects)',
+  'co-president (internal development)',
+  'project manager',
+  'project leader',
+  'senior advisor',
+  'president emeritus'
+];
+
+// Grouped and classYear-sorted leadership
+const leadershipMembers = leadershipOrder.flatMap(role => {
+  return members
+    .filter(member =>
+      typeof member.position === 'string' &&
+      member.position.toLowerCase() === role
+    )
+    .sort((a, b) => parseInt(a.classYear) - parseInt(b.classYear));
+});
+
+// Consultants, sorted by class year ascending
+const otherMembers = members
+  .filter(member =>
+    typeof member.position === 'string' &&
+    !leadershipOrder.includes(member.position.toLowerCase())
+  )
+  .sort((a, b) => parseInt(a.classYear) - parseInt(b.classYear));
 ---
 
 <Layout>
