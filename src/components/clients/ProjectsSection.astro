@@ -143,6 +143,16 @@ const projectsJSON = JSON.stringify(filteredProjects);
             </div>
             
             <p class="text-[#4A5568] text-lg leading-relaxed">${projects[index].description}</p>
+
+            ${projects[index].slideUrl ? `
+            <button 
+              onclick="openSlideModal('${projects[index].slideUrl}')"
+              class="mt-6 px-6 py-2 bg-[#D32F2F] text-white rounded-full hover:bg-[#B71C1C] transition"
+            >
+              📄 View Engagement Slide
+            </button>
+          ` : ''}
+
             
             <div class="mt-8 w-full flex justify-center">
               <div class="h-px w-1/2 bg-gradient-to-r from-transparent via-[#D32F2F] to-transparent"></div>
