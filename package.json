@@ -14,7 +14,7 @@
     "@contentful/experiences-sdk-react": "^1.31.0",
     "@contentful/rich-text-html-renderer": "^17.0.0",
     "@tailwindcss/vite": "^4.0.7",
-    "astro": "^5.5.3",
+    "astro": "^5.12.8",
     "contentful": "^11.5.6",
     "dotenv": "^16.4.7",
     "micromark-extension-gfm-strikethrough": "^2.1.0",
