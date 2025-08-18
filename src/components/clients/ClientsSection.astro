@@ -16,7 +16,11 @@ const clients = (await fetchClients()).filter(
       <div class="w-12 h-1 bg-[#D32F2F] ml-1"></div>
     </div>
 
-    <div class="grid grid-cols-4 gap-8">
+    <div 
+      class="grid grid-cols-2 grid-rows-4 gap-8
+             md:grid-cols-2 md:grid-rows-4
+             lg:grid-cols-4 lg:grid-rows-2"
+    >
       {clients.map(client => (
         <div class="relative group bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden aspect-square flex items-center justify-center">
           <div class="bg-[#0C1445] w-full h-full flex items-center justify-center">

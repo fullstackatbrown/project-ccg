@@ -23,10 +23,16 @@ const projectsJSON = JSON.stringify(filteredProjects);
       <div id="project-description" class="w-full lg:w-2/3 bg-gradient-to-br from-white to-[#F5F7FA] p-10 rounded-3xl shadow-lg flex flex-col items-center text-center fade-in-delay-2 relative overflow-hidden transform transition-all duration-500">
         <!-- Decorative accent -->
         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#D32F2F] to-[#0B144A]"></div>
-        
+          
         <div class="flex flex-col md:flex-row items-center justify-center w-full mb-8">
-          <div class="p-4 rounded-full bg-white shadow-lg mb-6 md:mb-0 md:mr-8 transform transition-all duration-500 hover:rotate-3">
-            <img src={filteredProjects[0]?.logo} id="project-logo" class="w-20 h-20 object-cover rounded-full" alt="Project Logo" />
+          <div class="w-24 h-24 p-2.5 ring-3 ring-[#D32F2F] rounded-full bg-white shadow-lg mb-6 md:mb-0 md:mr-8 flex items-center justify-center overflow-hidden">
+            <img 
+              src={filteredProjects[0]?.logo} 
+              id="project-logo" 
+              class="w-20 h-20 object-contain" 
+              alt="Project Logo"
+              style="background:transparent;"
+            />
           </div>
           <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A]">{filteredProjects[0]?.companyName || "Loading..."}</h3>
         </div>
@@ -62,8 +68,11 @@ const projectsJSON = JSON.stringify(filteredProjects);
               data-index={index}>
               <div class="flex items-center gap-4 p-5 rounded-2xl bg-white shadow-sm group-hover:shadow-md border-l-4 border-transparent group-hover:border-[#D32F2F]">
                 <div class="shrink-0">
-                  <img src={project.logo} alt={project.companyName} class="w-14 h-14 object-cover rounded-full border-2 border-white shadow-sm group-hover:shadow-md transition-all">
-                </div>
+                  <div class="w-24 h-24 rounded-full p-2.5 ring-3 ring-[#D32F2F] bg-white shadow-sm group-hover:shadow-md transition-all">
+                    <img src={project.logo} alt={project.companyName} class="w-20 h-20 object-contain">
+                  </div>
+                </div> 
+                
                 <div class="flex-1">
                   <h4 class="text-xl font-semibold text-[#0B144A] group-hover:text-[#D32F2F] transition-colors">{project.companyName}</h4>
                   <div class="flex items-center mt-1 text-sm text-gray-500">
@@ -134,10 +143,9 @@ const projectsJSON = JSON.stringify(filteredProjects);
           // Update content with new project data
           projectDescription.innerHTML = `
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#D32F2F] to-[#0B144A]"></div>
-            
             <div class="flex flex-col md:flex-row items-center justify-center w-full mb-8">
-              <div class="p-4 rounded-full bg-white shadow-lg mb-6 md:mb-0 md:mr-8 transform transition-all duration-500 hover:rotate-3">
-                <img id="project-logo" class="w-20 h-20 object-cover rounded-full" alt="${projects[index].companyName}" src="${projects[index].logo || ''}" />
+              <div class="w-24 h-24 p-2.5 ring-3 ring-[#D32F2F] rounded-full bg-white shadow-lg mb-6 md:mb-0 md:mr-8 flex items-center justify-center overflow-hidden">
+                <img id="project-logo" class="w-full h-full object-contain" alt="${projects[index].companyName}" src="${projects[index].logo || ''}" />
               </div>
               <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A]">${projects[index].companyName}</h3>
             </div>
