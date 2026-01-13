@@ -1,0 +1,37 @@
+---
+// Props: percentage (number), label (string)
+const { percentage, label } = Astro.props;
+const radius = 60;
+const circumference = 2 * Math.PI * radius;
+const offset = circumference * (1 - percentage / 100);
+---
+<div class="flex flex-col items-center group">
+  <div class="circle-outer">
+    <svg width="140" height="140" class="circle-stat-svg">
+      <circle
+        cx="70" cy="70" r={radius}
+        stroke="#FBC6C6" stroke-width="16" fill="none"
+      />
+      <circle
+        cx="70" cy="70" r={radius}
+        stroke="#D32F2F" stroke-width="16" fill="none"
+        stroke-dasharray={circumference}
+        stroke-dashoffset={circumference}
+        stroke-linecap="round"
+        class="circle-progress"
+        style={`--final-offset: ${offset};`}
+      />
+      <text x="50%" y="54%" text-anchor="middle" font-size="2.2rem" fill="#D32F2F" font-weight="bold" dominant-baseline="middle">
+        {percentage}%
+      </text>
+    </svg>
+  </div>
+  <div class="mt-2 font-semibold">{label}</div>
+</div>
+<script type="text/javascript" is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.circle-progress').forEach(el => {
+      el.style.setProperty('--circumference', el.getAttribute('stroke-dasharray'));
+    });
+  });
+</script>

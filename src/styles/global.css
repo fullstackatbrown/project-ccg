@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 
 .title-container {
@@ -148,4 +149,67 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Progress bar global styles & animations */
+.circle-outer {
+  border-radius: 50%;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  background: transparent;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.group:hover .circle-outer {
+  transform: scale(1.08);
+  box-shadow: 0 8px 32px 0 rgba(211,47,47,0.15);
+}
+.circle-stat-svg {
+  display: block;
+}
+
+.circle-progress {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  stroke-dashoffset: var(--final-offset);
+  animation: dashoffset-anim 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes dashoffset-anim {
+  from {
+    stroke-dashoffset: var(--circumference, 0);
+  }
+  to {
+    stroke-dashoffset: var(--final-offset);
+  }
+}
+
+/* PieChart custom styles & transitions*/
+.pie-slice {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: pie-slice-appear 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.pie-slice:hover {
+  transform: scale(1.07);
+  filter: brightness(1.12) drop-shadow(0 2px 12px rgba(211,47,47,0.18));
+}
+@keyframes pie-slice-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.legend-entry.highlight {
+  background: #fdeaea;
+  color: #d32f2f;
+  box-shadow: 0 2px 8px rgba(211,47,47,0.08);
 }

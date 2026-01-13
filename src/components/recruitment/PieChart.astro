@@ -1,0 +1,87 @@
+---
+// Props: breakdown = [{ label: string, percentage: number}]
+const { breakdown, size} = Astro.props;
+const radius = size / 2;
+const center = size / 2;
+const colors = ["#FBC6C6", "#F87171", "#D32F2F", "#7B1F1F"];
+let cumulative = 0;
+
+function describeArc(cx, cy, r, startAngle, endAngle) {
+  const start = polarToCartesian(cx, cy, r, endAngle);
+  const end = polarToCartesian(cx, cy, r, startAngle);
+  const largeArcFlag = endAngle - startAngle > 180 ? "1" : "0";
+  return [
+    "M", cx, cy,
+    "L", start.x, start.y,
+    "A", r, r, 0, largeArcFlag, 0, end.x, end.y,
+    "Z"
+  ].join(" ");
+}
+
+function polarToCartesian(cx, cy, r, angle) {
+  const rad = (angle-90) * Math.PI / 180.0;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+
+const slices = breakdown.map((item, i) => {
+  const startAngle = cumulative;
+  const angle = (item.percentage / 100) * 360;
+  cumulative += angle;
+  return {
+    ...item,
+    startAngle,
+    endAngle: startAngle + angle,
+    color: colors[i % colors.length],
+    index: i
+  };
+});
+---
+
+<div class="flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-20 w-full">
+  <div class="flex justify-center items-center">
+    <svg width={size} height={size} class="block flex-shrink-0">
+      {slices.map(slice => (
+        <g class="pie-slice-group" key={slice.label}>
+          <path
+            d={describeArc(center, center, radius, slice.startAngle, slice.endAngle)}
+            fill={slice.color}
+            class="pie-slice cursor-pointer transition-transform duration-200 ease-in-out"
+            data-index={slice.index}
+          />
+        </g>
+      ))}
+    </svg>
+  </div>
+  <div class="mt-6 lg:mt-0 flex flex-col items-start max-w-md">
+    {slices.map(slice => (
+      <div class="flex items-center mb-3 legend-entry transition-colors rounded px-3 py-2 text-2xl font-semibold" key={slice.label} data-index={slice.index}>
+        <span
+          class="inline-block w-6 h-4 rounded mr-3"
+          style={`background-color: ${slice.color};`}
+        ></span>
+        <span class="font-bold">{slice.percentage}%</span>
+        <span class="ml-3">{slice.label}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script type="text/javascript" is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.pie-slice').forEach(slice => {
+      slice.addEventListener('mouseenter', e => {
+        const idx = slice.getAttribute('data-index');
+        document.querySelectorAll('.legend-entry').forEach(entry => {
+          if (entry.getAttribute('data-index') === idx) {
+            entry.classList.add('highlight');
+          }
+        });
+      });
+      slice.addEventListener('mouseleave', e => {
+        document.querySelectorAll('.legend-entry').forEach(entry => {
+          entry.classList.remove('highlight');
+        });
+      });
+    });
+  });
+</script>
