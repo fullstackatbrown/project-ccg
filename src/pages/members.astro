@@ -35,6 +35,7 @@ const members = entries.items.map(entry => ({
   linkedIn: entry.fields.linkedIn
 }));
 
+
 // Leadership hierarchy
 const leadershipOrder = [
   'president',
@@ -42,27 +43,30 @@ const leadershipOrder = [
   'president (internal development)',
   'project manager',
   'project leader',
-  'social media chair',
+  'social media & design chair',
+  'internal affairs chair',
+  'external affairs chair',
+  'finance chair',
   'senior advisor',
 ];
+
+function getPrimaryRole(position: unknown): string {
+  if (typeof position !== 'string') return '';
+  return position.split(',')[0].trim().toLowerCase();
+}
 
 // Grouped and classYear-sorted leadership
 const leadershipMembers = leadershipOrder.flatMap(role => {
   return members
-    .filter(member =>
-      typeof member.position === 'string' &&
-      member.position.toLowerCase() === role
-    )
+    .filter(member => getPrimaryRole(member.position) === role)
     .sort((a, b) => parseInt(a.classYear) - parseInt(b.classYear));
 });
 
 // Consultants, sorted by class year ascending
 const otherMembers = members
-  .filter(member =>
-    typeof member.position === 'string' &&
-    !leadershipOrder.includes(member.position.toLowerCase())
-  )
+  .filter(member => !leadershipOrder.includes(getPrimaryRole(member.position)))
   .sort((a, b) => parseInt(a.classYear) - parseInt(b.classYear));
+
 ---
 
 <Layout>
