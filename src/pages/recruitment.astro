@@ -11,10 +11,15 @@ import type { Asset } from 'contentful';
 interface RecruitmentFields {
   description: string;
   fallApplication: string;
+  applicationLink?: string;
   ccgEmail: string;
   annualReport?: string;
   timeline?: { fields: { file: { url: string } } };
   additionalImages?: Asset[];
+  timelineImages?: Asset[];
+  recruitmentProcess?: string;
+  teamStats?: string;
+  yearBreakdown?: string;
 }
 
 const entries = await contentfulClient.getEntries({
@@ -25,9 +30,10 @@ const entries2 = await contentfulClient.getEntries({
   content_type: "images"
 });
 
-const headerImage = entries2.items
+const headerImage = (entries2.items
   .filter(entry => entry.fields.title === "Recruitment - Join CCG")[0]
-  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
+  ?.fields as unknown as { images?: Asset[] })
+  ?.images?.map((image: Asset) => image.fields?.file?.url as string) || [];
 
 function isValidUrl(value: unknown): value is string {
   if (!value || typeof value !== 'string') return false;
@@ -39,18 +45,22 @@ function isValidUrl(value: unknown): value is string {
   }
 }
 
-const recruitment = entries.items.map(entry => ({
-  description: entry.fields.description,
-  application: entry.fields.fallApplication,
-  applicationLink: isValidUrl(entry.fields.applicationLink) ? entry.fields.applicationLink : null,
-  email: entry.fields.ccgEmail,
-  annualReport: entry.fields.annualReport,
-  timeline: entry.fields.timeline?.fields.file.url,
-  images: entry.fields.additionalImages || [],
-  process: entry.fields.recruitmentProcess || '',
-  stats: entry.fields.teamStats || '',
-  yearBreakdown: entry.fields.yearBreakdown || ''
-}));
+const recruitment = entries.items.map(entry => {
+  const f = entry.fields as unknown as RecruitmentFields;
+  return {
+    description: f.description,
+    application: f.fallApplication,
+    applicationLink: isValidUrl(f.applicationLink) ? f.applicationLink : null,
+    email: f.ccgEmail,
+    annualReport: f.annualReport,
+    timeline: f.timeline?.fields.file.url,
+    timelineImages: f.timelineImages || [],
+    images: f.additionalImages || [],
+    process: f.recruitmentProcess || '',
+    stats: f.teamStats || '',
+    yearBreakdown: f.yearBreakdown || '',
+  };
+});
 
 const processSteps = recruitment[0].process
   .split('\n')
@@ -283,7 +293,38 @@ const teamStats = recruitment[0].stats
                 <div class="w-2 h-2 rounded-full bg-red-700 ml-1"></div>
                 <div class="w-8 h-1 bg-red-700 ml-1"></div>
               </div>
-              <img src={recruitment[0].timeline} alt="Application Timeline" class="w-full rounded-lg shadow-md">
+              <div class="relative" id="timeline-carousel">
+                {recruitment[0].timelineImages.map((img, i) => (
+                  <img
+                    src={`https:${img.fields?.file?.url}`}
+                    alt={`Application Timeline ${i + 1}`}
+                    class={`w-full rounded-lg shadow-md timeline-slide${i > 0 ? ' hidden' : ''}`}
+                    data-index={i}
+                  />
+                ))}
+                {recruitment[0].timelineImages.length > 1 && (
+                  <div>
+                    <button id="timeline-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 bg-white rounded-full shadow-md p-2 hover:shadow-lg transition-all duration-200 hover:scale-110 z-10">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0B144A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <button id="timeline-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 bg-white rounded-full shadow-md p-2 hover:shadow-lg transition-all duration-200 hover:scale-110 z-10">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0B144A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                    <div class="flex justify-center gap-2 mt-4">
+                      {recruitment[0].timelineImages.map((_, i) => (
+                        <button
+                          class={`timeline-dot w-2 h-2 rounded-full transition-colors duration-200${i === 0 ? ' bg-red-700' : ' bg-gray-300'}`}
+                          data-index={i}
+                        ></button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -621,6 +662,38 @@ const teamStats = recruitment[0].stats
       }, 700);
     });
   });
+  // Timeline carousel
+  const carousel = document.getElementById('timeline-carousel');
+  if (carousel) {
+    const slides = carousel.querySelectorAll('.timeline-slide');
+    const dots = carousel.querySelectorAll('.timeline-dot');
+    const prevBtn = document.getElementById('timeline-prev');
+    const nextBtn = document.getElementById('timeline-next');
+    let current = 0;
+
+    function updateArrows() {
+      prevBtn?.classList.toggle('hidden', current === 0);
+      nextBtn?.classList.toggle('hidden', current === slides.length - 1);
+    }
+
+    function goTo(index: number) {
+      slides[current].classList.add('hidden');
+      dots[current]?.classList.replace('bg-red-700', 'bg-gray-300');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.remove('hidden');
+      dots[current]?.classList.replace('bg-gray-300', 'bg-red-700');
+      updateArrows();
+    }
+
+    updateArrows();
+
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => goTo(Number((dot as HTMLElement).dataset.index)));
+    });
+  }
+
   // Accordion functionality
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   
