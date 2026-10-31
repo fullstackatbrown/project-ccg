@@ -29,3 +29,5 @@ Homepage iteration (local only, awaiting Vercel approval): hero → selected cli
 The homepage client showcase now leads with “Trusted by Industry Leaders” in title case, explicitly describes the logos as a selection of past client engagements, and uses slightly more vertical room. Its supporting copy contains no em dash. These edits remain local pending approval to update Vercel.
 
 The client-proof section has a brief native-scroll hold of 35% of viewport height on desktop when all content fits. It releases before the separate people journey. Mobile, reduced-motion, and content that does not fit use normal flow. Copy restores the original scale/industry framing, mentions some of the world’s largest companies, and explicitly says these are just a few past clients. No em dash. Local only.
+
+All five photographic heroes share the same hero-overlay gradient, matching the lighter homepage treatment instead of separate darker internal-page overlays. The user approved updating the separate Vercel review site with this iteration.
