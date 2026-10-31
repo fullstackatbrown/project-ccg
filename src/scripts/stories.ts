@@ -13,7 +13,8 @@ function setScene(story:HTMLElement,index:number) {
   panel.inert=!active;
   panel.setAttribute('aria-hidden',String(!active));
  });
- story.querySelectorAll('[data-story-choice]').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+ const activeGroup=Number(panels[index]?.dataset.storyGroup ?? index);
+ story.querySelectorAll('[data-story-choice]').forEach(button=>button.setAttribute('aria-pressed',String(Number((button as HTMLElement).dataset.storyChoice)===activeGroup)));
  story.dataset.activeScene=String(index);
  const selector=story.querySelector<HTMLSelectElement>('[data-client-selector]');
  if(selector)selector.value=String(index);
@@ -47,7 +48,8 @@ stories.forEach(story=>{
   story.dataset.manualScene=String(index);
   setScene(story,index);
  });
- story.querySelectorAll<HTMLButtonElement>('[data-story-choice]').forEach((button,index)=>{
+ story.querySelectorAll<HTMLButtonElement>('[data-story-choice]').forEach(button=>{
+  const index=Number(button.dataset.storyChoice);
   button.addEventListener('click',()=>{
    delete story.dataset.manualScene;
    if(story.classList.contains('is-enhanced')){

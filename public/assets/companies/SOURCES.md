@@ -29,3 +29,14 @@ Clean replacements for legacy thumbnails:
 - `mckinsey.svg`: https://companieslogo.com/mckinsey/logo/
 - `blackrock.svg`: https://companieslogo.com/blackrock/logo/
 - `amazon.svg`: https://companieslogo.com/amazon/logo/
+
+Additional alumni destinations, retrieved October 31, 2026:
+
+- `disney.svg`: https://companieslogo.com/walt-disney/logo/
+- `united.svg`: https://companieslogo.com/united-airlines/logo/
+- `bloomberg-media.svg`: https://assets.bbhub.io/media/sites/2/2025/08/Bloomberg-Media.svg (white artwork displayed in black on white cards)
+- `harvard-law.svg`: https://hls.harvard.edu/ (embedded color/black logo)
+- `columbia-law.svg`: https://www.law.columbia.edu/themes/custom/oho/columbia_law/assets/img/logos/Columbia_Law_logo-stacked-blue.svg
+- `harvard-business.svg`: https://www.hbs.edu/ (embedded logo; inherited wordmark fill made explicit for standalone SVG)
+- `stanford-business.svg`: https://www.gsb.stanford.edu/themes/custom/gsb/logo.svg
+- `harvard-dental.svg`: https://en.wikipedia.org/wiki/File:Harvard_School_of_Dental_Medicine_shield.svg
