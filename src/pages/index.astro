@@ -6,6 +6,10 @@ import HeroSection from '../components/homepage/HeroSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
 import '../styles/global.css';
 import PeopleJourney from '../components/homepage/PeopleJourney.astro';
+import FeaturedClients from '../components/homepage/FeaturedClients.astro';
+import { fetchClients } from '../../contentfulStatic.js';
+import { introduction } from '../data/homepageCopy';
+const projects = await fetchClients();
 import { contentfulClient } from "../lib/contentful";
 
 
@@ -26,7 +30,7 @@ const homepageEntry = await contentfulClient.getEntries({
 });
 
 const homepage = homepageEntry.items[0]?.fields || {};
-const clubDescription = homepage.clubDescription || '';
+const clubDescription = introduction.map(paragraph => `<p>${paragraph}</p>`).join('');
 const statBoxesRaw = homepage.whoWeAreStats || '';
 const teamDescription = homepage.ourTeamDescription || '';
 
@@ -43,6 +47,7 @@ const statBoxes = statBoxesRaw
   <div class="flex flex-col min-h-screen">
     <Navbar />
     <HeroSection heroImage={heroImage} />
+    <FeaturedClients projects={projects} />
     <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} />
     <AnnualReportSection />
     <Footer />
