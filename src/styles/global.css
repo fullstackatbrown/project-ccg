@@ -928,9 +928,9 @@ html { scroll-padding-top:110px; }
 @media(max-width:959px) { .journey-companies[data-industry='And More'] .company-logo { height:155px; } }
 
 /* Early client proof, followed by the people and depth behind it. */
-.featured-clients { background:var(--ccg-crimson);color:var(--ccg-tan);padding:84px 40px; }
+.featured-clients { background:var(--ccg-crimson);color:var(--ccg-tan);padding:106px 40px; }
 .featured-clients-inner { max-width:1240px;margin-inline:auto; }
-.featured-clients-intro { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:42px; }
+.featured-clients-intro { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:52px; }
 .featured-clients h2 { font-size:clamp(2.5rem,4vw,4rem);line-height:1.08;max-width:10ch; }
 .featured-clients-intro p { color:#fff1de;font-size:18px;line-height:1.8;max-width:50ch; }
 .featured-clients-link { color:var(--ccg-tan);display:inline-flex;align-items:center;gap:18px;margin-top:22px;font-size:16px;font-weight:600; }
@@ -938,7 +938,7 @@ html { scroll-padding-top:110px; }
 .featured-clients-link:hover svg { translate:5px 0; }
 .featured-clients-link:focus-visible,.featured-client:focus-visible { outline-color:var(--ccg-tan);outline-offset:6px; }
 .featured-client-portfolio { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px; }
-.featured-client { position:relative;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:24px;min-height:144px;padding:28px;box-shadow:0 12px 28px rgba(38,0,10,.12);transition:translate .3s,box-shadow .3s; }
+.featured-client { position:relative;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:24px;min-height:160px;padding:28px;box-shadow:0 12px 28px rgba(38,0,10,.12);transition:translate .3s,box-shadow .3s; }
 .featured-client img { width:auto;max-width:85%;max-height:84px;object-fit:contain; }
 .featured-client-arrow { position:absolute;right:16px;bottom:16px;color:var(--ccg-crimson);opacity:0;translate:-4px 4px;transition:opacity .25s,translate .25s; }
 .featured-client:hover { translate:0 -4px;box-shadow:0 16px 32px rgba(38,0,10,.2); }
@@ -953,7 +953,7 @@ html { scroll-padding-top:110px; }
  .journey-stats>div { padding:18px 12px; }
 }
 @media(max-width:959px) {
- .featured-clients { padding:64px 24px; }
+ .featured-clients { padding:78px 24px; }
  .featured-clients-intro { grid-template-columns:1fr;gap:24px; }
  .featured-clients h2 { max-width:15ch; }
  .featured-clients-intro p { font-size:17px; }
