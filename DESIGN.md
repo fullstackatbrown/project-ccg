@@ -1,9 +1,11 @@
-# CCG website refinement
+# CCG client-facing website
 
-Preserve the existing photo-led identity, routes, section order, Contentful fields and interaction paths. This is a refinement of the existing website, not a new content architecture.
+Audience: prospective clients first, with clear paths for students and alumni. Preserve Contentful as the source of club facts, client engagements, services, values, members, and recruitment.
 
-Primary palette: crimson #8d0428, light tan #fae7bc; blue #173884 is secondary. White and a quiet warm paper surface support readable content. Use deep crimson for photographic overlays and footer rather than the previous navy.
+Full-screen photographic hero with the large cream CCG logo centered, no additional home hero copy. Crimson #8d0428 and tan #fae7bc, Aileron headings, original system sans-serif body. No accessory serif fonts.
 
-Typography: self-hosted Aileron 700 for headings and the original system sans-serif stack for body, navigation and controls (explicit user preference over the guide’s PT Sans). No accessory social-media serif fonts. Use a restrained hierarchy, generous line-height, and solid-color headings. Preserve logo geometry, using crimson on white and tan over photography.
+Home sequence: introduction and rounded stats → pinned selected client engagements → five expandable capabilities → annual report → team and alumni → direct project inquiry. Client page prioritizes work and capabilities, followed by detailed engagements, working approach, process and contact.
 
-Keep familiar campus/member photography in its original proportions. Use rounded 20–28px cards, restrained depth, full-viewport photo heroes, and paced scroll reveals. Keep the home logo large and centered with no other hero text. Stats and alumni destinations remain distinct rounded cards. Use a tan contrasting hero CTA on internal pages. Keep keyboard focus, mobile navigation, reduced-motion support, and readable content when entrance animation is unavailable.
+Signature interaction: a native-scroll pinned stage holds the engagement heading and navigation in place while three client case summaries advance. No wheel interception. Clients can select a case directly. Smaller screens and reduced-motion preferences get the same complete content in normal reading order.
+
+Rounded surfaces have subtle shadows and no outlines. No cream box or logo behind Who We Are. Values are editorial text, not icon cards with decorative red lines. Services are a complete five-item expandable list, never an incomplete-looking grid.

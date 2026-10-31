@@ -8,8 +8,16 @@ import AlternateSection from '../components/homepage/AlternateSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
 import CompaniesSection from '../components/homepage/CompaniesSection.astro';
 import '../styles/global.css';
+import {fetchClients} from '../../contentfulStatic.js';
+import WorkShowcase from '../components/clients/WorkShowcase.astro';
+import ServicesSection from '../components/clients/ServicesSection.astro';
+import ProjectCTA from '../components/common/ProjectCTA.astro';
 import { contentfulClient } from "../lib/contentful";
 
+
+const projects = await fetchClients();
+const serviceEntries = await contentfulClient.getEntries({content_type:'ourServices'});
+const services = serviceEntries.items.map(entry=>({title:entry.fields.title,description:entry.fields.description}));
 
 const entries2 = await contentfulClient.getEntries({
   content_type: "images"
@@ -56,10 +64,12 @@ const statBoxes = statBoxesRaw
     <Navbar />
     <HeroSection heroImage={heroImage} />
     <WhoWeAreSection clubDescription={clubDescription} statBoxes={statBoxes} />
-    <AlternateSection section="clients" ourTeamImage={ourTeamImage} ourServicesImage={ourServicesImage} servicesDescription={servicesDescription} teamDescription={teamDescription}  />
+    <WorkShowcase projects={projects} />
+    <ServicesSection services={services} />
     <AnnualReportSection />
     <AlternateSection section="team" ourTeamImage={ourTeamImage} ourServicesImage={ourServicesImage} servicesDescription={servicesDescription} teamDescription={teamDescription} />
     <CompaniesSection companyImages={companyImages} />
+    <ProjectCTA />
     <Footer />
   </div>
 </Layout>

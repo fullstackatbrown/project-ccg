@@ -10,6 +10,8 @@ import ProjectsSection from '../components/clients/ProjectsSection.astro';
 import '../styles/global.css';
 import { fetchClients } from '../../contentfulStatic.js';
 import { contentfulClient } from "../lib/contentful.ts";
+import ProjectCTA from '../components/common/ProjectCTA.astro';
+import WorkShowcase from '../components/clients/WorkShowcase.astro';
 import ClientsSection from '../components/clients/ClientsSection.astro';
 
 const projects = await fetchClients();
@@ -70,9 +72,9 @@ const services = serviceEntries.items.map((entry) => ({
               Our Clients
           </h1>
           <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl leading-relaxed">
-            Shape your future in consulting with Brown's premier student consulting organization.
+            Research, strategy, and a fresh perspective on your next challenge.
           </p>
-          <a href="#learn-more" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#8d0428] to-[#6d0320] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+          <a href="#selected-work" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#8d0428] to-[#6d0320] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
             Learn More
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -82,12 +84,14 @@ const services = serviceEntries.items.map((entry) => ({
       </div>
     </section>
 
-    <ClientsSection />
-    <ValuesSection values={values} />
+    <WorkShowcase projects={projects} />
     <ServicesSection services={services} />
     <ProjectsSection />
+    <ValuesSection values={values} />
     <ProcessSection />
+    <ClientsSection />
     <AnnualReportSection />
+    <ProjectCTA />
 
     <Footer></Footer>
   </div>
