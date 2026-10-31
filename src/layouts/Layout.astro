@@ -1,4 +1,7 @@
 ---
+import "@fontsource/aileron/700.css";
+import "@fontsource/pt-sans/400.css";
+import "@fontsource/pt-sans/700.css";
 import "../styles/global.css";
 ---
 
@@ -18,7 +21,8 @@ import "../styles/global.css";
 		</script>
 	</head>
 	<body>
-		<slot />
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<main id="main-content"><slot /></main>
 	</body>
 </html>
 

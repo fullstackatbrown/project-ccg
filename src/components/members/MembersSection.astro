@@ -5,16 +5,16 @@ const { title, members, background, id, memberType } = Astro.props;
 
 <section class={`w-full py-16 ${background} fade-in`} id={id}>
   <div class="container mx-auto fade-in-delay-1">
-    <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#0B144A] text-center" style="font-family: 'arimo', sans-serif;">{title}</h1>
+    <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#8d0428] text-center" style="font-family: 'Aileron', sans-serif;">{title}</h1>
     <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-2">
-      <div class="w-12 h-1 bg-[#C32727]"></div>
-      <div class="w-3 h-3 rounded-full bg-[#C32727] ml-1"></div>
-      <div class="w-12 h-1 bg-[#C32727] ml-1"></div>
+      <div class="w-12 h-1 bg-[#8d0428]"></div>
+      <div class="w-3 h-3 rounded-full bg-[#8d0428] ml-1"></div>
+      <div class="w-12 h-1 bg-[#8d0428] ml-1"></div>
     </div>
     
     <div class="members-grid">
       {members.map((member, index) => (
-        <article class="member-card fade-in-delay-3" data-member-index={index} data-member-type={memberType}>
+        <article tabindex="0" role="button" aria-label={`View ${member.memberName} profile`} class="member-card fade-in-delay-3" data-member-index={index} data-member-type={memberType}>
           <div class="image-container">
             {member.profileImage ? (
               <img 
@@ -166,8 +166,8 @@ const { title, members, background, id, memberType } = Astro.props;
   }
 
   .view-profile:hover {
-    background-color: #C32727;
-    border-color: #C32727;
+    background-color: #8d0428;
+    border-color: #8d0428;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(195, 39, 39, 0.3);
   }
@@ -181,17 +181,17 @@ const { title, members, background, id, memberType } = Astro.props;
   }
 
   .member-name {
-    font-family: 'Almarai', sans-serif;
+    font-family: 'Aileron', sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0 0 0.5rem 0;
-    color: #0B144A;
+    color: #8d0428;
   }
 
   .member-position {
     font-size: 1rem;
     font-weight: 500;
-    color: #C32727;
+    color: #8d0428;
     margin: 0 0 0.25rem 0;
     text-transform: capitalize;
   }
@@ -220,3 +220,8 @@ const { title, members, background, id, memberType } = Astro.props;
     }
   }
 </style>
+<script>
+ document.querySelectorAll<HTMLElement>('.member-card').forEach(card => {
+  card.addEventListener('keydown',event=>{ if(event.key==='Enter'||event.key===' ') {event.preventDefault();card.click();} });
+ });
+</script>

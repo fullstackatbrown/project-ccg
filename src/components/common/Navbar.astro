@@ -1,159 +1,32 @@
 ---
 const navLinks = [
-    { name: "Home", href: "" },
-    { name: "Members", href: "members" },
-    { name: "Clients", href: "clients"},
-    { name: "Recruitment", href: "recruitment" },
-    { name: "Contact Us", href: "contact" }
+ {name:'Home', href:'/'}, {name:'Members',href:'/members'},
+ {name:'Clients',href:'/clients'}, {name:'Recruitment',href:'/recruitment'},
+ {name:'Contact Us',href:'/contact'}
 ];
-
-const socialLinks = [
-    { icon: "fab fa-linkedin", href: "https://www.linkedin.com/company/ccg-collegiate-consulting-group/" },
-    { icon: "fab fa-instagram", href: "https://www.instagram.com/ccgbrown/" },
-    { icon: "fab fa-facebook", href: "https://www.facebook.com/ccgbrown/" }
-];
-
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/$/,'') || '/';
 ---
-
-<nav class="h-auto md:h-[100px] bg-white sticky top-0 z-50 shadow-sm">
-    <div class="w-full mx-auto flex justify-between items-center py-4 md:py-0 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <a href={`/`} class="flex items-center">
-            <img 
-                src={`/assets/logo.svg`} 
-                alt="Logo" 
-                class="h-8 md:h-10 w-auto max-w-none shrink-0 pr-4"
-            />
-        </a>
-
-        <div class="hidden md:flex items-center justify-end w-full">
-            <ul class="flex items-center gap-8 h-[100px]">
-                {navLinks.map((link) => (
-                    <li>
-                        <a 
-                            href={`/${link.href}`} 
-                            class={`text-gray-900 font-almarai hover:text-[#c32727] transition nav-link${currentPath === `/${link.href}` ? ' active-link' : ''}`}
-                        >
-                            {link.name}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-
-            <div class="flex items-center space-x-8 ml-10">
-                {socialLinks.map((link) => (
-                    <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-xl text-gray-900 hover:text-[#c32727] transition"
-                    >
-                        <i class={link.icon}></i>
-                    </a>
-                ))}
-            </div>
-        </div>
-
-        <button class="md:hidden text-gray-800 text-3xl flex items-center" id="hamburger-btn">
-            <i class="fas fa-bars" id="menu-icon"></i>
-        </button>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden opacity-0 translate-y-[-10px] transition-all duration-300 md:hidden bg-white w-full py-4 px-4 sm:px-6">
-        <ul class="flex flex-col space-y-4">
-            {navLinks.map((link) => (
-                <li>
-                    <a 
-                        href={`/${link.href}`} 
-                        class={`block text-gray-900 font-almarai hover:text-[#c32727] transition py-2 ${currentPath === `${link.href}` ? 'text-[#c32727] font-semibold' : ''}`}
-                    >
-                        {link.name}
-                    </a>
-                </li>
-            ))}
-        </ul>
-        
-        <div class="flex items-center space-x-6 mt-6">
-            {socialLinks.map((link) => (
-                <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-xl text-gray-900 hover:text-[#c32727] transition"
-                >
-                    <i class={link.icon}></i>
-                </a>
-            ))}
-        </div>
-    </div>
+<nav class="site-nav" aria-label="Main navigation">
+ <div class="nav-inner">
+  <a href="/" class="brand-link" aria-label="Collegiate Consulting Group home"><img src="/assets/logo-crimson.svg" alt="Collegiate Consulting Group" width="1814" height="434" /></a>
+  <button id="hamburger-btn" class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-menu">
+   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+   <span>Menu</span>
+  </button>
+  <div id="site-menu" class="site-menu">
+   <ul>{navLinks.map(link => <li><a href={link.href} aria-current={currentPath===link.href?'page':undefined} class={link.href==='/contact'?'nav-contact':''}>{link.name}</a></li>)}</ul>
+   <div class="nav-socials"><a href="https://www.linkedin.com/company/ccg-collegiate-consulting-group/" target="_blank" rel="noopener noreferrer" aria-label="CCG on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="https://www.instagram.com/ccgbrown/" target="_blank" rel="noopener noreferrer" aria-label="CCG on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></div>
+  </div>
+ </div>
 </nav>
-
-<!-- Contact Bubble (Only renders if not on the ContactUs page) -->
-{currentPath !== "/contact" && (
-    <a href={`/contact`}  class="fixed bottom-4 right-4 bg-[#C32727] text-white opacity:0.5 font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-gray-100 transition z-[1000]">
-        Contact Us
-    </a>
-)}
-
-<style>
-  /* Navbar link underline animation */
-    .nav-link {
-        position: relative;
-        text-decoration: none;
-    }
-    
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -4px;
-        left: 0;
-        background-color: #c32727;
-        transition: width 0.3s ease;
-    }
-    
-    .nav-link:hover::after,
-    .active-link::after {
-        width: 100%;
-    }
-    
-    .active-link {
-        color: #c32727;
-        font-weight: 600;
-    }
-</style>
-
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        
-        if (hamburgerBtn && mobileMenu && menuIcon) {
-            hamburgerBtn.addEventListener('click', () => {
-                const isHidden = mobileMenu.classList.contains('hidden');
-                if (isHidden) {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('flex', 'flex-col');
-                    setTimeout(() => {
-                        mobileMenu.classList.remove('opacity-0', 'translate-y-[-10px]');
-                        mobileMenu.classList.add('opacity-100', 'translate-y-0');
-                    }, 10);
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-times');
-                } else {
-                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-                    mobileMenu.classList.add('opacity-0', 'translate-y-[-10px]');
-                    setTimeout(() => {
-                        mobileMenu.classList.remove('flex', 'flex-col');
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
-                }
-            });
-        }
-    });
+ const button = document.querySelector<HTMLButtonElement>('#hamburger-btn');
+ const closeMenu = () => { button?.setAttribute('aria-expanded','false'); button?.setAttribute('aria-label','Open navigation'); };
+ button?.addEventListener('click', () => {
+  const expanded = button.getAttribute('aria-expanded') !== 'true';
+  button.setAttribute('aria-expanded',String(expanded));
+  button.setAttribute('aria-label',expanded?'Close navigation':'Open navigation');
+ });
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeMenu();button?.focus();}});
+ document.querySelectorAll('#site-menu a').forEach(link=>link.addEventListener('click',closeMenu));
 </script>

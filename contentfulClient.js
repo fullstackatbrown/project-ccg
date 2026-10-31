@@ -1,11 +1,14 @@
 import { createClient } from "contentful";
 
+// Published content by default; draft preview is an explicit local opt-in.
+const usePreview = import.meta.env.DEV && import.meta.env.CONTENTFUL_USE_PREVIEW === "true";
+
 const client = createClient({
   space: import.meta.env.PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: import.meta.env.DEV
+  accessToken: usePreview
     ? import.meta.env.PUBLIC_CONTENTFUL_PREVIEW_TOKEN
     : import.meta.env.PUBLIC_CONTENTFUL_DELIVERY_TOKEN,
-  host: import.meta.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
+  host: usePreview ? "preview.contentful.com" : "cdn.contentful.com",
 });
 
 async function fetchImageById(entryId) {
