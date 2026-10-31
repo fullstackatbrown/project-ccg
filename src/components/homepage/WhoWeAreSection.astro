@@ -3,10 +3,10 @@ const {statBoxes, clubDescription} = Astro.props;
 ---
 <section id="who-we-are" class="intro-section">
   <div class="intro-copy">
-    <h1>Who We Are</h1>
-    <div class="intro-description" set:html={clubDescription}></div>
+    <div class="intro-heading" data-reveal><img src="/assets/logo-crimson.svg" alt="" aria-hidden="true" /><h1>Who<br />We Are</h1><span class="heading-rule" aria-hidden="true"></span></div>
+    <div class="intro-description" data-reveal="reading" set:html={clubDescription}></div>
   </div>
   <dl class="club-stats">
-    {statBoxes.map(box => <div><dt>{box.label}</dt><dd>{box.value}</dd></div>)}
+    {statBoxes.map(box => <div data-reveal><dt>{box.label}</dt><dd>{box.value}</dd></div>)}
   </dl>
 </section>

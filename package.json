@@ -14,7 +14,6 @@
     "@contentful/experiences-sdk-react": "^1.31.0",
     "@contentful/rich-text-html-renderer": "^17.0.0",
     "@fontsource/aileron": "^5.3.0",
-    "@fontsource/pt-sans": "^5.3.0",
     "@tailwindcss/vite": "^4.0.7",
     "astro": "^5.5.3",
     "contentful": "^11.5.6",
