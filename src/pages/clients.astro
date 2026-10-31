@@ -6,13 +6,11 @@ import ServicesSection from '../components/clients/ServicesSection.astro';
 import ProcessSection from '../components/clients/ProcessSection.astro';
 import ValuesSection from '../components/clients/ValuesSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
-import ProjectsSection from '../components/clients/ProjectsSection.astro';
 import '../styles/global.css';
 import { fetchClients } from '../../contentfulStatic.js';
 import { contentfulClient } from "../lib/contentful.ts";
 import ProjectCTA from '../components/common/ProjectCTA.astro';
 import WorkShowcase from '../components/clients/WorkShowcase.astro';
-import ClientsSection from '../components/clients/ClientsSection.astro';
 
 const projects = await fetchClients();
 
@@ -86,10 +84,8 @@ const services = serviceEntries.items.map((entry) => ({
 
     <WorkShowcase projects={projects} />
     <ServicesSection services={services} />
-    <ProjectsSection />
     <ValuesSection values={values} />
     <ProcessSection />
-    <ClientsSection />
     <AnnualReportSection />
     <ProjectCTA />
 

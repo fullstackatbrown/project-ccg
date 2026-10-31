@@ -3,19 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/common/Navbar.astro';
 import Footer from '../components/common/Footer.astro';
 import HeroSection from '../components/homepage/HeroSection.astro';
-import WhoWeAreSection from '../components/homepage/WhoWeAreSection.astro';
-import AlternateSection from '../components/homepage/AlternateSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
-import CompaniesSection from '../components/homepage/CompaniesSection.astro';
 import '../styles/global.css';
-import {fetchClients} from '../../contentfulStatic.js';
-import WorkShowcase from '../components/clients/WorkShowcase.astro';
+import PeopleJourney from '../components/homepage/PeopleJourney.astro';
 import ServicesSection from '../components/clients/ServicesSection.astro';
 import ProjectCTA from '../components/common/ProjectCTA.astro';
 import { contentfulClient } from "../lib/contentful";
 
 
-const projects = await fetchClients();
 const serviceEntries = await contentfulClient.getEntries({content_type:'ourServices'});
 const services = serviceEntries.items.map(entry=>({title:entry.fields.title,description:entry.fields.description}));
 
@@ -31,10 +26,6 @@ const ourTeamImage = entries2.items
   .filter(entry => entry.fields.title === "Home - Our Team")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
-const ourServicesImage = entries2.items
-  .filter(entry => entry.fields.title === "Home - Our Services")[0]
-  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
-
 const companyImages = entries2.items
   .filter(entry => entry.fields.title === "Home - Where We End Up")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
@@ -47,7 +38,6 @@ const homepageEntry = await contentfulClient.getEntries({
 const homepage = homepageEntry.items[0]?.fields || {};
 const clubDescription = homepage.clubDescription || '';
 const statBoxesRaw = homepage.whoWeAreStats || '';
-const servicesDescription = homepage.ourServicesDescription || '';
 const teamDescription = homepage.ourTeamDescription || '';
 
 const statBoxes = statBoxesRaw
@@ -63,12 +53,9 @@ const statBoxes = statBoxesRaw
   <div class="flex flex-col min-h-screen">
     <Navbar />
     <HeroSection heroImage={heroImage} />
-    <WhoWeAreSection clubDescription={clubDescription} statBoxes={statBoxes} />
-    <WorkShowcase projects={projects} />
+    <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} companyImages={companyImages} />
     <ServicesSection services={services} />
     <AnnualReportSection />
-    <AlternateSection section="team" ourTeamImage={ourTeamImage} ourServicesImage={ourServicesImage} servicesDescription={servicesDescription} teamDescription={teamDescription} />
-    <CompaniesSection companyImages={companyImages} />
     <ProjectCTA />
     <Footer />
   </div>

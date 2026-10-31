@@ -4,8 +4,8 @@ Audience: prospective clients first, with clear paths for students and alumni. P
 
 Full-screen photographic hero with the large cream CCG logo centered, no additional home hero copy. Crimson #8d0428 and tan #fae7bc, Aileron headings, original system sans-serif body. No accessory serif fonts.
 
-Home sequence: introduction and rounded stats → pinned selected client engagements → five expandable capabilities → annual report → team and alumni → direct project inquiry. Client page prioritizes work and capabilities, followed by detailed engagements, working approach, process and contact.
+Home sequence: full-screen centered-logo hero → pinned Who We Are / Our Team / Where We End Up sequence → five fully visible service cards in one desktop row → annual report → compact contact invitation. Client page has one combined engagement showcase with all clients selectable, followed by services, working approach, process, report and contact. No duplicate project section or historical-client grid.
 
-Signature interaction: a native-scroll pinned stage holds the engagement heading and navigation in place while three client case summaries advance. No wheel interception. Clients can select a case directly. Smaller screens and reduced-motion preferences get the same complete content in normal reading order.
+Signature interaction: native-scroll pinned stages advance through the home people journey and three featured engagements on the Clients page. No wheel interception. Clients can select a case directly. Smaller screens and reduced-motion preferences get the home scenes in normal reading order and a selectable single-panel client showcase.
 
-Rounded surfaces have subtle shadows and no outlines. No cream box or logo behind Who We Are. Values are editorial text, not icon cards with decorative red lines. Services are a complete five-item expandable list, never an incomplete-looking grid.
+Rounded surfaces have subtle shadows and no outlines. No cream box or logo behind Who We Are. Values are editorial text, not icon cards with decorative red lines. Services are five fully visible rounded cards in one desktop row; they stack for smaller screens.
