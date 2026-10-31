@@ -667,3 +667,54 @@ html { scroll-padding-top:110px; }
 .client-logo-tile[data-light-logo='true'] { background:var(--ccg-crimson); }
 .work-logo[data-light-logo='true'] img { filter:brightness(0); }
 .client-logo-wall h2 { scroll-margin-top:30px; }
+
+/* More room for the people, larger marks, and stronger brand surfaces. */
+.people-journey.is-enhanced .journey-panel { justify-content:flex-start;padding-top:10px; }
+.journey-panel h2 { margin-bottom:28px;font-size:clamp(2.8rem,4.2vw,4rem); }
+.journey-team { align-items:center; }
+.journey-team>img { height:auto;max-height:min(46svh,420px);object-fit:contain; }
+.journey-companies { gap:18px; }
+.journey-companies .company-logo { height:clamp(82px,12svh,114px);padding:14px; }
+.journey-companies img { max-width:min(100%,190px);max-height:clamp(56px,8svh,78px); }
+.journey-stats>div:nth-child(2) { background:var(--ccg-crimson); }
+.journey-stats>div:nth-child(4) { background:var(--ccg-blue); }
+.journey-stats>div:nth-child(2) dd,.journey-stats>div:nth-child(4) dd { color:var(--ccg-tan); }
+.journey-stats>div:nth-child(2) dt,.journey-stats>div:nth-child(4) dt { color:#fff; }
+.client-logo-tile[data-light-logo='true'] { background:#fff; }
+.client-logo-tile[data-light-logo='true'] img { filter:brightness(0); }
+.client-story.is-enhanced .story-panels { max-height:none;min-height:0; }
+.client-story .work-logo { height:72px;margin-bottom:20px; }
+.client-story .work-logo img { max-height:72px;max-width:160px; }
+.client-story .story-panel h3 { margin-bottom:18px;font-size:clamp(1.6rem,2.4vw,2.4rem); }
+.client-story .engagement-summary { font-size:clamp(1rem,1.35vw,1.125rem);line-height:1.75;max-width:52ch;max-height:none;overflow:visible; }
+.services-overview { max-width:none;background:var(--ccg-crimson);padding:84px max(32px,calc((100vw - 1320px)/2)); }
+.services-header h2,.services-header .text-link { color:var(--ccg-tan); }
+.service-overview-card { background:var(--ccg-tan);padding:30px 24px; }
+.service-overview-card h3 { min-height:4.05em;font-size:clamp(1.1rem,1.4vw,1.4rem);line-height:1.35;color:var(--ccg-crimson); }
+.service-overview-card p { color:#493139; }
+.process-editorial { max-width:none;background:var(--ccg-blue);padding:84px max(32px,calc((100vw - 1240px)/2)); }
+.process-editorial h2 { color:var(--ccg-tan);margin-bottom:52px; }
+.process-editorial h3 { color:#fff;min-height:3.9em; }
+.process-editorial p { color:#e6ebf6; }
+.process-editorial .process-number,.process-editorial li.is-revealed .process-number { color:var(--ccg-tan); }
+.annual-reports .report-card-hover>div:first-child { padding:0;background:none;border-radius:26px 0 0 26px; }
+.annual-reports .report-card-hover>div:first-child img { object-fit:cover;object-position:50% 0%;max-height:none; }
+.annual-reports a.group img { object-fit:cover; }
+@media(max-width:959px) {
+ .journey-team>img { max-height:none;height:auto; }
+ .journey-companies .company-logo { height:110px; }
+ .journey-companies img { max-height:72px;max-width:min(100%,180px); }
+ .services-overview,.process-editorial { padding:60px 24px; }
+ .client-story .engagement-summary { font-size:16px; }
+}
+@media(max-width:767px) {
+ .annual-reports .report-card-hover>div:first-child { border-radius:26px 26px 0 0; }
+}
+@media(max-width:600px) {
+ .service-overview-card h3,.process-editorial h3 { min-height:0; }
+ .journey-companies .company-logo { height:105px; }
+}
+@media(min-width:960px) and (max-width:1099px) {
+ .service-overview-card { padding:28px 16px; }
+ .service-overview-card h3 { font-size:1rem; }
+}

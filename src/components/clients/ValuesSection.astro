@@ -2,7 +2,7 @@
 const {values}=Astro.props;
 ---
 <section id="learn-more" class="approach-section">
- <div class="approach-intro"><h2 data-reveal>Our approach.</h2><div class="approach-photo" data-reveal="image"><img src="/assets/images/smallgroup.jpeg" alt="CCG members on campus" loading="lazy" /></div></div>
+ <div class="approach-intro"><h2 data-reveal>Our Values</h2><div class="approach-photo" data-reveal="image"><img src="/assets/images/smallgroup.jpeg" alt="CCG members on campus" loading="lazy" /></div></div>
  <div class="approach-composition">
   <div class="approach-cards">{values.map(value=><article class="approach-card" data-reveal>
    <div class="approach-icon" aria-hidden="true" set:html={value.iconSvg}></div>

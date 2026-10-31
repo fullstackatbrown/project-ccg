@@ -1,11 +1,9 @@
 ---
 const {projects=[]}=Astro.props;
-const priority=['adobe','github','undp'];
-const all=projects.filter(project=>project.companyName).sort((a,b)=>{
- const rank=name=>{const i=priority.indexOf(name.toLowerCase());return i<0?priority.length:i;};
- return rank(a.companyName)-rank(b.companyName)||a.companyName.localeCompare(b.companyName);
-});
-const featured=all.slice(0,3);
+const built=projects.filter(project=>project.companyName&&project.description?.trim());
+const featured=built.slice(0,3);
+const selectedIds=new Set(featured.map(project=>project.id));
+const all=[...featured,...projects.filter(project=>project.companyName&&!selectedIds.has(project.id))];
 ---
 {all.length>0 && <section id="selected-work" class="work-story client-story" data-scroll-story data-scroll-count={featured.length} aria-labelledby="selected-work-title">
  <div class="story-stage">
@@ -21,8 +19,7 @@ const featured=all.slice(0,3);
    {all.map((project,index)=><article class="story-panel" data-story-panel={index}>
     <div class="work-logo" data-light-logo={/trevor/i.test(project.companyName)?"true":undefined}>{project.logo&&<img src={project.logo} alt={project.companyName} loading="lazy" />}</div>
     <h3>{project.companyName==='Github'?'GitHub':project.companyName}</h3>
-    <p class="engagement-summary">{project.summary||project.description}</p>
-    {project.summary&&project.description&&project.description!==project.summary&&<details class="engagement-detail"><summary>Read the full engagement</summary><p>{project.description}</p></details>}
+    <p class="engagement-summary">{project.description||project.summary}</p>
     {project.slideUrl&&<a href={project.slideUrl} class="work-link" target="_blank" rel="noopener noreferrer">View engagement slide <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>}
    </article>)}
   </div>

@@ -2,6 +2,6 @@
 const {services}=Astro.props;
 ---
 <section class="services-overview" aria-labelledby="services-title">
- <div class="services-header" data-reveal><h2 id="services-title">What CCG Can Help You Solve</h2><a href="/contact" class="text-link">Discuss a project <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+ <div class="services-header" data-reveal><h2 id="services-title">Our Services</h2><a href="/contact" class="text-link">Discuss a project <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
  <div class="services-row">{services.map(service=><article class="service-overview-card" data-reveal><h3>{service.title}</h3><p>{service.description}</p></article>)}</div>
 </section>
