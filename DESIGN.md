@@ -31,3 +31,5 @@ The homepage client showcase now leads with “Trusted by Industry Leaders” in
 The client-proof section has a brief native-scroll hold of 35% of viewport height on desktop when all content fits. It releases before the separate people journey. Mobile, reduced-motion, and content that does not fit use normal flow. Copy restores the original scale/industry framing, mentions some of the world’s largest companies, and explicitly says these are just a few past clients. No em dash. Local only.
 
 All five photographic heroes share the same hero-overlay gradient, matching the lighter homepage treatment instead of separate darker internal-page overlays. The user approved updating the separate Vercel review site with this iteration.
+
+Internal-page hero overlays are modestly darker than the homepage for title contrast: .91 opacity at the bottom, .27 at the top, versus the unchanged homepage .86/.15. User approved updating the standalone Vercel review site.

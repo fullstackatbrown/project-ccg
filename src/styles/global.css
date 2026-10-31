@@ -982,3 +982,6 @@ html { scroll-padding-top:110px; }
  .featured-clients.is-held .featured-client img { max-height:72px; }
  .featured-clients.is-held .featured-client-portfolio { gap:16px; }
 }
+
+/* Slightly more contrast behind internal-page titles than the logo-only homepage. */
+.hero-overlay-internal { background:linear-gradient(0deg,rgba(67,5,24,.91),rgba(67,5,24,.27)); }
