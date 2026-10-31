@@ -3,5 +3,5 @@ const steps = [{"title": "Team Formation", "description": "CCG Project Teams con
 ---
 <section class="process-editorial">
  <h2 data-reveal>Our Process</h2>
- <ol>{steps.map((step,index)=><li data-reveal="process"><span class="process-number" aria-hidden="true">{index+1}</span><h3>{step.title}</h3><p>{step.description}</p></li>)}</ol>
+ <ol>{steps.map((step,index)=><li data-reveal="process"><span class="process-number" aria-hidden="true">{index+1}</span><h3><span>{step.title.split(" ").slice(0,-1).join(" ")}</span>{" "}<span>{step.title.split(" ").slice(-1)}</span></h3><p>{step.description}</p></li>)}</ol>
 </section>
