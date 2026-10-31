@@ -764,3 +764,79 @@ html { scroll-padding-top:110px; }
  .service-overview-card p { max-width:36ch;font-size:16px; }
 }
 @media(prefers-reduced-motion:reduce) { .client-story .story-panel.is-active { animation:none; } }
+
+/* Edge-to-edge team portrait, expanded alumni portfolio, and client-page rhythm. */
+.team-photo-frame { padding:0;background:transparent;aspect-ratio:4/3;border-radius:28px; }
+.team-photo-frame img { width:100%;height:100%;max-height:none;object-fit:cover;border-radius:inherit; }
+.journey-companies { grid-template-columns:repeat(5,minmax(0,1fr));gap:12px; }
+.journey-companies .company-logo { height:clamp(52px,8svh,82px);padding:12px 18px;border-radius:16px !important; }
+.journey-companies img { width:auto;max-width:100%;height:auto;max-height:100%; }
+.journey-companies .logo-darken { filter:brightness(0); }
+.journey-panel:has(.journey-companies) h2 { margin-bottom:16px; }
+.journey-alumni-description { margin-bottom:22px; }
+.client-logo-tile { position:relative;cursor:help; }
+.client-logo-tile>img { transition:opacity .25s,transform .3s; }
+.client-logo-summary { position:absolute;inset:0;padding:18px 16px;border-radius:inherit;display:flex;flex-direction:column;justify-content:center;gap:7px;background:var(--ccg-crimson);color:#fff;text-align:center;opacity:0;visibility:hidden;transform:translateY(5px);transition:opacity .25s,transform .25s,visibility .25s;overflow:auto; }
+.client-logo-summary strong { color:var(--ccg-tan);font-size:15px;line-height:1.2; }
+.client-logo-summary p { font-size:13px;line-height:1.45; }
+.client-logo-tile:is(:hover,:focus-visible,:focus-within) .client-logo-summary { opacity:1;visibility:visible;transform:none; }
+.client-logo-tile:is(:hover,:focus-visible,:focus-within)>img { opacity:0;transform:scale(.94); }
+.client-story { background:var(--ccg-crimson); }
+.client-story .story-navigation h2 { color:var(--ccg-tan); }
+.client-story .story-choices button { color:#f1cdd6; }
+.client-story .story-choices button[aria-pressed='true'] { color:var(--ccg-tan); }
+.client-story .client-selector-label { color:#fae7bc; }
+.client-story .story-progress { background:#ad4b66 !important; }
+.client-story .story-progress span { background:var(--ccg-tan); }
+.client-story .story-panel { box-shadow:0 18px 45px rgba(42,0,11,.2); }
+.client-story .story-choices button:focus-visible { outline-color:var(--ccg-tan); }
+.services-overview { background:#fff; }
+.service-overview-card { background:#faf7f3; }
+.approach-section { background:#f8f2ec; }
+.process-editorial { background:#fff; }
+.process-editorial li { background:#faf7f3; }
+@media(max-width:959px) {
+ .journey-companies { grid-template-columns:repeat(4,minmax(0,1fr));gap:16px; }
+ .journey-companies .company-logo { height:90px;padding:16px; }
+ .journey-companies .company-logo:last-child { grid-column:2/4; }
+ .client-logo-summary { padding:14px 10px; }
+ .client-logo-summary strong { font-size:14px; }
+ .client-logo-summary p { font-size:12px; }
+}
+@media(max-width:600px) {
+ .journey-companies { grid-template-columns:repeat(2,minmax(0,1fr));gap:14px; }
+ .journey-companies .company-logo { height:100px; }
+ .journey-companies .company-logo:last-child { grid-column:1/-1;justify-self:center;width:calc(50% - 7px); }
+}
+@media(prefers-reduced-motion:reduce) {
+ .client-logo-summary,.client-logo-tile>img { transition:none; }
+}
+
+.team-photo-frame { height:min(48svh,470px);aspect-ratio:auto; }
+.team-photo-frame img { object-position:50% 35%; }
+.client-logo-tile:is(:hover,:focus,:focus-within) { z-index:5; }
+.client-logo-summary { inset:auto;bottom:calc(100% + 12px);left:50%;width:280px;max-width:calc(100vw - 48px);padding:20px;overflow:visible;transform:translate(-50%,5px);box-shadow:0 12px 30px rgba(67,5,24,.2);pointer-events:none; }
+.client-logo-summary strong { font-size:16px; }
+.client-logo-summary p { font-size:14px;line-height:1.6; }
+.client-logo-tile:is(:hover,:focus,:focus-within) .client-logo-summary { opacity:1;visibility:visible;transform:translate(-50%,0); }
+.client-logo-tile:is(:hover,:focus,:focus-within)>img { opacity:1;transform:none; }
+.client-logo-tile:nth-child(5n + 1) .client-logo-summary { left:0;transform:translateY(5px); }
+.client-logo-tile:nth-child(5n) .client-logo-summary { left:auto;right:0;transform:translateY(5px); }
+.client-logo-tile:is(:hover,:focus,:focus-within):nth-child(5n + 1) .client-logo-summary,.client-logo-tile:is(:hover,:focus,:focus-within):nth-child(5n) .client-logo-summary { transform:translateY(0); }
+@media(max-width:959px) {
+ .team-photo-frame { height:auto;aspect-ratio:4/3; }
+ .client-logo-tile .client-logo-summary { left:50%;right:auto;transform:translate(-50%,5px); }
+ .client-logo-tile:is(:hover,:focus,:focus-within) .client-logo-summary { transform:translate(-50%,0); }
+ .client-logo-tile:nth-child(4n + 1) .client-logo-summary { left:0;transform:translateY(0); }
+ .client-logo-tile:nth-child(4n) .client-logo-summary { left:auto;right:0;transform:translateY(0); }
+}
+@media(max-width:600px) {
+ .client-logo-tile:nth-child(odd) .client-logo-summary { left:0;right:auto;transform:none; }
+ .client-logo-tile:nth-child(even) .client-logo-summary { left:auto;right:0;transform:none; }
+}
+/* Preserve every face while fitting the photograph to shorter pinned stages. */
+.team-photo-frame { height:auto;aspect-ratio:auto;max-width:min(100%,calc((100svh - 350px) * 1.3333));justify-self:center; }
+.team-photo-frame img { height:auto;object-position:center; }
+@media(max-width:959px) {
+ .team-photo-frame { max-width:none;width:100%; }
+}

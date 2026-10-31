@@ -21,11 +21,6 @@ const ourTeamImage = entries2.items
   .filter(entry => entry.fields.title === "Home - Our Team")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
-const companyImages = entries2.items
-  .filter(entry => entry.fields.title === "Home - Where We End Up")[0]
-  ?.fields?.images?.map(image => image.fields?.file?.url) || [];
-
-
 const homepageEntry = await contentfulClient.getEntries({
   content_type: "homepage"
 });
@@ -48,7 +43,7 @@ const statBoxes = statBoxesRaw
   <div class="flex flex-col min-h-screen">
     <Navbar />
     <HeroSection heroImage={heroImage} />
-    <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} companyImages={companyImages} />
+    <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} />
     <AnnualReportSection />
     <Footer />
   </div>
