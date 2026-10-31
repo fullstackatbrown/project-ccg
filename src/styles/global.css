@@ -897,3 +897,32 @@ html { scroll-padding-top:110px; }
  .journey-companies[data-industry='And More'] .company-logo:last-child { grid-column:auto !important; }
  .alumni-heading .journey-alumni-description { font-size:16px; }
 }
+
+/* A calmer alumni cadence, roomier destination cards, and a closer team portrait. */
+.journey-companies .company-logo-bain { background:#b60024; }
+.journey-team { grid-template-columns:minmax(0,min(58%,calc((100svh - 410px) * 1.3333))) minmax(0,1fr);gap:36px;max-width:1100px;width:100%;margin-inline:auto; }
+.team-photo-frame { width:100%;max-width:none; }
+.team-photo-frame img { transform:scale(1.055);transform-origin:50% 54%; }
+.journey-companies[data-industry='And More'] { max-width:1020px;gap:18px; }
+.journey-companies[data-industry='And More'] .company-logo { height:clamp(90px,12svh,124px);padding:24px; }
+.journey-companies[data-industry='And More'] .company-logo:has(.company-name) { padding:22px 28px;gap:10px; }
+.journey-companies[data-industry='And More'] .company-name { max-width:16ch; }
+@media(min-width:960px) and (max-height:800px) {
+ .journey-companies[data-industry='And More'] { gap:14px; }
+ .journey-companies[data-industry='And More'] .company-logo { height:80px;padding:17px; }
+ .journey-companies[data-industry='And More'] .company-logo:has(.company-name) { padding:14px 22px;gap:6px; }
+ .journey-companies[data-industry='And More'] .company-logo:has(.company-name) img { max-height:45%; }
+ .journey-companies[data-industry='And More'] .company-name { font-size:11px; }
+}
+@media(max-width:959px) {
+ .journey-team { grid-template-columns:1fr;gap:28px; }
+ .journey-companies[data-industry='And More'] .company-logo { height:155px;padding:26px; }
+ .journey-companies[data-industry='And More'] .company-logo:has(.company-name) { padding:24px; }
+}
+.journey-companies[data-industry='And More'] .company-logo { height:clamp(100px,14svh,140px); }
+.journey-companies[data-industry='And More'] .company-logo:has(.company-name) img { height:40px;max-height:40px;flex-shrink:0; }
+@media(min-width:960px) and (max-height:800px) {
+ .journey-companies[data-industry='And More'] .company-logo { height:80px; }
+ .journey-companies[data-industry='And More'] .company-logo:has(.company-name) img { height:20px;max-height:20px; }
+}
+@media(max-width:959px) { .journey-companies[data-industry='And More'] .company-logo { height:155px; } }
