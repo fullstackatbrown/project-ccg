@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Separate design-review artifacts and local recovery backup
+.review-preview/
+.review-backups/
