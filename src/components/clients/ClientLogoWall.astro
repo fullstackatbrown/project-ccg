@@ -1,0 +1,8 @@
+---
+const {projects=[]}=Astro.props;
+const clients=projects.filter(project=>project.companyName&&project.logo&&project.summary?.trim());
+---
+<section class="client-logo-wall" aria-labelledby="portfolio-heading">
+ <h2 id="portfolio-heading" data-reveal>Organizations we’ve worked with.</h2>
+ <div class="client-logo-grid">{clients.map(client=><div class="client-logo-tile" data-light-logo={/trevor/i.test(client.companyName)?"true":undefined} data-reveal><img src={client.logo} alt={client.companyName} loading="lazy" /></div>)}</div>
+</section>

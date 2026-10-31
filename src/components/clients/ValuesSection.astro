@@ -1,9 +1,12 @@
 ---
-const {values} = Astro.props;
+const {values}=Astro.props;
 ---
-<section id="learn-more" class="values-editorial">
- <div class="values-heading" data-reveal><h2>How CCG<br />approaches<br />your work.</h2></div>
- <div class="values-copy">
-  {values.map(value=><article data-reveal><h3>{value.title}</h3><p>{value.description}</p></article>)}
+<section id="learn-more" class="approach-section">
+ <div class="approach-intro"><h2 data-reveal>Our approach.</h2><div class="approach-photo" data-reveal="image"><img src="/assets/images/smallgroup.jpeg" alt="CCG members on campus" loading="lazy" /></div></div>
+ <div class="approach-composition">
+  <div class="approach-cards">{values.map(value=><article class="approach-card" data-reveal>
+   <div class="approach-icon" aria-hidden="true" set:html={value.iconSvg}></div>
+   <h3>{value.title}</h3><p>{value.description}</p>
+  </article>)}</div>
  </div>
 </section>

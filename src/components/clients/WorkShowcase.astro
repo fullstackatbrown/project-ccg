@@ -19,7 +19,7 @@ const featured=all.slice(0,3);
   </div>
   <div class="story-panels">
    {all.map((project,index)=><article class="story-panel" data-story-panel={index}>
-    <div class="work-logo">{project.logo&&<img src={project.logo} alt={project.companyName} loading="lazy" />}</div>
+    <div class="work-logo" data-light-logo={/trevor/i.test(project.companyName)?"true":undefined}>{project.logo&&<img src={project.logo} alt={project.companyName} loading="lazy" />}</div>
     <h3>{project.companyName==='Github'?'GitHub':project.companyName}</h3>
     <p class="engagement-summary">{project.summary||project.description}</p>
     {project.summary&&project.description&&project.description!==project.summary&&<details class="engagement-detail"><summary>Read the full engagement</summary><p>{project.description}</p></details>}

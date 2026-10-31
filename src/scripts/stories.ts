@@ -4,7 +4,7 @@ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 const stories = [...document.querySelectorAll<HTMLElement>('[data-scroll-story]')];
 let scheduled = false;
 const sceneCount = (story:HTMLElement) => Number(story.dataset.scrollCount) || story.querySelectorAll('[data-story-panel]').length;
-const headerHeight = () => document.querySelector('.site-nav')?.getBoundingClientRect().height || 89;
+const headerHeight = () => (document.querySelector('.site-nav')?.getBoundingClientRect().bottom || 94) + 16;
 function setScene(story:HTMLElement,index:number) {
  const panels = [...story.querySelectorAll<HTMLElement>('[data-story-panel]')];
  panels.forEach((panel,i)=>{

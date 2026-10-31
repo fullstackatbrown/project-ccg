@@ -23,6 +23,7 @@ if (!reducedMotion.matches) {
   entries.forEach(entry=>{
    if(entry.isIntersecting) {
     animations.get(entry.target)?.play();
+    entry.target.classList.add("is-revealed");
     observer.unobserve(entry.target);
    }
   });
@@ -30,7 +31,7 @@ if (!reducedMotion.matches) {
  targets.forEach(element=>{
   const image = element.dataset.reveal==='image';
   const siblings = [...(element.parentElement?.children || [])];
-  const stagger = element.matches('.company-logo,.member-card,.club-stats>div,#clients-section .group') ? (siblings.indexOf(element)%4)*75 : 0;
+  const stagger = element.dataset.reveal==='process' ? siblings.indexOf(element)*140 : element.matches('.company-logo,.member-card,.club-stats>div,#clients-section .group') ? (siblings.indexOf(element)%4)*75 : 0;
   const frames = image ? [
    {opacity:.25,clipPath:'inset(12% 0 0 0 round 28px)',transform:'translateY(24px)'},
    {opacity:1,clipPath:'inset(0% 0 0 0 round 28px)',transform:'translateY(0)'}

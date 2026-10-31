@@ -6,13 +6,8 @@ import HeroSection from '../components/homepage/HeroSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
 import '../styles/global.css';
 import PeopleJourney from '../components/homepage/PeopleJourney.astro';
-import ServicesSection from '../components/clients/ServicesSection.astro';
-import ProjectCTA from '../components/common/ProjectCTA.astro';
 import { contentfulClient } from "../lib/contentful";
 
-
-const serviceEntries = await contentfulClient.getEntries({content_type:'ourServices'});
-const services = serviceEntries.items.map(entry=>({title:entry.fields.title,description:entry.fields.description}));
 
 const entries2 = await contentfulClient.getEntries({
   content_type: "images"
@@ -54,9 +49,7 @@ const statBoxes = statBoxesRaw
     <Navbar />
     <HeroSection heroImage={heroImage} />
     <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} companyImages={companyImages} />
-    <ServicesSection services={services} />
     <AnnualReportSection />
-    <ProjectCTA />
     <Footer />
   </div>
 </Layout>
