@@ -9,7 +9,8 @@
     "astro": "astro",
     "deploy": "gh-pages -d dist",
     "review:prepare": "npm run build && node scripts/prepare-review.mjs",
-    "review:deploy": "npm run review:prepare && npx --yes vercel@65.9.0 deploy .review-preview --environment=preview --project=ccg-design-review-20261031 --create-if-missing --scope=nate-3269"
+    "review:deploy": "npm run review:prepare && npx --yes vercel@65.9.0 deploy .review-preview --prod --project=ccg-design-review-20261031 --create-if-missing --scope=nate-3269",
+    "review:preview": "npm run review:prepare && npx --yes vercel@65.9.0 deploy .review-preview --environment=preview --project=ccg-design-review-20261031 --create-if-missing --scope=nate-3269"
   },
   "dependencies": {
     "@astrojs/vercel": "^8.1.4",

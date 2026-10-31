@@ -2,18 +2,26 @@
 
 The editable website stays in this folder on the `design-refresh` branch. It is not connected to automatic Vercel deployments. The live brownccg.com site and the original GitHub deployment remain unchanged.
 
+## Share this review
+
+https://ccg-design-review-20261031.vercel.app
+
+Dashboard: https://vercel.com/nate-3269/ccg-design-review-20261031
+
+Published October 31, 2026. All five pages were verified accessible without signing in.
+
 ## Separate Vercel review project
 
 - Account/team: Nate (`nate-3269`)
 - Project: `ccg-design-review-20261031`
 - Only the built static site in `.review-preview` is uploaded. The source code, `.env`, and Contentful tokens stay local.
 - Published Contentful content is read during each local build. Rebuild the review copy to include later Contentful edits.
-- Vercel requires the first deployment of a new project to use its Production environment. Here that means only this separate review project, never brownccg.com. Subsequent uploads can use Preview.
+- Vercel requires the first deployment of a new project to use its Production environment. Here that means only this separate review project, never brownccg.com. The user approved this separate review deployment. Updating its Production environment updates only the review URL.
 - The review output includes `noindex` headers and robots instructions to discourage search indexing; these do not restrict visitor access.
 
 ## Incorporating feedback
 
-Continue making changes in this same checkout. `npm run dev` starts the editable local version. When ready to share an update, `npm run review:deploy` builds the site locally and uploads a new preview to the review project. It prints the new review URL. If Vercel protects the preview, use the deployment's Share control to create a link for reviewers.
+Continue making changes in this same checkout. `npm run dev` starts the editable local version. When ready to share an update, `npm run review:deploy` builds the site locally and updates this same standalone review URL. The command uses `--prod` only for the explicitly named review project, never the official website. To create a separate version instead, use `npm run review:preview`; if Vercel protects that version, use its Share control to create a reviewer link.
 
 Contact and recruitment forms retain their existing destinations; use the preview for visual review without submitting test messages.
 
