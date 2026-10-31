@@ -19,9 +19,9 @@ const {clubDescription,statBoxes,teamDescription,ourTeamImage}=Astro.props;
      <div><p>{teamDescription}</p><a href="/members" class="feature-link">Meet Our Team <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
     </div>
    </article>
-   {alumniIndustries.map((industry,index)=><article class="story-panel journey-panel alumni-panel" data-story-panel={index+2} data-story-group="2">
-    <header class="alumni-heading"><h2>Where We End Up</h2><h3>{industry.name}</h3></header>
-    <div class="journey-companies" data-industry={industry.name}>{industry.employers.map(employer=><div class="company-logo" title={employer.name}><img src={employer.logo} alt={employer.name} class:list={{"logo-darken":employer.darken}} loading="lazy" />{"caption" in employer && employer.caption && <span class="company-name">{employer.name}</span>}</div>)}</div>
+   {alumniIndustries.map((industry,index)=><article class="story-panel journey-panel alumni-panel" data-story-panel={index+2} data-story-group="2" data-scroll-weight="0.55">
+    <header class="alumni-heading"><h2>Where We End Up</h2><p class="journey-alumni-description">Our alumni have gone on to build successful careers at leading firms across industries.</p><h3>{industry.name}</h3></header>
+    <div class="journey-companies" data-industry={industry.name}>{industry.employers.map(employer=><div class:list={["company-logo",{"company-logo-dark": ["McKinsey & Company","Bain & Company"].includes(employer.name),"company-logo-square":employer.name==="Square"}]} title={employer.name}><img src={employer.logo} alt={employer.name} class:list={{"logo-darken":employer.darken}} loading="lazy" />{"caption" in employer && employer.caption && <span class="company-name">{employer.name}</span>}</div>)}</div>
    </article>)}
   </div>
   <div class="story-choices journey-choices" role="group" aria-label="Explore CCG">
