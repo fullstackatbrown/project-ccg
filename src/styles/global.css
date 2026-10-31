@@ -969,3 +969,16 @@ html { scroll-padding-top:110px; }
 @media(prefers-reduced-motion:reduce) { .featured-client,.featured-client-arrow,.featured-clients-link svg { transition:none; } }
 .featured-clients h2 { max-width:18ch; }
 .journey-description p { font-size:inherit;line-height:inherit;max-width:none; }
+
+/* Brief client-proof hold, followed by the existing people journey. */
+.featured-clients.is-held { position:relative;padding:0; }
+.featured-clients.is-held .featured-clients-stage { position:sticky;top:110px;height:calc(100svh - 110px);padding:32px 40px;display:flex;align-items:center; }
+.featured-clients.is-held .featured-clients-inner { width:100%; }
+@media(min-width:960px) and (max-height:800px) {
+ .featured-clients.is-held h2 { font-size:2.5rem; }
+ .featured-clients.is-held .featured-clients-intro { gap:56px;margin-bottom:30px; }
+ .featured-clients.is-held .featured-clients-intro p { font-size:16px;line-height:1.65; }
+ .featured-clients.is-held .featured-client { min-height:124px;padding:22px; }
+ .featured-clients.is-held .featured-client img { max-height:72px; }
+ .featured-clients.is-held .featured-client-portfolio { gap:16px; }
+}
