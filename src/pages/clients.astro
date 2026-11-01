@@ -88,7 +88,7 @@ const services = serviceEntries.items.map((entry) => ({
       </div>
     </section>
 
-    <ClientPortfolio portfolio={portfolio} />
+    <ClientPortfolio portfolio={portfolio} page={page} />
     <ServicesSection services={services} title={page.servicesTitle} />
     <ValuesSection values={values} title={page.valuesTitle} image={editorial.migrated ? assetUrl(page.valuesImage) : page.valuesImage} />
     <ProcessSection title={page.processTitle} steps={editorial.migrated ? page.processSteps.map(entry=>entry.fields) : editorial.defaults.processSteps} />

@@ -1,18 +1,19 @@
 ---
 import ProjectCard from '../portfolio/ProjectCard.astro';
-const {portfolio} = Astro.props;
+const {portfolio,page} = Astro.props;
 const remaining = portfolio.projects;
-const semesters = [...new Set(remaining.map(project => project.semester || 'Earlier Engagements'))];
+const semesterRank = (name:string) => (Number(name.match(/\d{4}/)?.[0]) || 0) * 10 + (/fall/i.test(name) ? 2 : 1);
+const semesters = [...new Set(remaining.map(project => project.semester || 'Earlier Engagements'))].sort((a:any,b:any)=>semesterRank(b)-semesterRank(a));
 ---
 <section class="portfolio-featured" id="selected-work" data-showcase-hold aria-labelledby="portfolio-featured-title">
  <div data-showcase-stage><div data-showcase-content>
- <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-featured-title">Selected Engagements</h2><p>A closer look at the research, strategies, and recommendations behind our client work. Select a project to explore the engagement.</p></div>
+ <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-featured-title">{page.portfolioTitle}</h2><p>{page.portfolioDescription}</p></div>
  <div class="engagement-grid engagement-grid-featured">{portfolio.featured.map(project => <ProjectCard project={project} context="featured" />)}</div>
- <a href="#full-portfolio" class="portfolio-jump">Explore the Full Portfolio <span aria-hidden="true">↓</span></a>
+ <a href="#full-portfolio" class="portfolio-jump">{page.portfolioLinkLabel} <span aria-hidden="true">↓</span></a>
  </div></div>
 </section>
 <section class="portfolio-history" id="full-portfolio" aria-labelledby="portfolio-history-title">
- <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-history-title">Our Client Portfolio</h2><p>Explore engagements across industries and semesters, from our latest work to earlier projects.</p></div>
+ <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-history-title">{page.historyTitle}</h2><p>{page.historyDescription}</p></div>
  <div class="portfolio-browser">
   <aside class="portfolio-filters" aria-label="Filter client engagements"><label for="portfolio-search">Find a Project</label><input id="portfolio-search" type="search" placeholder="Search projects" autocomplete="off" /><label for="portfolio-semester">Semester</label><select id="portfolio-semester"><option value="all">All Semesters</option>{semesters.map(semester => <option value={semester}>{semester}</option>)}</select><p class="portfolio-result-count" role="status" aria-live="polite" data-portfolio-count>{remaining.length} engagements</p></aside>
   <div class="portfolio-results">

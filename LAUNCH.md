@@ -32,3 +32,17 @@ The existing Homepage entry now also controls:
 Use the reference-list ordering controls to reorder clients, industries, destinations, or process steps. Upload replacement logos as Contentful Assets. Keep pinned client work limited to clients with full descriptions. Ordinary client entries still populate Explore All Clients and Selected Engagements.
 
 Design, colors, layout, animations, and navigation remain code-controlled, as before. Contentful edits populate the static site after its rebuild; publishing an entry alone does not deploy code. The migration script skips its previously published seed entries so rerunning it does not overwrite later editor changes.
+
+## November portfolio release
+
+The November 1 release keeps the entire approved portfolio in Contentful. Development and production use published CMS content by default; `PORTFOLIO_REVIEW=true` is only an explicit historical spreadsheet-preview override.
+
+- **Clients**: edit Company Name, Semester, Short Description (hover preview), Long Description (project details), and Logo. A missing long description falls back to the short description. Education Co. intentionally has no logo.
+- **Clients Page → Portfolio**: ordered references determine which projects are included. Add a new Clients entry here to include it in the searchable portfolio. Projects are grouped by Semester, newest first. The section headings, introductions, and portfolio link label are editable on this entry.
+- **Homepage → Featured Clients**: the ordered references select the shared featured eight on both Home and Clients. Select projects already included in Clients Page → Portfolio. Reorder the references to change the featured order.
+- **Homepage → Alumni Industries**: controls the ordered alumni scenes. Each Alumni Industry has an editable title and ordered Destinations. Consulting, Investment Banking, Investing & Trading, Tech, and And More are the approved initial scenes. The bottom navigation remains three tabs.
+- **Alumni Destination**: edit the company name, logo asset, surface variant, optional card background hex color, logo fit, logo padding, and existing sizing/caption options. Background and padding fields override the initial design's defaults.
+
+Publish changed entries and linked assets, then update and publish Site Rebuild Trigger as before. Contentful changes appear after the GitHub Pages rebuild. No code changes are needed for ordinary project copy, company logos, featured selection, or membership/order changes.
+
+The pre-release source is tagged `pre-feedback-live-2026-11-01`. Its source archive and full management-content backup are retained in `.review-backups/production-before-2026-11-01/`. Squash merge the release so reverting one commit restores the previous code. If CMS content must also be restored, use the saved backup and coordinate with editors to preserve changes made since the release; new unreferenced entries need not be deleted.
