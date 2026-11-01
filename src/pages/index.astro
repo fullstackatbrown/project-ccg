@@ -8,9 +8,12 @@ import '../styles/global.css';
 import PeopleJourney from '../components/homepage/PeopleJourney.astro';
 import FeaturedClients from '../components/homepage/FeaturedClients.astro';
 import { fetchClients } from '../../contentfulStatic.js';
+import { preparePortfolio } from '../lib/portfolio';
+import ProjectDetails from '../components/portfolio/ProjectDetails.astro';
 import { loadEditorial } from '../lib/editorial';
 const editorial = await loadEditorial();
 const projects = await fetchClients();
+const portfolio = preparePortfolio(projects, editorial);
 import { contentfulClient } from "../lib/contentful";
 
 
@@ -44,9 +47,10 @@ const statBoxes = statBoxesRaw
   <div class="flex flex-col min-h-screen">
     <Navbar />
     <HeroSection heroImage={heroImage} />
-    <FeaturedClients projects={projects} editorial={editorial} />
+    <FeaturedClients portfolio={portfolio} editorial={editorial} />
     <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} editorial={editorial} />
     <AnnualReportSection />
+    <ProjectDetails projects={portfolio.projects} />
     <Footer />
   </div>
 </Layout>

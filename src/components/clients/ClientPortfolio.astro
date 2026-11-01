@@ -1,0 +1,42 @@
+---
+import ProjectCard from '../portfolio/ProjectCard.astro';
+const {portfolio,page} = Astro.props;
+const remaining = portfolio.projects;
+const semesterRank = (name:string) => (Number(name.match(/\d{4}/)?.[0]) || 0) * 10 + (/fall/i.test(name) ? 2 : 1);
+const semesters = [...new Set(remaining.map(project => project.semester || 'Earlier Engagements'))].sort((a:any,b:any)=>semesterRank(b)-semesterRank(a));
+---
+<section class="portfolio-featured" id="selected-work" data-showcase-hold aria-labelledby="portfolio-featured-title">
+ <div data-showcase-stage><div data-showcase-content>
+ <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-featured-title">{page.portfolioTitle}</h2><p>{page.portfolioDescription}</p></div>
+ <div class="engagement-grid engagement-grid-featured">{portfolio.featured.map(project => <ProjectCard project={project} context="featured" />)}</div>
+ <a href="#full-portfolio" class="portfolio-jump">{page.portfolioLinkLabel} <span aria-hidden="true">↓</span></a>
+ </div></div>
+</section>
+<section class="portfolio-history" id="full-portfolio" aria-labelledby="portfolio-history-title">
+ <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-history-title">{page.historyTitle}</h2><p>{page.historyDescription}</p></div>
+ <div class="portfolio-browser">
+  <aside class="portfolio-filters" aria-label="Filter client engagements"><label for="portfolio-search">Find a Project</label><input id="portfolio-search" type="search" placeholder="Search projects" autocomplete="off" /><label for="portfolio-semester">Semester</label><select id="portfolio-semester"><option value="all">All Semesters</option>{semesters.map(semester => <option value={semester}>{semester}</option>)}</select><p class="portfolio-result-count" role="status" aria-live="polite" data-portfolio-count>{remaining.length} engagements</p></aside>
+  <div class="portfolio-results">
+   {semesters.map(semester => <section class="portfolio-semester-group" data-semester-group={semester} aria-label={semester}><h3>{semester}</h3><div class="engagement-grid">{remaining.filter(project => (project.semester || 'Earlier Engagements') === semester).map(project => <div data-portfolio-item data-semester={semester} data-search={`${project.companyName} ${project.summary} ${project.description}`.toLowerCase()}><ProjectCard project={project} /></div>)}</div></section>)}
+   <p class="portfolio-empty" data-portfolio-empty hidden>No projects match your search. Try another name or semester.</p>
+  </div>
+ </div>
+</section>
+<script>
+ const search = document.querySelector<HTMLInputElement>('#portfolio-search');
+ const semester = document.querySelector<HTMLSelectElement>('#portfolio-semester');
+ const items = [...document.querySelectorAll<HTMLElement>('[data-portfolio-item]')];
+ const filter = () => {
+  let count = 0;
+  const query = search?.value.trim().toLowerCase() || '';
+  items.forEach(item => {
+   item.hidden = !(item.dataset.search?.includes(query) && (semester?.value === 'all' || item.dataset.semester === semester?.value));
+   if (!item.hidden) count++;
+  });
+  document.querySelectorAll<HTMLElement>('[data-semester-group]').forEach(group => {group.hidden = !group.querySelector('[data-portfolio-item]:not([hidden])');});
+  document.querySelector('[data-portfolio-count]')!.textContent = `${count} ${count === 1 ? 'engagement' : 'engagements'}`;
+  (document.querySelector('[data-portfolio-empty]') as HTMLElement).hidden = count > 0;
+ };
+ search?.addEventListener('input', filter);
+ semester?.addEventListener('change', filter);
+</script>

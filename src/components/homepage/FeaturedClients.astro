@@ -1,21 +1,17 @@
 ---
-import { assetUrl } from '../../lib/editorial';
-const { projects = [],editorial } = Astro.props;
-const home=editorial.home;
-const normalize=(name:string)=>name.toLowerCase().replace(/[^a-z]/g,'');
-const clients=editorial.migrated
- ? (home.featuredClients || []).filter(entry=>entry.fields?.logo?.fields?.file?.url).map(entry=>({name:entry.fields.companyName,logo:assetUrl(entry.fields.logo)}))
- : editorial.defaults.featuredClients.map(name=>projects.find(p=>normalize(p.companyName||'')===normalize(name))).filter(p=>p?.logo).map(p=>({name:p.companyName,logo:p.logo}));
-
+import ProjectCard from '../portfolio/ProjectCard.astro';
+const {portfolio, editorial} = Astro.props;
+const home = editorial.home;
+const clients = portfolio.featured;
 ---
-{clients.length > 0 && <section id="featured-clients" class="featured-clients" aria-labelledby="featured-clients-title">
- <div class="featured-clients-stage"><div class="featured-clients-inner">
+{clients.length > 0 && <section id="featured-clients" class="featured-clients" data-showcase-hold aria-labelledby="featured-clients-title">
+ <div class="featured-clients-stage" data-showcase-stage><div class="featured-clients-inner" data-showcase-content>
   <div class="featured-clients-intro" data-reveal>
    <h2 id="featured-clients-title">{home.featuredTitle ?? editorial.defaults.featuredTitle}</h2>
    <div><p>{home.featuredDescription ?? editorial.defaults.featuredDescription}</p><a href="/clients" class="featured-clients-link">{home.featuredLinkLabel ?? editorial.defaults.featuredLinkLabel} <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
   </div>
   <div class="featured-client-portfolio" aria-label="A selection of past client engagements">
-   {clients.map(client=><a href="/clients#selected-work" class="featured-client" aria-label={`Explore CCG's client work, including ${client.name}`} data-reveal><img src={client.logo} alt={client.name} loading="lazy" /><svg class="featured-client-arrow" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg></a>)}
+   {clients.map(project => <ProjectCard project={project} context="featured" />)}
   </div>
  </div>
  </div>

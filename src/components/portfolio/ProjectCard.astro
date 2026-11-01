@@ -1,0 +1,11 @@
+---
+const {project, context='portfolio'} = Astro.props;
+const isTrevor = /trevor/i.test(project.companyName);
+---
+<button type="button" class:list={['engagement-card', {'engagement-card-featured': context === 'featured'}]} data-project-open={project.id} aria-label={`Explore ${project.companyName}, ${project.semester || 'client engagement'}`} aria-haspopup="dialog" data-reveal>
+ <span class="engagement-card-mark">
+  {project.logo ? <img src={project.logo} alt={project.companyName} loading="lazy" class:list={{'engagement-mark-trevor':isTrevor}} /> : <span class="engagement-wordmark">{project.companyName}</span>}
+ </span>
+ <span class="engagement-card-preview"><strong>{project.companyName}</strong><span>{project.summary || project.description}</span><span class="engagement-card-prompt">View Project <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m7 17 10-10M7 7h10v10"/></svg></span></span>
+ <span class="engagement-card-foot"><span>{project.semester || 'Client engagement'}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m-7-7h14"/></svg></span>
+</button>

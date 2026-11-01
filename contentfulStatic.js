@@ -13,13 +13,14 @@ const client = createClient({
 
 export async function fetchClients() {
   try {
-    const response = await client.getEntries({ content_type: "clients" });
+    const response = await client.getEntries({ content_type: "clients", limit: 1000 });
 
     // Transform the fetched data into an array of client objects
     return response.items.map((item) => ({
       id: item.sys.id,
       companyName: item.fields.companyName,
       industry: item.fields.industry,
+      semester: item.fields.semester,
       description: item.fields.description,
       summary: item.fields.summary,
       logo: item.fields.logo
