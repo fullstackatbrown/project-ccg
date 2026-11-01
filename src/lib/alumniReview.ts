@@ -5,7 +5,7 @@ export function reviewAlumniIndustries(industries:any[]) {
  const tech = industries.find(group=>group.layout==='tech');
  const more = industries.find(group=>group.layout==='more');
  if(!consulting || !finance || !tech || !more) return industries;
- return [
+ const groups = [
   {...consulting,layout:'consulting-expanded',employers:[...consulting.employers,
    {...employer('OC&C','occ.svg'),invertLogo:true},employer('Arthur D. Little','adl.jpeg'),employer('Capital One','capitalone.svg'),
    employer('Oliver Wyman','oliverwyman.svg'),employer('L.E.K. Consulting','lek.svg'),employer('Simon-Kucher','simonkucher.svg'),employer('Cornerstone Research','cornerstone.svg')]},
@@ -15,4 +15,12 @@ export function reviewAlumniIndustries(industries:any[]) {
   {...tech,layout:'tech-expanded',employers:[...tech.employers,employer('Apple','apple.svg')]},
   {...more,layout:'more-expanded',employers:[...more.employers,employer('a16z','a16z.svg')]},
  ];
+ const variants:any = {
+  'Boston Consulting Group': {surface:'green',logo:'/assets/companies/bcg-mark.svg'},
+  'Arthur D. Little': {surface:'adl-blue',invertLogo:false},
+  'a16z': {surface:'maroon'},
+  'Blackstone': {surface:'black'}, 'BlackRock': {surface:'black'},
+  'Palantir': {surface:'black'}, 'DoorDash': {surface:'doordash'}, 'Square': {surface:'black'},
+ };
+ return groups.map(group=>({...group,employers:group.employers.map((item:any)=>({...item,...(variants[item.name]||{})}))}));
 }

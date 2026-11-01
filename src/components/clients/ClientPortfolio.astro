@@ -4,10 +4,12 @@ const {portfolio} = Astro.props;
 const remaining = portfolio.projects;
 const semesters = [...new Set(remaining.map(project => project.semester || 'Earlier Engagements'))];
 ---
-<section class="portfolio-featured" id="selected-work" aria-labelledby="portfolio-featured-title">
+<section class="portfolio-featured" id="selected-work" data-showcase-hold aria-labelledby="portfolio-featured-title">
+ <div data-showcase-stage><div data-showcase-content>
  <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-featured-title">Selected Engagements</h2><p>A closer look at the research, strategies, and recommendations behind our client work. Select a project to explore the engagement.</p></div>
- <div class="showcase-hold" data-showcase-hold><div data-showcase-grid class="engagement-grid engagement-grid-featured">{portfolio.featured.map(project => <ProjectCard project={project} context="featured" />)}</div></div>
+ <div class="engagement-grid engagement-grid-featured">{portfolio.featured.map(project => <ProjectCard project={project} context="featured" />)}</div>
  <a href="#full-portfolio" class="portfolio-jump">Explore the Full Portfolio <span aria-hidden="true">↓</span></a>
+ </div></div>
 </section>
 <section class="portfolio-history" id="full-portfolio" aria-labelledby="portfolio-history-title">
  <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-history-title">Our Client Portfolio</h2><p>Explore engagements across industries and semesters, from our latest work to earlier projects.</p></div>

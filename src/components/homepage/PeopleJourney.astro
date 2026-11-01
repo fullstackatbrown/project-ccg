@@ -22,7 +22,7 @@ const labels=[editorial.home.whoWeAreTitle ?? "Who We Are",editorial.home.teamTi
    </article>
    {alumniIndustries.map((industry,index)=><article class="story-panel journey-panel alumni-panel" data-story-panel={index+2} data-story-group="2" data-scroll-weight="0.8">
     <header class="alumni-heading"><h2>{labels[2]}</h2><p class="journey-alumni-description">{editorial.home.alumniDescription ?? editorial.defaults.alumniDescription}</p><h3>{industry.name}</h3></header>
-    <div class="journey-companies" data-layout={industry.layout}>{industry.employers.map(employer=><div class:list={["company-logo",{"company-logo-dark": employer.surface!=="white","company-logo-square":employer.largeLogo,"company-logo-bain":employer.surface==="red"}]} title={employer.name}><img src={employer.logo} alt={employer.name} class:list={{"logo-darken":employer.invertLogo}} loading="lazy" />{employer.showCaption && <span class="company-name">{employer.name}</span>}</div>)}</div>
+    <div class="journey-companies" data-layout={industry.layout}>{industry.employers.map(employer=><div class:list={["company-logo",{"company-logo-dark": employer.surface!=="white","company-logo-square":employer.largeLogo,"company-logo-bain":employer.surface==="red"}]} title={employer.name} data-employer={employer.name} data-surface={employer.surface}><img src={employer.logo} alt={employer.name} class:list={{"logo-darken":employer.invertLogo}} loading="lazy" />{employer.showCaption && <span class="company-name">{employer.name}</span>}</div>)}</div>
    </article>)}
   </div>
   <div class="story-choices journey-choices" role="group" aria-label="Explore CCG">
