@@ -55,3 +55,5 @@ November 1 local feedback additions (official site artwork):
 - Apple: header SVG from https://www.apple.com/; its native vector viewBox is fitted to the mark.
 - a16z: header SVG from https://a16z.com/.
 - Arthur D. Little reuses the existing `adl.jpeg` asset.
+
+User-supplied replacements, November 1: `goldman-supplied.png`, `a16z-supplied.png`, `centerview-supplied.png`, `lazard-supplied.png`, and `blackstone-supplied.png` are unchanged copies of the five attached images. Sampled card background colors: Goldman Sachs #6698c9, Centerview #0056ad, Lazard #23283c, Blackstone #000000. The a16z card stays white with no additional color fill.
