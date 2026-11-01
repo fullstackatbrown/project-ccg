@@ -18,8 +18,8 @@ export function reviewAlumniIndustries(industries:any[]) {
  const variants:any = {
   'Boston Consulting Group': {surface:'green',logo:'/assets/companies/bcg-mark.svg'},
   'Arthur D. Little': {surface:'white',invertLogo:false},
-  'a16z': {surface:'white',logo:'/assets/companies/a16z-supplied.png',invertLogo:false},
-  'Goldman Sachs': {surface:'white',logo:'/assets/companies/goldman-supplied.png',invertLogo:false},
+  'a16z': {surface:'maroon',logo:'/assets/companies/a16z.svg',invertLogo:false},
+  'Goldman Sachs': {surface:'white',logo:'/assets/companies/goldmansachs.svg',invertLogo:false},
   'Centerview Partners': {surface:'white',logo:'/assets/companies/centerview-supplied.png',invertLogo:false},
   'Lazard': {surface:'white',logo:'/assets/companies/lazard-supplied.png',invertLogo:false},
   'Blackstone': {surface:'white',logo:'/assets/companies/blackstone-supplied.png',invertLogo:false}, 'BlackRock': {surface:'black'},
