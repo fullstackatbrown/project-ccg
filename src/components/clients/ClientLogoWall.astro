@@ -1,8 +1,8 @@
 ---
-const {projects=[]}=Astro.props;
+const {projects=[],title='Selected Engagements'}=Astro.props;
 const clients=projects.filter(project=>project.companyName&&project.logo&&project.summary?.trim());
 ---
 <section class="client-logo-wall" aria-labelledby="portfolio-heading">
- <h2 id="portfolio-heading" data-reveal>Selected Engagements</h2>
+ <h2 id="portfolio-heading" data-reveal>{title}</h2>
  <div class="client-logo-grid">{clients.map((client,index)=><div class="client-logo-tile" tabindex="0" aria-describedby={`client-summary-${index}`} data-light-logo={/trevor/i.test(client.companyName)?"true":undefined} data-reveal><img src={client.logo} alt={client.companyName} loading="lazy" /><div class="client-logo-summary" role="tooltip" id={`client-summary-${index}`}><strong>{client.companyName}</strong><p>{client.summary}</p></div></div>)}</div>
 </section>

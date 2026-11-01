@@ -8,7 +8,8 @@ import '../styles/global.css';
 import PeopleJourney from '../components/homepage/PeopleJourney.astro';
 import FeaturedClients from '../components/homepage/FeaturedClients.astro';
 import { fetchClients } from '../../contentfulStatic.js';
-import { introduction } from '../data/homepageCopy';
+import { loadEditorial } from '../lib/editorial';
+const editorial = await loadEditorial();
 const projects = await fetchClients();
 import { contentfulClient } from "../lib/contentful";
 
@@ -25,12 +26,8 @@ const ourTeamImage = entries2.items
   .filter(entry => entry.fields.title === "Home - Our Team")[0]
   ?.fields?.images?.map(image => image.fields?.file?.url) || [];
 
-const homepageEntry = await contentfulClient.getEntries({
-  content_type: "homepage"
-});
-
-const homepage = homepageEntry.items[0]?.fields || {};
-const clubDescription = introduction.map(paragraph => `<p>${paragraph}</p>`).join('');
+const homepage = editorial.home;
+const clubDescription = editorial.migrated ? homepage.clubDescription : editorial.defaults.introduction;
 const statBoxesRaw = homepage.whoWeAreStats || '';
 const teamDescription = homepage.ourTeamDescription || '';
 
@@ -47,8 +44,8 @@ const statBoxes = statBoxesRaw
   <div class="flex flex-col min-h-screen">
     <Navbar />
     <HeroSection heroImage={heroImage} />
-    <FeaturedClients projects={projects} />
-    <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} />
+    <FeaturedClients projects={projects} editorial={editorial} />
+    <PeopleJourney clubDescription={clubDescription} statBoxes={statBoxes} teamDescription={teamDescription} ourTeamImage={ourTeamImage} editorial={editorial} />
     <AnnualReportSection />
     <Footer />
   </div>

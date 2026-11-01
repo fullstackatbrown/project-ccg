@@ -1,0 +1,373 @@
+{
+  "releaseVersion": "2026-design-refresh",
+  "introduction": "<p>Founded in 2008, Collegiate Consulting Group (CCG) is Brown University\u2019s oldest student-run consulting organization. Serving 10 clients annually, CCG advises organizations ranging from emerging ventures to Fortune 500 companies and international institutions, with engagements including Adobe, Uber, IBM, GitHub, and the United Nations Development Programme.</p>\n\n<p>Drawing on Brown\u2019s interdisciplinary talent, CCG brings rigorous analysis and fresh perspectives to consequential business challenges. Teams dedicate over 400 hours to each engagement, translating research into actionable strategies for growth, market entry, consumer engagement, and operational improvement.</p>\n\n<p>Members are carefully selected for their analytical ability, intellectual curiosity, and commitment to collaborative work. CCG alumni go on to leading firms and institutions across consulting, finance, technology, public service, and beyond.</p>",
+  "whoWeAreTitle": "Who We Are",
+  "teamTitle": "Our Team",
+  "alumniTitle": "Where We End Up",
+  "alumniDescription": "Our alumni have gone on to build successful careers at leading firms across industries.",
+  "featuredTitle": "Trusted by Industry Leaders",
+  "featuredDescription": "CCG brings Brown\u2019s interdisciplinary thinking to organizations at every scale, from some of the world\u2019s largest companies and household names in technology and retail to international development institutions. These are just a few of the clients we\u2019ve worked with.",
+  "featuredLinkLabel": "Explore our client work",
+  "featuredClients": [
+    "Adobe",
+    "Uber",
+    "IBM",
+    "Github",
+    "Whole Foods",
+    "Grammarly",
+    "CAVA",
+    "UNDP"
+  ],
+  "alumniIndustries": [
+    {
+      "name": "Consulting",
+      "employers": [
+        {
+          "name": "McKinsey & Company",
+          "logo": "/assets/companies/mckinsey.svg",
+          "darken": false,
+          "surface": "navy",
+          "invertLogo": true,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Boston Consulting Group",
+          "logo": "/assets/companies/bcg.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Bain & Company",
+          "logo": "/assets/companies/bain.svg",
+          "darken": false,
+          "surface": "red",
+          "invertLogo": true,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "EY-Parthenon",
+          "logo": "/assets/companies/eyparthenon.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        }
+      ],
+      "layout": "consulting"
+    },
+    {
+      "name": "Finance & Investing",
+      "employers": [
+        {
+          "name": "Goldman Sachs",
+          "logo": "/assets/companies/goldmansachs.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Morgan Stanley",
+          "logo": "/assets/companies/morgan-stanley.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "J.P. Morgan",
+          "logo": "/assets/companies/jpmorgan.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Citi",
+          "logo": "/assets/companies/citi.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Bank of America",
+          "logo": "/assets/companies/bank-of-america.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Evercore",
+          "logo": "/assets/companies/evercore.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Lazard",
+          "logo": "/assets/companies/lazard.svg",
+          "darken": true,
+          "surface": "white",
+          "invertLogo": true,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Centerview Partners",
+          "logo": "/assets/companies/centerview.png",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Jefferies",
+          "logo": "/assets/companies/jefferies.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Blackstone",
+          "logo": "/assets/companies/blackstone.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "BlackRock",
+          "logo": "/assets/companies/blackrock.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Point72",
+          "logo": "/assets/companies/point72.svg",
+          "darken": true,
+          "surface": "white",
+          "invertLogo": true,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Jane Street",
+          "logo": "/assets/companies/janestreet.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        }
+      ],
+      "layout": "finance"
+    },
+    {
+      "name": "Tech",
+      "employers": [
+        {
+          "name": "Google",
+          "logo": "/assets/companies/google.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Meta",
+          "logo": "/assets/companies/meta.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Amazon",
+          "logo": "/assets/companies/amazon.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Palantir",
+          "logo": "/assets/companies/palantir.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "DoorDash",
+          "logo": "/assets/companies/doordash.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Square",
+          "logo": "/assets/companies/square.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": true,
+          "showCaption": false
+        }
+      ],
+      "layout": "tech"
+    },
+    {
+      "name": "And More",
+      "employers": [
+        {
+          "name": "The White House",
+          "logo": "/assets/companies/whitehouse.png",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "World Economic Forum",
+          "logo": "/assets/companies/wef.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Disney",
+          "logo": "/assets/companies/disney.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Bloomberg Media",
+          "logo": "/assets/companies/bloomberg-media.svg",
+          "darken": true,
+          "surface": "white",
+          "invertLogo": true,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "United Airlines",
+          "logo": "/assets/companies/united.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Harvard Law School",
+          "logo": "/assets/companies/harvard-law.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Columbia Law School",
+          "logo": "/assets/companies/columbia-law.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Harvard Business School",
+          "logo": "/assets/companies/harvard-business.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Stanford Graduate School of Business",
+          "logo": "/assets/companies/stanford-business.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": false
+        },
+        {
+          "name": "Harvard School of Dental Medicine",
+          "caption": true,
+          "logo": "/assets/companies/harvard-dental.svg",
+          "darken": false,
+          "surface": "white",
+          "invertLogo": false,
+          "largeLogo": false,
+          "showCaption": true
+        }
+      ],
+      "layout": "more"
+    }
+  ],
+  "processSteps": [
+    {
+      "title": "Team Formation",
+      "description": "CCG Project Teams consist of 1-2 Project Leads and 4-6 Consultants who work collaboratively to meet your unique needs and deliver measurable impact."
+    },
+    {
+      "title": "Initial Consultation",
+      "description": "Before the semester begins, CCG leadership meets with your team to understand your company's goals, challenges, and priorities. Together, we define the project scope and develop an engagement charter that outlines key objectives and deliverables."
+    },
+    {
+      "title": "Research & Strategy Development",
+      "description": "Over the course of 10 weeks, our team conducts in-depth research, market analysis, and strategy development to address your business needs. A Mid-Semester Deliverable allows for feedback and adjustments to ensure alignment with your expectations."
+    },
+    {
+      "title": "Final Deliverables & Recommendations",
+      "description": "At the end of the engagement, we deliver a comprehensive set of insights and recommendations tailored to your organization's goals. Our team presents findings in a final report and presentation, equipping you with actionable strategies for success."
+    }
+  ],
+  "clientsPage": {
+    "heroTitle": "Our Clients",
+    "heroDescription": "Research, strategy, and a fresh perspective on your next challenge.",
+    "portfolioTitle": "Selected Engagements",
+    "workTitle": "Our client work.",
+    "servicesTitle": "Our Services",
+    "valuesTitle": "Our Values",
+    "processTitle": "Our Process",
+    "valuesImage": "/assets/images/smallgroup.jpeg"
+  }
+}

@@ -27,3 +27,7 @@ pnpm-debug.log*
 # Separate design-review artifacts and local recovery backup
 .review-preview/
 .review-backups/
+
+# Private local credentials, including temporary CMS migration access
+.env.*
+!.env.example

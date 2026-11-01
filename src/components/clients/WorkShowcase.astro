@@ -1,14 +1,14 @@
 ---
-const {projects=[]}=Astro.props;
+const {projects=[],title='Our client work.',featuredIds}=Astro.props;
 const built=projects.filter(project=>project.companyName&&project.description?.trim());
-const featured=built.slice(0,3);
+const featured=featuredIds ? featuredIds.map(id=>built.find(project=>project.id===id)).filter(Boolean) : built.slice(0,3);
 const selectedIds=new Set(featured.map(project=>project.id));
 const all=[...featured,...projects.filter(project=>project.companyName&&!selectedIds.has(project.id))];
 ---
 {all.length>0 && <section id="selected-work" class="work-story client-story" data-scroll-story data-scroll-count={featured.length} aria-labelledby="selected-work-title">
  <div class="story-stage">
   <div class="story-navigation">
-   <h2 id="selected-work-title">Our client work.</h2>
+   <h2 id="selected-work-title">{title}</h2>
    <div class="story-choices" role="group" aria-label="Featured engagements">
     {featured.map((project,index)=><button type="button" data-story-choice={index} aria-pressed={index===0}>{project.companyName==='Github'?'GitHub':project.companyName}<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>)}
    </div>

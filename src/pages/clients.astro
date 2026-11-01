@@ -12,6 +12,9 @@ import { contentfulClient } from "../lib/contentful.ts";
 import ClientLogoWall from '../components/clients/ClientLogoWall.astro';
 import WorkShowcase from '../components/clients/WorkShowcase.astro';
 
+import { loadEditorial, assetUrl } from '../lib/editorial';
+const editorial = await loadEditorial();
+const page = editorial.page;
 const projects = await fetchClients();
 
 const entries = await contentfulClient.getEntries({
@@ -67,10 +70,10 @@ const services = serviceEntries.items.map((entry) => ({
       <div class="absolute inset-0 flex flex-col items-start justify-end p-8 md:p-16 lg:p-24 text-content-animation">
         <div class="slide-up-animation">
           <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6" style="font-family: 'Aileron', sans-serif;">
-              Our Clients
+              {page.heroTitle}
           </h1>
           <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl leading-relaxed">
-            Research, strategy, and a fresh perspective on your next challenge.
+            {page.heroDescription}
           </p>
           <a href="#selected-work" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#8d0428] to-[#6d0320] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
             Learn More
@@ -82,11 +85,11 @@ const services = serviceEntries.items.map((entry) => ({
       </div>
     </section>
 
-    <ClientLogoWall projects={projects} />
-    <WorkShowcase projects={projects} />
-    <ServicesSection services={services} />
-    <ValuesSection values={values} />
-    <ProcessSection />
+    <ClientLogoWall projects={projects} title={page.portfolioTitle} />
+    <WorkShowcase projects={projects} title={page.workTitle} featuredIds={page.featuredWork?.map(entry=>entry.sys.id)} />
+    <ServicesSection services={services} title={page.servicesTitle} />
+    <ValuesSection values={values} title={page.valuesTitle} image={editorial.migrated ? assetUrl(page.valuesImage) : page.valuesImage} />
+    <ProcessSection title={page.processTitle} steps={editorial.migrated ? page.processSteps.map(entry=>entry.fields) : editorial.defaults.processSteps} />
     <AnnualReportSection />
 
     <Footer></Footer>

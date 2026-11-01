@@ -824,10 +824,10 @@ html { scroll-padding-top:110px; }
 .journey-companies .company-logo { width:100%;height:clamp(76px,13svh,132px);padding:20px;border-radius:22px !important; }
 .journey-companies .company-logo:last-child { grid-column:auto;justify-self:stretch;width:100%; }
 .journey-companies img { max-width:100%;max-height:100%; }
-.journey-companies[data-industry='Consulting'] { max-width:920px;grid-template-columns:repeat(4,minmax(0,1fr)); }
-.journey-companies[data-industry='Consulting'] .company-logo { height:clamp(140px,25svh,220px);padding:26px; }
-.journey-companies[data-industry='Tech'] { max-width:820px;grid-template-columns:repeat(3,minmax(0,1fr)); }
-.journey-companies[data-industry='Tech'] .company-logo { height:clamp(110px,20svh,185px);padding:30px; }
+.journey-companies[data-layout='consulting'] { max-width:920px;grid-template-columns:repeat(4,minmax(0,1fr)); }
+.journey-companies[data-layout='consulting'] .company-logo { height:clamp(140px,25svh,220px);padding:26px; }
+.journey-companies[data-layout='tech'] { max-width:820px;grid-template-columns:repeat(3,minmax(0,1fr)); }
+.journey-companies[data-layout='tech'] .company-logo { height:clamp(110px,20svh,185px);padding:30px; }
 /* The summary and logo occupy the same grid cell; content sets the card height. */
 .client-logo-grid { grid-template-columns:repeat(4,minmax(0,1fr));gap:24px; }
 .client-logo-tile { position:relative;display:grid;grid-template-columns:minmax(0,1fr);padding:0;min-height:260px;height:auto;overflow:hidden;cursor:default; }
@@ -841,13 +841,13 @@ html { scroll-padding-top:110px; }
 @media(max-width:959px) {
  .team-photo-frame { max-width:none; }
  .alumni-panel+.alumni-panel .alumni-heading h2 { display:none; }
- .journey-companies,.journey-companies[data-industry='Consulting'],.journey-companies[data-industry='Tech'] { grid-template-columns:repeat(3,minmax(0,1fr)); }
- .journey-companies .company-logo,.journey-companies[data-industry='Consulting'] .company-logo,.journey-companies[data-industry='Tech'] .company-logo { height:140px;padding:22px; }
+ .journey-companies,.journey-companies[data-layout='consulting'],.journey-companies[data-layout='tech'] { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .journey-companies .company-logo,.journey-companies[data-layout='consulting'] .company-logo,.journey-companies[data-layout='tech'] .company-logo { height:140px;padding:22px; }
  .client-logo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 @media(max-width:600px) {
- .journey-companies,.journey-companies[data-industry='Consulting'],.journey-companies[data-industry='Tech'] { grid-template-columns:repeat(2,minmax(0,1fr)); }
- .journey-companies .company-logo,.journey-companies[data-industry='Consulting'] .company-logo,.journey-companies[data-industry='Tech'] .company-logo { height:140px;padding:20px; }
+ .journey-companies,.journey-companies[data-layout='consulting'],.journey-companies[data-layout='tech'] { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .journey-companies .company-logo,.journey-companies[data-layout='consulting'] .company-logo,.journey-companies[data-layout='tech'] .company-logo { height:140px;padding:20px; }
  .client-logo-grid { gap:16px;grid-template-columns:1fr; }
  .client-logo-tile { min-height:230px; }
  .client-logo-summary { padding:28px; }
@@ -860,9 +860,9 @@ html { scroll-padding-top:110px; }
 
 .client-logo-summary { align-self:stretch; }
 
-@media(min-width:960px) { .journey-companies[data-industry='Finance & Investing'] .company-logo:nth-child(11) { grid-column:2; } }
+@media(min-width:960px) { .journey-companies[data-layout='finance'] .company-logo:nth-child(11) { grid-column:2; } }
 @media(min-width:960px) and (max-height:800px) {
- .journey-companies[data-industry='Finance & Investing'] .company-logo { height:clamp(70px,11svh,88px);padding:16px; }
+ .journey-companies[data-layout='finance'] .company-logo { height:clamp(70px,11svh,88px);padding:16px; }
 }
 
 /* Consistent section hierarchy, visible surfaces, and quicker alumni pacing. */
@@ -876,25 +876,25 @@ html { scroll-padding-top:110px; }
 .journey-companies .company-logo-dark img { filter:brightness(0) invert(1); }
 .journey-companies .company-logo-square { padding:12px; }
 .journey-companies .company-logo-square img { width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain; }
-.journey-companies[data-industry='And More'] { max-width:920px;grid-template-columns:repeat(8,minmax(0,1fr)); }
-.journey-companies[data-industry='And More'] .company-logo { grid-column:span 2;height:clamp(80px,11svh,112px);padding:16px; }
-.journey-companies[data-industry='And More'] .company-logo:nth-child(1),.journey-companies[data-industry='And More'] .company-logo:nth-child(8) { grid-column:2/span 2; }
+.journey-companies[data-layout='more'] { max-width:920px;grid-template-columns:repeat(8,minmax(0,1fr)); }
+.journey-companies[data-layout='more'] .company-logo { grid-column:span 2;height:clamp(80px,11svh,112px);padding:16px; }
+.journey-companies[data-layout='more'] .company-logo:nth-child(1),.journey-companies[data-layout='more'] .company-logo:nth-child(8) { grid-column:2/span 2; }
 @media(min-width:960px) and (max-height:800px) {
  .alumni-heading { margin-bottom:16px; }
  .alumni-heading h2 { font-size:2.5rem; }
  .alumni-heading .journey-alumni-description { font-size:14px;margin-bottom:8px; }
- .journey-companies[data-industry='Finance & Investing'] .company-logo { height:clamp(60px,9svh,72px);padding:12px; }
- .journey-companies[data-industry='And More'] .company-logo { height:clamp(65px,10svh,80px);padding:12px; }
+ .journey-companies[data-layout='finance'] .company-logo { height:clamp(60px,9svh,72px);padding:12px; }
+ .journey-companies[data-layout='more'] .company-logo { height:clamp(65px,10svh,80px);padding:12px; }
 }
 @media(max-width:959px) {
  .alumni-panel+.alumni-panel .journey-alumni-description { display:none; }
- .journey-companies[data-industry='And More'] { grid-template-columns:repeat(3,minmax(0,1fr)); }
- .journey-companies[data-industry='And More'] .company-logo { grid-column:auto !important;height:140px;padding:20px; }
- .journey-companies[data-industry='And More'] .company-logo:last-child { grid-column:2 !important; }
+ .journey-companies[data-layout='more'] { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .journey-companies[data-layout='more'] .company-logo { grid-column:auto !important;height:140px;padding:20px; }
+ .journey-companies[data-layout='more'] .company-logo:last-child { grid-column:2 !important; }
 }
 @media(max-width:600px) {
- .journey-companies[data-industry='And More'] { grid-template-columns:repeat(2,minmax(0,1fr)); }
- .journey-companies[data-industry='And More'] .company-logo:last-child { grid-column:auto !important; }
+ .journey-companies[data-layout='more'] { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .journey-companies[data-layout='more'] .company-logo:last-child { grid-column:auto !important; }
  .alumni-heading .journey-alumni-description { font-size:16px; }
 }
 
@@ -903,29 +903,29 @@ html { scroll-padding-top:110px; }
 .journey-team { grid-template-columns:minmax(0,min(58%,calc((100svh - 410px) * 1.3333))) minmax(0,1fr);gap:36px;max-width:1100px;width:100%;margin-inline:auto; }
 .team-photo-frame { width:100%;max-width:none; }
 .team-photo-frame img { transform:scale(1.055);transform-origin:50% 54%; }
-.journey-companies[data-industry='And More'] { max-width:1020px;gap:18px; }
-.journey-companies[data-industry='And More'] .company-logo { height:clamp(90px,12svh,124px);padding:24px; }
-.journey-companies[data-industry='And More'] .company-logo:has(.company-name) { padding:22px 28px;gap:10px; }
-.journey-companies[data-industry='And More'] .company-name { max-width:16ch; }
+.journey-companies[data-layout='more'] { max-width:1020px;gap:18px; }
+.journey-companies[data-layout='more'] .company-logo { height:clamp(90px,12svh,124px);padding:24px; }
+.journey-companies[data-layout='more'] .company-logo:has(.company-name) { padding:22px 28px;gap:10px; }
+.journey-companies[data-layout='more'] .company-name { max-width:16ch; }
 @media(min-width:960px) and (max-height:800px) {
- .journey-companies[data-industry='And More'] { gap:14px; }
- .journey-companies[data-industry='And More'] .company-logo { height:80px;padding:17px; }
- .journey-companies[data-industry='And More'] .company-logo:has(.company-name) { padding:14px 22px;gap:6px; }
- .journey-companies[data-industry='And More'] .company-logo:has(.company-name) img { max-height:45%; }
- .journey-companies[data-industry='And More'] .company-name { font-size:11px; }
+ .journey-companies[data-layout='more'] { gap:14px; }
+ .journey-companies[data-layout='more'] .company-logo { height:80px;padding:17px; }
+ .journey-companies[data-layout='more'] .company-logo:has(.company-name) { padding:14px 22px;gap:6px; }
+ .journey-companies[data-layout='more'] .company-logo:has(.company-name) img { max-height:45%; }
+ .journey-companies[data-layout='more'] .company-name { font-size:11px; }
 }
 @media(max-width:959px) {
  .journey-team { grid-template-columns:1fr;gap:28px; }
- .journey-companies[data-industry='And More'] .company-logo { height:155px;padding:26px; }
- .journey-companies[data-industry='And More'] .company-logo:has(.company-name) { padding:24px; }
+ .journey-companies[data-layout='more'] .company-logo { height:155px;padding:26px; }
+ .journey-companies[data-layout='more'] .company-logo:has(.company-name) { padding:24px; }
 }
-.journey-companies[data-industry='And More'] .company-logo { height:clamp(100px,14svh,140px); }
-.journey-companies[data-industry='And More'] .company-logo:has(.company-name) img { height:40px;max-height:40px;flex-shrink:0; }
+.journey-companies[data-layout='more'] .company-logo { height:clamp(100px,14svh,140px); }
+.journey-companies[data-layout='more'] .company-logo:has(.company-name) img { height:40px;max-height:40px;flex-shrink:0; }
 @media(min-width:960px) and (max-height:800px) {
- .journey-companies[data-industry='And More'] .company-logo { height:80px; }
- .journey-companies[data-industry='And More'] .company-logo:has(.company-name) img { height:20px;max-height:20px; }
+ .journey-companies[data-layout='more'] .company-logo { height:80px; }
+ .journey-companies[data-layout='more'] .company-logo:has(.company-name) img { height:20px;max-height:20px; }
 }
-@media(max-width:959px) { .journey-companies[data-industry='And More'] .company-logo { height:155px; } }
+@media(max-width:959px) { .journey-companies[data-layout='more'] .company-logo { height:155px; } }
 
 /* Early client proof, followed by the people and depth behind it. */
 .featured-clients { background:var(--ccg-crimson);color:var(--ccg-tan);padding:106px 40px; }
@@ -985,3 +985,6 @@ html { scroll-padding-top:110px; }
 
 /* Slightly more contrast behind internal-page titles than the logo-only homepage. */
 .hero-overlay-internal { background:linear-gradient(0deg,rgba(67,5,24,.91),rgba(67,5,24,.27)); }
+
+.journey-companies .logo-darken { filter:brightness(0); }
+.journey-companies .company-logo-dark .logo-darken { filter:brightness(0) invert(1); }
