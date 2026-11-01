@@ -1,18 +1,18 @@
 ---
 import ProjectCard from '../portfolio/ProjectCard.astro';
 const {portfolio} = Astro.props;
-const remaining = portfolio.projects.filter(project => !project.featured);
+const remaining = portfolio.projects;
 const semesters = [...new Set(remaining.map(project => project.semester || 'Earlier Engagements'))];
 ---
 <section class="portfolio-featured" id="selected-work" aria-labelledby="portfolio-featured-title">
  <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-featured-title">Selected Engagements</h2><p>A closer look at the research, strategies, and recommendations behind our client work. Select a project to explore the engagement.</p></div>
- <div class="engagement-grid engagement-grid-featured">{portfolio.featured.map(project => <ProjectCard project={project} context="featured" />)}</div>
+ <div class="showcase-hold" data-showcase-hold><div data-showcase-grid class="engagement-grid engagement-grid-featured">{portfolio.featured.map(project => <ProjectCard project={project} context="featured" />)}</div></div>
  <a href="#full-portfolio" class="portfolio-jump">Explore the Full Portfolio <span aria-hidden="true">↓</span></a>
 </section>
 <section class="portfolio-history" id="full-portfolio" aria-labelledby="portfolio-history-title">
  <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-history-title">Our Client Portfolio</h2><p>Explore engagements across industries and semesters, from our latest work to earlier projects.</p></div>
  <div class="portfolio-browser">
-  <aside class="portfolio-filters" aria-label="Filter client engagements"><label for="portfolio-search">Find a Project</label><input id="portfolio-search" type="search" placeholder="Search clients or project work" autocomplete="off" /><label for="portfolio-semester">Semester</label><select id="portfolio-semester"><option value="all">All Semesters</option>{semesters.map(semester => <option value={semester}>{semester}</option>)}</select><p class="portfolio-result-count" role="status" aria-live="polite" data-portfolio-count>{remaining.length} engagements</p></aside>
+  <aside class="portfolio-filters" aria-label="Filter client engagements"><label for="portfolio-search">Find a Project</label><input id="portfolio-search" type="search" placeholder="Search projects" autocomplete="off" /><label for="portfolio-semester">Semester</label><select id="portfolio-semester"><option value="all">All Semesters</option>{semesters.map(semester => <option value={semester}>{semester}</option>)}</select><p class="portfolio-result-count" role="status" aria-live="polite" data-portfolio-count>{remaining.length} engagements</p></aside>
   <div class="portfolio-results">
    {semesters.map(semester => <section class="portfolio-semester-group" data-semester-group={semester} aria-label={semester}><h3>{semester}</h3><div class="engagement-grid">{remaining.filter(project => (project.semester || 'Earlier Engagements') === semester).map(project => <div data-portfolio-item data-semester={semester} data-search={`${project.companyName} ${project.summary} ${project.description}`.toLowerCase()}><ProjectCard project={project} /></div>)}</div></section>)}
    <p class="portfolio-empty" data-portfolio-empty hidden>No projects match your search. Try another name or semester.</p>

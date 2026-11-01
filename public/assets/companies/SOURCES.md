@@ -40,3 +40,18 @@ Additional alumni destinations, retrieved October 31, 2026:
 - `harvard-business.svg`: https://www.hbs.edu/ (embedded logo; inherited wordmark fill made explicit for standalone SVG)
 - `stanford-business.svg`: https://www.gsb.stanford.edu/themes/custom/gsb/logo.svg
 - `harvard-dental.svg`: https://en.wikipedia.org/wiki/File:Harvard_School_of_Dental_Medicine_shield.svg
+
+November 1 local feedback additions (official site artwork):
+- OC&C: https://www.occstrategy.com/wp-content/uploads/2023/08/occ-logo-white.svg (darkened through CSS on white cards).
+- Capital One: header SVG from https://www.capitalone.com/.
+- Oliver Wyman: https://www.oliverwyman.com/content/dam/oliver-wyman/v3/logos/header-logo-oliver-wyman-black.svg.
+- L.E.K.: header SVG from https://www.lek.com/.
+- Simon-Kucher: header SVG from https://www.simon-kucher.com/.
+- Cornerstone: https://www.cornerstone.com/wp-content/themes/cornerstone_research/html/app/assets/img/dark-logo.svg.
+- Optiver: header SVG from https://optiver.com/.
+- Bridgewater: https://bridgewater-brightspot.s3.us-east-1.amazonaws.com/09/b5/88877e9d45e3bd51cf692fc83e73/bw-logo-color.png.
+- Pear: https://pear.vc/wp-content/uploads/2026/08/pear-logo.png.
+- Insight Partners: header SVG from https://www.insightpartners.com/.
+- Apple: header SVG from https://www.apple.com/; its native vector viewBox is fitted to the mark.
+- a16z: header SVG from https://a16z.com/.
+- Arthur D. Little reuses the existing `adl.jpeg` asset.

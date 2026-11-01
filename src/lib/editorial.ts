@@ -1,5 +1,6 @@
 import { contentfulClient } from './contentful';
 import defaults from '../data/launchDefaults.json';
+import { reviewAlumniIndustries } from './alumniReview';
 
 export const assetUrl = (asset:any) => {
  const url=asset?.fields?.file?.url;
@@ -26,5 +27,6 @@ export async function loadEditorial() {
   })),
  })) : defaults.alumniIndustries;
  const page:any=migrated ? home.clientsPage.fields : defaults.clientsPage;
- return {home,migrated,industries,page,defaults};
+ const displayedIndustries = import.meta.env.DEV || import.meta.env.PORTFOLIO_REVIEW === 'true' ? reviewAlumniIndustries(industries) : industries;
+ return {home,migrated,industries:displayedIndustries,page,defaults};
 }

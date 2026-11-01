@@ -10,9 +10,9 @@ const clients = portfolio.featured;
    <h2 id="featured-clients-title">{home.featuredTitle ?? editorial.defaults.featuredTitle}</h2>
    <div><p>{home.featuredDescription ?? editorial.defaults.featuredDescription}</p><a href="/clients" class="featured-clients-link">{home.featuredLinkLabel ?? editorial.defaults.featuredLinkLabel} <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
   </div>
-  <div class="featured-client-portfolio" aria-label="A selection of past client engagements">
+  <div class="showcase-hold" data-showcase-hold><div data-showcase-grid class="featured-client-portfolio" aria-label="A selection of past client engagements">
    {clients.map(project => <ProjectCard project={project} context="featured" />)}
-  </div>
+  </div></div>
  </div>
  </div>
 </section>}

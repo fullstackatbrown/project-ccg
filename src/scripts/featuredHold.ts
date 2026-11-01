@@ -1,19 +1,23 @@
-// A brief native-scroll hold before the longer people journey. Never capture wheel input.
-const feature = document.querySelector<HTMLElement>('.featured-clients');
-if (feature) {
- const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
- const stage = feature.querySelector<HTMLElement>('.featured-clients-stage')!;
- const content = feature.querySelector<HTMLElement>('.featured-clients-inner')!;
- const configureHold = () => {
-  const eligible = window.innerWidth >= 960 && window.innerHeight >= 680 && !reduced.matches;
-  feature.classList.toggle('is-held', eligible);
-  feature.style.height = '';
-  if (eligible && content.scrollHeight + 64 <= stage.clientHeight) {
-   feature.style.height = `${stage.offsetHeight + Math.round(window.innerHeight * .35)}px`;
-  } else feature.classList.remove('is-held');
- };
- configureHold();
- window.addEventListener('resize', configureHold, { passive: true });
- reduced.addEventListener('change', configureHold);
- document.fonts.ready.then(configureHold);
-}
+// Pin the logo grid briefly after its introduction, using normal native scrolling.
+const showcases = [...document.querySelectorAll<HTMLElement>('[data-showcase-hold]')];
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+const configureShowcases = () => {
+ showcases.forEach(showcase => {
+  const grid = showcase.querySelector<HTMLElement>('[data-showcase-grid]')!;
+  showcase.classList.remove('is-held');
+  showcase.style.height = '';
+  showcase.style.removeProperty('--showcase-top');
+  if (window.innerWidth < 960 || window.innerHeight < 680 || reduced.matches) return;
+  // A taller grid can scroll fully into view before its bottom edge pauses.
+  const gridHeight = grid.offsetHeight;
+  const navigationBottom = (document.querySelector('.site-nav')?.getBoundingClientRect().bottom || 94) + 20;
+  const top = Math.min(navigationBottom, window.innerHeight - gridHeight - 24);
+  showcase.style.setProperty('--showcase-top', `${top}px`);
+  showcase.style.height = `${gridHeight + window.innerHeight * .4}px`;
+  showcase.classList.add('is-held');
+ });
+};
+configureShowcases();
+window.addEventListener('resize', configureShowcases, {passive: true});
+reduced.addEventListener('change', configureShowcases);
+document.fonts.ready.then(configureShowcases);

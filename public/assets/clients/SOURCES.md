@@ -13,3 +13,5 @@ Existing named client marks reuse the CCG Contentful assets.
 - Substack: https://substackcdn.com/icons/substack/icon.svg, referenced by https://substack.com/brand.
 
 Anonymous engagements use the names supplied in the spreadsheet; no client identities or logos were inferred.
+
+Substack wordmark replacement: https://substack.com/img/substack_wordmark.png, provided by its official brand page.
