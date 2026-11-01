@@ -20,6 +20,7 @@ export async function fetchClients() {
       id: item.sys.id,
       companyName: item.fields.companyName,
       industry: item.fields.industry,
+      semester: item.fields.semester,
       description: item.fields.description,
       summary: item.fields.summary,
       logo: item.fields.logo

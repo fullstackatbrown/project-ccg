@@ -33,3 +33,5 @@ The client-proof section has a brief native-scroll hold of 35% of viewport heigh
 All five photographic heroes share the same hero-overlay gradient, matching the lighter homepage treatment instead of separate darker internal-page overlays. The user approved updating the separate Vercel review site with this iteration.
 
 Internal-page hero overlays are modestly darker than the homepage for title contrast: .91 opacity at the bottom, .27 at the top, versus the unchanged homepage .86/.15. User approved updating the standalone Vercel review site.
+
+November 1 feedback branch (local review only): retain the site's incumbent typography, crimson/cream palette, full-screen heroes, rounded cards, homepage people journey and reports. Homepage featured logos now share hover summaries and native-dialog project details with Clients. Clients replaces its overlapping logo wall and pinned work selector with eight featured projects followed by semester-grouped remaining engagements, with search and semester filtering. All 37 project descriptions are staged locally from the provided workbook until editorial approval and CMS migration; the live CMS is unchanged.

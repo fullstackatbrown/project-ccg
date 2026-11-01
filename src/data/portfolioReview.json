@@ -1,0 +1,372 @@
+[
+  {
+    "id": "portfolio-wholefoods",
+    "companyName": "Whole Foods",
+    "semester": "Fall 2026",
+    "description": "",
+    "summary": "Whole Foods has engaged CCG to build Gen Z loyalty and position its new Daily Shop format to win over first-time student grocery shoppers.",
+    "featured": false,
+    "logo": "/assets/clients/whole-foods.svg",
+    "sourceRow": 2
+  },
+  {
+    "id": "portfolio-crunchyroll",
+    "companyName": "Crunchyroll",
+    "semester": "Fall 2026",
+    "description": "",
+    "summary": "Crunchyroll has engaged CCG to explore how Gen Z fans build community around anime and how fandom shifts across different cultures and markets.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/6zYOC9bFcoAOOXjS6rUAqC/efa65d27a7542fba503d1a4c7d3c2041/Crunchyroll_logo_2012v.png",
+    "sourceRow": 3
+  },
+  {
+    "id": "portfolio-shopify",
+    "companyName": "Shopify",
+    "semester": "Fall 2026",
+    "description": "",
+    "summary": "Shopify has engaged CCG to research Gen Z shopping habits on its Shop App and build a campus and creator partnership strategy to drive adoption.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/3sb3S4NOew6zf4jWXbcEsd/e23a575d38b886010c0da7361e73fd6d/Shopify-Logo.png",
+    "sourceRow": 4
+  },
+  {
+    "id": "portfolio-trevorproject",
+    "companyName": "Trevor Project",
+    "semester": "Fall 2026",
+    "description": "",
+    "summary": "The Trevor Project has engaged CCG to strengthen how TrevorSpace delivers youth development support and to expand its research and advocacy voice on LGBTQ+ youth.",
+    "featured": false,
+    "logo": "/assets/clients/trevor-project.svg",
+    "sourceRow": 5
+  },
+  {
+    "id": "portfolio-posh",
+    "companyName": "Posh",
+    "semester": "Fall 2026",
+    "description": "",
+    "summary": "Posh has partnered with CCG to research student usage and organization adoption to expand its presence beyond social events and into the broader campus event ecosystem.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/idnxqj9o5x6hbg56HooXh/736966aee21f3bdae5ff44fe5b3a2596/POSH-Logo-New.png",
+    "sourceRow": 6
+  },
+  {
+    "id": "portfolio-adobe",
+    "companyName": "Adobe",
+    "semester": "Spring 2026",
+    "description": "Developed a search engine optimization and content growth strategy for Adobe Live, conducting 250+ surveys and 30+ interviews to understand how younger creatives discover educational content. Recommended YouTube SEO improvements, generative engine optimization, cross-platform distribution, and creator incentives.",
+    "summary": "Developed an SEO and content strategy for its livestreaming platform to boost subscriber growth and expand reach among younger audiences.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/11h720xcBqS4xAzMCVy713/46584b0726a982141ae0ad9205f7c329/Adobe_Logo.png",
+    "sourceRow": 7
+  },
+  {
+    "id": "portfolio-soundcloud",
+    "companyName": "SoundCloud",
+    "semester": "Spring 2026",
+    "description": "Investigated Artist Pro subscriber churn through analysis of 1,000+ Reddit posts, 500+ artist responses, 400+ surveys, and creator outreach. Recommended product onboarding improvements, spam filtering, music discovery enhancements, and creator collaboration features to improve engagement and retention.",
+    "summary": "Developed strategies to reduce Artist Pro subscriber churn, strengthen creator engagement, and improve SoundCloud's positioning within the evolving music creator ecosystem.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/6tmSfP7xeXnpi0yIEbUyln/ae0117d269cd2b852192a84040f692c9/SoundCloud-Logo.png",
+    "sourceRow": 8
+  },
+  {
+    "id": "portfolio-warbyparker",
+    "companyName": "Warby Parker",
+    "semester": "Spring 2026",
+    "description": "Developed a data-driven contact lens pricing strategy using internal SKU-level data, 337+ consumer surveys, and expert interviews. Built a price elasticity framework and recommended targeted pricing adjustments and improvements to prescription uploads, reordering, and insurance integration.",
+    "summary": "Created a pricing elasticity framework for its contact lens offerings and enhanced the contact lens user experience.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/FnmksLWwEbANs1lM9Lp1t/22701aa2930588b498d8ce335110ec13/WP_Transparent.png",
+    "sourceRow": 9
+  },
+  {
+    "id": "portfolio-ibm",
+    "companyName": "IBM",
+    "semester": "Spring 2026",
+    "description": "Evaluated opportunities to improve New York City's public transportation experience using data analytics, competitive research, and mobility studies. Recommended Citi Bike-bus integration, event-linked transit bundles, and predictive dispatch tools to improve transit reliability and ridership.",
+    "summary": "Surfaced new opportunities to strengthen public transportation rider experience and inform the next chapter of smart transit.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/1eLZUB0Jl16zVBBb1ayQ1k/4659c537550941d2893d9e2288a18bcc/IBM_Logo.png",
+    "sourceRow": 10
+  },
+  {
+    "id": "portfolio-insomniacookies",
+    "companyName": "Insomnia Cookies",
+    "semester": "Spring 2026",
+    "description": "Analyzed Gen Z purchasing behavior and loyalty preferences through 240 student surveys, 20+ interviews, and competitor research. Recommended a redesigned loyalty program, group-ordering functionality, and campus ambassador partnerships to increase digital engagement and customer retention.",
+    "summary": "Developed digital and loyalty strategies to deepen Gen Z engagement and drive growth across campus and online.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/49ZeGfdooOrDIZ9FVKIPir/b0bdaee560c0180d2ef8c9ab9540f95e/Insomnia_Cookies_Outline.png",
+    "sourceRow": 11
+  },
+  {
+    "id": "portfolio-cava",
+    "companyName": "CAVA",
+    "semester": "Fall 2025",
+    "description": "Conducted large-scale consumer research with 1,275+ survey responses, supplemented by customer interviews, industry expert insights, and competitive benchmarking, to develop a comprehensive Gen Z growth and loyalty strategy for CAVA. Delivered actionable recommendations across digital engagement, app adoption, strategic brand partnerships, and alternative loyalty programs to strengthen customer acquisition, engagement, and retention.",
+    "summary": "Analyzed 1,275+ consumer survey responses to develop Gen Z growth strategies spanning restaurant loyalty, digital engagement, strategic partnerships, and customer retention.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/7LrHsVpfBQHOvRexb0lEcL/8bd3af7a2d3ce6f638b609777df6cc08/Cava.webp",
+    "sourceRow": 12
+  },
+  {
+    "id": "portfolio-github",
+    "companyName": "GitHub",
+    "semester": "Fall 2025",
+    "description": "Evaluated GitHub Copilot's competitive positioning in the AI coding assistant market through 100+ undergraduate surveys, developer interviews, and competitor benchmarking. Developed recommendations for personalized onboarding, pricing transparency, feature discoverability, and go-to-market positioning among students and developers.",
+    "summary": "Developed onboarding, pricing, and go-to-market strategies to strengthen GitHub Copilot's competitive positioning and drive adoption among developers.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/4j2J4QSlZZBFrEx1o7KMu0/e8e2fc53ad103910958c63fc6e174dde/Github.png",
+    "sourceRow": 13
+  },
+  {
+    "id": "portfolio-undp",
+    "companyName": "UNDP",
+    "semester": "Fall 2025",
+    "description": "Developed a regulatory readiness framework to help Pakistani exporters prepare for the EU Corporate Sustainability Due Diligence Directive. Analyzed textile and surgical instrument industries, benchmarked international regulatory practices, and designed a standardized readiness index and implementation roadmap.",
+    "summary": "Developed a CSDDD Readiness Index to help exporters align with EU regulations and strengthen responsible business practices.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/6jfEAX6oKdASy4QSnnCItD/63986868defe610c4e34fa3a52cc32d9/UNDP.png",
+    "sourceRow": 14
+  },
+  {
+    "id": "portfolio-substack",
+    "companyName": "Substack",
+    "semester": "Fall 2025",
+    "description": "Analyzed Gen Z media consumption, content discovery, and platform adoption through student surveys, interviews, and competitive benchmarking. Recommended improvements to content discovery, onboarding, brand positioning, and university partnerships to attract and retain younger users.",
+    "summary": "Analyzed Gen Z media consumption and content discovery to develop strategies for improving user onboarding, platform engagement, and subscriber growth.",
+    "featured": false,
+    "logo": "/assets/clients/substack.svg",
+    "sourceRow": 15
+  },
+  {
+    "id": "portfolio-bostonpubliclibrary",
+    "companyName": "Boston Public Library",
+    "semester": "Fall 2025",
+    "description": "Evaluated opportunities to increase community engagement, civic programming, and Gen Z outreach across Boston neighborhoods through branch visits, stakeholder interviews, and peer-library benchmarking. Recommended strategic community partnerships, improved digital services, and youth-focused programming.",
+    "summary": "Created an inclusive, innovative civic engagement strategy and explored digital tools to expand citywide outreach.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/i6sA1jNC9eTSHR5OORONB/7d043ad6493c65258f119909a516a60b/BPL_Logo.png",
+    "sourceRow": 16
+  },
+  {
+    "id": "portfolio-uber",
+    "companyName": "Uber",
+    "semester": "Spring 2025",
+    "description": "Evaluated Uber's customer support experience across chat and phone channels through 100+ surveys, expert interviews, and competitor benchmarking. Developed product requirements and recommendations for AI-assisted support, personalized escalation, and support transparency to improve resolution and reduce churn.",
+    "summary": "Designed AI-driven support features and user flows to reduce churn, improve automation, and elevate the customer support experience across chat and phone.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/6E8PGTLp9XotjIVdB73WcX/77e1493d2b6a43817cae40956fe89bec/Uber-Logo.png",
+    "sourceRow": 17
+  },
+  {
+    "id": "portfolio-grammarly",
+    "companyName": "Grammarly",
+    "semester": "Spring 2025",
+    "description": "Conducted 430+ student surveys, faculty interviews, and AI research to identify opportunities for Grammarly's AI tools in education. Recommended AI transparency features, educator dashboards, institutional integrations, and an AI tutoring experience to increase adoption and engagement.",
+    "summary": "Researched AI writing habits and institutional concerns to guide ethical feature design, classroom integration, and student-focused tool development.",
+    "featured": true,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/36wXWQ5Y93GNSPdZKLTHiz/803ada194c98266df1b9d370523459c4/grammarly-logo-cleaned-smooth.png",
+    "sourceRow": 18
+  },
+  {
+    "id": "portfolio-coursera",
+    "companyName": "Coursera",
+    "semester": "Spring 2025",
+    "description": "Evaluated generative AI adoption in education through 300+ student surveys, expert interviews, and competitive benchmarking. Developed product and go-to-market recommendations for Coursera Coach, including trustworthy AI responses, personalized learning experiences, and enterprise upskilling capabilities.",
+    "summary": "Assessed student trust and usage of generative AI to inform product improvements, marketing strategy, and course design for Coursera Coach.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/4TcMGPfaADlTpRM9zUJobt/4d2f2fd5a1e2686c51499ed361a6227c/coursera_logo.png",
+    "sourceRow": 19
+  },
+  {
+    "id": "portfolio-spikeball",
+    "companyName": "Spikeball",
+    "semester": "Spring 2025",
+    "description": "Developed a scalable partnership and outreach strategy to accelerate product adoption, contacting 141 organizations and evaluating youth, recreational, and faith-based communities. Recommended targeted partnership waves, geographic outreach, and promotional incentives.",
+    "summary": "Structured a multi-wave outreach strategy to drive adoption through youth partnerships and targeted, incentive-based engagement.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/23OFXR6BXWOJQ2uYBdyaht/d28180ac69f4f5e67e556c9145e493fb/spikeball_logo.webp",
+    "sourceRow": 20
+  },
+  {
+    "id": "portfolio-letterboxd",
+    "companyName": "Letterboxd",
+    "semester": "Spring 2025",
+    "description": "Evaluated the platform's freemium monetization strategy and opportunities to improve Pro and Patron subscription conversion and retention, recommending pricing experiments, free trials, personalized premium features, and film-industry partnerships.",
+    "summary": "Optimized Letterboxd’s freemium strategy by analyzing user tiers, competitor models, and market trends to enhance premium offerings, drive conversions, and improve retention across Pro and Patron memberships.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/5hMc1nPzwyrK1QXif2sjWI/6ed8c879f70d6a517471259df122f743/Letter_Box_transparent.png",
+    "sourceRow": 21
+  },
+  {
+    "id": "portfolio-impossiblefoods",
+    "companyName": "Impossible Foods",
+    "semester": "Fall 2024",
+    "description": "Developed Gen Z customer acquisition and campus marketing strategies for plant-based meat products through consumer research, competitor benchmarking, partnership ROI analysis, and recommendations on packaging and brand positioning.",
+    "summary": "Evaluated student-driven growth strategies to boost campus adoption and refine brand engagement initiatives.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/79P8AI74HuKy2eY15eZAKs/4089ed8201f4653b29e504faa46fd385/Impossible_foods_transparent.png",
+    "sourceRow": 22
+  },
+  {
+    "id": "portfolio-remento",
+    "companyName": "Remento",
+    "semester": "Fall 2024",
+    "description": "Developed customer conversion and growth strategies for an AI-powered family storytelling platform, surveying 100+ consumers, evaluating 35 distribution partnerships, and researching 30+ influencers to refine targeting and marketing.",
+    "summary": "Developed customer acquisition and conversion strategies through consumer research, influencer outreach, and distribution partnership analysis to strengthen its AI-powered storytelling platform's market positioning.",
+    "featured": false,
+    "logo": "/assets/clients/remento.svg",
+    "sourceRow": 23
+  },
+  {
+    "id": "portfolio-perkies",
+    "companyName": "Perkies",
+    "semester": "Fall 2024",
+    "description": "Evaluated consumer preferences, pricing, product positioning, and digital marketing strategies for an innovative undergarments brand, with recommendations targeting college-aged consumers and post-mastectomy users.",
+    "summary": "Researched consumer preferences and competitive pricing to develop digital marketing, product positioning, and campus engagement strategies targeting college students and post-mastectomy consumers.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/58S2hwi75xJ4A9p1ROW6Pf/796c547a0da739335408bf9112d5a0ab/perkies-logo-transparent.png",
+    "sourceRow": 24
+  },
+  {
+    "id": "portfolio-fourthwall",
+    "companyName": "Fourthwall",
+    "semester": "Fall 2024",
+    "description": "Conducted competitive landscape analysis and customer acquisition research for a creator-commerce platform, contacting 60+ industry experts and recommending affiliate marketing, creator partnerships, and brand-building strategies.",
+    "summary": "Conducted competitive analysis and creator-commerce market research to develop affiliate marketing, strategic partnership, and customer acquisition strategies to accelerate platform growth.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/64klJbIfu9mGxwYDuDKH6z/19bbfe33848742b58a832043ee5f6b00/fourthwall_logo.png",
+    "sourceRow": 25
+  },
+  {
+    "id": "portfolio-emberai",
+    "companyName": "EmberAI",
+    "semester": "Fall 2024",
+    "description": "Analyzed the competitive healthcare AI scribe market, synthesizing stakeholder interviews and hospital feedback to recommend physician-focused marketing, phased implementation, and product diversification.",
+    "summary": "Evaluated the healthcare AI scribe market to develop physician-focused go-to-market strategies, strengthen competitive differentiation, and identify opportunities for product expansion.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/5SaMyZPotgEUXnRp1ijqhq/b35371d9e553053ae6ca9bb552e3ae8c/ember_ai_logo.png",
+    "sourceRow": 26
+  },
+  {
+    "id": "portfolio-cookieco",
+    "companyName": "Cookie Co.",
+    "semester": "Spring 2024",
+    "description": "Analyzed retail sales data, student purchasing preferences, competitor pricing, and store operations to recommend improved operating hours, product offerings, digital ordering, and campus-focused promotions.",
+    "summary": "Analyzed sales performance, consumer purchasing patterns, and store operations to recommend optimized product offerings, operating hours, and campus marketing strategies.",
+    "featured": false,
+    "logo": null,
+    "sourceRow": 27
+  },
+  {
+    "id": "portfolio-nonprofitco",
+    "companyName": "Non-Profit Co.",
+    "semester": "Spring 2024",
+    "description": "Developed donor acquisition and geographic expansion strategies for a financial assistance nonprofit, analyzing donor demographics, advertising performance, community partnerships, and corporate fundraising opportunities.",
+    "summary": "Developed donor acquisition and fundraising strategies through demographic research, advertising analysis, and partnership evaluation to support geographic expansion and long-term growth.",
+    "featured": false,
+    "logo": null,
+    "sourceRow": 28
+  },
+  {
+    "id": "portfolio-ventureco",
+    "companyName": "Venture Co.",
+    "semester": "Spring 2024",
+    "description": "Evaluated competitive positioning and community engagement for an entrepreneurship networking organization, developing customer journey maps and recommending membership improvements, university partnerships, and networking tools.",
+    "summary": "Evaluated member engagement and competitive positioning to develop university partnership, community-building, and customer experience strategies for an entrepreneurship networking platform.",
+    "featured": false,
+    "logo": null,
+    "sourceRow": 29
+  },
+  {
+    "id": "portfolio-investco",
+    "companyName": "Invest Co.",
+    "semester": "Spring 2024",
+    "description": "Conducted market, competitor, and intellectual property analysis for a marine-products investment company, recommending premium superyacht market positioning, product pricing, and marina distribution partnerships.",
+    "summary": "Conducted market and competitor research to develop premium pricing, product positioning, and distribution strategies for an investment company's marine technology offerings.",
+    "featured": false,
+    "logo": null,
+    "sourceRow": 30
+  },
+  {
+    "id": "portfolio-educationco",
+    "companyName": "Education Co.",
+    "semester": "Fall 2023",
+    "description": "Developed an international expansion strategy for a Hong Kong-based education provider, evaluating U.S. and U.K. university partnerships, new student markets, recruitment channels, and additional educational services to support ambitious revenue growth.",
+    "summary": "Developed international expansion strategies through university partnership research, student market analysis, and competitive benchmarking to accelerate enrollment and revenue growth.",
+    "featured": false,
+    "logo": "https://images.ctfassets.net/4evwxmhrlmjd/7xweiK4oMEjPByrYEvhwed/04f1ff27b76736071a879fe24dc48e11/ccg_logo.png",
+    "sourceRow": 31
+  },
+  {
+    "id": "portfolio-careerco",
+    "companyName": "Career Co.",
+    "semester": "Fall 2023",
+    "description": "Evaluated U.S. market-entry opportunities for a European early-careers platform, conducting competitor analysis and campus research to recommend university partnerships, student organization outreach, and product localization.",
+    "summary": "Evaluated U.S. market-entry opportunities for a European career platform, developing university partnership, student organization outreach, and product localization strategies.",
+    "featured": false,
+    "logo": null,
+    "sourceRow": 32
+  },
+  {
+    "id": "portfolio-waffleco",
+    "companyName": "Waffle Co.",
+    "semester": "Fall 2023",
+    "description": "Developed customer acquisition strategies for a Belgian waffle retailer, conducting student surveys, customer segmentation, and local market research to recommend campus partnerships, targeted marketing, and increased visibility.",
+    "summary": "Analyzed student purchasing behavior and local market demand to develop customer acquisition, campus partnership, and targeted marketing strategies for a Belgian waffle retailer.",
+    "featured": false,
+    "logo": null,
+    "sourceRow": 33
+  },
+  {
+    "id": "portfolio-wildfirestrategies",
+    "companyName": "Wildfire Strategies",
+    "semester": "Spring 2023",
+    "description": "Researched consulting-industry client follow-up practices and recommended AI analytics, CRM systems, change-management software, and emerging technologies to improve long-term client engagement.",
+    "summary": "Researched emerging consulting technologies and client engagement models to develop AI, CRM, and change-management strategies that strengthen long-term client relationships.",
+    "featured": false,
+    "logo": "/assets/clients/wildfire.png",
+    "sourceRow": 34
+  },
+  {
+    "id": "portfolio-talerang",
+    "companyName": "Talerang",
+    "semester": "Spring 2023",
+    "description": "Developed a U.S. market-entry and go-to-market strategy for an Indian career-readiness education platform, including competitor benchmarking, target market identification, and localized branding recommendations.",
+    "summary": "Developed a U.S. market-entry strategy for an education technology platform through competitor analysis, customer segmentation, and localized marketing recommendations.",
+    "featured": false,
+    "logo": "/assets/clients/talerang.png",
+    "sourceRow": 35
+  },
+  {
+    "id": "portfolio-tunelark",
+    "companyName": "Tunelark",
+    "semester": "Spring 2023",
+    "description": "Analyzed domestic, international, and indirect competitors in online music education to identify competitive positioning, marketing best practices, and opportunities for differentiation.",
+    "summary": "Conducted competitive analysis of online music education platforms to identify market differentiation opportunities and recommend targeted marketing and customer acquisition strategies.",
+    "featured": false,
+    "logo": "/assets/clients/tunelark.svg",
+    "sourceRow": 36
+  },
+  {
+    "id": "portfolio-neurosteer",
+    "companyName": "Neurosteer",
+    "semester": "Fall 2022",
+    "description": "Evaluated telehealth market-entry opportunities for its EEG-based brain health technology, researching healthcare providers and identifying 10 potential telemedicine partners ranked by strategic fit.",
+    "summary": "Evaluated telehealth market-entry opportunities for its neurological monitoring technology, identifying and prioritizing healthcare partnerships to support commercial expansion.",
+    "featured": false,
+    "logo": "/assets/clients/neurosteer.png",
+    "sourceRow": 37
+  },
+  {
+    "id": "portfolio-plantpeople",
+    "companyName": "Plant People",
+    "semester": "Fall 2022",
+    "description": "Conducted customer segmentation, purchasing behavior research, and consumer interviews to identify high-potential audiences and recommend targeted customer acquisition and marketing strategies.",
+    "summary": "Conducted customer segmentation and consumer behavior research to identify high-potential target markets and develop tailored marketing and customer acquisition strategies.",
+    "featured": false,
+    "logo": "/assets/clients/plant-people.svg",
+    "sourceRow": 38
+  }
+]

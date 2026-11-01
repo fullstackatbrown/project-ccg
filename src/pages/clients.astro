@@ -9,13 +9,16 @@ import AnnualReportSection from '../components/common/AnnualReportSection.astro'
 import '../styles/global.css';
 import { fetchClients } from '../../contentfulStatic.js';
 import { contentfulClient } from "../lib/contentful.ts";
-import ClientLogoWall from '../components/clients/ClientLogoWall.astro';
-import WorkShowcase from '../components/clients/WorkShowcase.astro';
+import ClientPortfolio from '../components/clients/ClientPortfolio.astro';
+import ProjectDetails from '../components/portfolio/ProjectDetails.astro';
+import { preparePortfolio } from '../lib/portfolio';
+
 
 import { loadEditorial, assetUrl } from '../lib/editorial';
 const editorial = await loadEditorial();
 const page = editorial.page;
 const projects = await fetchClients();
+const portfolio = preparePortfolio(projects, editorial);
 
 const entries = await contentfulClient.getEntries({
   content_type: "images"
@@ -85,13 +88,13 @@ const services = serviceEntries.items.map((entry) => ({
       </div>
     </section>
 
-    <ClientLogoWall projects={projects} title={page.portfolioTitle} />
-    <WorkShowcase projects={projects} title={page.workTitle} featuredIds={page.featuredWork?.map(entry=>entry.sys.id)} />
+    <ClientPortfolio portfolio={portfolio} />
     <ServicesSection services={services} title={page.servicesTitle} />
     <ValuesSection values={values} title={page.valuesTitle} image={editorial.migrated ? assetUrl(page.valuesImage) : page.valuesImage} />
     <ProcessSection title={page.processTitle} steps={editorial.migrated ? page.processSteps.map(entry=>entry.fields) : editorial.defaults.processSteps} />
     <AnnualReportSection />
 
+    <ProjectDetails projects={portfolio.projects} />
     <Footer></Footer>
   </div>
 </Layout>
