@@ -10,7 +10,11 @@ export async function loadEditorial() {
  const home:any=response.items[0]?.fields || {};
  const migrated=home.designReleaseVersion===defaults.releaseVersion;
  if(import.meta.env.CONTENTFUL_REQUIRE_EDITABLE_CONTENT==='true' || process.env.GITHUB_ACTIONS==='true') {
-  if(!migrated || !Array.isArray(home.featuredClients) || !Array.isArray(home.alumniIndustries) || !home.clientsPage?.fields || !home.clubDescription?.trim()) {
+  const referencesReady = home.featuredClients?.length > 0 && home.featuredClients.every((entry:any)=>assetUrl(entry.fields?.logo))
+   && home.alumniIndustries?.length > 0 && home.alumniIndustries.every((group:any)=>group.fields?.destinations?.length > 0 && group.fields.destinations.every((entry:any)=>assetUrl(entry.fields?.logo)))
+   && home.clientsPage?.fields?.processSteps?.length > 0 && home.clientsPage.fields.processSteps.every((entry:any)=>entry.fields?.title && entry.fields?.description)
+   && home.clientsPage?.fields?.featuredWork?.length > 0 && home.clientsPage.fields.featuredWork.every((entry:any)=>entry.fields?.description?.trim());
+  if(!migrated || !referencesReady || !home.clubDescription?.trim()) {
    throw new Error('Contentful launch preparation is incomplete. Run the approved CMS migration before deploying the redesigned site.');
   }
  }
