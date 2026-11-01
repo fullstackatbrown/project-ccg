@@ -1,0 +1,33 @@
+---
+const {clubDescription,statBoxes,teamDescription,ourTeamImage,editorial}=Astro.props;
+const alumniIndustries=editorial.industries;
+const labels=[editorial.home.whoWeAreTitle ?? "Who We Are",editorial.home.teamTitle ?? "Our Team",editorial.home.alumniTitle ?? "Where We End Up"];
+---
+<section id="who-we-are" class="work-story people-journey" data-scroll-story aria-label="Meet Collegiate Consulting Group">
+ <div class="story-stage">
+  <div class="story-panels journey-panels">
+   <article class="story-panel journey-panel" data-story-panel="0">
+    <h2>{labels[0]}</h2>
+    <div class="journey-overview">
+     <div class="journey-description" set:html={clubDescription}></div>
+     <dl class="club-stats journey-stats">{statBoxes.map(box=><div><dt>{box.label}</dt><dd>{box.value}</dd></div>)}</dl>
+    </div>
+   </article>
+   <article class="story-panel journey-panel" data-story-panel="1">
+    <h2>{labels[1]}</h2>
+    <div class="journey-team">
+     <div class="team-photo-frame"><img src={ourTeamImage[0]} alt="Collegiate Consulting Group members" loading="lazy" /></div>
+     <div><p>{teamDescription}</p><a href="/members" class="feature-link">Meet Our Team <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+    </div>
+   </article>
+   {alumniIndustries.map((industry,index)=><article class="story-panel journey-panel alumni-panel" data-story-panel={index+2} data-story-group="2" data-scroll-weight="0.8">
+    <header class="alumni-heading"><h2>{labels[2]}</h2><p class="journey-alumni-description">{editorial.home.alumniDescription ?? editorial.defaults.alumniDescription}</p><h3>{industry.name}</h3></header>
+    <div class="journey-companies" data-layout={industry.layout}>{industry.employers.map(employer=><div class:list={["company-logo",{"company-logo-dark": employer.surface!=="white","company-logo-square":employer.largeLogo,"company-logo-bain":employer.surface==="red"}]} title={employer.name}><img src={employer.logo} alt={employer.name} class:list={{"logo-darken":employer.invertLogo}} loading="lazy" />{employer.showCaption && <span class="company-name">{employer.name}</span>}</div>)}</div>
+   </article>)}
+  </div>
+  <div class="story-choices journey-choices" role="group" aria-label="Explore CCG">
+   {labels.map((name,index)=><button type="button" data-story-choice={index} aria-pressed={index===0}>{name}</button>)}
+  </div>
+  <div class="story-progress" aria-hidden="true"><span></span></div>
+ </div>
+</section>

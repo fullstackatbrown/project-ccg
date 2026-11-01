@@ -96,7 +96,7 @@ const teamStats = recruitment[0].stats
     <Navbar />
     
     <!-- Hero Section – Recruitment Themed -->
-  <section class="relative w-full h-[50vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
+  <section data-page-hero class="page-hero relative w-full h-[50vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
     <!-- Background Image with Subtle Zoom Effect -->
     <div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
       <img 
@@ -107,20 +107,20 @@ const teamStats = recruitment[0].stats
     </div>
 
     <!-- Blue Gradient Overlay for a sleek professional tone -->
-    <div class="absolute w-full h-full bg-gradient-to-t from-[#0c1445] via-[#0c1445cc] to-[#0c144544]"></div>
+    <div aria-hidden="true" class="hero-overlay hero-overlay-internal absolute w-full h-full"></div>
 
     <!-- Overlay Content -->
     <div class="absolute inset-0 flex flex-col items-start justify-end p-8 md:p-16 lg:p-24 text-content-animation">
       <div class="slide-up-animation">
-        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6" style="font-family: 'Almarai', sans-serif;">
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6" style="font-family: 'Aileron', sans-serif;">
           Join CCG
         </h1>
         <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl leading-relaxed">
           Take the first step toward becoming a part of Brown’s premier student-run consulting group. Challenge yourself, grow, and make an impact.
         </p>
-        <a href="#learn-more" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+        <a href="#learn-more" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#8d0428] to-[#6d0320] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
           Learn More
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </a>
@@ -134,7 +134,7 @@ const teamStats = recruitment[0].stats
       {recruitment[0].application}
     </p>
     {recruitment[0].applicationLink && (
-      <a href={recruitment[0].applicationLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+      <a href={recruitment[0].applicationLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#8d0428] to-[#6d0320] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
         Apply Now
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -147,7 +147,7 @@ const teamStats = recruitment[0].stats
   <div class="pb-8 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center fade-in">
-          <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#0B144A] text-center" style="font-family: 'arimo', sans-serif;">
+          <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#8d0428] text-center" style="font-family: 'Aileron', sans-serif;">
             Our Stats
           </h1>
           <div class="flex items-center justify-center mt-3 mb-5">
@@ -206,9 +206,9 @@ const teamStats = recruitment[0].stats
 	</div> -->
 
     <!-- Why CCG Section (Updated to match services page styling) -->
-    <section class="w-full py-24 bg-gradient-to-r from-[#1A237E] to-[#0B144A] text-white relative overflow-hidden">
+    <section class="w-full py-24 bg-gradient-to-r from-[#173884] to-[#8d0428] text-white relative overflow-hidden">
       <div class="container mx-auto px-4 text-center fade-in">
-        <h1 class="text-5xl md:text-6xl font-bold mb-8 text-white text-center" style="font-family: 'arimo', sans-serif;">Why CCG?</h1>
+        <h1 class="text-5xl md:text-6xl font-bold mb-8 text-white text-center" style="font-family: 'Aileron', sans-serif;">Why CCG?</h1>
         <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
           <div class="w-12 h-1 bg-red-700"></div>
           <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
@@ -250,7 +250,7 @@ const teamStats = recruitment[0].stats
     <!-- Application Information Section (Redesigned) -->
     <section class="w-full py-20 bg-white fade-in">
       <div class="container mx-auto px-4">
-        <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#0B144A] text-center" style="font-family: 'arimo', sans-serif;">Application Information</h1>
+        <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#8d0428] text-center" style="font-family: 'Aileron', sans-serif;">Application Information</h1>
         <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
           <div class="w-12 h-1 bg-red-700"></div>
           <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
@@ -261,7 +261,7 @@ const teamStats = recruitment[0].stats
           <!-- Left: Application Info -->
           <div class="group w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center fade-in-delay-2 hover:shadow-xl transition-all duration-300 ease-out">
             <div class="transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
-              <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A] mb-6">Current Application Status</h3>
+              <h3 class="text-3xl md:text-4xl font-bold text-[#8d0428] mb-6">Current Application Status</h3>
               <div class="flex items-center justify-center mb-6">
                 <div class="w-8 h-1 bg-red-700"></div>
                 <div class="w-2 h-2 rounded-full bg-red-700 ml-1"></div>
@@ -269,7 +269,7 @@ const teamStats = recruitment[0].stats
               </div>
               <p class="text-gray-700 text-xl mb-6">{recruitment[0].application}</p>
               {recruitment[0].applicationLink && (
-                <a href={recruitment[0].applicationLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-3 mb-6 bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                <a href={recruitment[0].applicationLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-3 mb-6 bg-gradient-to-r from-[#8d0428] to-[#6d0320] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                   Apply Now
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -287,7 +287,7 @@ const teamStats = recruitment[0].stats
           <!-- Right: Timeline -->
           <div class="group w-full lg:w-1/2 fade-in-delay-3 hover:shadow-xl transition-all duration-300 ease-out">
             <div class="transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
-              <h3 class="text-3xl md:text-4xl font-bold text-[#0B144A] mb-6 text-center">Application Timeline</h3>
+              <h3 class="text-3xl md:text-4xl font-bold text-[#8d0428] mb-6 text-center">Application Timeline</h3>
               <div class="flex items-center justify-center mb-6">
                 <div class="w-8 h-1 bg-red-700"></div>
                 <div class="w-2 h-2 rounded-full bg-red-700 ml-1"></div>
@@ -305,12 +305,12 @@ const teamStats = recruitment[0].stats
                 {recruitment[0].timelineImages.length > 1 && (
                   <div>
                     <button id="timeline-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 bg-white rounded-full shadow-md p-2 hover:shadow-lg transition-all duration-200 hover:scale-110 z-10">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0B144A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#8d0428]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
                     <button id="timeline-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 bg-white rounded-full shadow-md p-2 hover:shadow-lg transition-all duration-200 hover:scale-110 z-10">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0B144A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#8d0428]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -332,9 +332,9 @@ const teamStats = recruitment[0].stats
     </section>
 
     <!-- Process Section (Redesigned to match Services page) -->
-    <section class="w-full py-16 bg-[#0B144A14]">
+    <section class="w-full py-16 bg-[#8d042814]">
       <div class="container mx-auto px-4 text-center fade-in">
-        <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#0B144A] text-center" style="font-family: 'arimo', sans-serif;">Our Recruitment Process</h1>
+        <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#8d0428] text-center" style="font-family: 'Aileron', sans-serif;">Our Recruitment Process</h1>
         <div class="flex items-center justify-center mb-12 mt-4 fade-in-delay-1">
           <div class="w-12 h-1 bg-red-700"></div>
           <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
@@ -349,9 +349,9 @@ const teamStats = recruitment[0].stats
               {processSteps.map((step, index) => (
                 <div class="group flex flex-col md:flex-row items-start text-left relative transition-all duration-300 ease-out">
                   <div class="flex flex-row w-full transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
-                    <div class="flex-shrink-0 w-16 h-16 bg-[#0B144A] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-0">{index + 1}</div>
+                    <div class="flex-shrink-0 w-16 h-16 bg-[#8d0428] rounded-full flex items-center justify-center text-white text-xl font-bold z-10 mb-0">{index + 1}</div>
                     <div class="ml-4 bg-white p-6 rounded-lg shadow-md flex-grow max-w-[calc(100%-4.5rem)]">
-                      <h3 class="text-2xl font-bold mb-4 text-[#0B144A]">{step.title}</h3>
+                      <h3 class="text-2xl font-bold mb-4 text-[#8d0428]">{step.title}</h3>
                       <p class="text-gray-700">{step.description}</p>
                     </div>
                   </div>
@@ -368,7 +368,7 @@ const teamStats = recruitment[0].stats
     <section class="w-full py-20 bg-white">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
-          <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#0B144A] text-center" style="font-family: 'arimo', sans-serif;"></>Join Our Email List</h1>
+          <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#8d0428] text-center" style="font-family: 'Aileron', sans-serif;"></>Join Our Email List</h1>
           <div class="flex items-center justify-center mb-8">
             <div class="w-12 h-1 bg-red-700"></div>
             <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>
@@ -380,7 +380,7 @@ const teamStats = recruitment[0].stats
         </div>
         
         <div class="flex flex-col md:flex-row bg-white rounded-lg shadow-xl overflow-hidden fade-in fade-in-delay-1">
-          <div class="w-full md:w-1/2 bg-[#0B144A] p-8 md:p-12 flex flex-col justify-center text-white">
+          <div class="w-full md:w-1/2 bg-[#8d0428] p-8 md:p-12 flex flex-col justify-center text-white">
             <h3 class="text-2xl md:text-3xl font-bold mb-4">Stay in the loop</h3>
             <p class="text-lg mb-6">
               Sign up to receive updates about:
@@ -433,14 +433,14 @@ const teamStats = recruitment[0].stats
               />
               <button
                 type="submit"
-                class="px-8 py-3 bg-[#C32727] text-white rounded-full hover:bg-[#9c2525] transition-colors shadow-md disabled:cursor-not-allowed"
+                class="px-8 py-3 bg-[#8d0428] text-white rounded-full hover:bg-[#9c2525] transition-colors shadow-md disabled:cursor-not-allowed"
                 id="submit-button"
               >
                 Sign Up
               </button>
               <p id="form-success" class="text-green-500 hidden">Thanks for signing up!</p>
               <div id="form-load" class="flex items-center justify-center hidden">
-                <svg class="animate-spin h-5 w-5 mr-3 text-[#D32F2F]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg class="animate-spin h-5 w-5 mr-3 text-[#8d0428]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -496,10 +496,10 @@ const teamStats = recruitment[0].stats
     </section>
     
     <!-- FAQ Section -->
-    <section class="w-full py-20 bg-[#0B144A14]">
+    <section class="w-full py-20 bg-[#8d042814]">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center mb-12 fade-in">
-          <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#0B144A] text-center" style="font-family: 'arimo', sans-serif;">Frequently Asked Questions</h1>
+          <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#8d0428] text-center" style="font-family: 'Aileron', sans-serif;">Frequently Asked Questions</h1>
           <div class="flex items-center justify-center mb-8">
             <div class="w-12 h-1 bg-red-700"></div>
             <div class="w-3 h-3 rounded-full bg-red-700 ml-1"></div>

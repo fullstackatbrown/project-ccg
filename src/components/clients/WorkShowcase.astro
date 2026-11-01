@@ -1,0 +1,28 @@
+---
+const {projects=[],title='Our client work.',featuredIds}=Astro.props;
+const built=projects.filter(project=>project.companyName&&project.description?.trim());
+const featured=featuredIds ? featuredIds.map(id=>built.find(project=>project.id===id)).filter(Boolean) : built.slice(0,3);
+const selectedIds=new Set(featured.map(project=>project.id));
+const all=[...featured,...projects.filter(project=>project.companyName&&!selectedIds.has(project.id))];
+---
+{all.length>0 && <section id="selected-work" class="work-story client-story" data-scroll-story data-scroll-count={featured.length} aria-labelledby="selected-work-title">
+ <div class="story-stage">
+  <div class="story-navigation">
+   <h2 id="selected-work-title">{title}</h2>
+   <div class="story-choices" role="group" aria-label="Featured engagements">
+    {featured.map((project,index)=><button type="button" data-story-choice={index} aria-pressed={index===0}>{project.companyName==='Github'?'GitHub':project.companyName}<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>)}
+   </div>
+   <label class="client-selector-label" for="client-selector">Explore all clients</label>
+   <select id="client-selector" data-client-selector>{all.map((project,index)=><option value={index}>{project.companyName==='Github'?'GitHub':project.companyName}</option>)}</select>
+  </div>
+  <div class="story-panels">
+   {all.map((project,index)=><article class="story-panel" data-story-panel={index}>
+    <div class="work-logo" data-light-logo={/trevor/i.test(project.companyName)?"true":undefined}>{project.logo&&<img src={project.logo} alt={project.companyName} loading="lazy" />}</div>
+    <h3>{project.companyName==='Github'?'GitHub':project.companyName}</h3>
+    <p class="engagement-summary">{project.description||project.summary}</p>
+    {project.slideUrl&&<a href={project.slideUrl} class="work-link" target="_blank" rel="noopener noreferrer">View engagement slide <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>}
+   </article>)}
+  </div>
+  <div class="story-progress" aria-hidden="true"><span></span></div>
+ </div>
+</section>}

@@ -1,0 +1,35 @@
+# CCG client-facing website
+
+Audience: prospective clients first, with clear paths for students and alumni. Preserve Contentful as the source of club facts, client engagements, services, values, members, and recruitment.
+
+Full-screen photographic hero with the large cream CCG logo centered, no additional home hero copy. Crimson #8d0428 and tan #fae7bc, Aileron headings, original system sans-serif body. No accessory serif fonts.
+
+Home sequence: full-screen centered-logo hero → pinned Who We Are / Our Team / Where We End Up sequence → annual report → footer. Client page has one combined engagement showcase with all clients selectable, followed by services, working approach, process, report and contact. No duplicate project section; retain the public client logo portfolio.
+
+Signature interaction: native-scroll pinned stages advance through the home people journey and three featured engagements on the Clients page. No wheel interception. Clients can select a case directly. Smaller screens and reduced-motion preferences get the home scenes in normal reading order and a selectable single-panel client showcase.
+
+Rounded surfaces have subtle shadows and no outlines. No cream box or logo behind Who We Are. Values use rounded icon cards without decorative red lines. Services are five fully visible rounded cards in one desktop row; they stack for smaller screens.
+
+Navigation is a floating white rounded bar above full-viewport photography. Contact Us keeps cream text in active and hover states. Facebook is removed. Services are absent from the homepage. Standalone project-invitation blocks are removed. The Clients page includes the original public client logo portfolio before its pinned showcase; white client marks are darkened on the same white surface. Values pair team photography with rounded icon cards without decorative red rules. Process steps reveal individually with consistent heading heights.
+
+Pinned homepage headings sit at the top of their scene rather than vertically centering all content. Team photography fills an edge-to-edge rounded rectangle with a soft shadow; alumni marks and cards are larger. Intro statistics share a uniform white surface with crimson numbers. Client showcase defaults to the first three original projects with full Contentful descriptions, and displays descriptions directly without expansion controls. All public logo-wall cards have white backgrounds. Original labels Our Services, Our Values and Our Process are retained. Services use white cards with compact, consistently two-line headings and aligned descriptions. Process uses rounded white cards, tan number circles and crimson headings on a warm neutral surface, without blue accents. Report artwork fills its thumbnail area with no padding or decorative tint overlay.
+
+The Selected Engagements portfolio uses five desktop columns for twenty public logos, four tablet columns and two mobile columns. Client showcase cards fit their content rather than stretching to fill the entire pinned stage.
+
+Alumni portfolio: 25 named employers in the order supplied by CCG, five complete desktop rows, responsive layout on smaller screens; assets and sources are local. Selected Engagements tiles reveal the existing Contentful summary on hover or keyboard focus. Client-page rhythm moves from a white logo portfolio to a crimson pinned showcase, white services, a warm neutral values section, and white process.
+
+Alumni now unfolds across four consecutive native-scroll scenes: Consulting, Finance & Investing, Tech, and And More. The bottom navigation remains Who We Are / Our Team / Where We End Up, with the final tab active throughout all four alumni scenes. On mobile and with reduced motion the industries follow in normal reading order. Finance places Evercore, Lazard, Centerview and Jefferies before alternative investment firms. And More includes the additional employers and specific graduate schools supplied by CCG. Larger, near-square logo cards replace the narrow all-employer grid. Team image sizing reserves generous clearance above the tabs. Selected Engagements uses four desktop columns of larger cards; the full Contentful summary replaces the logo inside the card on hover or focus, with intrinsic height and no internal scroll area.
+
+Refinements: retain the alumni introduction in each pinned industry scene; industry scenes use 55% of the previous scroll span while Who We Are and Our Team preserve their existing spans. And More is centered in three desktop rows of 3/4/3. McKinsey and Bain use white wordmarks on dark navy cards; Square fills more of its card. Our Services, Our Values and Our Process share one responsive heading scale. White service/process cards sit on a stronger warm-tan section background, with dark body copy. The floating navbar has a darker soft shadow for separation on white pages.
+
+Latest refinements: alumni scenes use 80% of the original scroll span, preserving the first two scenes. Bain uses white artwork on a deep red card. And More cards are larger with additional inner padding, including extra room around the dental school caption. The team grid follows the photo width with a 36px gap and a subtle 5.5% photo zoom.
+
+Homepage iteration (local only, awaiting Vercel approval): hero → selected client engagements → pinned Who We Are / Our Team / alumni industries → annual report → footer. The early showcase features Adobe, Uber, IBM, GitHub, Whole Foods, Grammarly, CAVA and UNDP using existing Contentful client logos; a short introduction and CTA direct visitors to the Clients page. It establishes client experience before the people narrative, without extending the pinned interaction. The expanded Who We Are draft lives in src/data/homepageCopy.ts until editorial approval for Contentful; the CMS itself is unchanged. Membership language covers careful selection and alumni destinations without invented acceptance-rate or leadership claims.
+
+The homepage client showcase now leads with “Trusted by Industry Leaders” in title case, explicitly describes the logos as a selection of past client engagements, and uses slightly more vertical room. Its supporting copy contains no em dash. These edits remain local pending approval to update Vercel.
+
+The client-proof section has a brief native-scroll hold of 35% of viewport height on desktop when all content fits. It releases before the separate people journey. Mobile, reduced-motion, and content that does not fit use normal flow. Copy restores the original scale/industry framing, mentions some of the world’s largest companies, and explicitly says these are just a few past clients. No em dash. Local only.
+
+All five photographic heroes share the same hero-overlay gradient, matching the lighter homepage treatment instead of separate darker internal-page overlays. The user approved updating the separate Vercel review site with this iteration.
+
+Internal-page hero overlays are modestly darker than the homepage for title contrast: .91 opacity at the bottom, .27 at the top, versus the unchanged homepage .86/.15. User approved updating the standalone Vercel review site.

@@ -6,12 +6,15 @@ import ServicesSection from '../components/clients/ServicesSection.astro';
 import ProcessSection from '../components/clients/ProcessSection.astro';
 import ValuesSection from '../components/clients/ValuesSection.astro';
 import AnnualReportSection from '../components/common/AnnualReportSection.astro';
-import ProjectsSection from '../components/clients/ProjectsSection.astro';
 import '../styles/global.css';
 import { fetchClients } from '../../contentfulStatic.js';
 import { contentfulClient } from "../lib/contentful.ts";
-import ClientsSection from '../components/clients/ClientsSection.astro';
+import ClientLogoWall from '../components/clients/ClientLogoWall.astro';
+import WorkShowcase from '../components/clients/WorkShowcase.astro';
 
+import { loadEditorial, assetUrl } from '../lib/editorial';
+const editorial = await loadEditorial();
+const page = editorial.page;
 const projects = await fetchClients();
 
 const entries = await contentfulClient.getEntries({
@@ -50,7 +53,7 @@ const services = serviceEntries.items.map((entry) => ({
     <Navbar></Navbar>
   
     <!-- Hero Section with Parallax -->
-    <section class="relative w-full h-[50vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
+    <section data-page-hero class="page-hero relative w-full h-[50vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
       <!-- Background Image with Parallax -->
       <div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
         <img 
@@ -61,20 +64,20 @@ const services = serviceEntries.items.map((entry) => ({
       </div>
 
       <!-- Dark Gradient Overlay -->
-      <div class="absolute w-full h-full bg-gradient-to-t from-[#0c1445] via-[#0c1445cc] to-[#0c144566]"></div>
+      <div aria-hidden="true" class="hero-overlay hero-overlay-internal absolute w-full h-full"></div>
 
       <!-- Overlay Text with Animated Entry -->
       <div class="absolute inset-0 flex flex-col items-start justify-end p-8 md:p-16 lg:p-24 text-content-animation">
         <div class="slide-up-animation">
-          <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6" style="font-family: 'Almarai', sans-serif;">
-              Our Clients
+          <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6" style="font-family: 'Aileron', sans-serif;">
+              {page.heroTitle}
           </h1>
           <p class="text-xl md:text-2xl text-white opacity-90 max-w-2xl leading-relaxed">
-            Shape your future in consulting with Brown's premier student consulting organization.
+            {page.heroDescription}
           </p>
-          <a href="#learn-more" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+          <a href="#selected-work" class="mt-8 inline-flex items-center px-8 py-3 bg-gradient-to-r from-[#8d0428] to-[#6d0320] text-white font-medium rounded-full hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
             Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </a>
@@ -82,11 +85,11 @@ const services = serviceEntries.items.map((entry) => ({
       </div>
     </section>
 
-    <ClientsSection />
-    <ValuesSection values={values} />
-    <ServicesSection services={services} />
-    <ProjectsSection />
-    <ProcessSection />
+    <ClientLogoWall projects={projects} title={page.portfolioTitle} />
+    <WorkShowcase projects={projects} title={page.workTitle} featuredIds={page.featuredWork?.map(entry=>entry.sys.id)} />
+    <ServicesSection services={services} title={page.servicesTitle} />
+    <ValuesSection values={values} title={page.valuesTitle} image={editorial.migrated ? assetUrl(page.valuesImage) : page.valuesImage} />
+    <ProcessSection title={page.processTitle} steps={editorial.migrated ? page.processSteps.map(entry=>entry.fields) : editorial.defaults.processSteps} />
     <AnnualReportSection />
 
     <Footer></Footer>

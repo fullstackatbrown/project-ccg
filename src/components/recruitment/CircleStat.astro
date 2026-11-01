@@ -14,14 +14,14 @@ const offset = circumference * (1 - percentage / 100);
       />
       <circle
         cx="70" cy="70" r={radius}
-        stroke="#D32F2F" stroke-width="16" fill="none"
+        stroke="#8d0428" stroke-width="16" fill="none"
         stroke-dasharray={circumference}
         stroke-dashoffset={circumference}
         stroke-linecap="round"
         class="circle-progress"
         style={`--final-offset: ${offset};`}
       />
-      <text x="50%" y="54%" text-anchor="middle" font-size="2.2rem" fill="#D32F2F" font-weight="bold" dominant-baseline="middle">
+      <text x="50%" y="54%" text-anchor="middle" font-size="2.2rem" fill="#8d0428" font-weight="bold" dominant-baseline="middle">
         {percentage}%
       </text>
     </svg>

@@ -6,14 +6,14 @@ const clients = (await fetchClients()).filter(
 );
 ---
 
-<section id="clients-section" class="w-full py-24 bg-gradient-to-b from-white to-[#F5F7FA] opacity-0 translate-y-5 transition-all duration-700 ease-out">
+<section id="clients-section" class="w-full py-24 bg-gradient-to-b from-white to-[#faf7f0] ">
   <div class="container mx-auto px-4">
-    <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#0B144A] text-center" style="font-family: 'arimo', sans-serif;">Selected Engagements</h1>
+    <h1 class="text-5xl md:text-6xl font-bold mb-8 text-[#8d0428] text-center" style="font-family: 'Aileron', sans-serif;">Selected Engagements</h1>
 
     <div class="flex items-center justify-center mb-12 mt-4">
-      <div class="w-12 h-1 bg-[#D32F2F]"></div>
-      <div class="w-3 h-3 rounded-full bg-[#D32F2F] ml-1"></div>
-      <div class="w-12 h-1 bg-[#D32F2F] ml-1"></div>
+      <div class="w-12 h-1 bg-[#8d0428]"></div>
+      <div class="w-3 h-3 rounded-full bg-[#8d0428] ml-1"></div>
+      <div class="w-12 h-1 bg-[#8d0428] ml-1"></div>
     </div>
 
     <div 
@@ -22,8 +22,8 @@ const clients = (await fetchClients()).filter(
              lg:grid-cols-4 lg:grid-rows-2"
     >
       {clients.map(client => (
-        <div class="relative group bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden aspect-square flex items-center justify-center">
-          <div class="bg-[#0C1445] w-full h-full flex items-center justify-center">
+        <div tabindex="0" aria-label={client.companyName} class="relative group bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden aspect-square flex items-center justify-center">
+          <div class="bg-[#8d0428] w-full h-full flex items-center justify-center">
             <img 
               src={client.logo} 
               alt={client.companyName} 
@@ -31,7 +31,7 @@ const clients = (await fetchClients()).filter(
             />
           </div>
 
-          <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#D32F2F]/98 text-white">
+          <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#8d0428]/98 text-white">
             <h3 class="text-lg font-semibold">{client.companyName}</h3>
             <p class="text-sm mt-2">{client.summary}</p>
           </div>

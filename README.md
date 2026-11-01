@@ -70,3 +70,7 @@ All commands are run from the root of the project:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## Sharing the design refresh
+
+See [REVIEW.md](REVIEW.md) for the separate Vercel review workflow, update instructions, and local recovery backup.

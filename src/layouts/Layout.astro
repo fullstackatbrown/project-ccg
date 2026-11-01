@@ -1,4 +1,5 @@
 ---
+import "@fontsource/aileron/700.css";
 import "../styles/global.css";
 ---
 
@@ -7,7 +8,7 @@ import "../styles/global.css";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href={`/assets/favicon.ico`} />
+		<link rel="icon" type="image/svg+xml" href={`/assets/favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>Collegiate Consulting Group</title>
 		<script
@@ -18,7 +19,8 @@ import "../styles/global.css";
 		</script>
 	</head>
 	<body>
-		<slot />
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<main id="main-content"><slot /></main>
 	</body>
 </html>
 
@@ -32,23 +34,7 @@ import "../styles/global.css";
 </style>
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
-	const fadeElements = document.querySelectorAll('.fade-in');
-	
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-		if (entry.isIntersecting) {
-			entry.target.classList.add('visible');
-		}
-		});
-	}, {
-		threshold: 0.1,
-		rootMargin: '0px 0px -50px 0px'
-	});
-	
-	fadeElements.forEach(element => {
-		observer.observe(element);
-	});
-	});
+ import "../scripts/motion";
+ import "../scripts/stories";
+ import "../scripts/featuredHold";
 </script>
-	
