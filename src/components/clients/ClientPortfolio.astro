@@ -42,5 +42,12 @@ const semesters = [...new Set(remaining.map(project => project.semester || 'Earl
   (document.querySelector('[data-portfolio-empty]') as HTMLElement).hidden = count > 0;
  };
  search?.addEventListener('input', filter);
- semester?.addEventListener('change', filter);
+ semester?.addEventListener('change', () => {
+  filter();
+  // Let the filtered layout settle before overriding browser scroll anchoring.
+  requestAnimationFrame(() => {
+   const heading = document.querySelector<HTMLElement>('#portfolio-history-title');
+   if (heading) window.scrollTo({top: Math.max(0, window.scrollY + heading.getBoundingClientRect().top - 125), behavior: 'instant'});
+  });
+ });
 </script>
