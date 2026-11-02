@@ -5,7 +5,7 @@ const remaining = portfolio.projects;
 const semesterRank = (name:string) => (Number(name.match(/\d{4}/)?.[0]) || 0) * 10 + (/fall/i.test(name) ? 2 : 1);
 const semesters = [...new Set(remaining.map(project => project.semester || 'Earlier Engagements'))].sort((a:any,b:any)=>semesterRank(b)-semesterRank(a));
 ---
-<section class="portfolio-featured" id="selected-work" data-showcase-hold aria-labelledby="portfolio-featured-title">
+<section class="portfolio-featured" id="selected-work" aria-labelledby="portfolio-featured-title">
  <div data-showcase-stage><div data-showcase-content>
  <div class="portfolio-section-intro" data-reveal><h2 id="portfolio-featured-title">{page.portfolioTitle}</h2><p>{page.portfolioDescription}</p></div>
  <div class="engagement-grid engagement-grid-featured">{portfolio.featured.map(project => <ProjectCard project={project} context="featured" />)}</div>
@@ -23,6 +23,10 @@ const semesters = [...new Set(remaining.map(project => project.semester || 'Earl
  </div>
 </section>
 <script>
+ const compactPortfolio = window.matchMedia('(min-width: 960px) and (min-height: 680px)');
+ const sizePortfolio = () => document.querySelector('.portfolio-featured')?.classList.toggle('showcase-compact', compactPortfolio.matches);
+ sizePortfolio();
+ compactPortfolio.addEventListener('change', sizePortfolio);
  const search = document.querySelector<HTMLInputElement>('#portfolio-search');
  const semester = document.querySelector<HTMLSelectElement>('#portfolio-semester');
  const items = [...document.querySelectorAll<HTMLElement>('[data-portfolio-item]')];

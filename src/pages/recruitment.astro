@@ -98,7 +98,7 @@ const teamStats = recruitment[0].stats
     <!-- Hero Section – Recruitment Themed -->
   <section data-page-hero class="page-hero relative w-full h-[50vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
     <!-- Background Image with Subtle Zoom Effect -->
-    <div class="parallax-bg absolute w-full h-full transform scale-110 transition-transform duration-500 ease-out">
+    <div class="absolute inset-0 w-full h-full">
       <img 
 				src={headerImage[0]}
         alt="Recruitment background" 
@@ -633,35 +633,6 @@ const teamStats = recruitment[0].stats
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const parallaxElements = document.querySelectorAll('.parallax-bg');
-
-    let lastScrollY = 0;
-    let ticking = false;
-
-    function updateParallax() {
-      parallaxElements.forEach(element => {
-        const yPos = -(lastScrollY * 0.20);
-        element.style.transform = `translateY(${yPos}px)`;
-      });
-      ticking = false;
-    }
-
-    function onScroll() {
-      lastScrollY = window.scrollY;
-      if (!ticking) {
-        window.requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        window.addEventListener('scroll', onScroll);
-        updateParallax();
-      }, 700);
-    });
-  });
   // Timeline carousel
   const carousel = document.getElementById('timeline-carousel');
   if (carousel) {
