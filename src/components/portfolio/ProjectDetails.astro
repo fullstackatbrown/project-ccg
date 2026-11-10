@@ -9,7 +9,9 @@ const {projects} = Astro.props;
 </dialog>
 {projects.map(project=><template data-project-template={project.id}>
  <div class="engagement-dialog-brand">{project.logo ? <img src={project.logo} alt="" class:list={{'engagement-mark-trevor':/trevor/i.test(project.companyName)}} /> : <span class="engagement-wordmark">{project.companyName}</span>}</div>
- <div class="engagement-dialog-copy"><h2 id="engagement-dialog-title">{project.companyName}</h2>{project.semester && <p class="engagement-semester">{project.semester}</p>}<div id="engagement-dialog-description"><p>{project.description || project.summary}</p></div></div>
+ <div class="engagement-dialog-copy"><h2 id="engagement-dialog-title">{project.companyName}</h2>{project.semester && <p class="engagement-semester">{project.semester}</p>}<div id="engagement-dialog-description"><p>{project.description || project.summary}</p></div>
+ {project.leadership?.length > 0 && <dl class="engagement-leadership">{project.leadership.map(person=><div><dt>{person.role}</dt><dd>{person.name}</dd></div>)}</dl>}
+ </div>
 </template>)}
 <script>
  import '../../scripts/projectDetails';

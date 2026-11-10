@@ -4,6 +4,7 @@ import Navbar from '../components/common/Navbar.astro';
 import Footer from '../components/common/Footer.astro';
 import MembersSection from '../components/members/MembersSection.astro';
 import { normalizeLinkedInUrl } from '../lib/linkedin.mjs';
+import { loadProjectAssignments, memberProjects } from '../lib/projectAssignments';
 import '../styles/global.css';
 import { contentfulClient } from "../lib/contentful";
 
@@ -28,7 +29,9 @@ function optimizeImage(url) {
     : `${url}?w=475&h=475&fit=${crop}&fm=webp&q=80`;
 }
 
+const assignments = await loadProjectAssignments();
 const members = entries.items.map(entry => ({
+  projects: memberProjects(assignments, entry.sys.id),
   memberName: entry.fields.memberName,
   displayOrder: typeof entry.fields.displayOrder === "number" ? entry.fields.displayOrder : Number.MAX_SAFE_INTEGER,
   position: entry.fields.position,
@@ -261,6 +264,7 @@ const otherMembers = members
 <script define:vars={{ leadershipMembers, otherMembers }}>
   document.addEventListener('DOMContentLoaded', () => {
     // Modal handling
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
     const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-member-content');
     const closeBtn = document.querySelector('.close');
@@ -288,6 +292,7 @@ const otherMembers = members
             <div class="modal-divider"></div>
             
             <div class="bio">${member.bibliography || 'No biography available.'}</div>
+            ${member.projects?.length ? `<nav class="member-projects" aria-label="Client engagements">${member.projects.map(project => `<a class="member-project-pill project-tone-${project.tone}" href="${escapeHtml(project.href)}" aria-label="${escapeHtml(project.name)}, ${escapeHtml(project.semester)}">${escapeHtml(project.name)}<span>${escapeHtml(project.semester)}</span></a>`).join('')}</nav>` : ''}
             
             <div class="contact-section">
               <h3>Contact Information</h3>
