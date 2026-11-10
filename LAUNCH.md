@@ -46,3 +46,9 @@ The November 1 release keeps the entire approved portfolio in Contentful. Develo
 Publish changed entries and linked assets, then update and publish Site Rebuild Trigger as before. Contentful changes appear after the GitHub Pages rebuild. No code changes are needed for ordinary project copy, company logos, featured selection, or membership/order changes.
 
 The pre-release source is tagged `pre-feedback-live-2026-11-01`. Its source archive and full management-content backup are retained in `.review-backups/production-before-2026-11-01/`. Squash merge the release so reverting one commit restores the previous code. If CMS content must also be restored, use the saved backup and coordinate with editors to preserve changes made since the release; new unreferenced entries need not be deleted.
+
+## Member profiles and order (November 2026)
+
+Member bios and headshots remain editable on each **Member** entry in Contentful. **Display Order** controls placement within the existing leadership role groups and within Consultants. Leadership roles and the hierarchy are unchanged. Lower display-order numbers appear first. Returning consultants occupy the initial positions; append new consultants with larger numbers. A profile without a Display Order sorts after the numbered profiles.
+
+Publish the replacement headshot asset and member entry, then publish the Site Rebuild Trigger to refresh the live website. The November 9 import preserves names, positions, class years, contact details, and LinkedIn URLs on existing members; only their submitted bios/photos and display-order metadata are updated. Members without new bios remain unchanged apart from order metadata.
