@@ -1,4 +1,5 @@
 import { contentfulClient } from './contentful';
+import { projectPillColor } from './projectPillColors';
 
 export const semesterRank = (semester: string) => (Number(semester.match(/\d{4}/)?.[0]) || 0) * 10 + (/fall/i.test(semester) ? 2 : 1);
 
@@ -8,7 +9,8 @@ export async function loadProjectAssignments() {
   const fields = entry.fields;
   return {id:entry.sys.id, memberId:fields.member?.sys.id, projectId:fields.project?.sys.id,
    companyName:fields.project?.fields?.companyName || '', semester:fields.project?.fields?.semester || '',
-   name:fields.personName, role:fields.role, order:fields.displayOrder || 0};
+   name:fields.personName, role:fields.role, order:fields.displayOrder || 0,
+   colorFamily:fields.project?.fields?.pillColorFamily};
  }).filter(assignment=>assignment.projectId).sort((a,b)=>semesterRank(b.semester)-semesterRank(a.semester) || a.order-b.order);
 }
 
@@ -17,5 +19,5 @@ export function memberProjects(assignments:any[], memberId:string) {
   .filter((assignment,index,items)=>items.findIndex(item=>item.projectId===assignment.projectId)===index)
   .map(assignment=>({name:assignment.companyName, semester:assignment.semester,
    href:`/clients/?project=${encodeURIComponent(assignment.projectId)}#full-portfolio`,
-   tone:[...assignment.companyName].reduce((sum,letter)=>sum+letter.charCodeAt(0),0)%3}));
+   tone:projectPillColor(assignment.companyName, assignment.colorFamily)}));
 }

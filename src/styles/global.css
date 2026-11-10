@@ -990,12 +990,16 @@ html { scroll-padding-top:110px; }
 .journey-companies .company-logo-dark .logo-darken { filter:brightness(0) invert(1); }
 
 /* Project histories share the website's crimson and warm neutral palette. */
-.member-projects {display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 28px;}
-.member-project-pill {display:inline-flex;flex-direction:column;gap:3px;border-radius:999px;padding:10px 18px;text-decoration:none;font-size:14px;font-weight:650;line-height:1.35;transition:transform .2s ease,box-shadow .2s ease;}
-.member-project-pill span {font-size:11px;font-weight:450;}
-.member-project-pill.project-tone-0 {background:#f3e3e6;color:#72142f;}
-.member-project-pill.project-tone-1 {background:#f4e6c9;color:#614515;}
-.member-project-pill.project-tone-2 {background:#e8e3df;color:#49372f;}
+.member-projects {display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 24px;}
+.member-project-pill {display:inline-flex;align-items:center;flex-wrap:wrap;gap:3px 7px;max-width:100%;border-radius:999px;padding:7px 12px;text-decoration:none;font-size:12.5px;font-weight:650;line-height:1.35;transition:transform .2s ease,box-shadow .2s ease;}
+.member-project-pill span {font-size:10.5px;font-weight:450;white-space:nowrap;}
+.member-project-pill.project-tone-red {background:#f3e3e6;color:#72142f;}
+.member-project-pill.project-tone-cream {background:#f4e6c9;color:#614515;}
+.member-project-pill.project-tone-brown {background:#e8e3df;color:#49372f;}
+.member-project-pill.project-tone-green {background:#e3ebdf;color:#34533c;}
+.member-project-pill.project-tone-blue {background:#e1e8ef;color:#344e68;}
+.member-project-pill.project-tone-orange {background:#f2e3d4;color:#79451f;}
+.member-project-pill.project-tone-purple {background:#eae2ec;color:#624366;}
 .member-project-pill:hover {transform:translateY(-2px);box-shadow:0 4px 10px #40102016;}
 .member-project-pill:focus-visible {outline:2px solid #8d0428;outline-offset:3px;}
 @media(prefers-reduced-motion:reduce) {.member-project-pill {transition:none;}.member-project-pill:hover {transform:none;}}

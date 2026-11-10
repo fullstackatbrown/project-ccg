@@ -13,6 +13,8 @@ Create an assignment for every confirmed participant. Project Leader and Project
 
 Publish the assignment, then publish the existing **Site Rebuild Trigger** entry to update the static website. Correct semesters on the Clients entry itself; that updates both portfolio dates and member-pill ordering. Do not infer project leadership from a member's current club title.
 
+Pill colors reflect each company's logo family. Edit **Clients → Pill Color Family** to choose red, cream, brown, green, blue, orange or purple. Every company in a family uses the same muted shade; colors do not encode role or semester. Neutral and multicolor logos default to brown. Company and semester appear side by side in compact pills.
+
 The November 2026 import uses the supplied Fall 2026 roster and these reports:
 
 - [2025–26 annual report](https://drive.google.com/file/d/13-H36GuCYX79HGEhOfxCbJnYO-7CjWaq/view)
