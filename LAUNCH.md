@@ -52,3 +52,9 @@ The pre-release source is tagged `pre-feedback-live-2026-11-01`. Its source arch
 Member bios and headshots remain editable on each **Member** entry in Contentful. **Display Order** controls placement within the existing leadership role groups and within Consultants. Leadership roles and the hierarchy are unchanged. Lower display-order numbers appear first. Returning consultants occupy the initial positions; append new consultants with larger numbers. A profile without a Display Order sorts after the numbered profiles.
 
 Publish the replacement headshot asset and member entry, then publish the Site Rebuild Trigger to refresh the live website. The November 9 import preserves names, positions, class years, contact details, and LinkedIn URLs on existing members; only their submitted bios/photos and display-order metadata are updated. Members without new bios remain unchanged apart from order metadata.
+
+## Contentful refresh reliability and profile links (November 10)
+
+Contentful's Site Rebuild Trigger webhook now calls the existing Astro workflow's workflow-dispatch endpoint with `ref: main`, instead of repository dispatch. This avoids the GitHub Pages behavior that can report success while continuing to serve the artifact from a prior run of the same source revision. Every build writes a unique release manifest; deployment succeeds only after the public HTML on all five routes matches that build. Check the workflow-dispatch run and its final verification step after publishing Site Rebuild Trigger.
+
+Member LinkedIn fields should contain the full `https://www.linkedin.com/in/.../` URL. The site also normalizes pasted bare domains, strips accidental spaces and share parameters, forces HTTPS, and hides unsupported/non-LinkedIn URLs instead of emitting a broken relative link. A blank field remains blank.
